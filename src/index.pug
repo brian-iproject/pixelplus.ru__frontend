@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+  head
+    title Вёрстка
+
+    meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    link(rel="shortcut icon" href="/favicon.ico" type="image/x-icon")
+    link(rel="icon" href="/favicon.ico" type="image/x-icon")
+
+    link(href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap&subset=cyrillic" rel="stylesheet")
+
+    link(href="libs/normalize/normalize.css" rel="stylesheet" type="text/css")
+
+    link(href="styles.css" rel="stylesheet" type="text/css")
+    link(href="template_styles.css" rel="stylesheet" type="text/css")
+
+    each val in []
+        link(href="blocks/"+val+'/style.css' rel="stylesheet" type="text/css")
+  body
+    div(style="display: none")
+      include ../dist/images/icons.svg
+    div.page-wrapper
+        include blocks/page/page-header/index
+        include blocks/page/page-nav/index
+        include blocks/page/page-content/index
+        include blocks/page/page-footer/index
+
+  script(src="libs/jquery/jquery-3.4.1.min.js")
+  script(src="script.js")

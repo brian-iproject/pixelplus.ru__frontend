@@ -1,0 +1,10 @@
+.page-header {
+  padding: 0 25px;
+}
+.page-header__inner {
+  display: flex;
+}
+.page-header .text {
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,11 @@
+-
+  let menuItems = [
+    "Кейсы",
+    "Отзывы",
+    "Контакты"
+  ];
+
+.top-menu
+  ul.top-menu__list
+    each value in menuItems
+      li.top-menu__item: a.top-menu__link(href= "#") #{value}
