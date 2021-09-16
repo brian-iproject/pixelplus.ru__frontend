@@ -1,0 +1,36 @@
+.moving-placeholder {
+
+	$block-name: &; // #{$block-name}__element
+
+	position: relative;
+	display: block;
+
+	&__input {
+		padding: 1.25em 0 0.75em 0;
+	}
+
+	&__name {
+		color: inherit;
+		font-size: inherit;
+		left: 0;
+		line-height: 1;
+		pointer-events: none;
+		position: absolute;
+		top: 1.25em;
+		transition: var(--transition-time);
+
+		&::after {
+			content: '*';
+			color: var(--color-primary);
+			margin-left: .25em;
+		}
+	}
+
+	&__input:focus + &__name,
+	&__input.-is-focus + &__name {
+		font-size: var(--font-size--small);
+		transform-origin: 0 0;
+		top: .275em;
+		opacity: .5;
+	}
+}

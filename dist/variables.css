@@ -1,0 +1,76 @@
+@charset "UTF-8";
+:root {
+  /* Базовые Цвета */
+  --color-primary--light: rgb(224, 0, 0);
+  --color-primary: rgb(204, 0, 0);
+  --color-white: rgb(255, 255, 255);
+  --color-gray--lighter: rgb(247, 247, 248);
+  --color-gray--lighten: rgb(238, 238, 239);
+  --color-gray--light: rgb(196, 196, 196);
+  --color-gray: rgb(166, 166, 166);
+  --color-gray--dark: rgb(117, 117, 117);
+  --color-gray--darken: rgb(43, 43, 43);
+  --color-gray--darker: rgb(32, 32, 32);
+  --color-black: rgb(0, 0, 0);
+  --color-success: rgb(92, 183, 92);
+  --color-danger: rgb(216, 84, 79);
+  --color-danger--light: rgb(216, 84, 79, .65);
+  --color-warning: rgb(239, 172, 77);
+  /* Семантические цвета */
+  --text-color: var(--color-gray--darker);
+  --text-color-muted: var(--color-gray);
+  --link-color: var(--color-primary);
+  --link-color--hover: var(--color-primary--light);
+  /* Базовая типографика */
+  --font-size--tiny: 9px;
+  --font-size--small: 10px;
+  --font-size--medium: 12px;
+  --font-size: 14px;
+  --font-size--large: 16px;
+  --font-size--huge: 18px;
+  --font-size-h1: 30px;
+  --font-size-h2: 30px;
+  --font-size-h3: 24px;
+  --font-size-h4: 18px;
+  --font-size-h5: 16px;
+  --font-size-h6: 14px;
+  --font-family-primary: "Ubuntu", sans-serif;
+  --line-height: 1.625;
+  --typo-margin-vertical: 1em;
+  /* Сетка */
+  --grid-gutter-x: 15px;
+  --grid-gutter-y: 15px;
+  /* Разное */
+  --transition-time: .3s;
+  --shadow: 0 15px 15px rgba(14, 16, 20, .15);
+}
+
+@media (min-width: 768px) {
+  :root {
+    /* Базовая типографика */
+    --font-size--tiny: 10px;
+    --font-size--small: 12px;
+    --font-size--medium: 14px;
+    --font-size: 16px;
+    --font-size--large: 18px;
+    --font-size--huge: 20px;
+    --font-size-h1: 44px;
+    --font-size-h2: 30px;
+    --font-size-h3: 24px;
+    --font-size-h4: 18px;
+    --font-size-h5: 16px;
+    --font-size-h6: 14px;
+  }
+}
+@media (min-width: 992px) {
+  :root {
+    /* Базовая типографика */
+    --font-size-h1: 54px;
+    --font-size-h2: 30px;
+    --font-size-h3: 24px;
+    --font-size-h4: 18px;
+    --font-size-h5: 16px;
+    --font-size-h6: 14px;
+  }
+}
+/*# sourceMappingURL=variables.css.map */

@@ -1,0 +1,33 @@
+.tile-clients {
+
+	$block-name: &; // #{$block-name}__element
+
+	display: grid;
+	gap: var(--grid-gutter-x) var(--grid-gutter-y);
+
+	&__item {
+		align-items: center;
+		background-color: var(--color-white);
+		display: flex;
+		justify-content: center;
+		min-height: 120px;
+		padding: 2.5em;
+		transition: var(--transition-time);
+
+		&:hover {
+			box-shadow: var(--shadow);
+		}
+	}
+
+	@media (min-width: $screen-sm) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media (min-width: $screen-md) {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	@media (min-width: $screen-lg) {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+}

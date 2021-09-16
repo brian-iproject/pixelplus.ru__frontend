@@ -1,0 +1,29 @@
+mixin page-header(mods)
+  -
+    let allMods = '';
+    if (typeof (mods) !== 'undefined' && mods) {
+      let regExp = /\s*,\s*/;
+      let modsList = mods.split(regExp);
+      allMods = modsList.join(' ');
+    }
+
+  header.page-header(class=allMods)
+    .page-container.page-header__inner
+      .page-header__logo
+        picture
+          source(srcset="images/logo--white.svg" media="(max-width: 991px)")
+          img(src="images/logo.svg", width="190", height="37" alt="")
+      .page-header__slogan
+        | Помогаем бизнесу<br>зарабатывать больше
+      .page-header__top-menu
+        include ../top-menu/index
+      .page-header__phones
+        +phones(false)
+      .page-header__order
+        button.button.button--primary Онлайн-заявка
+      .page-header__search
+        include ../header-search/index
+      .page-header__burger
+        include ../header-burger/index
+
+    +page-nav('page__nav')

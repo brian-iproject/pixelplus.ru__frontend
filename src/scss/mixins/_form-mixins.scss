@@ -1,0 +1,11 @@
+@mixin field-help-text {
+	display: block;
+	padding-top: 0.4em;
+	line-height: 1.2;
+	font-size: var(--font-size--small);
+	color: var(--text-color-muted);
+
+	&:empty {
+		display: none;
+	}
+}

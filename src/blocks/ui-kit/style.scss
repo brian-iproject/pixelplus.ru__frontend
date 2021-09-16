@@ -1,0 +1,92 @@
+@import '../../scss/_variables';
+
+.colors-list {
+
+	&__item {
+		align-items: center;
+		display: flex;
+
+		& + & {
+			margin-top: 30px;
+		}
+	}
+
+	&__color {
+		border-radius: 50%;
+		color: #fff;
+		display: block;
+		flex: 0 0 100px;
+		height: 100px;
+		margin-right: 15px;
+		width: 100px;
+	}
+
+	&__text {
+		color: var(--color-gray--dark);
+		font-size: var(--font-size--small);
+
+		& p {
+			margin: 0;
+		}
+
+		& p + p {
+			margin-top: .2em;
+		}
+	}
+}
+
+.image-positions {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 30px -15px;
+
+	&__item {
+		flex: 0 0 200px;
+		margin-bottom: 30px;
+		max-width: 200px;
+		padding: 0 15px;
+	}
+
+	&__image {
+		margin-bottom: 15px;
+
+		& img {
+			display: block;
+			max-width: 100%;
+		}
+	}
+
+	&__caption {
+		color: var(--color-gray--dark);
+		font-size: var(--font-size--small);
+		text-align: center;
+	}
+}
+
+.two-column {
+	margin: 30px -15px;
+
+
+	&__column {
+		padding: 0 15px;
+
+		& + & {
+			margin-top: 1.5em;
+		}
+	}
+
+	@media (min-width: $screen-md) {
+		display: flex;
+		margin: 1.5em -15px;
+
+		&__column {
+			flex: 0 0 50%;
+			max-width: 50%;
+			padding: 0 15px;
+
+			& + & {
+				margin-top: 0;
+			}
+		}
+	}
+}

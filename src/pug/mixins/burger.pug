@@ -1,0 +1,11 @@
+mixin burger(mods)
+  -
+    let allMods = '';
+    if (typeof (mods) !== 'undefined' && mods) {
+      let regExp = /\s*,\s*/;
+      let modsList = mods.split(regExp);
+      allMods = modsList.join(' ');
+    }
+
+  button.burger(class=allMods)&attributes(attributes)
+    span

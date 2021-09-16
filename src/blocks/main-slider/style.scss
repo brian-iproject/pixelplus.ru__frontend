@@ -1,0 +1,117 @@
+.main-slider {
+
+	$block-name: &; // #{$block-name}__element
+
+	&__item {
+		background-image: radial-gradient(50% 50% at 50% 50%, #193F71 0%, #0A172A 100%);
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		color: var(--color-white);
+		display: flex;
+		height: 100%;
+		min-height: 500px;
+		padding: calc(4 * var(--grid-gutter-y)) 0;
+		width: 100%;
+	}
+
+	&__item-inner {
+		align-items: center;
+		align-self: stretch;
+		display: flex;
+		width: 100%;
+	}
+
+	&__info {
+	}
+
+	&__more,
+	&__form {
+		display: none;
+		order: 1;
+	}
+
+	&__title {
+		font-size: 48px;
+		font-size: calc(24px + 24 * (100vw / 1400));;
+		font-weight: 700;
+		line-height: 1.1;
+		margin: 0 0 .25em 0;
+		text-transform: uppercase;
+	}
+
+	&__description {
+		font-size: var(--font-size--huge);
+	}
+
+	& .flickity-page-dots {
+		bottom: 0;
+		display: flex;
+		justify-content: center;
+		justify-items: center;
+		padding: 2em 0;
+		position: absolute;
+
+		& .dot {
+			background-color: var(--color-white);
+			border-radius: 2px;
+			height: 3px;
+			opacity: .35;
+			width: 2.625em;
+
+			&.is-selected {
+				opacity: .75;
+			}
+		}
+	}
+
+	@media (min-width: $screen-md) {
+
+		&__title {
+			font-size: 74px;
+		}
+
+		&__description {
+			font-size: var(--font-size--huge);
+		}
+	}
+
+	@media (min-width: $screen-lg) {
+
+		&__item {
+			min-height: 750px;
+		}
+
+		&__more,
+		&__form {
+			display: block;
+			flex: 0 0 35%;
+			max-width: 35%;
+
+			padding-left: var(--grid-gutter-x);
+		}
+
+		&__form {
+			padding-left: calc(2 * var(--grid-gutter-x));
+		}
+
+		&__more + &__info {
+			flex: 0 0 65%;
+			max-width: 65%;
+			padding-right: var(--grid-gutter-x);
+		}
+	}
+
+	@media (min-width: $screen-xl) {
+
+		&__title {
+			font-size: 90px;
+		}
+	}
+}
+
+
+
+
+
+

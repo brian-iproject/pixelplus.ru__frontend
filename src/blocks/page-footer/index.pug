@@ -1,0 +1,40 @@
+mixin page-footer(mods)
+  -
+    let allMods = '';
+    if (typeof (mods) !== 'undefined' && mods) {
+      let regExp = /\s*,\s*/;
+      let modsList = mods.split(regExp);
+      allMods = modsList.join(' ');
+    }
+
+  footer.page-footer(class=allMods)
+    .page-footer__contacts
+      .page-container.page-footer__contacts-inner
+        .page-footer__contacts-item
+          +phones(true)
+        .page-footer__contacts-item.page-footer__contacts-item--order
+          button.button.button--not-fill Онлайн-заявка
+
+        .page-footer__contacts-item.page-footer__contacts-item--address
+          include ../address/index
+
+    .page-footer__menu
+      .page-container.page-footer__menu-inner
+        include ../footer-menu/index
+
+    .page-footer__bottom
+      .page-container.page-footer__bottom-inner
+        .page-footer__bottom-item.page-footer__bottom-item--logo
+          img(src="images/logo--white.svg")
+        .page-footer__bottom-item.page-footer__bottom-item--copy © 2006–2021 — Пиксель Плюс
+        .page-footer__bottom-item.page-footer__bottom-item--social-media
+          include ../socials/index
+        .page-footer__bottom-item
+          .page-footer__copy-recaptcha
+            p Сайт защищен reCAPTCHA и Google.
+            p <a href="#">Конфиденциальность</a> и <a href="#">Условия</a>.
+        .page-footer__bottom-item.page-footer__bottom-item--subscribe
+          include ../subscribe-footer/index
+        .page-footer__bottom-item
+          p: a(href="#") Публичная оферта
+          p: a(href="#") Политика конфиденциальности

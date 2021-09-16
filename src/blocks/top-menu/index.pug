@@ -1,11 +1,16 @@
 -
-  let menuItems = [
-    "Кейсы",
-    "Отзывы",
-    "Контакты"
-  ];
+	let data = {
+		"level": "1",
+		"items": [
+			{
+				"title": "Кейсы",
+				"iconID": "icon-case",
+			},
+			{
+				"title": "Контакты",
+				"iconID": "icon-tg",
+			}
+		]
+	};
 
-.top-menu
-  ul.top-menu__list
-    each value in menuItems
-      li.top-menu__item: a.top-menu__link(href= "#") #{value}
++menu(data, 'top-menu')

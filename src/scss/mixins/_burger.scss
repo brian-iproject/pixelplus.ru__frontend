@@ -1,0 +1,58 @@
+@mixin burger($color, $width, $lineHeight) {
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+	display: inline-block;
+	height: $lineHeight * 7;
+	outline: none;
+	padding: 0;
+	width: $width;
+	cursor: pointer;
+	line-height: 0;
+
+	& span {
+		background: $color;
+		content: "";
+		display: block;
+		height: $lineHeight;
+		margin: 2 * $lineHeight 0;
+		width: 100%;
+		border-radius: $lineHeight / 2;
+	}
+
+	&.-is-active span {
+		display: none;
+	}
+
+	&::before {
+		content: "";
+		display: block;
+		transition: var(--transition-time);
+		width: 100%;
+		height: $lineHeight;
+		background: $color;
+		border-radius: $lineHeight / 2;
+	}
+
+	&.-is-active::before {
+		background: $color;
+		transform: translateY($lineHeight * 0.6) translateX(0px) rotate(-45deg);
+		transform-origin: 50% 50%;
+	}
+
+	&::after {
+		height: $lineHeight;
+		background: $color;
+		content: "";
+		display: block;
+		transition: var(--transition-time);
+		width: 100%;
+		border-radius: $lineHeight / 2;
+	}
+
+	&.-is-active::after {
+		background: $color;
+		transform: translateY($lineHeight * -0.3) translateX(0px) rotate(45deg);
+		transform-origin: 50% 50%;
+	}
+}

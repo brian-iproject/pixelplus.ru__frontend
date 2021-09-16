@@ -1,0 +1,118 @@
+@mixin button {
+	align-items: center;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: .5em;
+	color: inherit;
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	margin: 0;
+	padding: .85em 2em .95em 2em;
+	text-align: center;
+	text-decoration: none;
+	transition: var(--transition-time);
+	font-weight: 500;
+	font-size: var(--font-size);
+}
+
+@mixin button--primary {
+	background-color: var(--color-primary);
+	border: 1px solid var(--color-primary);
+	color: #fff;
+
+	&:hover,
+	&:active {
+		background-color: var(--color-primary--light);
+		border-color: var(--color-primary--light);
+		box-shadow: 0 7px 20px rgba(204, 0, 0, .35), 0 20px 35px rgba(204, 0, 0, .15);
+		color: var(--color-white);
+	}
+}
+
+@mixin button--gray-lighten {
+	background-color: var(--color-gray--lighten);
+	border-color: var(--color-gray--lighten);
+	color: var(--color-gray--dark);
+
+	&:hover,
+	&:active {
+		background-color: var(--color-white);
+		border-color: var(--color-white);
+		box-shadow: 0px 10px 35px rgba(0, 0, 0, .15);
+		color: var(--color-black);
+	}
+}
+
+.button {
+	@include button;
+
+	&--wide {
+		width: 100%;
+	}
+
+	&--primary {
+		@include button--primary;
+	}
+
+	&--green {
+		background-color: #009628;
+		border-color: #009628;
+
+		&:hover,
+		&:active {
+			background-color: #15a53c;
+			border-color: #15a53c;
+			box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.15);
+			color: var(--color-white);
+		}
+	}
+
+	&--gray--lighten {
+		@include button--gray-lighten;
+	}
+
+	&--not-fill {
+		background-color: transparent;
+		border-color: var(--color-gray--dark);
+		color: inherit;
+
+		&:hover,
+		&:active {
+			background-color: var(--color-white);
+			border-color: var(--color-white);
+			box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.15);
+			color: var(--color-black);
+		}
+	}
+
+	&--tab {
+		font-size: var(--font-size--medium);
+		padding: .9em 1.5em 1em 1.5em;
+		@include button--gray-lighten;
+
+		&.-active {
+			@include button--primary;
+		}
+	}
+}
+
+.buttons-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+	justify-items: center;
+
+	* + & {
+		margin-top: var(--typo-margin-vertical);
+	}
+
+	@media (max-width: $screen-sm - 1) {
+		& .button {
+			max-width: 320px;
+		}
+	}
+}

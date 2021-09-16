@@ -1,0 +1,3 @@
+.header-burger {
+	@include burger(var(--color-white), 16px, 2px);
+}

@@ -1,0 +1,50 @@
+.subscribe-footer {
+
+	$block-name: &; // #{$block-name}__element
+
+	&__form {
+		display: flex;
+		max-width: 300px;
+	}
+
+	&__input {
+		background: var(--color-white);
+		border: none;
+		border-radius: 7px 0 0 7px;
+		flex: 1 1 auto;
+		height: 50px;
+		outline: none;
+		padding: 0 1em;
+		width: calc(100% - 50px);
+	}
+
+	&__button {
+		background: var(--color-primary);
+		border: none;
+		border-radius: 0 7px 7px 0;
+		cursor: pointer;
+		height: 50px;
+		padding: 0 1em;
+		transition: var(--transition-time);
+		width: 50px;
+
+		&:hover,
+		&:active {
+			background-color: var(--color-primary--light);
+			box-shadow: 0 7px 20px rgba(204, 0, 0, .35), 0 20px 35px rgba(204, 0, 0, .15);
+		}
+
+		& svg {
+			display: block;
+			fill: var(--color-white);
+			height: 14px;
+			width: 21px;
+		}
+	}
+
+	&__note {
+		color: var(--color-gray--dark);
+		font-size: var(--font-size--middle);
+		margin-top: .85em;
+	}
+}

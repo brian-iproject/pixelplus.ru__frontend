@@ -1,0 +1,38 @@
+.socials {
+
+	$block-name: &; // #{$block-name}__element
+
+	align-items: center;
+	display: flex;
+	list-style: none;
+	margin: 0 -.5em;
+	padding: 0;
+
+	& li {
+		padding: 0 .5em;
+
+		& a {
+			color: var(--color-white);
+			display: block;
+			transition: var(--transition-time);
+
+			&:hover {
+				color: var(--color-primary);
+				transform: scale(1.2);
+			}
+
+			& svg {
+				display: block;
+			}
+
+			.page-nav & {
+				color: var(--color-gray--dark);
+
+				&:hover {
+					color: var(--color-primary);
+					transform: scale(1.2);
+				}
+			}
+		}
+	}
+}

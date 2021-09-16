@@ -1,0 +1,21 @@
+mixin page-nav(mods)
+	-
+		let allMods = '';
+		if (typeof (mods) !== 'undefined' && mods) {
+			let regExp = /\s*,\s*/;
+			let modsList = mods.split(regExp);
+			allMods = modsList.join(' ');
+		}
+
+	.page-nav(class=allMods)
+		.page-container.page-nav__inner
+			.page-nav__menu
+				include ../main-menu/index
+			.page-nav__search
+				include ../header-search/index
+			.page-nav__contacts
+				+phones(false)
+				.page-nav__order
+					button.button.button--primary Онлайн-заявка
+				.page-nav__socials
+					include ../socials/index

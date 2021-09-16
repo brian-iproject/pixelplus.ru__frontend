@@ -1,0 +1,37 @@
+@import '../libs/normalize/normalize';
+
+@import '_base';
+@import '_mixins';
+@import '_variables';
+
+@import '../blocks/page/style';
+@import '../blocks/button/style';
+@import '../blocks/page-container/style';
+@import '../blocks/page-header/style';
+@import '../blocks/page-nav/style';
+@import '../blocks/page-content/style';
+@import '../blocks/page-footer/style';
+@import '../blocks/wide-block/style';
+@import '../blocks/subscribe-footer/style';
+@import '../blocks/socials/style';
+@import '../blocks/phones/style';
+@import '../blocks/address/style';
+@import '../blocks/top-menu/style';
+@import '../blocks/footer-menu/style';
+@import '../blocks/header-search/style';
+@import '../blocks/main-menu/style';
+@import '../blocks/header-burger/style';
+@import '../blocks/main-slider/style';
+@import '../blocks/form-slider/style';
+@import '../blocks/field-text/style';
+@import '../blocks/field-checkbox/style';
+@import '../blocks/moving-placeholder/style';
+@import '../blocks/tile/style';
+@import '../blocks/tile-slider/style';
+@import '../blocks/about-numbers/style';
+@import '../blocks/tile-news/style';
+@import '../blocks/tile-clients/style';
+@import '../blocks/advantages/style';
+@import '../blocks/team-list/style';
+@import '../blocks/achievements/style';
+@import '../blocks/video-list/style';
