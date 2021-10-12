@@ -1,8 +1,12 @@
 @import '../libs/normalize/normalize';
+@import '../libs/animate.css/animate';
+
+@import '_variables';
+@import '_css-variables';
 
 @import '_base';
 @import '_mixins';
-@import '_variables';
+@import '_fonts';
 
 @import '../blocks/page/style';
 @import '../blocks/button/style';
@@ -22,7 +26,6 @@
 @import '../blocks/main-menu/style';
 @import '../blocks/header-burger/style';
 @import '../blocks/main-slider/style';
-@import '../blocks/form-slider/style';
 @import '../blocks/field-text/style';
 @import '../blocks/field-checkbox/style';
 @import '../blocks/moving-placeholder/style';
@@ -35,3 +38,4 @@
 @import '../blocks/team-list/style';
 @import '../blocks/achievements/style';
 @import '../blocks/video-list/style';
+@import '../blocks/form-short/style';

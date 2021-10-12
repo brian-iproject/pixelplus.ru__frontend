@@ -1,9 +1,9 @@
 @mixin field-help-text {
 	display: block;
 	padding-top: 0.4em;
-	line-height: 1.2;
+	line-height: 1.5;
 	font-size: var(--font-size--small);
-	color: var(--text-color-muted);
+	color: inherit;
 
 	&:empty {
 		display: none;

@@ -86,8 +86,12 @@
 		&__list {
 
 			&--lvl1 {
-				display: flex;
+				//display: flex;
 				width: 100%;
+
+				column-count: 5;
+				column-gap: 0;
+				column-width: auto;
 			}
 
 			&--lvl2 {
@@ -99,9 +103,12 @@
 
 			&--lvl1 {
 				border-bottom: none;
-				display: inline;
-				flex-grow: 1;
-				flex-shrink: 1;
+				//display: inline;
+				//flex-grow: 1;
+				//flex-shrink: 1;
+
+				break-inside: avoid;
+				page-break-inside: avoid;
 			}
 		}
 

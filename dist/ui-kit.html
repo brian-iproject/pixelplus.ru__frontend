@@ -15,11 +15,9 @@
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
     <link href="libs/flickity/flickity.min.css" rel="stylesheet" type="text/css">
-    <link href="variables.css" rel="stylesheet" type="text/css">
-    <link href="styles.css" rel="stylesheet" type="text/css">
+    <link href="libs/fancybox/fancybox.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div class="page__inner">
@@ -63,10 +61,10 @@
           <div class="page-header__search">
             <div class="header-search">
               <button class="header-search__button" data-toggle="header-search"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-magnifier"></use></svg></button>
-              <div class="header-search__inner" data-toggle-target="header-search">
+              <form class="header-search__inner" data-toggle-target="header-search" action="/search/">
                 <input class="header-search__input" type="text" placeholder="Введите запрос"/>
-                <button class="button button--primary header-search__button-go"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-magnifier"></use></svg></button>
-              </div>
+                <button class="button button--primary header-search__button-go" type="submit"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-magnifier"></use></svg></button>
+              </form>
             </div>
           </div>
           <div class="page-header__burger">
@@ -743,10 +741,10 @@
             <div class="page-nav__search">
               <div class="header-search">
                 <button class="header-search__button" data-toggle="header-search"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-magnifier"></use></svg></button>
-                <div class="header-search__inner" data-toggle-target="header-search">
+                <form class="header-search__inner" data-toggle-target="header-search" action="/search/">
                   <input class="header-search__input" type="text" placeholder="Введите запрос"/>
-                  <button class="button button--primary header-search__button-go"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-magnifier"></use></svg></button>
-                </div>
+                  <button class="button button--primary header-search__button-go" type="submit"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-magnifier"></use></svg></button>
+                </form>
               </div>
             </div>
             <div class="page-nav__contacts">
@@ -920,19 +918,33 @@
             <div class="page-footer__contacts-item">
               <div class="phones">
                 <div class="phones__item phones__item--regions">
-                  <div class="phones__item-inner">
-                    <div class="phones__number"><a href="tel:+74959895311">+7 495 989-53-11</a></div>
-                    <div class="phones__title">
-                      <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
-                      Москва (отдел продаж)
+                  <div class="phones__regions-inner">
+                    <div class="phones__item-inner">
+                      <div class="phones__number"><a href="tel:+74959895311">+7 495 989-53-11</a></div>
+                      <div class="phones__title">
+                        <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
+                        Москва (отдел продаж)
+                      </div>
+                    </div>
+                    <div class="phones__item-inner">
+                      <div class="phones__number"><a href="tel:+74959895311">+7 495 989-53-11</a></div>
+                      <div class="phones__title">Зеленоград (отдел продаж)</div>
+                    </div>
+                    <div class="phones__item-inner">
+                      <div class="phones__number"><a href="tel:+78124139889">+7 812 413-98-89</a></div>
+                      <div class="phones__title">Отдел продаж (СПб)</div>
+                    </div>
+                    <div class="phones__item-inner">
+                      <div class="phones__number"><a href="tel:88007007965">8 800 700-79-65</a></div>
+                      <div class="phones__title">Брянск (отдел продаж)</div>
+                    </div>
+                    <div class="phones__item-inner">
+                      <div class="phones__number"><a href="tel:+78142330560">+7 (8142) 330-560</a></div>
+                      <div class="phones__title">Отдел продаж (ПТЗ)</div>
                     </div>
                   </div>
-                  <div class="phones__item-inner">
-                    <div class="phones__number"><a href="tel:+78124139889">+7 812 413-98-89</a></div>
-                    <div class="phones__title">Отдел продаж (СПб)</div>
-                  </div>
                   <button class="phones__button-select" data-toggle="regions"></button>
-                  <div class="phones__regions" data-toggle-target="regions">
+                  <div class="phones__regions animate__animated animate__fadeInUp" data-toggle-target="regions">
                     <ul>
                       <li>Москва</li>
                       <li>Зеленоград</li>
@@ -959,18 +971,9 @@
                   <li class="address__cities-item">Санкт-Петербург</li>
                 </ul>
                 <ul class="address__address">
-                  <li class="address__address-item">
-                    <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
-                    ул. Орджоникидзе, дом 11, стр. 10
-                  </li>
-                  <li class="address__address-item">
-                    <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
-                    проезд 4922, дом 4, стр. 5
-                  </li>
-                  <li class="address__address-item">
-                    <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
-                    просп. Медиков, дом 3а, корп. 2
-                  </li>
+                  <li class="address__address-item"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg><a href="/contact/#moscow">ул. Орджоникидзе, дом 11, стр. 10</a></li>
+                  <li class="address__address-item"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg><a href="/contact/#zelenograd">проезд 4922, дом 4, стр. 5</a></li>
+                  <li class="address__address-item"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg><a href="/contact/#zelenograd">просп. Медиков, дом 3а, корп. 2</a></li>
                 </ul>
               </div>
             </div>
@@ -1106,21 +1109,24 @@
             <div class="page-footer__bottom-item">
               <div class="page-footer__copy-recaptcha">
                 <p>Сайт защищен reCAPTCHA и Google.</p>
-                <p><a href="#">Конфиденциальность</a> и <a href="#">Условия</a>.</p>
+                <p><a href="https://policies.google.com/privacy">Конфиденциальность</a> и <a href="https://policies.google.com/terms">Условия</a>.</p>
               </div>
             </div>
             <div class="page-footer__bottom-item page-footer__bottom-item--subscribe">
               <div class="subscribe-footer">
-                <form class="subscribe-footer__form" action="">
-                  <input class="subscribe-footer__input" type="email" value="" placeholder="Ваш e-mail"/>
-                  <button class="subscribe-footer__button"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow"></use></svg></button>
+                <form class="subscribe-footer__form js-hidden-captcha" action="" type="post">
+                  <label class="field-text"><span class="field-text__input-wrap">
+                      <input class="field-text__input js-moving-placeholder" type="email" placeholder="Ваше e-mail" value="" required="required"/></span></label>
+                  <input type="text" name="TRY"/>
+                  <input type="text" name="CAPTCHA_HIDDEN"/>
+                  <div class="button button--primary subscribe-footer__button"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow"></use></svg></div>
                 </form>
                 <div class="subscribe-footer__note">Подпишитесь на исследования и кейсы</div>
               </div>
             </div>
             <div class="page-footer__bottom-item">
-              <p><a href="#">Публичная оферта</a></p>
-              <p><a href="#">Политика конфиденциальности</a></p>
+              <p><a href="/oferta/">Публичная оферта</a></p>
+              <p><a href="/privacy-policy/">Политика конфиденциальности</a></p>
             </div>
           </div>
         </div>
@@ -1129,5 +1135,6 @@
   </body>
   <!--script(src="libs/jquery/jquery-3.4.1.min.js")-->
   <script src="libs/flickity/flickity.pkgd.min.js"></script>
-  <script src="script.js"></script>
+  <script src="libs/fancybox/fancybox.umd.js"></script>
+  <script src="js/main.js"></script>
 </html>

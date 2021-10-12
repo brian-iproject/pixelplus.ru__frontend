@@ -147,6 +147,18 @@ hr {
 	overflow: visible;       // Проблема Edge и IE
 }
 
+[name=CAPTCHA_HIDDEN],
+[name=TRY] {
+	position: absolute;
+	z-index: -1;
+	left: -5000px;
+}
+
+.-is-hidden,
+[hidden] {
+	display: none;
+}
+
 .v-space {
 	height: var(--typo-margin-vertical);
 

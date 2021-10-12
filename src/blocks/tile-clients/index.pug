@@ -1,0 +1,79 @@
+-
+	let dataClients = [
+		{
+			"image": "assets/heineken-logo.png",
+			"title": "Компания «HEINEKEN Russia»",
+			"description": "Концерн HEINEKEN один из мировых лидеров пивной отрасли.",
+			"link": "/link/"
+		},
+		{
+			"image": "assets/bridgestone-logo.png",
+			"title": "Компания «Bridgestone»",
+			"description": "Японская корпорация с штаб квартирой в Токио, возглавляет ТОП-10 мировых компаний-производителей шин.",
+			"link": "/link/"
+		},
+		{
+			"image": "assets/samsonite-logo.png",
+			"title": "Компания «Samsonite»",
+			"description": "Крупнейший американский производитель чемоданов и ручной клади. Базируется в США, штат Колорадо.",
+		},
+		{
+			"image": "assets/garmin-logo.png",
+			"title": "Компания «Garmin»",
+			"description": "Крупнейший мировой производитель GPS-навигационной техники с штаб-квартирой в США.",
+		},
+		{
+			"image": "assets/oknarosta-logo.png",
+			"title": "Компания «Окна Роста»",
+			"description": "Один из лидеров компаний-производителей пластиковых окон и дверей в России.",
+			"link": "/link/"
+		},
+		{
+			"image": "assets/askona-logo.png",
+			"title": "Компания «Аскона»",
+			"description": "Крупнейший в России производитель ортопедических матрасов и товаров для сна.",
+		},
+		{
+			"image": "assets/psb-logo.png",
+			"title": "Банк «Промсвязьбанк»",
+			"description": "Входит в ТОП-3 частных банков России и в 500 крупнейших банков мира.",
+		},
+		{
+			"image": "assets/sovkombank-logo.png",
+			"title": "Банк «Совкомбанк»",
+			"description": "Совкомбанк основан в 1990 году, входит в 20-ку крупнейших банков по активам в России по состоянию на 2016 года.",
+		},
+		{
+			"image": "assets/goodyear-logo.png",
+			"title": "Компания «Goodyear»",
+			"description": "Американская компания, одна из крупнейших в мире производителей автомобильных шин.",
+		},
+		{
+			"image": "assets/mailru-logo.png",
+			"title": "Компания «Mail.Ru Group»",
+			"description": "Крупнейшая технологическая компания России, входит в ТОП-2000 крупнейших мировых компаний по версии Forbes.",
+		},
+		{
+			"image": "assets/ulmart-logo.png",
+			"title": "Компания «Юлмарт»",
+			"description": "Юлмарт занимает третью строчку среди самых крупных интернет-компаний России по версии Forbes.",
+		},
+		{
+			"image": "assets/gazprom-logo.png",
+			"title": "Компания «Газпром теплоэнерго»",
+			"description": "Специализированный теплоэнергетический холдинг, работающий в области энергетики.",
+		}
+	]
+.tile-clients
+	each item, i in dataClients
+		.tile-clients__item
+			.tile-clients__inner
+				img(src=item.image)
+				if (item.link)
+					a.tile-clients__info(href=item.link)
+						.tile-clients__title !{item.title}
+						p.tile-clients__description !{item.description}
+				else
+					.tile-clients__info
+						.tile-clients__title !{item.title}
+						p.tile-clients__description !{item.description}

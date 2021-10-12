@@ -1,0 +1,7 @@
+.form-short__field {
+  display: block;
+}
+.form-short__field + .form-short__field {
+  margin-top: var(--typo-margin-vertical);
+}
+/*# sourceMappingURL=style.css.map */

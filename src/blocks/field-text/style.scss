@@ -5,23 +5,35 @@
 	&__input-wrap {}
 
 	&__input {
-		background-color: transparent;
+		background: var(--color-white);
 		border: none;
-		border-bottom: 1px solid var(--color-white);
-		color: inherit;
-		font-family: inherit;
+		border-radius: .4em;
+		color: var(--color-gray--dark);
 		font-size: inherit;
 		max-width: 100%;
 		outline: none;
 		padding: 1em;
+		vertical-align: middle;
 		width: 100%;
+
+		#{$block-name}--transparent & {
+			background-color: transparent;
+			border-bottom: 1px solid var(--field-text-border-color, var(--color-white));
+			border-radius: 0;
+			color: var(--field-text-color, var(--color-white));
+		}
 
 		@at-root #{$block-name} .moving-placeholder__input {
 			padding: 1.25rem 1rem 0.75rem 1rem;
 		}
 
-		@at-root #{$block-name} .moving-placeholder__name {
+		& + .moving-placeholder__name {
+			color: var(--color-gray--dark);
 			left: 1rem;
+		}
+
+		#{$block-name}--transparent & + .moving-placeholder__name {
+			color: inherit;
 		}
 	}
 

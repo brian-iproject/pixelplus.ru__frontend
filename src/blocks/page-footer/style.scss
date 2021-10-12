@@ -3,7 +3,7 @@
 	$block-name: &; // #{$block-name}__element
 
 	color: var(--color-gray--lighten);
-	font-size: var(--font-size--middle);
+	font-size: var(--font-size--medium);
 
 	& a {
 		color: var(--color-gray--dark);

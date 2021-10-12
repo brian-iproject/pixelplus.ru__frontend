@@ -23,14 +23,22 @@
 			background-repeat: no-repeat;
 		}
 
+		& img {
+			filter: grayscale(100%);
+		}
+
 		&:hover {
 			box-shadow: var(--shadow);
+
+			& img{
+				filter: grayscale(0);
+			}
 		}
 	}
 
 	&__name {
 		font-size: var(--font-size--large);
-		font-weight: 700;
+		font-weight: 500;
 		line-height: 1.2;
 		margin-bottom: .5em;
 

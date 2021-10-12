@@ -3,16 +3,50 @@
 	$block-name: &; // #{$block-name}__element
 
 	&__item {
-		width: 100%;
 		margin-right: calc(var(--grid-gutter-x) + 1px); // +1px убирает белую полосу справа
+		width: 100%;
+	}
+
+	&__link {
+		color: var(--color-white);
+		display: block;
+		text-decoration-color: transparent;
+
+		&:hover,
+		&:focus {
+			color: var(--color-white);
+			text-decoration-color: transparent;
+		}
 	}
 
 	&__image {
+		background: var(--color-black);
+		border-radius: 5px;
+		display: block;
+		overflow: hidden;
+		position: relative;
 
 		& img {
 			display: block;
-			overflow: hidden;
-			border-radius: 5px;
+			transition: var(--transition-time);
+
+			#{$block-name}__link:hover & {
+				opacity: .8;
+			}
+		}
+
+		& svg {
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			position: absolute;
+			right: 0;
+			top: 0;
+			transition: .3s;
+
+			#{$block-name}__link:hover & {
+				transform: scale(1.1);
+			}
 		}
 	}
 
@@ -20,6 +54,12 @@
 		font-size: var(--font-size--medium);
 		font-weight: 500;
 		margin-top: 1em;
+		text-decoration-color: transparent;
+		text-decoration-line: underline;
+
+		#{$block-name}__link:hover & {
+			text-decoration-color: currentColor;
+		}
 	}
 
 	&__time {

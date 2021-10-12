@@ -15,7 +15,7 @@
 
   --color-success:          rgb(92, 183, 92);
   --color-danger:           rgb(216, 84, 79);
-  --color-danger--light:    rgb(216, 84, 79, .65);
+  --color-danger--light:    rgba(216, 84, 79, .65);
   --color-warning:          rgb(239, 172, 77);
 
   /* Семантические цвета */
@@ -52,11 +52,10 @@
 
   /* Разное */
   --transition-time:        .3s;
+  --animate-duration:       var(--transition-time);
   --shadow:                 0 15px 15px rgba(14, 16, 20, .15);
-}
 
-@media (min-width: 768px) {
-  :root {
+  @media (min-width: 768px) {
     /* Базовая типографика */
     --font-size--tiny:      10px;
     --font-size--small:     12px;
@@ -72,10 +71,8 @@
     --font-size-h5:         16px;
     --font-size-h6:         14px;
   }
-}
 
-@media (min-width: 992px) {
-  :root {
+  @media (min-width: 992px) {
     /* Базовая типографика */
     --font-size-h1:         54px;
     --font-size-h2:         30px;

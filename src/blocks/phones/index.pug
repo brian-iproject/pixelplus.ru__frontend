@@ -2,16 +2,26 @@ mixin phones(regions)
   .phones
     if (regions === true)
       .phones__item.phones__item--regions
-        .phones__item-inner
-          .phones__number <a href="tel:+74959895311">+7 495 989-53-11</a>
-          .phones__title.
-            <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
-            Москва (отдел продаж)
-        .phones__item-inner
-          .phones__number <a href="tel:+78124139889">+7 812 413-98-89</a>
-          .phones__title Отдел продаж (СПб)
+        .phones__regions-inner
+          .phones__item-inner
+            .phones__number <a href="tel:+74959895311">+7 495 989-53-11</a>
+            .phones__title.
+              <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
+              Москва (отдел продаж)
+          .phones__item-inner
+            .phones__number <a href="tel:+74959895311">+7 495 989-53-11</a>
+            .phones__title Зеленоград (отдел продаж)
+          .phones__item-inner
+            .phones__number <a href="tel:+78124139889">+7 812 413-98-89</a>
+            .phones__title Отдел продаж (СПб)
+          .phones__item-inner
+            .phones__number <a href="tel:88007007965">8 800 700-79-65</a>
+            .phones__title Брянск (отдел продаж)
+          .phones__item-inner
+            .phones__number <a href="tel:+78142330560">+7 (8142) 330-560</a>
+            .phones__title Отдел продаж (ПТЗ)
         button.phones__button-select(data-toggle='regions')
-        .phones__regions(data-toggle-target='regions')
+        .phones__regions.animate__animated.animate__fadeInUp(data-toggle-target='regions')
           ul
             li Москва
             li Зеленоград
