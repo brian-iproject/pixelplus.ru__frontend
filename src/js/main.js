@@ -1,11 +1,11 @@
-import FlickitySet from './FlickitySet';
-import MobileMenu from "./MobileMenu";
-import ToggleBlock from "./ToggleBlock";
-import SvgLoad from "./SvgLoad";
-import MovingPlaceholder from "./MovingPlaceholder";
-import Utils from "./Utils";
-import Tabs from "./Tabs";
-import HiddenCaptcha from "./HiddenCaptcha";
+import FlickitySet from './FlickitySet'
+import MobileMenu from "./MobileMenu"
+import ToggleBlock from "./ToggleBlock"
+import SvgLoad from "./SvgLoad"
+import MovingPlaceholder from "./MovingPlaceholder"
+import Utils from "./Utils"
+import Tabs from "./Tabs"
+import HiddenCaptcha from "./HiddenCaptcha"
 
 const app = {
     /**
