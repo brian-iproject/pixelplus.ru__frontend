@@ -1,20 +1,75 @@
-.main-slider(data-flickity-options='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "lazyLoad": true }')
+.main-slider.main-slider--negative-margin(data-flickity-options='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "bgLazyLoad": true, "adaptiveHeight": true, "autoPlay": 5000, "pauseAutoPlayOnHover": false }')
 		.main-slider__item(style="background-image: url(blocks/main-slider/images/main-1.jpg)")
 			.page-container.main-slider__item-inner
 				.main-slider__form
 					.main-slider__form-inner
 						h3.-no-margin Оставить заявку
 						include ../form-short/index
-
 				.main-slider__info
-					h1.main-slider__title 1600 ₽/час единая цена за комплекс
+					div.main-slider__title 1600 ₽/час единая цена за комплекс
 					.main-slider__description Цена ниже рынка при заказе комплекса из 2 услуг и более: SEO, SMM, ORM, поддержка сайта, контекстная реклама
 		.main-slider__item(style="background-image: url(blocks/main-slider/images/main-2.jpg)")
 			.page-container.main-slider__item-inner
 				.main-slider__info
-					h1.main-slider__title Продвижение<br>сайтов по трафику
+					div.main-slider__title Продвижение<br>сайтов по трафику
 					.main-slider__description
 						p Экономьте до 83 000 рублей на продвижение, платя  только за полученный целевой трафик, без рисков.  Сами предложим точки роста целевых посетителей и оперативно их внедрим.
 						.buttons-group
 							a.button.button--green(href="#") Оставить заявку
 							a.button.button--not-fill(href="#") Узнать стоимость
+		.main-slider__item(style="background-image: url(blocks/main-slider/images/main-3.jpg)")
+			.page-container.main-slider__item-inner
+				.main-slider__form
+				.main-slider__info
+					div.main-slider__title Реклама в Яндекс.Дзен
+					.main-slider__description
+						p 18% пользователей Яндекс.Дзена переходят на сайты рекламодателя по ставке от 1 рубля. <br> Расскажите о вашем бизнесе аудитории в 50 миллионов пользователей.
+						p
+							a.button.button--primary(href="#") Подробнее
+		.main-slider__item(style="background-image: url(blocks/main-slider/images/main-4.jpg)")
+			.page-container.main-slider__item-inner
+				.main-slider__form
+					.main-slider__form-inner
+						h3.-no-margin Оставить заявку
+						include ../form-short/index
+				.main-slider__info
+					div.main-slider__title.main-slider__title--medium Тариф поддержки сайта «Абонемент Плюс»
+					.main-slider__description
+						p Идеальный вариант для постоянного контроля за сайтом. Вкдючает в себя скидки на регулярные задачи и гарантирнованнное выделение ресурсов на ваш проект
+		.main-slider__item(style="background-image: url(blocks/main-slider/images/main-5.jpg)")
+			.page-container.main-slider__item-inner
+				.main-slider__form
+				.main-slider__info
+					div.main-slider__title.main-slider__title--medium Создание и продвижение сайтов
+					.main-slider__description
+						p Комплексный подход к разработке и созданию сайтов для бизнеса, ориентированного на высокую конверсию.
+						.buttons-group
+							a.button.button--primary(href="#") Подробнее о компании
+							a.button.button--not-fill(href="#") Наши преимущества
+		.main-slider__item(style="background-image: url(blocks/main-slider/images/main-6.jpg)")
+			.page-container.main-slider__item-inner
+				.main-slider__form
+					.main-slider__form-inner
+						h3.-no-margin Оставить заявку
+						include ../form-short/index
+				.main-slider__info
+					div.main-slider__title.main-slider__title--medium Акция по seo:<br>Гарантия 100% возврата средств
+					.main-slider__description
+						p.
+							за первый месяц работ по продвижению сайта:<br>
+							Вернём 100% всех денег, даже если просто что-то не понравится. Без лишних вопросов.
+						.buttons-group
+							a.button.button--primary(href="#") Подробнее о компании
+							a.button.button--not-fill(href="#") Наши преимущества
+		.main-slider__item(style="background-image: url(blocks/main-slider/images/main-7.jpg)")
+			.page-container.main-slider__item-inner
+				.main-slider__form
+					.main-slider__form-inner
+						h3.-no-margin Оставить заявку
+						include ../form-short/index
+				.main-slider__info
+					div.main-slider__title Тариф «CPA»
+					.main-slider__description
+						p Плати только за полученные заявки<br>Цена заявки на ваш сайт от 110 руб.
+						p
+							a.button.button--primary(href="#") Оставить заявку

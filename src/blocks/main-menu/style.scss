@@ -23,7 +23,8 @@
 			font-weight: 500;
 			padding: .5em 0 .75em 0;
 
-			#{$block-name}__item--lvl1:hover & {
+			#{$block-name}__item--lvl1:hover &,
+			#{$block-name}__item--lvl1#{$block-name}__item--selected & {
 				background: var(--color-gray--darker);
 				color: var(--color-white);
 			}
@@ -109,7 +110,8 @@
 			&--lvl1 {
 				padding: .5em 1.5em .75em 1.5em;
 
-				#{$block-name}__item--lvl1:hover & {
+				#{$block-name}__item--lvl1:hover &,
+				#{$block-name}__item--lvl1#{$block-name}__item--selected & {
 					background: var(--color-gray--darken);
 					color: var(--color-white);
 				}
@@ -119,7 +121,8 @@
 			&--lvl2 {
 				padding: .5em 1.5em .75em calc(1.5em + 18px + .75em);
 
-				#{$block-name}__item--lvl2:hover & {
+				#{$block-name}__item--lvl2:hover &,
+				#{$block-name}__item--lvl2#{$block-name}__item--selected & {
 					background: var(--color-gray--darker);
 					color: var(--color-white);
 				}
@@ -209,7 +212,8 @@
 				position: relative;
 				white-space: nowrap;
 
-				#{$block-name}__item--lvl1:hover & {
+				#{$block-name}__item--lvl1:hover &,
+				#{$block-name}__item--lvl1#{$block-name}__item--selected & {
 					border-top-color: var(--color-primary);
 				}
 
@@ -225,7 +229,9 @@
 				}
 
 				#{$block-name}__item--lvl1:hover &::before,
-				#{$block-name}__item--lvl1:hover + #{$block-name}__item--lvl1 &::before {
+				#{$block-name}__item--lvl1:hover + #{$block-name}__item--lvl1 &::before,
+				#{$block-name}__item--lvl1#{$block-name}__item--selected &::before,
+				#{$block-name}__item--lvl1#{$block-name}__item--selected + #{$block-name}__item--lvl1 &::before {
 					border-color: transparent;
 				}
 			}
@@ -234,7 +240,8 @@
 				padding: 0 1rem;
 
 				&:hover,
-				&:active {
+				&:active,
+				&#{$block-name}__link--selected {
 					color: var(--color-primary);
 				}
 			}
@@ -245,7 +252,8 @@
 				padding: .25em 1rem;
 
 				&:hover,
-				&:active {
+				&:active,
+				&#{$block-name}__link--selected {
 					background: var(--color-gray--darken);
 					color: var(--color-gray--lighten);
 				}

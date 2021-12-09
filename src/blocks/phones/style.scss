@@ -77,6 +77,7 @@
 		border-radius: 5px;
 		box-shadow: 0px 12px 50px rgba(0, 0, 0, .2);
 		color: var(--color-gray--dark);
+		display: none;
 		left: 0;
 		min-width: 100%;
 		overflow: hidden;
@@ -84,7 +85,6 @@
 		position: absolute;
 		top: calc(100% + .5em);
 		z-index: 5;
-		display: none;
 
 		&.-is-active {
 			display: block;

@@ -112,7 +112,7 @@
 
 	@media (max-width: $screen-sm - 1) {
 		& .button {
-			max-width: 320px;
+			flex-grow: 1;
 		}
 	}
 }

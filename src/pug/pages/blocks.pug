@@ -1,0 +1,20 @@
+extends ../layout.pug
+
+block meta
+  title Универсальные блоки
+  meta(name='description', content='')
+
+block content
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      include ../../blocks/reviews/index
+
+  .wide-block
+    .page-container
+      .h1 Важный текст
+      include ../../blocks/important-text/index
+
+  .wide-block.wide-block--gray-lighten
+    .page-container
+      .h1 Инфографика
+      include ../../blocks/infographics/index

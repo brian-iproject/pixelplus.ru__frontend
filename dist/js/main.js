@@ -9,7 +9,7 @@ __webpack_require__.r(__webpack_exports__);
 class FlickitySet {
     /**
      *
-     * @param selector - СЃРµР»РµРєС‚РѕСЂ Р±Р»РѕРєР° СЃР»Р°Р№РґРµСЂР°
+     * @param selector - селектор блока слайдера
      */
     constructor(selector = '[data-flickity-options]') {
         if (typeof Flickity === 'undefined') {
@@ -25,7 +25,7 @@ class FlickitySet {
     }
 
     /**
-     * Р”РѕР±Р°РІР»СЏРµС‚ СЌРєР·РµРјРїР»СЏСЂ РІ РјР°СЃСЃРёРІ
+     * Добавляет экземпляр в массив
      * @param flkty
      */
     addToSet = (flkty) => {
@@ -33,8 +33,8 @@ class FlickitySet {
     }
 
     /**
-     * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ flickity
-     * @param $block - node-СЌР»РµРјРµРЅС‚
+     * Инициализирует flickity
+     * @param $block - node-элемент
      */
     init = ($block) => {
         const options = this.getOptions($block);
@@ -43,36 +43,36 @@ class FlickitySet {
     }
 
     /**
-     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕР±СЉРµРєС‚ СЃ РїР°СЂР°РјРµС‚СЂС‹ РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё flickity
-     * @param $block - node-СЌР»РµРјРµРЅС‚
+     * Возвращает объект с параметры для инициализации flickity
+     * @param $block - node-элемент
      * @returns { Object }
      */
     getOptions = ($block) => JSON.parse($block.dataset.flickityOptions);
 
     /**
-     * РџСЂРѕРІРµСЂСЏРµС‚ СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЌР»РµРјРµРЅС‚ СЃР»Р°Р№РґРµСЂРѕРј
-     * @param $block - node-СЌР»РµРјРµРЅС‚
+     * Проверяет является ли элемент слайдером
+     * @param $block - node-элемент
      * @returns {boolean}
      */
     isFlickity = ($block) => Boolean(this.slidersSet.find(flkty => flkty.element === $block));
 
     /**
-     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЌРєР·РµРјРїР»СЏСЂ flickity
-     * @param $block - node-СЌР»РµРјРµРЅС‚
+     * Возвращает экземпляр flickity
+     * @param $block - node-элемент
      * @returns {*}
      */
     getFlkty = ($block) => this.slidersSet.find(flkty => flkty.element === $block);
 
     /**
-     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРЅРґРµРєСЃ РїСЂРѕРёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅРЅРѕРіРѕ flickity
-     * @param $block - node-СЌР»РµРјРµРЅС‚
+     * Возвращает индекс проинициализированного flickity
+     * @param $block - node-элемент
      * @returns {number}
      */
     getFlktyIndex = ($block) => this.slidersSet.findIndex(flkty => flkty.element === $block);
 
     /**
-     * РЈРЅРёС‡С‚РѕР¶Р°РµС‚ СЌРєР·РµРјРїР»СЏСЂ flickity Рё СѓРґР°Р»СЏРµС‚ РµРіРѕ РёР· РјР°СЃСЃРёРІР°
-     * @param $block - node-СЌР»РµРјРµРЅС‚
+     * Уничтожает экземпляр flickity и удаляет его из массива
+     * @param $block - node-элемент
      */
     destroy = ($block) => {
         this.getFlkty($block).destroy();
@@ -192,8 +192,8 @@ class SvgLoad {
     }
 
     /**
-     * РџРѕРґРіСЂСѓР¶Р°РµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ svg-С„Р°Р№Р»Р°
-     * @param svgPath - РїСѓС‚СЊ Рє svg-С„Р°Р№Р»Сѓ
+     * Подгружает содержимое svg-файла
+     * @param svgPath - путь к svg-файлу
      */
     getSvgContent = (svgPath) => {
         this.ajax.open("GET", svgPath, true);
@@ -202,7 +202,7 @@ class SvgLoad {
     }
 
     /**
-     * Р”РѕР±Р°РІР»СЏРµС‚ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРµ СЃРѕРґРµСЂР¶РёРјРѕРµ svg-С„Р°Р№Р»Р° РІ СЃРєСЂС‹С‚С‹Р№ div
+     * Добавляет загруженное содержимое svg-файла в скрытый div
      */
     loadContent = () => {
         const svgDiv = document.createElement("div");
@@ -233,9 +233,9 @@ class MovingPlaceholder {
     static el = [];
 
     /**
-     * РЎРјРµС‰Р°СЋС‰РёР№СЃСЏ placeholder
-     * @param selector - СЃРµР»РµРєС‚РѕСЂ РґР»СЏ РІС‹Р·РѕРІР°
-     * @param classWrapper - РєР»Р°СЃСЃ Р±Р»РѕРєР° РїРѕСЃР»Рµ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё
+     * Смещающийся placeholder
+     * @param selector - селектор для вызова
+     * @param classWrapper - класс блока после инициализации
      */
     constructor(selector, classWrapper) {
         MovingPlaceholder.#instances++;
@@ -248,7 +248,7 @@ class MovingPlaceholder {
     }
 
     /**
-     * РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ input
+     * Обрабатывает input
      * @param input
      * @param classWrapper
      */
@@ -268,15 +268,15 @@ class MovingPlaceholder {
     }
 
     /**
-     * РџРѕ blur РїСЂРѕРІРµСЂСЏРµС‚ Р±С‹Р» Р»Рё Р·Р°РїРѕР»РЅРµРЅ input Рё
-     * РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РґРѕР±Р°РІР»СЏРµС‚ class
+     * По blur проверяет был ли заполнен input и
+     * при необходимости добавляет class
      * @param e
      */
     eventBlur = (e) => {
         if (e.target.classList.contains(this.classWrapper+'__input')) {
             const el = e.target;
 
-            if (el.value !== '' && el.value !== '+7 (___) ___-__-__') {
+            if (el.value !== '' && el.value !== '+7 (___) ___-__-__' && el.value !== '+7 (') {
                 el.classList.add('-is-focus');
             } else {
                 el.classList.remove('-is-focus');
@@ -304,7 +304,7 @@ class Utils {
     }
 
     /**
-     * Р—Р°РјРµРЅР° С‚РµРіР° РЅР° СЃСЃС‹Р»РєСѓ РґР»СЏ SEO
+     * Замена тега на ссылку для SEO
      */
     static replaceLink = (attrLink = 'data-ex-href') => {
         const selector = `[${attrLink}]`;
@@ -325,10 +325,10 @@ class Utils {
     }
 
     /**
-     * РћР±РµСЂРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚ РІ С‚СЌРі
-     * @param el - РѕР±РѕСЂР°С‡РёРІР°РµРјС‹Р№ СЌР»РµРјРµРЅС‚
-     * @param tagWrap - С‚СЌРі, РєРѕС‚РѕСЂС‹Рј Р±СѓРґРµС‚ РѕР±РµСЂРЅСѓС‚ СЌР»РµРјРµРЅС‚
-     * @param tagClass - РєР»Р°СЃСЃ С‚СЌРіР°
+     * Обернуть элемент в тэг
+     * @param el - оборачиваемый элемент
+     * @param tagWrap - тэг, которым будет обернут элемент
+     * @param tagClass - класс тэга
      */
     static wrapElement = function(el, tagWrap, tagClass) {
         const wrapper = document.createElement(tagWrap);
@@ -339,6 +339,44 @@ class Utils {
         wrapper.append(el);
 
         return wrapper;
+    }
+
+    static maskPhone = function(selector, masked = '+7 (___) ___-__-__') {
+        const elems = document.querySelectorAll(selector);
+
+        function mask(event) {
+            const keyCode = event.keyCode;
+            const template = masked,
+                def = template.replace(/\D/g, ""),
+                val = this.value.replace(/\D/g, "");
+            //console.log(template);
+            let i = 0,
+                newValue = template.replace(/[_\d]/g, function (a) {
+                    return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
+                });
+            i = newValue.indexOf("_");
+            if (i !== -1) {
+                newValue = newValue.slice(0, i);
+            }
+            let reg = template.substr(0, this.value.length).replace(/_+/g,
+                function (a) {
+                    return "\\d{1," + a.length + "}";
+                }).replace(/[+()]/g, "\\$&");
+            reg = new RegExp("^" + reg + "$");
+            if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+                this.value = newValue;
+            }
+            if (event.type === "blur" && this.value.length < 5) {
+                this.value = "";
+            }
+        }
+
+        for (const elem of elems) {
+            elem.addEventListener("input", mask);
+            elem.addEventListener("focus", mask);
+            elem.addEventListener("blur", mask);
+        }
+
     }
 }
 
@@ -384,13 +422,12 @@ class Tabs {
     }
 
     /**
-     * РџСЂРѕСЃС‚Р°РІР»СЏРµРј РёРЅРґРµРєСЃС‹ С‚Р°Р±РѕРІ
+     * Проставляем индексы табов
      */
     setTabIndex() {
         const tabList = this.tabContainer.children;
         const tabPanelList = this.tabPanelContainer.children;
 
-        console.log(this.tabPanelContainer);
         let tabIndex = 0;
 
         for (let tab of tabList) {
@@ -402,7 +439,7 @@ class Tabs {
     }
 
     /**
-     * РћС‚РєСЂС‹РІР°РµРј С‚Р°Р± СЃ РІС‹Р±СЂР°РЅРЅС‹Рј РёРЅРґРµРєСЃРѕРј
+     * Открываем таб с выбранным индексом
      * @param index
      */
     openTab(index) {
@@ -433,6 +470,120 @@ class Tabs {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Tabs);
+
+/***/ }),
+/* 8 */
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+class HiddenCaptcha {
+    static #instancesIndex = 0;
+    static instances = [];
+
+    constructor({formSelector, hiddenInput = 'CAPTCHA_HIDDEN', buttonSelector = 'div[class*=button]'}) {
+        HiddenCaptcha.#instancesIndex++;
+
+        this.formSelector = formSelector;
+        this.hiddenInput = hiddenInput;
+        this.buttonSelector = buttonSelector;
+
+        this.getForms().forEach($form => {
+            try {
+                if (!this.hiddenInput)
+                    throw new Error("Не задан селектор скрытого поля");
+
+                if (!this.buttonSelector)
+                    throw new Error("Не задан селектор кнопки");
+
+                if (!this.getHiddenInput($form))
+                    throw new Error("Не найдено скрытое поле");
+
+                if (!this.getButton($form))
+                    throw new Error("Не найдена кнопка");
+
+                $form.setAttribute('data-hidden-captcha', 'true');
+                this.changeButton($form);
+                $form.addEventListener('submit', this.handlerSubmit);
+
+            } catch(e) {
+                console.error(`${e.name}: ${e.message}. Форма:`);
+                console.dir($form);
+            }
+        });
+    }
+
+    /**
+     * Обработчик submit формы
+     * @param e
+     */
+    handlerSubmit = (e) => {
+        e.preventDefault();
+        const   $form = e.target,
+                $hiddenInput = this.getHiddenInput($form);
+
+        if (this.isEmpty($hiddenInput))
+            $form.submit();
+    }
+
+    /**
+     * Проверяет не заполнил ли бот скрытое поле
+     * @param $hiddenInput
+     * @returns {boolean}
+     */
+    isEmpty = ($hiddenInput) => !$hiddenInput.value;
+
+    /**
+     * Возвращает коллекцию форм
+     * @returns {NodeListOf<*>}
+     */
+    getForms = () => document.querySelectorAll(this.formSelector);
+
+    /**
+     * Возвращает скрытое поле
+     * @param $form
+     * @returns {any}
+     */
+    getHiddenInput = ($form) => $form.querySelector(this.hiddenInput);
+
+    /**
+     * Возвращает фейковую кнопку
+     * @param $form
+     * @returns {any}
+     */
+    getButton = ($form) => $form.querySelector(this.buttonSelector);
+
+    /**
+     * Меняет фейковую кнопку на button
+     * @param $form
+     */
+    changeButton = ($form) => {
+        const   $button = this.getButton($form),
+                $newButton = document.createElement('button'),
+                attributes = $button.attributes;
+
+        [...attributes].forEach(attr => {
+            $newButton.setAttribute(attr.name, attr.value);
+        });
+
+        $newButton.innerHTML = $button.innerHTML;
+        $button.after($newButton);
+        $button.remove();
+    }
+
+    static init = (options) => {
+        if (!HiddenCaptcha.instances[HiddenCaptcha.#instancesIndex]) {
+            HiddenCaptcha.instances.push(new HiddenCaptcha(options));
+        }
+    }
+}
+
+HiddenCaptcha.init({
+    formSelector: '.js-hidden-captcha',
+    hiddenInput: '[name=MIDDLE_NAME]',
+    buttonSelector: 'div[class*=button]'
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (HiddenCaptcha);
 
 /***/ })
 /******/ 	]);
@@ -485,6 +636,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MovingPlaceholder__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5);
 /* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6);
 /* harmony import */ var _Tabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(7);
+/* harmony import */ var _HiddenCaptcha__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(8);
+
 
 
 
@@ -495,48 +648,16 @@ __webpack_require__.r(__webpack_exports__);
 
 const app = {
     /**
-     * РЎРєСЂС‹С‚Р°СЏ РєР°РїС‚С‡Р°.
-     * РћР±СЂР°Р±РѕС‚С‡РёРє РѕС‚РїСЂР°РІР»СЏРµС‚ С„РѕСЂРјСѓ, РµСЃР»Рё СЃРєСЂС‹С‚С‹Рµ РїРѕР»СЏ РЅРµ Р·Р°РїРѕР»РЅРµРЅС‹
-     * @param selector - РЎРµР»РµРєС‚РѕСЂ С„РѕСЂРјС‹
-     * @param selectorButton - РЎРµР»РµРєС‚РѕСЂ С„РµР№РєРѕРІРѕР№ РєРЅРѕРїРєРё
-     */
-    checkHiddenCaptcha: function(selector, selectorButton) {
-        const $forms = document.querySelectorAll(selector);
-
-        $forms.forEach(($form) => {
-            const   $button = $form.querySelector(selectorButton),
-                    $inputCaptchaHidden = $form.querySelector('[name=CAPTCHA_HIDDEN]').value,
-                    $inputTry = $form.querySelector('[name=TRY]').value,
-                    $newButton = document.createElement('button'),
-                    attributes = $button.attributes;
-
-            for(let attr of attributes) {
-                $newButton.setAttribute(attr.name, attr.value);
-            }
-            $newButton.innerHTML = $button.innerHTML;
-            $button.after($newButton);
-            $button.remove();
-
-            $form.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                if (!$inputCaptchaHidden && !$inputTry)
-                    $form.submit();
-            });
-        });
-    },
-
-    /**
-     * Р¤РѕСЂРјР°С‚РёСЂСѓРµС‚ С‡РёСЃР»Рѕ СЃ СЂР°Р·РґРµР»РµРЅРёРµРј РіСЂСѓРїРї (Р°РЅР°Р»РѕРі PHP number_format)
+     * Форматирует число с разделением групп (аналог PHP number_format)
      *
      * original by: Jonas Raoni Soares Silva (http://www.jsfromhell.com)
      * improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
      * bugfix by: Michael White (http://crestidg.com)
      *
-     * @param {number} number - Р¤РѕСЂРјР°С‚РёСЂСѓРµРјРѕРµ С‡РёСЃР»Рѕ
-     * @param {number} decimals - Р§РёСЃР»Рѕ Р·РЅР°РєРѕРІ РїРѕСЃР»Рµ Р·Р°РїСЏС‚РѕР№
-     * @param {string} decPoint - Р Р°Р·РґРµР»РёС‚РµР»СЊ РґСЂРѕР±РЅРѕР№ С‡Р°СЃС‚Рё
-     * @param {string} thousandsSep - Р Р°Р·РґРµР»РёС‚РµР»СЊ С‚С‹СЃСЏС‡
+     * @param {number} number - Форматируемое число
+     * @param {number} decimals - Число знаков после запятой
+     * @param {string} decPoint - Разделитель дробной части
+     * @param {string} thousandsSep - Разделитель тысяч
      *
      * @returns {string}
      */
@@ -608,13 +729,19 @@ const app = {
     },
 
     init: function() {
+        _HiddenCaptcha__WEBPACK_IMPORTED_MODULE_7__.default.init({
+            formSelector: '.form--feedback form',
+            hiddenInput: '[name=MIDDLE_NAME]',
+            buttonSelector: '.form__button'
+        });
+
+        _Utils__WEBPACK_IMPORTED_MODULE_5__.default.maskPhone('[type=tel]');
         _Utils__WEBPACK_IMPORTED_MODULE_5__.default.replaceLink('data-href');
 
         _SvgLoad__WEBPACK_IMPORTED_MODULE_3__.default.init((window.location.hostname === 'localhost')?'/dist/images/icons.svg':'/local/templates/pixelplus.ru_2021/images/icons.svg');
 
         _MovingPlaceholder__WEBPACK_IMPORTED_MODULE_4__.default.init('.js-moving-placeholder', 'moving-placeholder');
 
-        this.checkHiddenCaptcha('.js-hidden-captcha', 'div[class*=button]');
         _ToggleBlock__WEBPACK_IMPORTED_MODULE_2__.default.init('.phones');
         _ToggleBlock__WEBPACK_IMPORTED_MODULE_2__.default.init('.header-search');
 

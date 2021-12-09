@@ -48,7 +48,7 @@ class MovingPlaceholder {
         if (e.target.classList.contains(this.classWrapper+'__input')) {
             const el = e.target;
 
-            if (el.value !== '' && el.value !== '+7 (___) ___-__-__') {
+            if (el.value !== '' && el.value !== '+7 (___) ___-__-__' && el.value !== '+7 (') {
                 el.classList.add('-is-focus');
             } else {
                 el.classList.remove('-is-focus');

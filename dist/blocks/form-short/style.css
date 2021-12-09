@@ -4,4 +4,9 @@
 .form-short__field + .form-short__field {
   margin-top: var(--typo-margin-vertical);
 }
+.form-short__note {
+  color: var(--color-gray--dark);
+  font-size: var(--font-size--medium);
+  margin-top: 0.85em;
+}
 /*# sourceMappingURL=style.css.map */

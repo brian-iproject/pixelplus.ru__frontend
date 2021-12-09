@@ -19,7 +19,7 @@
 		top: 1.25em;
 		transition: var(--transition-time);
 
-		&::after {
+		#{$block-name}__input[required] + &::after {
 			content: '*';
 			color: var(--color-primary);
 			margin-left: .25em;

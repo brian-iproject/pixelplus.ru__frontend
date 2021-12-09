@@ -39,7 +39,6 @@ class Tabs {
         const tabList = this.tabContainer.children;
         const tabPanelList = this.tabPanelContainer.children;
 
-        console.log(this.tabPanelContainer);
         let tabIndex = 0;
 
         for (let tab of tabList) {

@@ -774,27 +774,28 @@
         </div>
       </header>
       <main class="page__content page-content">
-        <div class="main-slider" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;contain&quot;: true, &quot;prevNextButtons&quot;: false, &quot;lazyLoad&quot;: true }">
+        <div class="main-slider main-slider--negative-margin" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;contain&quot;: true, &quot;prevNextButtons&quot;: false, &quot;bgLazyLoad&quot;: true, &quot;adaptiveHeight&quot;: true, &quot;autoPlay&quot;: 5000, &quot;pauseAutoPlayOnHover&quot;: false }">
           <div class="main-slider__item" style="background-image: url(blocks/main-slider/images/main-1.jpg)">
             <div class="page-container main-slider__item-inner">
               <div class="main-slider__form">
                 <div class="main-slider__form-inner">
                   <h3 class="-no-margin">Оставить заявку</h3>
-                  <form class="form-short" action="" type="post">
+                  <form class="form-short js-hidden-captcha" action="" type="post">
                     <label class="field-text field-text--transparent form-short__field"><span class="field-text__input-wrap">
-                        <input class="field-text__input js-moving-placeholder" placeholder="Ваше имя" required></span></label>
+                        <input class="field-text__input js-moving-placeholder" type="text" placeholder="Ваше имя" required></span></label>
                     <label class="field-text field-text--transparent form-short__field"><span class="field-text__input-wrap">
-                        <input class="field-text__input js-moving-placeholder" placeholder="Номер телефона" required></span></label>
+                        <input class="field-text__input js-moving-placeholder" type="tel" placeholder="Номер телефона" required></span></label>
                     <label class="field-checkbox form-short__field"><span class="field-checkbox__input-wrap">
                         <input class="field-checkbox__input" type="checkbox"><span class="field-checkbox__name"></span><span class="field-checkbox__help-text">Согласен с обработкой персональных данных в соответствии с <a href="#">политикой конфиденциальности</a></span></span></label>
                     <div class="form-short__field">
-                      <button class="button button--primary button--wide">Оставить заявку</button>
+                      <div class="button button--primary button--wide">Оставить заявку</div>
                     </div>
+                    <input type="text" name="MIDDLE_NAME">
                   </form>
                 </div>
               </div>
               <div class="main-slider__info">
-                <h1 class="main-slider__title">1600 ₽/час единая цена за комплекс</h1>
+                <div class="main-slider__title">1600 ₽/час единая цена за комплекс</div>
                 <div class="main-slider__description">Цена ниже рынка при заказе комплекса из 2 услуг и более: SEO, SMM, ORM, поддержка сайта, контекстная реклама</div>
               </div>
             </div>
@@ -802,10 +803,120 @@
           <div class="main-slider__item" style="background-image: url(blocks/main-slider/images/main-2.jpg)">
             <div class="page-container main-slider__item-inner">
               <div class="main-slider__info">
-                <h1 class="main-slider__title">Продвижение<br>сайтов по трафику</h1>
+                <div class="main-slider__title">Продвижение<br>сайтов по трафику</div>
                 <div class="main-slider__description">
                   <p>Экономьте до 83 000 рублей на продвижение, платя  только за полученный целевой трафик, без рисков.  Сами предложим точки роста целевых посетителей и оперативно их внедрим.</p>
                   <div class="buttons-group"><a class="button button--green" href="#">Оставить заявку</a><a class="button button--not-fill" href="#">Узнать стоимость</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main-slider__item" style="background-image: url(blocks/main-slider/images/main-3.jpg)">
+            <div class="page-container main-slider__item-inner">
+              <div class="main-slider__form"></div>
+              <div class="main-slider__info">
+                <div class="main-slider__title">Реклама в Яндекс.Дзен</div>
+                <div class="main-slider__description">
+                  <p>18% пользователей Яндекс.Дзена переходят на сайты рекламодателя по ставке от 1 рубля. <br> Расскажите о вашем бизнесе аудитории в 50 миллионов пользователей.</p>
+                  <p><a class="button button--primary" href="#">Подробнее</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main-slider__item" style="background-image: url(blocks/main-slider/images/main-4.jpg)">
+            <div class="page-container main-slider__item-inner">
+              <div class="main-slider__form">
+                <div class="main-slider__form-inner">
+                  <h3 class="-no-margin">Оставить заявку</h3>
+                  <form class="form-short js-hidden-captcha" action="" type="post">
+                    <label class="field-text field-text--transparent form-short__field"><span class="field-text__input-wrap">
+                        <input class="field-text__input js-moving-placeholder" type="text" placeholder="Ваше имя" required></span></label>
+                    <label class="field-text field-text--transparent form-short__field"><span class="field-text__input-wrap">
+                        <input class="field-text__input js-moving-placeholder" type="tel" placeholder="Номер телефона" required></span></label>
+                    <label class="field-checkbox form-short__field"><span class="field-checkbox__input-wrap">
+                        <input class="field-checkbox__input" type="checkbox"><span class="field-checkbox__name"></span><span class="field-checkbox__help-text">Согласен с обработкой персональных данных в соответствии с <a href="#">политикой конфиденциальности</a></span></span></label>
+                    <div class="form-short__field">
+                      <div class="button button--primary button--wide">Оставить заявку</div>
+                    </div>
+                    <input type="text" name="MIDDLE_NAME">
+                  </form>
+                </div>
+              </div>
+              <div class="main-slider__info">
+                <div class="main-slider__title main-slider__title--medium">Тариф поддержки сайта «Абонемент Плюс»</div>
+                <div class="main-slider__description">
+                  <p>Идеальный вариант для постоянного контроля за сайтом. Вкдючает в себя скидки на регулярные задачи и гарантирнованнное выделение ресурсов на ваш проект</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main-slider__item" style="background-image: url(blocks/main-slider/images/main-5.jpg)">
+            <div class="page-container main-slider__item-inner">
+              <div class="main-slider__form"></div>
+              <div class="main-slider__info">
+                <div class="main-slider__title main-slider__title--medium">Создание и продвижение сайтов</div>
+                <div class="main-slider__description">
+                  <p>Комплексный подход к разработке и созданию сайтов для бизнеса, ориентированного на высокую конверсию.</p>
+                  <div class="buttons-group"><a class="button button--primary" href="#">Подробнее о компании</a><a class="button button--not-fill" href="#">Наши преимущества</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main-slider__item" style="background-image: url(blocks/main-slider/images/main-6.jpg)">
+            <div class="page-container main-slider__item-inner">
+              <div class="main-slider__form">
+                <div class="main-slider__form-inner">
+                  <h3 class="-no-margin">Оставить заявку</h3>
+                  <form class="form-short js-hidden-captcha" action="" type="post">
+                    <label class="field-text field-text--transparent form-short__field"><span class="field-text__input-wrap">
+                        <input class="field-text__input js-moving-placeholder" type="text" placeholder="Ваше имя" required></span></label>
+                    <label class="field-text field-text--transparent form-short__field"><span class="field-text__input-wrap">
+                        <input class="field-text__input js-moving-placeholder" type="tel" placeholder="Номер телефона" required></span></label>
+                    <label class="field-checkbox form-short__field"><span class="field-checkbox__input-wrap">
+                        <input class="field-checkbox__input" type="checkbox"><span class="field-checkbox__name"></span><span class="field-checkbox__help-text">Согласен с обработкой персональных данных в соответствии с <a href="#">политикой конфиденциальности</a></span></span></label>
+                    <div class="form-short__field">
+                      <div class="button button--primary button--wide">Оставить заявку</div>
+                    </div>
+                    <input type="text" name="MIDDLE_NAME">
+                  </form>
+                </div>
+              </div>
+              <div class="main-slider__info">
+                <div class="main-slider__title main-slider__title--medium">Акция по seo:<br>Гарантия 100% возврата средств</div>
+                <div class="main-slider__description">
+                  <p>
+                    за первый месяц работ по продвижению сайта:<br>
+                    Вернём 100% всех денег, даже если просто что-то не понравится. Без лишних вопросов.
+                  </p>
+                  <div class="buttons-group"><a class="button button--primary" href="#">Подробнее о компании</a><a class="button button--not-fill" href="#">Наши преимущества</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main-slider__item" style="background-image: url(blocks/main-slider/images/main-7.jpg)">
+            <div class="page-container main-slider__item-inner">
+              <div class="main-slider__form">
+                <div class="main-slider__form-inner">
+                  <h3 class="-no-margin">Оставить заявку</h3>
+                  <form class="form-short js-hidden-captcha" action="" type="post">
+                    <label class="field-text field-text--transparent form-short__field"><span class="field-text__input-wrap">
+                        <input class="field-text__input js-moving-placeholder" type="text" placeholder="Ваше имя" required></span></label>
+                    <label class="field-text field-text--transparent form-short__field"><span class="field-text__input-wrap">
+                        <input class="field-text__input js-moving-placeholder" type="tel" placeholder="Номер телефона" required></span></label>
+                    <label class="field-checkbox form-short__field"><span class="field-checkbox__input-wrap">
+                        <input class="field-checkbox__input" type="checkbox"><span class="field-checkbox__name"></span><span class="field-checkbox__help-text">Согласен с обработкой персональных данных в соответствии с <a href="#">политикой конфиденциальности</a></span></span></label>
+                    <div class="form-short__field">
+                      <div class="button button--primary button--wide">Оставить заявку</div>
+                    </div>
+                    <input type="text" name="MIDDLE_NAME">
+                  </form>
+                </div>
+              </div>
+              <div class="main-slider__info">
+                <div class="main-slider__title">Тариф «CPA»</div>
+                <div class="main-slider__description">
+                  <p>Плати только за полученные заявки<br>Цена заявки на ваш сайт от 110 руб.</p>
+                  <p><a class="button button--primary" href="#">Оставить заявку</a></p>
                 </div>
               </div>
             </div>
@@ -855,17 +966,18 @@
                 <div class="tile__description">Мы так же оказываем полный спектр веб услуг от <a href="#">создания сайтов</a> и <a href="#">разработки приложений</a>, до <a href="#">внедрения CRM</a> и <a href="#">сопровождения 1С</a></div>
               </div>
               <div class="tile__item tile__item--form">
-                <h3 class="-no-margin">Оставить заявку</h3>
-                <form class="form-short" action="" type="post">
+                <div class="h3 -no-margin">Оставить заявку</div>
+                <form class="form-short js-hidden-captcha" action="" type="post">
                   <label class="field-text field-text--transparent form-short__field"><span class="field-text__input-wrap">
-                      <input class="field-text__input js-moving-placeholder" placeholder="Ваше имя" required></span></label>
+                      <input class="field-text__input js-moving-placeholder" type="text" placeholder="Ваше имя" required></span></label>
                   <label class="field-text field-text--transparent form-short__field"><span class="field-text__input-wrap">
-                      <input class="field-text__input js-moving-placeholder" placeholder="Номер телефона" required></span></label>
+                      <input class="field-text__input js-moving-placeholder" type="tel" placeholder="Номер телефона" required></span></label>
                   <label class="field-checkbox form-short__field"><span class="field-checkbox__input-wrap">
                       <input class="field-checkbox__input" type="checkbox"><span class="field-checkbox__name"></span><span class="field-checkbox__help-text">Согласен с обработкой персональных данных в соответствии с <a href="#">политикой конфиденциальности</a></span></span></label>
                   <div class="form-short__field">
-                    <button class="button button--primary button--wide">Оставить заявку</button>
+                    <div class="button button--primary button--wide">Оставить заявку</div>
                   </div>
+                  <input type="text" name="MIDDLE_NAME">
                 </form>
               </div>
             </div>
@@ -888,7 +1000,7 @@
                 <div class="about-numbers__description">Сайтов на постоянной технической основе</div>
               </div>
               <div class="about-numbers__item">
-                <div class="about-numbers__title">14 лет</div>
+                <div class="about-numbers__title">15 лет</div>
                 <div class="about-numbers__description">Компания существует с 2006 года</div>
               </div>
               <div class="about-numbers__item">
@@ -904,7 +1016,7 @@
         </div>
         <div class="wide-block">
           <div class="page-container">
-            <h2 class="h1">О компании</h2>
+            <h2 class="h1">Наша команда</h2>
             <div class="buttons-group" data-filter="team">
               <button class="button button--tab -is-active" data-filter-source="all">Все сотрудники</button>
               <button class="button button--tab" data-filter-source="ceo">Руководство</button>
@@ -998,7 +1110,7 @@
             <h2 class="h1">Наши достижения</h2>
             <p class="subtitle">Входим в число лучших компаний России в сферах интернет-рекламы и разработки сайтов по результатам самых авторитетных рейтингов</p>
             <div class="v-space--x4"></div>
-            <div class="tile-slider tile-slider--place-shadow achievements" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;prevNextButtons&quot;: false, &quot;groupCells&quot;: true, &quot;watchCSS&quot;: true, &quot;lazyLoad&quot;: true }">
+            <div class="tile-slider tile-slider--place-shadow achievements" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;prevNextButtons&quot;: true, &quot;groupCells&quot;: true, &quot;watchCSS&quot;: true, &quot;lazyLoad&quot;: true }">
               <div class="achievements__item">
                 <div class="achievements__position">
                   <svg width="69" height="70" viewBox="0 0 69 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1150,9 +1262,7 @@
         <div class="wide-block">
           <div class="page-container">
             <h2 class="h1">Новости</h2>
-            <div class="buttons-group" data-filter="news"><a class="button button--tab -is-active">Все материалы</a><a class="button button--tab">Новости</a><a class="button button--tab">Статьи</a></div>
-            <div class="v-space v-space--x2"></div>
-            <div class="tile-slider tile-slider--place-shadow tile-news" data-filter-block="news" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;prevNextButtons&quot;: false, &quot;groupCells&quot;: true, &quot;lazyLoad&quot;: true }">
+            <div class="tile-slider tile-slider--place-shadow tile-news" data-filter-block="news" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;prevNextButtons&quot;: true, &quot;groupCells&quot;: true, &quot;lazyLoad&quot;: true }">
               <div class="tile-news__item">
                 <div class="tile-news__image"><img src="assets/goodbyecovid.jpg">
                 </div>
@@ -1216,7 +1326,7 @@
               <h2 class="h1">Видео с конференций</h2>
               <p class="subtitle block-width block-width--md-75">Достичь максимальной отдачи от SEO можно только с командой экспертов. В «Пиксель Плюс» мы сумели сплотить коллектив профессионалов экстра-класса, нацеленных на достижение результата по вашему проекту.</p>
               <div class="v-space--x4"></div>
-              <div class="tile-slider tile-slider--place-shadow video-list" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;prevNextButtons&quot;: false, &quot;groupCells&quot;: true, &quot;lazyLoad&quot;: true }">
+              <div class="tile-slider tile-slider--place-shadow video-list" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;prevNextButtons&quot;: true, &quot;groupCells&quot;: true, &quot;lazyLoad&quot;: true }">
                 <div class="video-list__item"><a class="video-list__link" href="#">
                     <div class="video-list__image"><img src="assets/video.jpg" alt="">
                       <svg width="63" height="40" viewBox="0 0 63 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1308,7 +1418,7 @@
         <div class="wide-block wide-block--gray-lighten">
           <div class="page-container">
             <h2 class="h1">Публикации в сми</h2>
-            <div class="tile-slider tile-slider--place-shadow tile-news" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;prevNextButtons&quot;: false, &quot;groupCells&quot;: true, &quot;lazyLoad&quot;: true }">
+            <div class="tile-slider tile-slider--place-shadow tile-news" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;prevNextButtons&quot;: true, &quot;groupCells&quot;: true, &quot;lazyLoad&quot;: true }">
               <div class="tile-news__item"><a class="tile-news__image"><img src="assets/seonews-logo.png"></a>
                 <div class="tile-news__info">
                   <div class="tile-news__title"><a href="#">5 книг от эксперта: Дмитрий Севальнев (Пиксель Плюс)</a></div>
@@ -1381,7 +1491,7 @@
         <div class="wide-block wide-block--gray-circle">
           <div class="page-container">
             <h2 class="h1">Преимущества создания и продвижения сайтов в «Пиксель Плюс»</h2>
-            <div class="tile-slider advantages" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;prevNextButtons&quot;: false, &quot;watchCSS&quot;: true, &quot;lazyLoad&quot;: true }">
+            <div class="tile-slider advantages" data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;prevNextButtons&quot;: true, &quot;watchCSS&quot;: true, &quot;lazyLoad&quot;: true }">
               <div class="advantages__item">
                 <div class="advantages__icon"><svg xmlns="http://www.w3.org/2000/svg" width="67.71521" height="65" viewBox="0 0 67.71521 65"><path d="M67.7272,35.6277A26.6942,26.6942,0,0,0,46.9696,12.2206V8.86025A4.49658,4.49658,0,0,0,45.8843,0H36.3618a4.49659,4.49659,0,0,0-1.0854,8.86025V12.23a26.55558,26.55558,0,0,0-13.0242,7.1642,26.8476,26.8476,0,0,0-2.2456,2.5484c-.0332-.0025-.0664-.005-.1003-.005H10.4816a1.32255,1.32255,0,0,0,0,2.6451H18.207a26.51887,26.51887,0,0,0-2.3468,5.0834H1.46612a1.3226,1.3226,0,0,0,0,2.6452H15.1129a26.8803,26.8803,0,0,0-.6564,5.0835H8.608a1.32255,1.32255,0,1,0,0,2.6451H14.4987a26.846,26.846,0,0,0,.8258,5.0836H6.75637a1.32255,1.32255,0,1,0,0,2.6451H16.1685A26.71229,26.71229,0,0,0,38.5022,64.8711q1.31055.1293,2.6212.1289a26.78069,26.78069,0,0,0,14.5797-4.309,1.32261,1.32261,0,0,0-1.4434-2.2167,24.07042,24.07042,0,1,1,7.0894-7.0984,1.32253,1.32253,0,1,0,2.2184,1.4405A26.8008,26.8008,0,0,0,67.7272,35.6277ZM34.5102,4.49685a1.85364,1.85364,0,0,1,1.8516-1.85159h9.5225a1.85159,1.85159,0,1,1,0,3.70317H36.3618A1.85373,1.85373,0,0,1,34.5102,4.49685Zm3.4113,7.27845V8.99356h6.4029V11.7705A26.95412,26.95412,0,0,0,37.9215,11.7753ZM59.0984,54.918a1.323,1.323,0,1,0,.9351.3875A1.32978,1.32978,0,0,0,59.0984,54.918ZM41.1423,17.7686A20.51675,20.51675,0,1,0,61.6591,38.2853,20.54,20.54,0,0,0,41.1423,17.7686Zm0,38.3884A17.87165,17.87165,0,1,1,59.0139,38.2853,17.89186,17.89186,0,0,1,41.1423,56.157Zm8.3658-28.1085L42.9575,34.599a4.09906,4.09906,0,0,0-3.6307,0l-2.9317-2.9317a1.32257,1.32257,0,0,0-1.8705,1.8703l2.9317,2.9318a4.10975,4.10975,0,1,0,7.3717,0l6.3583-6.3584.1922-.1922a1.32254,1.32254,0,0,0-1.8704-1.8703Zm-8.366,11.701a1.46465,1.46465,0,1,1,1.4646-1.4646A1.46637,1.46637,0,0,1,41.1421,39.7495Zm14.1411-2.771H54.0579a1.32255,1.32255,0,0,0,0,2.6451h1.2253a1.32255,1.32255,0,1,0,0-2.6451Zm-27.0567-.0322H27.0013a1.32255,1.32255,0,1,0,0,2.6451h1.2252a1.32255,1.32255,0,0,0,0-2.6451Zm12.932-10.2537A1.32258,1.32258,0,0,0,42.481,25.37V24.1448a1.32255,1.32255,0,0,0-2.6451,0V25.37A1.32267,1.32267,0,0,0,41.1585,26.6926Zm-.0322,23.1853a1.3226,1.3226,0,0,0-1.3226,1.3226v1.2252a1.32255,1.32255,0,0,0,2.6451,0V51.2005A1.32258,1.32258,0,0,0,41.1263,49.8779ZM1.46512,45.123A1.32255,1.32255,0,1,0,2.4,47.3806a1.3226,1.3226,0,0,0-.93491-2.2576Z" transform="translate(-0.14258)"/></svg></div>
                 <div class="advantages__title">Время, уделяемое каждому проекту</div>
@@ -1415,7 +1525,7 @@
               <div class="advantages__item">
                 <div class="advantages__icon"><svg xmlns="http://www.w3.org/2000/svg" width="65.00562" height="64.99944" viewBox="0 0 65.00562 64.99944"><path d="M5.41668,65.0053H52.0004a5.42358,5.42358,0,0,0,5.4167-5.4167V37.9219H55.2502V59.5886a3.25,3.25,0,0,1-3.2498,3.2498H5.41668a3.24954,3.24954,0,0,1-3.25-3.2498V11.9221a3.24958,3.24958,0,0,1,3.25-3.25H37.9168V6.50488H5.41668A5.42318,5.42318,0,0,0,0,11.9221V59.5886A5.4227,5.4227,0,0,0,5.41668,65.0053ZM4.33252,10.8389H6.499v2.1662H4.33252Zm4.3335,0H10.8325v2.1662H8.666Zm4.33348.0009H15.166v2.1663H12.9995ZM4.333,15.1719H34.6667v2.1667H4.333ZM61.9538,9.51657l-.7751-4.79423a1.08294,1.08294,0,0,0-.8954-.89567l-4.7939-.77482L51.5506.21056a1.08461,1.08461,0,0,0-1.2683,0L46.3436,3.05185l-4.7937.77482a1.08416,1.08416,0,0,0-.8962.89567l-.7746,4.79423-2.8407,3.939a1.08207,1.08207,0,0,0,0,1.2672l2.8407,3.9395.7746,4.7934a1.07784,1.07784,0,0,0,.7026.8311l-3.3258,6.6518a1.083,1.083,0,0,0,.9693,1.5673h3.754l1.8411,2.7683a1.08423,1.08423,0,0,0,.9052.4815h.0668a1.08291,1.08291,0,0,0,.9024-.5964l3.6517-7.3115.1613.117a1.08442,1.08442,0,0,0,1.2683,0l.1613-.117,3.652,7.3058a1.08411,1.08411,0,0,0,.9006.5972l.0689.0049a1.08447,1.08447,0,0,0,.9011-.4815l1.8449-2.7683h3.7543a1.08283,1.08283,0,0,0,.9747-1.5673l-3.326-6.6518a1.07724,1.07724,0,0,0,.7018-.8311l.7748-4.7934,2.8415-3.9395a1.08111,1.08111,0,0,0,0-1.2672ZM45.3659,32.5195,44.234,30.8213a1.08456,1.08456,0,0,0-.9006-.4823H40.7525l2.8283-5.659,2.7628.4462,1.4388,1.038.5589.4041ZM61.0804,30.339H58.5001a1.08425,1.08425,0,0,0-.9011.4823l-1.1317,1.6982-2.9754-5.9512.5584-.4041,1.4391-1.038,2.7628-.4462ZM60.0479,17.6018a1.068,1.068,0,0,0-.1912.4603l-.6928,4.2745-.4701.0771-3.8014.614a1.07718,1.07718,0,0,0-.4619.1923l-1.3571.975L50.917,25.7536l-2.1552-1.5545-1.3571-.975a1.0776,1.0776,0,0,0-.462-.192l-3.8013-.6138-.4701-.0774-.6917-4.2747a1.08362,1.08362,0,0,0-.1923-.4603l-2.5352-3.5164,2.533-3.5127a1.065,1.065,0,0,0,.1915-.46l.6922-4.27473,4.2747-.69226a1.08071,1.08071,0,0,0,.4612-.19228L50.917,2.42477l3.5116,2.53276a1.07773,1.07773,0,0,0,.4611.19228l4.2742.69226.6928,4.27473a1.06939,1.06939,0,0,0,.1912.46l2.5327,3.5127ZM50.9171,6.50586a7.58352,7.58352,0,1,0,7.5831,7.58394A7.58332,7.58332,0,0,0,50.9171,6.50586Zm0,13.00064a5.41671,5.41671,0,1,1,5.4164-5.4167A5.41682,5.41682,0,0,1,50.9171,19.5065Zm.5683-8.506a1.08448,1.08448,0,0,0-1.0531-.0478l-2.1662,1.0835.9684,1.9389.5993-.2998v3.6633h2.1665V11.9227A1.08626,1.08626,0,0,0,51.4854,11.0005Zm-36.32,10.6726a1.083,1.083,0,0,0-1.0829-1.0833h-8.666A1.08352,1.08352,0,0,0,4.333,21.6731v8.6656a1.08359,1.08359,0,0,0,1.08351,1.0836h8.666a1.08307,1.08307,0,0,0,1.0829-1.0836Zm-2.1665,7.5827H6.49949V22.7563H12.9989Zm4.3346-8.666h7.5827v2.1665H17.3335Zm0,4.3331H35.75v2.1669H17.3335Zm0,4.3339h9.7489v2.1665H17.3335Zm11.9165,0h6.4995v2.1665H29.25Zm-14.0846,6.498a1.08273,1.08273,0,0,0-1.0829-1.0829h-8.666A1.08325,1.08325,0,0,0,4.333,35.7548v8.6663a1.08357,1.08357,0,0,0,1.08351,1.0835h8.666a1.08305,1.08305,0,0,0,1.0829-1.0835Zm-2.1665,7.5833H6.49949v-6.5H12.9989Zm4.3346-8.6662h7.5827v2.1662H17.3335Zm0,4.334H42.2497v2.1672H17.3335Zm0,4.3339h9.7489v2.1665H17.3335Zm11.9165,0H42.2498v2.1667H29.25ZM14.0825,48.7559h-8.666A1.08325,1.08325,0,0,0,4.333,49.8388v8.666A1.08331,1.08331,0,0,0,5.41652,59.588h8.666a1.0828,1.0828,0,0,0,1.0829-1.0832v-8.666A1.08273,1.08273,0,0,0,14.0825,48.7559Zm-1.0836,8.6659H6.49949V50.9221H12.9989Zm4.3346-8.6659h7.5827v2.1662H17.3335Zm0,4.3339H42.2497v2.1667H17.3335Zm0,4.3331h9.7489v2.1662H17.3335Zm11.9165,0H42.2498v2.1664H29.25Z" transform="translate(0 -0.00586)"/></svg></div>
                 <div class="advantages__title">Гарантия качества выполняемых работ</div>
-                <div class="advantages__description">Прикладывая максимум усилий, мы гарантируем каждому проекту рост занимаемых позиций по продвигаемым поисковым запросам (высоко-, средне- и низкочастотным), увеличение целевого трафика и продаж/заказов. Достаточно — следовать нашим рекомендациям.</div>
+                <div class="advantages__description">Прикладывая максимум усилий, мы гарантируем каждому проекту рост занимаемых позиций по продвигаемым поисковым запросам (высоко-, средне- и низкочастотным), увеличение целевого трафика и продаж/заказов. Достаточно следовать нашим рекомендациям.</div>
               </div>
             </div>
           </div>
@@ -1440,19 +1550,31 @@
                     </div>
                     <div class="phones__item-inner">
                       <div class="phones__number"><a href="tel:+74959895311">+7 495 989-53-11</a></div>
-                      <div class="phones__title">Зеленоград (отдел продаж)</div>
+                      <div class="phones__title">
+                        <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
+                        Зеленоград (отдел продаж)
+                      </div>
                     </div>
                     <div class="phones__item-inner">
                       <div class="phones__number"><a href="tel:+78124139889">+7 812 413-98-89</a></div>
-                      <div class="phones__title">Отдел продаж (СПб)</div>
+                      <div class="phones__title">
+                        <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
+                        Отдел продаж (СПб)
+                      </div>
                     </div>
                     <div class="phones__item-inner">
                       <div class="phones__number"><a href="tel:88007007965">8 800 700-79-65</a></div>
-                      <div class="phones__title">Брянск (отдел продаж)</div>
+                      <div class="phones__title">
+                        <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
+                        Брянск (отдел продаж)
+                      </div>
                     </div>
                     <div class="phones__item-inner">
                       <div class="phones__number"><a href="tel:+78142330560">+7 (8142) 330-560</a></div>
-                      <div class="phones__title">Отдел продаж (ПТЗ)</div>
+                      <div class="phones__title">
+                        <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
+                        Отдел продаж (ПТЗ)
+                      </div>
                     </div>
                   </div>
                   <button class="phones__button-select" data-toggle="regions"></button>
@@ -1629,8 +1751,7 @@
                 <form class="subscribe-footer__form js-hidden-captcha" action="" type="post">
                   <label class="field-text"><span class="field-text__input-wrap">
                       <input class="field-text__input js-moving-placeholder" type="email" placeholder="Ваше e-mail" value="" required="required"/></span></label>
-                  <input type="text" name="TRY"/>
-                  <input type="text" name="CAPTCHA_HIDDEN"/>
+                  <input type="text" name="MIDDLE_NAME"/>
                   <div class="button button--primary subscribe-footer__button"><svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow"></use></svg></div>
                 </form>
                 <div class="subscribe-footer__note">Подпишитесь на исследования и кейсы</div>

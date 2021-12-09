@@ -1,0 +1,30 @@
+.alert {
+	--hue: var(--hue-info);
+
+	background-color: hsl(var(--hue), 50%, 90%);
+	border-color: hsl(var(--hue), 50%, 80%);
+	border-radius: .25em;
+	border-style: solid;
+	border-width: 1px;
+	color: hsl(var(--hue), 50%, 20%);
+	font-size: var(--font-size--medium);
+	margin: 1.5em 0;
+	padding: .75em 1.25em;
+	position: relative;
+
+	&--info {
+		--hue: var(--hue-info);
+	}
+
+	&--success {
+		--hue: var(--hue-success);
+	}
+
+	&--warning {
+		--hue: var(--hue-warning);
+	}
+
+	&--error {
+		--hue: var(--hue-error);
+	}
+}

@@ -1,11 +1,11 @@
-extends ./pug/layout.pug
+extends ../layout.pug
 
 block meta
 	title Главная
 	meta(name='description', content='')
 
 block content
-	include blocks/main-slider/index
+	include ../../blocks/main-slider/index
 
 	.wide-block.wide-block--gray-lighter
 		.page-container
@@ -61,8 +61,8 @@ block content
 						.tile__description !{item.description}
 
 				.tile__item.tile__item--form
-					h3.-no-margin Оставить заявку
-					include blocks/form-short/index
+					.h3.-no-margin Оставить заявку
+					include ../../blocks/form-short/index
 
 
 	.wide-block.wide-block--city
@@ -83,7 +83,7 @@ block content
 						"description": "Сайтов на постоянной технической основе"
 					},
 					{
-						"title": "14 лет",
+						"title": "15 лет",
 						"description": "Компания существует с 2006 года"
 					},
 					{
@@ -103,7 +103,7 @@ block content
 
 	.wide-block
 		.page-container
-			h2.h1 О компании
+			h2.h1 Наша команда
 			.buttons-group(data-filter="team")
 				button.button.button--tab.-is-active(data-filter-source="all") Все сотрудники
 				button.button.button--tab(data-filter-source="ceo") Руководство
@@ -223,7 +223,7 @@ block content
 			h2.h1 Наши достижения
 			p.subtitle Входим в число лучших компаний России в сферах интернет-рекламы и разработки сайтов по результатам самых авторитетных рейтингов
 			.v-space--x4
-			include blocks/achievements/index
+			include ../../blocks/achievements/index
 			.v-space--x3
 			.buttons-group
 				a.button.button--primary Подробнее о компании
@@ -232,7 +232,7 @@ block content
 	.wide-block.wide-block--gray-lighter
 		.page-container
 			h2.h1 Наши клиенты
-			include blocks/tile-clients/index
+			include ../../blocks/tile-clients/index
 			.v-space--x3
 			.buttons-group
 				a.button.button--primary Отзывы клиентов
@@ -241,11 +241,6 @@ block content
 	.wide-block
 		.page-container
 			h2.h1 Новости
-			.buttons-group(data-filter="news")
-				a.button.button--tab.-is-active Все материалы
-				a.button.button--tab Новости
-				a.button.button--tab Статьи
-			.v-space.v-space--x2
 			-
 				let dataNews = [
 					{
@@ -285,7 +280,7 @@ block content
 						"date": "29 октября 2020"
 					}
 				]
-			.tile-slider.tile-slider--place-shadow.tile-news(data-filter-block="news", data-flickity-options='{ "cellAlign": "left", "prevNextButtons": false, "groupCells": true, "lazyLoad": true }')
+			.tile-slider.tile-slider--place-shadow.tile-news(data-filter-block="news", data-flickity-options='{ "cellAlign": "left", "prevNextButtons": true, "groupCells": true, "lazyLoad": true }')
 				each item, i in dataNews
 					.tile-news__item
 						.tile-news__image
@@ -306,7 +301,7 @@ block content
 				h2.h1 Видео с конференций
 				p.subtitle.block-width.block-width--md-75 Достичь максимальной отдачи от SEO можно только с командой экспертов. В «Пиксель Плюс» мы сумели сплотить коллектив профессионалов экстра-класса, нацеленных на достижение результата по вашему проекту.
 				.v-space--x4
-				include blocks/video-list/index
+				include ../../blocks/video-list/index
 
 	.wide-block.wide-block--gray-lighten
 		.page-container
@@ -348,7 +343,7 @@ block content
 						"date": "4 июля 2019"
 					}
 				]
-			.tile-slider.tile-slider--place-shadow.tile-news(data-flickity-options='{ "cellAlign": "left", "prevNextButtons": false, "groupCells": true, "lazyLoad": true }')
+			.tile-slider.tile-slider--place-shadow.tile-news(data-flickity-options='{ "cellAlign": "left", "prevNextButtons": true, "groupCells": true, "lazyLoad": true }')
 				each item, i in dataArticles
 					.tile-news__item
 						a.tile-news__image
@@ -400,10 +395,10 @@ block content
 					{
 						"icon": '<svg xmlns="http://www.w3.org/2000/svg" width="65.00562" height="64.99944" viewBox="0 0 65.00562 64.99944"><path d="M5.41668,65.0053H52.0004a5.42358,5.42358,0,0,0,5.4167-5.4167V37.9219H55.2502V59.5886a3.25,3.25,0,0,1-3.2498,3.2498H5.41668a3.24954,3.24954,0,0,1-3.25-3.2498V11.9221a3.24958,3.24958,0,0,1,3.25-3.25H37.9168V6.50488H5.41668A5.42318,5.42318,0,0,0,0,11.9221V59.5886A5.4227,5.4227,0,0,0,5.41668,65.0053ZM4.33252,10.8389H6.499v2.1662H4.33252Zm4.3335,0H10.8325v2.1662H8.666Zm4.33348.0009H15.166v2.1663H12.9995ZM4.333,15.1719H34.6667v2.1667H4.333ZM61.9538,9.51657l-.7751-4.79423a1.08294,1.08294,0,0,0-.8954-.89567l-4.7939-.77482L51.5506.21056a1.08461,1.08461,0,0,0-1.2683,0L46.3436,3.05185l-4.7937.77482a1.08416,1.08416,0,0,0-.8962.89567l-.7746,4.79423-2.8407,3.939a1.08207,1.08207,0,0,0,0,1.2672l2.8407,3.9395.7746,4.7934a1.07784,1.07784,0,0,0,.7026.8311l-3.3258,6.6518a1.083,1.083,0,0,0,.9693,1.5673h3.754l1.8411,2.7683a1.08423,1.08423,0,0,0,.9052.4815h.0668a1.08291,1.08291,0,0,0,.9024-.5964l3.6517-7.3115.1613.117a1.08442,1.08442,0,0,0,1.2683,0l.1613-.117,3.652,7.3058a1.08411,1.08411,0,0,0,.9006.5972l.0689.0049a1.08447,1.08447,0,0,0,.9011-.4815l1.8449-2.7683h3.7543a1.08283,1.08283,0,0,0,.9747-1.5673l-3.326-6.6518a1.07724,1.07724,0,0,0,.7018-.8311l.7748-4.7934,2.8415-3.9395a1.08111,1.08111,0,0,0,0-1.2672ZM45.3659,32.5195,44.234,30.8213a1.08456,1.08456,0,0,0-.9006-.4823H40.7525l2.8283-5.659,2.7628.4462,1.4388,1.038.5589.4041ZM61.0804,30.339H58.5001a1.08425,1.08425,0,0,0-.9011.4823l-1.1317,1.6982-2.9754-5.9512.5584-.4041,1.4391-1.038,2.7628-.4462ZM60.0479,17.6018a1.068,1.068,0,0,0-.1912.4603l-.6928,4.2745-.4701.0771-3.8014.614a1.07718,1.07718,0,0,0-.4619.1923l-1.3571.975L50.917,25.7536l-2.1552-1.5545-1.3571-.975a1.0776,1.0776,0,0,0-.462-.192l-3.8013-.6138-.4701-.0774-.6917-4.2747a1.08362,1.08362,0,0,0-.1923-.4603l-2.5352-3.5164,2.533-3.5127a1.065,1.065,0,0,0,.1915-.46l.6922-4.27473,4.2747-.69226a1.08071,1.08071,0,0,0,.4612-.19228L50.917,2.42477l3.5116,2.53276a1.07773,1.07773,0,0,0,.4611.19228l4.2742.69226.6928,4.27473a1.06939,1.06939,0,0,0,.1912.46l2.5327,3.5127ZM50.9171,6.50586a7.58352,7.58352,0,1,0,7.5831,7.58394A7.58332,7.58332,0,0,0,50.9171,6.50586Zm0,13.00064a5.41671,5.41671,0,1,1,5.4164-5.4167A5.41682,5.41682,0,0,1,50.9171,19.5065Zm.5683-8.506a1.08448,1.08448,0,0,0-1.0531-.0478l-2.1662,1.0835.9684,1.9389.5993-.2998v3.6633h2.1665V11.9227A1.08626,1.08626,0,0,0,51.4854,11.0005Zm-36.32,10.6726a1.083,1.083,0,0,0-1.0829-1.0833h-8.666A1.08352,1.08352,0,0,0,4.333,21.6731v8.6656a1.08359,1.08359,0,0,0,1.08351,1.0836h8.666a1.08307,1.08307,0,0,0,1.0829-1.0836Zm-2.1665,7.5827H6.49949V22.7563H12.9989Zm4.3346-8.666h7.5827v2.1665H17.3335Zm0,4.3331H35.75v2.1669H17.3335Zm0,4.3339h9.7489v2.1665H17.3335Zm11.9165,0h6.4995v2.1665H29.25Zm-14.0846,6.498a1.08273,1.08273,0,0,0-1.0829-1.0829h-8.666A1.08325,1.08325,0,0,0,4.333,35.7548v8.6663a1.08357,1.08357,0,0,0,1.08351,1.0835h8.666a1.08305,1.08305,0,0,0,1.0829-1.0835Zm-2.1665,7.5833H6.49949v-6.5H12.9989Zm4.3346-8.6662h7.5827v2.1662H17.3335Zm0,4.334H42.2497v2.1672H17.3335Zm0,4.3339h9.7489v2.1665H17.3335Zm11.9165,0H42.2498v2.1667H29.25ZM14.0825,48.7559h-8.666A1.08325,1.08325,0,0,0,4.333,49.8388v8.666A1.08331,1.08331,0,0,0,5.41652,59.588h8.666a1.0828,1.0828,0,0,0,1.0829-1.0832v-8.666A1.08273,1.08273,0,0,0,14.0825,48.7559Zm-1.0836,8.6659H6.49949V50.9221H12.9989Zm4.3346-8.6659h7.5827v2.1662H17.3335Zm0,4.3339H42.2497v2.1667H17.3335Zm0,4.3331h9.7489v2.1662H17.3335Zm11.9165,0H42.2498v2.1664H29.25Z" transform="translate(0 -0.00586)"/></svg>',
 						"title": "Гарантия качества выполняемых работ",
-						"description": "Прикладывая максимум усилий, мы гарантируем каждому проекту рост занимаемых позиций по продвигаемым поисковым запросам (высоко-, средне- и низкочастотным), увеличение целевого трафика и продаж/заказов. Достаточно — следовать нашим рекомендациям."
+						"description": "Прикладывая максимум усилий, мы гарантируем каждому проекту рост занимаемых позиций по продвигаемым поисковым запросам (высоко-, средне- и низкочастотным), увеличение целевого трафика и продаж/заказов. Достаточно следовать нашим рекомендациям."
 					}
 				]
-			.tile-slider.advantages(data-flickity-options='{ "cellAlign": "left", "prevNextButtons": false, "watchCSS": true, "lazyLoad": true }')
+			.tile-slider.advantages(data-flickity-options='{ "cellAlign": "left", "prevNextButtons": true, "watchCSS": true, "lazyLoad": true }')
 				each item, i in dataAdvantages
 					.advantages__item
 						.advantages__icon !{item.icon}

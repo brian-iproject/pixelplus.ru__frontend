@@ -13,6 +13,11 @@
   --color-gray--darker:     rgb(32, 32, 32);    // #202020
   --color-black:            rgb(0, 0, 0);       // #000000
 
+  --hue-info: 211;
+  --hue-success: 134;
+  --hue-error: 354;
+  --hue-warning: 45;
+
   --color-success:          rgb(92, 183, 92);
   --color-danger:           rgb(216, 84, 79);
   --color-danger--light:    rgba(216, 84, 79, .65);
@@ -26,9 +31,9 @@
   --link-color--hover:      var(--color-primary--light);
 
   /* Базовая типографика */
-  --font-size--tiny:        9px;
-  --font-size--small:       10px;
-  --font-size--medium:      12px;
+  --font-size--tiny:        10px;
+  --font-size--small:       12px;
+  --font-size--medium:      13px;
   --font-size:              14px;
   --font-size--large:       16px;
   --font-size--huge:        18px;
@@ -54,6 +59,7 @@
   --transition-time:        .3s;
   --animate-duration:       var(--transition-time);
   --shadow:                 0 15px 15px rgba(14, 16, 20, .15);
+  --shadow--light:          0 15px 15px rgba(14, 16, 20, .05);
 
   @media (min-width: 768px) {
     /* Базовая типографика */

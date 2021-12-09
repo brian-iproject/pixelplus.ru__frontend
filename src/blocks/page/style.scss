@@ -147,8 +147,8 @@ hr {
 	overflow: visible;       // Проблема Edge и IE
 }
 
-[name=CAPTCHA_HIDDEN],
-[name=TRY] {
+[data-hidden-captcha] [name=CAPTCHA_HIDDEN],
+[data-hidden-captcha] [name=MIDDLE_NAME] {
 	position: absolute;
 	z-index: -1;
 	left: -5000px;

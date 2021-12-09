@@ -5,40 +5,9 @@ import SvgLoad from "./SvgLoad";
 import MovingPlaceholder from "./MovingPlaceholder";
 import Utils from "./Utils";
 import Tabs from "./Tabs";
+import HiddenCaptcha from "./HiddenCaptcha";
 
 const app = {
-    /**
-     * Скрытая каптча.
-     * Обработчик отправляет форму, если скрытые поля не заполнены
-     * @param selector - Селектор формы
-     * @param selectorButton - Селектор фейковой кнопки
-     */
-    checkHiddenCaptcha: function(selector, selectorButton) {
-        const $forms = document.querySelectorAll(selector);
-
-        $forms.forEach(($form) => {
-            const   $button = $form.querySelector(selectorButton),
-                    $inputCaptchaHidden = $form.querySelector('[name=CAPTCHA_HIDDEN]').value,
-                    $inputTry = $form.querySelector('[name=TRY]').value,
-                    $newButton = document.createElement('button'),
-                    attributes = $button.attributes;
-
-            for(let attr of attributes) {
-                $newButton.setAttribute(attr.name, attr.value);
-            }
-            $newButton.innerHTML = $button.innerHTML;
-            $button.after($newButton);
-            $button.remove();
-
-            $form.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                if (!$inputCaptchaHidden && !$inputTry)
-                    $form.submit();
-            });
-        });
-    },
-
     /**
      * Форматирует число с разделением групп (аналог PHP number_format)
      *
@@ -121,13 +90,19 @@ const app = {
     },
 
     init: function() {
+        HiddenCaptcha.init({
+            formSelector: '.form--feedback form',
+            hiddenInput: '[name=MIDDLE_NAME]',
+            buttonSelector: '.form__button'
+        });
+
+        Utils.maskPhone('[type=tel]');
         Utils.replaceLink('data-href');
 
         SvgLoad.init((window.location.hostname === 'localhost')?'/dist/images/icons.svg':'/local/templates/pixelplus.ru_2021/images/icons.svg');
 
         MovingPlaceholder.init('.js-moving-placeholder', 'moving-placeholder');
 
-        this.checkHiddenCaptcha('.js-hidden-captcha', 'div[class*=button]');
         ToggleBlock.init('.phones');
         ToggleBlock.init('.header-search');
 

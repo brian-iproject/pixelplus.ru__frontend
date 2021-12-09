@@ -1,10 +1,10 @@
-form.form-short(action="", type="post")
+form.form-short.js-hidden-captcha(action="", type="post")
 	label.field-text.field-text--transparent.form-short__field
 		span.field-text__input-wrap
-			input.field-text__input.js-moving-placeholder(placeholder="Ваше имя", required)
+			input.field-text__input.js-moving-placeholder(type="text", placeholder="Ваше имя", required)
 	label.field-text.field-text--transparent.form-short__field
 		span.field-text__input-wrap
-			input.field-text__input.js-moving-placeholder(placeholder="Номер телефона", required)
+			input.field-text__input.js-moving-placeholder(type="tel", placeholder="Номер телефона", required)
 	label.field-checkbox.form-short__field
 		span.field-checkbox__input-wrap
 			input.field-checkbox__input(type='checkbox')
@@ -12,4 +12,5 @@ form.form-short(action="", type="post")
 			span.field-checkbox__help-text
 				| Согласен с обработкой персональных данных в соответствии с <a href="#">политикой конфиденциальности</a>
 	div.form-short__field
-		button.button.button--primary.button--wide Оставить заявку
+		div.button.button--primary.button--wide Оставить заявку
+	input(type="text", name="MIDDLE_NAME")

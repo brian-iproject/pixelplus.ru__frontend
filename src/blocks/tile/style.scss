@@ -42,6 +42,12 @@
 		font-size: var(--font-size--medium);
 	}
 
+	&__note {
+		color: var(--color-gray);
+		font-size: var(--font-size--small);
+		margin-top: 1em;
+	}
+
 	@media (min-width: $screen-sm) {
 
 		&__item {
