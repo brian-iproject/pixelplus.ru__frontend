@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brian-iproject/pixelplus.ru__frontend-gulp.git"
+    "url": "git+https://github.com/brian-iproject/pixelplus.ru__frontend.git"
   },
   "type": "module",
   "author": "Aleksey Pavlov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/brian-iproject/pixelplus.ru__frontend-gulp/issues"
+    "url": "https://github.com/brian-iproject/pixelplus.ru__frontend/issues"
   },
-  "homepage": "https://github.com/brian-iproject/pixelplus.ru__frontend-gulp#readme",
+  "homepage": "https://github.com/brian-iproject/pixelplus.ru__frontend#readme",
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
