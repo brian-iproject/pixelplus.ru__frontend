@@ -17,17 +17,12 @@
 	}
 
 	&--city {
-		background-image: url(../blocks/wide-block/images/city.jpg);
+		background-image: url(../images/blocks/wide-block/city.jpg);
 		color: var(--color-white);
 	}
 
 	&--meeting {
-		background-image: url(../blocks/wide-block/images/meeting.jpg);
-		color: var(--color-white);
-	}
-
-	&--ozon {
-		background-image: url(../blocks/wide-block/images/ozon.jpg);
+		background-image: url(../images/blocks/wide-block/meeting.jpg);
 		color: var(--color-white);
 	}
 
@@ -93,7 +88,7 @@
 		}
 
 		@media (min-width: $screen-md) {
-			background-image: url(../blocks/wide-block/images/sevalnev.jpg);
+			background-image: url(../images/blocks/wide-block/sevalnev.jpg);
 			background-position: calc(100% + 350px) 0;
 			height: 900px;
 

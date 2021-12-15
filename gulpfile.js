@@ -29,6 +29,8 @@ import notify           from 'gulp-notify'
 
 
 const config = {
+    sourcePath: 'src',
+    buildPath: 'build',
     prettyHtml: {
         indent_size: 2,
         indent_char: ' ',
@@ -126,7 +128,7 @@ function compileSass() {
         debug({title: 'Replaces path to image '}),
         /** TODO: autoprefixer сыпет ошибки в конечный css - надо разобрать их и вернуть */
         //debug({title: 'Add browser prefix '}),
-        autoprefixer(config.autoprefixer),
+        //autoprefixer(config.autoprefixer),
         cleancss( config.cleancss),
         rename({ basename: 'main' }),
         debug({title: 'Renames '}),
@@ -169,7 +171,7 @@ function startWatch() {
     watch('src/**/*.js', compileJs)
 
     watch('src/assets/**/*', copyAssets);
-    watch('src/block/**/images/*', copyImagesBlocks);
+    watch('src/blocks/**/images/*', copyImagesBlocks);
     watch('src/images/**/*', copyImages);
     watch('src/fonts/**/*', copyFonts);
     watch('src/libs/**/*', copyLibs);
