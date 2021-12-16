@@ -33,6 +33,10 @@ html(class="page" lang="en")
 
 			+page-header('page__header')
 
+			block breadcrumb
+				.page__breadcrumb.page-container
+					include ../blocks/breadcrumbs/index
+
 			main.page__content.page-content
 				block content
 					p содержимое

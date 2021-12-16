@@ -43,6 +43,16 @@
 		}
 	}
 
+	&__breadcrumb {
+		height: 0;
+
+		&:not(:empty) .breadcrumbs {
+			padding-top: 3em;
+			position: relative;
+			z-index: 5;
+		}
+	}
+
 	&__content {
 		flex-grow: 1;
 		flex-shrink: 0;
