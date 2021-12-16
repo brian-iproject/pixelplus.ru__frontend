@@ -133,7 +133,7 @@ function compileSass() {
         rename({ basename: 'main' }),
         debug({title: 'Renames '}),
         dest('build/css')
-    ).on('error', notify.onError());
+    ).on('error', notify.onError("<%= error.title %>: <%= error.message %>"));
 }
 
 function compilePug() {
@@ -145,7 +145,7 @@ function compilePug() {
         replace(/blocks\/([a-zA-Z0-9_-]+)\/images\/([a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/blocks/$1/$2.$3'),
         debug({title: 'Replaces path to image '}),
         dest('build')
-    ).on('error', notify.onError());
+    ).on('error', notify.onError("<%= error.title %>: <%= error.message %>"));
 }
 
 function compileJs() {
