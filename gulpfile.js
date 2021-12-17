@@ -96,7 +96,7 @@ function copyImagesBlocks() {
 function copyImages() {
     return src('src/images/**/*', { since: lastRun('copyImages') })
         .pipe(debug({title: 'Copies '}))
-        .pipe(imagemin())
+        .pipe(imagemin([imagemin.gifsicle(), imagemin.mozjpeg(), imagemin.optipng()]))
         .pipe(debug({title: 'Minify '}))
         .pipe(dest('build/images'));
 }

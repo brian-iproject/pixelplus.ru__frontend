@@ -99,7 +99,7 @@ const app = {
         Utils.maskPhone('[type=tel]');
         Utils.replaceLink('data-href');
 
-        SvgLoad.init((window.location.hostname === 'localhost')?'/dist/images/icons.svg':'/local/templates/pixelplus.ru_2021/images/icons.svg');
+        SvgLoad.init((window.location.hostname === 'localhost')?'/images/icons.svg':'/local/templates/pixelplus.ru_2021/images/icons.svg');
 
         MovingPlaceholder.init('.js-moving-placeholder', 'moving-placeholder');
 
