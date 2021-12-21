@@ -2,47 +2,160 @@
 
 	$block-name: &; // #{$block-name}__element
 
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: calc(2*var(--grid-gutter-y)) calc(2*var(--grid-gutter-x));
+	line-height: 1.4;
 
 	&__item {
-		flex: 1 1 auto;
-		max-width: 50%;
-		text-align: center;
 	}
 
 	&__icon {
 		fill: var(--color-primary);
+		margin-bottom: 1em;
+		width: 100%;
+
+		& svg {
+			display: block;
+			fill: var(--color-primary);
+			margin: 0 auto;
+		}
+
+		&--shadow {
+			&::after {
+				background: var(--color-gray--lighten);
+				border-radius: 50%;
+				content: '';
+				display: block;
+				height: .625em;
+				margin: .9em auto 0 auto;
+				width: 70px;
+			}
+
+			@supports (width: fit-content) {
+				&::after {
+					width: 100%;
+				}
+			}
+		}
+
+		@supports (width: fit-content) {
+			width: fit-content;
+		}
 	}
 
 	&__title {
-		max-width: 13.75em;
-		margin: 2em auto 0 auto;
-		line-height: 1.4;
+		font-size: var(--font-size--large);
+		font-weight: 500;
+	}
 
-		&--large {
-			font-size: var(--font-size--large);
-			font-weight: 500;
+	&__description {
+		margin-top: .5em;
+	}
+
+	&--type1 {
+		display: flex;
+		flex-wrap: wrap;
+		gap: calc(var(--grid-gutter-y) * 2) calc(var(--grid-gutter-x) * 2);
+		justify-content: center;
+
+		& #{$block-name}__item {
+			flex: 1 1 auto;
+			max-width: 50%;
+			text-align: center;
+
+			@media (min-width: $screen-sm) {
+				max-width: 33.33333%;
+			}
+
+			@media (min-width: $screen-lg) {
+				max-width: 25%;
+			}
+		}
+
+		@media (min-width: $screen-xl) {
+			&#{$block-name}--xl-nowrap {
+				flex-wrap: nowrap;
+			}
+		}
+
+		& #{$block-name}__icon {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		& #{$block-name}__title,
+		& #{$block-name}__description {
+			max-width: 13.75em;
 		}
 	}
 
-	@media (min-width: $screen-sm) {
-		&__item {
-			max-width: 33.33333%;
+	&--type2 {
+
+		& #{$block-name}__item {
+			margin-right: var(--grid-gutter-x);
+			min-height: 100%;
+			width: 100%;
+
+			@media (min-width: $screen-sm) {
+				margin-right: var(--grid-gutter-x);
+				width: calc(50% - var(--grid-gutter-x) / 2);
+			}
+
+			@media (min-width: $screen-lg) {
+				margin: 0;
+				min-height: auto;
+				width: auto;
+			}
+		}
+
+		@media (min-width: $screen-lg) {
+			display: grid;
+			gap: calc(var(--grid-gutter-y) * 3.5) calc(var(--grid-gutter-x) * 5.5);
+			grid-template-columns: 1fr 1fr;
 		}
 	}
 
-	@media (min-width: $screen-lg) {
-		&__item {
-			max-width: 25%;
-		}
-	}
+	&--type3 {
 
-	@media (min-width: $screen-xl) {
-		&--xl-nowrap {
-			flex-wrap: nowrap;
+		& #{$block-name}__item {
+			display: grid;
+			gap: 0 calc(var(--grid-gutter-x) * 2);
+			grid-template-areas:  "icon title"
+	                          "icon description";
+			grid-template-columns: auto;
+			grid-template-rows: min-content auto;
+			margin-right: var(--grid-gutter-x);
+			min-height: 100%;
+			width: 100%;
+
+			@media (min-width: $screen-sm) {
+				margin-right: var(--grid-gutter-x);
+				width: calc(50% - var(--grid-gutter-x) / 2);
+			}
+
+			@media (min-width: $screen-lg) {
+				margin: 0;
+				min-height: auto;
+				width: auto;
+			}
+		}
+
+		& #{$block-name}__icon {
+			grid-area: icon;
+		}
+
+		& #{$block-name}__title {
+			grid-area: title;
+		}
+
+		& #{$block-name}__description {
+			grid-area: description;
+		}
+
+
+
+		@media (min-width: $screen-lg) {
+			display: grid;
+			gap: calc(var(--grid-gutter-y) * 3.5) calc(var(--grid-gutter-x) * 5.5);
+			grid-template-columns: 1fr 1fr;
 		}
 	}
 }

@@ -87,11 +87,11 @@
 
 			&--lvl1 {
 				//display: flex;
-				width: 100%;
-
 				column-count: 5;
+
 				column-gap: 0;
 				column-width: auto;
+				width: 100%;
 			}
 
 			&--lvl2 {

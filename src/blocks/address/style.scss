@@ -29,10 +29,10 @@
 
 	&__cities-item {
 		color: var(--color-gray--dark);
-		font-size: var(--font-size--large);
-		white-space: nowrap;
 		cursor: pointer;
+		font-size: var(--font-size--large);
 		transition: var(--transition-time);
+		white-space: nowrap;
 
 		& + & {
 			margin-left: 1em;
@@ -55,9 +55,9 @@
 
 	&__address-item {
 		color: var(--color-white);
+		display: none;
 		font-size: var(--font-size--medium);
 		text-align: center;
-		display: none;
 
 		&.-is-active {
 			display: block;

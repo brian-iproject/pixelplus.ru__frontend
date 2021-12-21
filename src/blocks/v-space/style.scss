@@ -1,0 +1,15 @@
+.v-space {
+	height: var(--typo-margin-vertical);
+
+	&--x2 {
+		height: calc(var(--typo-margin-vertical) * 2);
+	}
+
+	&--x3 {
+		height: calc(var(--typo-margin-vertical) * 3);
+	}
+
+	&--x4 {
+		height: calc(var(--typo-margin-vertical) * 4);
+	}
+}

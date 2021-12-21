@@ -17,12 +17,13 @@
 	}
 
 	&--city {
-		background-image: url(../images/blocks/wide-block/city.jpg);
+		background-image: url(../../blocks/wide-block/images/city.jpg);
 		color: var(--color-white);
+
 	}
 
 	&--meeting {
-		background-image: url(../images/blocks/wide-block/meeting.jpg);
+		background-image: url(../../blocks/wide-block/images/meeting.jpg);
 		color: var(--color-white);
 	}
 
@@ -88,7 +89,7 @@
 		}
 
 		@media (min-width: $screen-md) {
-			background-image: url(../images/blocks/wide-block/sevalnev.jpg);
+			background-image: url(../../blocks/wide-block/images/sevalnev.jpg);
 			background-position: calc(100% + 350px) 0;
 			height: 900px;
 

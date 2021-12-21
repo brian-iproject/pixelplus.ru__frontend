@@ -26,8 +26,8 @@
 	}
 
 	&__item-inner {
-		position: relative;
 		display: none;
+		position: relative;
 
 		&.-is-active {
 			display: block;
@@ -142,8 +142,8 @@
 		color: var(--color-gray--dark);
 		font-size: 10px;
 		font-weight: 700;
-		text-transform: uppercase;
 		margin-top: .5em;
+		text-transform: uppercase;
 
 		& svg {
 			height: 8px;

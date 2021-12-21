@@ -66,8 +66,7 @@ const config = {
         inline: ['none'],
         level: {
             1: { specialComments: 0 }
-        },
-        format: 'beautify'
+        }
     }
 }
 
@@ -107,16 +106,10 @@ function copyFonts() {
         .pipe(dest('build/fonts'));
 }
 
-function copyLibs() {
-    return src('src/libs/**/*', { since: lastRun('copyLibs') })
-        .pipe(debug({title: 'Copies '}))
-        .pipe(dest('build/libs'));
-}
-
 function copyFavicon() {
     return src('src/favicon/**/*', { since: lastRun('copyFavicon') })
         .pipe(debug({title: 'Copies '}))
-        .pipe(dest('build'));
+        .pipe(dest('build/favicon'));
 }
 
 function compileSass() {
@@ -124,12 +117,12 @@ function compileSass() {
         src('src/scss/styles.scss'),
         sass(),
         debug({title: 'Compiles '}),
-        replace(/..\/blocks\/([a-zA-Z0-9_-]+)\/images\/([a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/blocks/$1/$2.$3'),
+        replace(/..\/..\/blocks\/([a-zA-Z0-9_-]+)\/images\/([a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/blocks/$1/$2.$3'),
         debug({title: 'Replaces path to image '}),
         /** TODO: autoprefixer сыпет ошибки в конечный css - надо разобрать их и вернуть */
         //debug({title: 'Add browser prefix '}),
         //autoprefixer(config.autoprefixer),
-        cleancss( config.cleancss),
+        cleancss( {...config.cleancss, format: 'beautify'} ),
         rename({ basename: 'main' }),
         debug({title: 'Renames '}),
         dest('build/css')
@@ -150,10 +143,37 @@ function compilePug() {
 
 function compileJs() {
     return multipipe(
-        src('src/js/**/*.js'),
+        src('src/js/main.js'),
         webpackStream(config.webpack),
         dest('build/js'),
     ).on('error', notify.onError());
+}
+
+function compileLibsJs() {
+    return multipipe(
+        src([
+            'node_modules/@fancyapps/ui/dist/fancybox.umd.js',
+            'node_modules/flickity/dist/flickity.pkgd.min.js',
+            'node_modules/wow.js/dist/wow.min.js'
+        ]),
+        concat('libs.min.js'),
+        dest('build/js/'),
+    ).on('error', notify.onError());
+}
+
+function compileLibsSass() {
+    return multipipe(
+        src([
+            'node_modules/normalize.css/normalize.css',
+            'node_modules/animate.css/animate.css',
+            'node_modules/@fancyapps/ui/dist/fancybox.css',
+            'node_modules/flickity/dist/flickity.css'
+        ]),
+        sass(),
+        cleancss( config.cleancss ),
+        concat('libs.min.css'),
+        dest('build/css')
+    ).on('error', notify.onError("<%= error.title %>: <%= error.message %>"));
 }
 
 function serve() {
@@ -174,7 +194,6 @@ function startWatch() {
     watch('src/blocks/**/images/*', copyImagesBlocks);
     watch('src/images/**/*', copyImages);
     watch('src/fonts/**/*', copyFonts);
-    watch('src/libs/**/*', copyLibs);
     watch('src/favicon/**/*', copyFavicon);
 }
 
@@ -182,19 +201,21 @@ function startWatch() {
 export { clearBuild };
 
 // Copies
-export { copyAssets, copyImagesBlocks, copyImages, copyFonts, copyLibs, copyFavicon }
+export { copyAssets, copyImagesBlocks, copyImages, copyFonts, copyFavicon }
 
 // Compiles
-export { compilePug, compileSass, compileJs }
+export { compilePug, compileSass, compileJs, compileLibsSass, compileLibsJs }
+
+export let compileLibs = parallel(compileLibsSass, compileLibsJs);
 
 // Build
 export let build = series(
     clearBuild,
-    parallel(copyAssets, copyImagesBlocks, copyImages, copyFonts, copyLibs, copyFavicon),
-    parallel(compileSass, compilePug, compileJs)
+    parallel(copyAssets, copyImagesBlocks, copyImages, copyFonts, copyFavicon),
+    parallel(compileSass, compilePug, compileJs, compileLibs)
 );
 
 export default series(
-    parallel(compileSass, compilePug, compileJs),
+    parallel(compileSass, compilePug, compileJs, compileLibs),
     parallel(startWatch, serve)
 );

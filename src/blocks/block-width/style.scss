@@ -1,0 +1,62 @@
+.block-width {
+
+	$block-name: &; // #{$block-name}__element
+
+	width: auto;
+
+	@media (min-width: $screen-sm) {
+		&--sm-75 {
+			max-width: 75%;
+		}
+
+		&--sm-50 {
+			max-width: 75%;
+		}
+
+		&--sm-25 {
+			max-width: 25%;
+		}
+	}
+
+	@media (min-width: $screen-md) {
+		&--md-75 {
+			max-width: 75%;
+		}
+
+		&--md-50 {
+			max-width: 75%;
+		}
+
+		&--md-25 {
+			max-width: 25%;
+		}
+	}
+
+	@media (min-width: $screen-lg) {
+		&--lg-75 {
+			max-width: 75%;
+		}
+
+		&--lg-50 {
+			max-width: 75%;
+		}
+
+		&--lg-25 {
+			max-width: 25%;
+		}
+	}
+
+	@media (min-width: $screen-xl) {
+		&--xl-75 {
+			max-width: 75%;
+		}
+
+		&--xl-50 {
+			max-width: 75%;
+		}
+
+		&--xl-25 {
+			max-width: 25%;
+		}
+	}
+}

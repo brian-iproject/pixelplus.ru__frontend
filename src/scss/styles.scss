@@ -1,15 +1,13 @@
-@import '../libs/normalize/normalize';
-@import '../libs/animate.css/animate';
-
 @import '_variables';
 @import '_css-variables';
 
-@import '_base';
+@import '_modifiers';
 @import '_mixins';
 @import '_fonts';
 
 @import '../blocks/page/style';
 @import '../blocks/button/style';
+@import '../blocks/list/style';
 @import '../blocks/page-container/style';
 @import '../blocks/page-header/style';
 @import '../blocks/page-nav/style';
@@ -34,7 +32,6 @@
 @import '../blocks/about-numbers/style';
 @import '../blocks/tile-news/style';
 @import '../blocks/tile-clients/style';
-@import '../blocks/advantages/style';
 @import '../blocks/team-list/style';
 @import '../blocks/achievements/style';
 @import '../blocks/video-list/style';
@@ -44,5 +41,8 @@
 @import '../blocks/important-text/style';
 @import '../blocks/infographics/style';
 @import '../blocks/breadcrumbs/style';
+
+@import '../blocks/block-width/style';
+@import '../blocks/v-space/style';
 
 @import '../blocks/ui-kit/style';

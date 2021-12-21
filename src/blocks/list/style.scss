@@ -1,0 +1,53 @@
+.list,
+.ul-marker,
+.ol-numbers {
+	display: flex;
+	flex-direction: column;
+	line-height: var(--line-height);
+	list-style: none;
+	margin: var(--typo-margin-vertical) 0;
+	padding: 0;
+
+	& li {
+		padding: 0 0 0 1.5em;
+		position: relative;
+
+		&::before {
+			left: 0;
+			position: absolute;
+			top: 0;
+		}
+	}
+
+	& li + li {
+		margin-top: calc(var(--typo-margin-vertical) * .75);
+	}
+}
+
+ul.list,
+ul.ul-marker {
+
+	& li {
+
+		&::before {
+			color: inherit;
+			content: "•";
+			font-size: 1.5em;
+			line-height: 0;
+			margin: .6em 0 0 0;
+		}
+	}
+}
+
+ol.list,
+ol.ol-numbers {
+	counter-reset: item;
+
+	& li {
+
+		&::before {
+			content: counters(item,".") ". ";
+			counter-increment: item;
+		}
+	}
+}

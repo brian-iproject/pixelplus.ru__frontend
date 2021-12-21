@@ -1,0 +1,21 @@
+.-fs-i,
+.-em { font-style: italic; }
+
+.-fw-b,
+.-strong { font-weight: bold; }
+.-fw-sb { font-weight: 500; }
+.-fw-n { font-weight: normal; }
+
+.-ta-l { text-align: left; }
+.-ta-c { text-align: center; }
+.-ta-r { text-align: right; }
+
+.-no-margin { margin: 0; }
+.-no-padding { padding: 0; }
+
+.-c-primary { color: var(--color-primary); }
+
+.-is-hidden,
+[hidden] {
+	display: none;
+}
