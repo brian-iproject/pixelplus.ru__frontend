@@ -78,6 +78,7 @@
 	@media (min-width: $screen-md) {
 		display: flex;
 		margin: 1.5em -15px;
+		flex-wrap: wrap;
 
 		&__column {
 			flex: 0 0 50%;
