@@ -115,6 +115,13 @@ const app = {
         this.filterBlocks();
 
         this.flickitySet = new FlickitySet('[data-flickity-options]');
+
+        const wow = new WOW({
+            animateClass: 'animated',
+            offset:       50,
+            mobile:       false
+        });
+        wow.init();
     }
 };
 

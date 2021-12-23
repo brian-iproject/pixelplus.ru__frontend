@@ -68,7 +68,7 @@ block content
 
 	.wide-block.wide-block--city
 		.page-container
-			h2.h1 «Пиксель плюс» в цифрах
+			h2.h1.wow.animate__fadeInDown(data-wow-duration=".5s") «Пиксель плюс» в цифрах
 			-
 				let dataNumbers = [
 					{
@@ -98,7 +98,7 @@ block content
 				]
 			.about-numbers.tile-slider(data-flickity-options='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "watchCSS": true, "lazyLoad": true }')
 				each item, i in dataNumbers
-					.about-numbers__item
+					.about-numbers__item.wow.animate__zoomIn(data-wow-duration=".5s")
 						.about-numbers__title #{item.title}
 						.about-numbers__description #{item.description}
 
