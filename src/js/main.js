@@ -116,12 +116,14 @@ const app = {
 
         this.flickitySet = new FlickitySet('[data-flickity-options]');
 
-        const wow = new WOW({
-            animateClass: 'animated',
-            offset:       50,
-            mobile:       false
-        });
-        wow.init();
+        if (typeof WOW !== 'undefined') {
+            const wow = new WOW({
+                animateClass: 'animated',
+                offset: 50,
+                mobile: false
+            });
+            wow.init();
+        }
     }
 };
 
