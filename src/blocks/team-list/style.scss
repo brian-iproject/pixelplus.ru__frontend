@@ -84,5 +84,9 @@
 			min-height: auto;
 			width: auto;
 		}
+
+		&--columns-4 {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
 	}
 }
