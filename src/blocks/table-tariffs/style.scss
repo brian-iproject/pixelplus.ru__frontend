@@ -1,0 +1,100 @@
+.tariff-table {  
+  &__row {
+    display: flex;
+  }
+  &__head &__cell {
+    font-weight: 500;
+    font-size: 20px;
+    background-color: var(--color-gray--lighten);
+  }
+  &__cell {
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--color-gray--darker);
+    padding: 14px 25px 15px 30px;
+    flex: 440px;
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    min-height: 70px;
+  }
+  &__cell:not(:first-child) {
+    text-align: center;
+    flex: 235px;
+    justify-content: center;
+  }
+  &__cell:not(:last-child) {
+    border-right: 1px solid var(--color-gray--lighten);
+  }
+  &__row:not(:last-child) {
+    border-bottom: 1px solid var(--color-gray--lighten);
+  }
+  &__cell:nth-child(3) {
+    border-right: 2px solid var(--color-primary);
+    border-left: 2px solid var(--color-primary);
+    position: relative;
+  }
+  &__cell:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 1px;
+    background-color: var(--color-primary);
+    bottom: -1px;
+    left: -2px;
+  }
+  &__cell:nth-child(3)::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 1px;
+    background-color: var(--color-primary);
+    bottom: -1px;
+    right: -2px;
+  }
+  &__head &__cell:nth-child(3) {
+    border-right: 2px solid var(--color-primary);
+    border-left: 2px solid var(--color-primary);
+    background-color: var(--color-primary);
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+  }
+  &__row:last-child &__cell:nth-child(3) {
+    border-bottom: 2px solid var(--color-primary);
+    border-radius: 0 0 5px 5px;
+  }
+  &__row:last-child &__cell:nth-child(3)::after,
+  &__row:last-child &__cell:nth-child(3)::before {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .tariff-table {
+    margin-top: 0px;
+    width: 625px;
+    padding-right: 10px;
+
+    &__cell {
+      flex: 240px;
+    }
+    &__cell:not(:first-child) {
+      flex: 125px;
+    }
+    &__head &__cell {
+      font-size: 18px;
+    }
+    &__cell {
+      line-height: 18px;
+      padding: 12px 18px 13px 20px;
+      min-height: 60px;
+    }
+    &__row:last-child &__cell {
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+    &__cell .standart-btn {
+      padding: 10px 14px 10px;
+    }
+  }
+}
