@@ -1,0 +1,30 @@
+-
+	let dataCMS = [
+		{
+			"image": "assets/1c-bitrix-logo.png",
+			"desc": "Битрикс",
+			"link": "/link/"
+		},
+		{
+			"image": "assets/wordpress-logo.png",
+			"desc": "WordPress",
+			"link": "/link/"
+		},
+		{
+			"image": "assets/tilda-logo.png",
+			"desc": "Tilda",
+			"link": "/link/"
+		},
+		{
+			"image": "assets/joomla-logo.png",
+			"desc": "Joomla",
+			"link": "/link/"
+		},
+	]
+
+.tile-cms
+	each item, i in dataCMS
+		.tile-cms__item
+			.tile-cms__inner
+				img(src=item.image)
+			a.tile-cms__link(href=item.link) #{item.desc}

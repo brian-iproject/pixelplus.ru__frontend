@@ -1,0 +1,31 @@
+-
+  let dataAwards = [
+    {
+      "imageLg": "assets/award1.png",
+      "image": "assets/awards1.jpg",
+    },
+    {
+      "imageLg": "assets/award2.png",
+      "image": "assets/awards2.jpg",
+    },
+    {
+      "imageLg": "assets/award3.png",
+      "image": "assets/awards3.jpg",
+    },
+    {
+      "imageLg": "assets/award4.png",
+      "image": "assets/awards3.jpg",
+    },		
+    {
+      "imageLg": "assets/award5.png",
+      "image": "assets/awards5.jpg",
+    },
+  ]
+
+.awards
+  .awards__items
+    each item, i in dataAwards
+      .awards__item
+        a.tile-cms__link(href=item.imageLg rel="awards" data-fancybox )
+          img(src=item.image)
+    

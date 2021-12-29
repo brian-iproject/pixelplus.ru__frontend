@@ -1,0 +1,162 @@
+.horiz-scroll
+  .tariff-table
+    .tariff-table__row.tariff-table__head
+      .tariff-table__cell В тариф включено      
+      .tariff-table__cell Старт
+      .tariff-table__cell Трафик
+      .tariff-table__cell SEO 3.0
+
+    -
+      let dataTariffs = [
+        {
+          "included": "Первичное изучение ниши, конкурентов и проекта",
+          "start": "Нет",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Мониторинг видимости конкурентов",
+          "start": "Да",
+          "traffic": "Да",
+          "seo": "Да",
+        },	
+        {
+          "included": "Мониторинг видимости и занимаемых позиций",
+          "start": "Да",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Полный технический SEO-аудит",
+          "start": "Да",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+          {
+            "included": "Составление семантического ядра",
+            "start": "Да",
+            "traffic": "Да",
+            "seo": "Да",
+        },
+        {
+          "included": "Работы по расширению семантического ядра",
+          "start": "Нет",
+          "traffic": "Да",
+          "seo": "Да",
+        },	
+        {
+          "included": "Внутренняя оптимизация: title, текстовые заголовки, meta-теги",
+          "start": "Да",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Копирайтинг",
+          "start": "Да",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Анализ панелей Яндекс Вебмастер и Google Search Console",
+          "start": "Да",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Работы с входящими ссылками",
+          "start": "Да",
+          "traffic": "Да",
+          "seo": "Да",
+        },	
+        {
+          "included": "Аудит юзабилити с привлечение целевой аудитории проекта",
+          "start": "Нет",
+          "traffic": "Нет",
+          "seo": "Да",
+        },
+        {
+          "included": "Внедрение маркетинговых рекомендаций и улучшение юзабилити",
+          "start": "Нет",
+          "traffic": "Нет",
+          "seo": "Да",
+        },
+        {
+          "included": "Развитие структуры сайта под спрос в Яндексе и Google",
+          "start": "Нет",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Маркетинговые рекомендации",
+          "start": "Нет",
+          "traffic": "Да",
+          "seo": "Да",
+        },	
+        {
+          "included": "Внедрение рекомендаций и доработок",
+          "start": "Да",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Прототипирование",
+          "start": "Нет",
+          "traffic": "Нет",
+          "seo": "Да",
+        },	
+        {
+          "included": "Анализ и управление конверсией",
+          "start": "Нет",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Улучшение представления сайта в результатах поиска",
+          "start": "Нет",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Продвинутая поисковая аналитика, отчетность, KPI",
+          "start": "Нет",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Написание и продающих и оптимизированных текстов",
+          "start": "Нет",
+          "traffic": "Нет",
+          "seo": "Да",
+        },	
+        {
+          "included": "Работа по повышению лояльности к продукту и улучшению поведенческих факторов",
+          "start": "Нет",
+          "traffic": "Нет",
+          "seo": "Да",
+        },
+        {
+          "included": "Выполнение базовых задач бизнеса (продажи, доставка, повышение NPS, ...)",
+          "start": "Нет",
+          "traffic": "Нет",
+          "seo": "Да",
+        },
+        {
+          "included": "Тестирование гипотез продвижение и корректировка SEO-стратегии",
+          "start": "Нет",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+        {
+          "included": "Еженедельная отчетность",
+          "start": "Да",
+          "traffic": "Да",
+          "seo": "Да",
+        },
+      ]
+
+    each tariff, i in dataTariffs
+      .tariff-table__row
+        .tariff-table__cell #{tariff.included}
+        .tariff-table__cell #{tariff.start} 
+        .tariff-table__cell #{tariff.traffic}
+        .tariff-table__cell #{tariff.seo}

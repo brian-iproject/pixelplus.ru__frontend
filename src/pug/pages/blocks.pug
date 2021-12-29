@@ -2,7 +2,7 @@ extends ../layout.pug
 
 block meta
   title Универсальные блоки
-  meta(name='description', content='')
+  meta(name='description' content='')
 
 block content
   include ../../blocks/main-slider/index
@@ -28,3 +28,18 @@ block content
     .page-container
       .h1 Инфографика тип #3
       include ../../blocks/infographics/type3
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      include ../../blocks/tile-cms/index
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      .h1 Инфо карточки
+      include ../../blocks/info-cards/index
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      .h1 ЦЕНЫ И НАИБОЛЕЕ ПОПУЛЯРНЫЕ ТАРИФЫ
+      include ../../blocks/table-tariffs/index
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      .h1 Сертификаты и награды
+      include ../../blocks/awards/index
