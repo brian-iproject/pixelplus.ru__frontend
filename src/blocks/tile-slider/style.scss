@@ -59,11 +59,11 @@
 			}
 		}
 
-		@media (max-width: $screen-sm - 1) {
+		@media (max-width: ($screen-sm - 1)) {
 			& {
 
 				&::after {
-					color: var(--color-gray--light);;
+					color: var(--color-gray--light);
 					content: '\2022\0020\2022\0020\2022\0020\2022';
 				}
 			}

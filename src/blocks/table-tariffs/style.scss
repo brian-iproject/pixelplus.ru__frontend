@@ -69,7 +69,7 @@
   }
 }
 
-@media (max-width: 1023px) {
+@media screen and (max-width: ($screen-sm - 1)) {
   .tariff-table {
     margin-top: 0px;
     width: 625px;
@@ -96,5 +96,14 @@
     &__cell .standart-btn {
       padding: 10px 14px 10px;
     }
+  }
+  .horiz-scroll {
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDk1LjcgMjAwLjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQ5NS43IDIwMC4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj48Zz48cGF0aCBmaWxsPSIjNzc3Nzc3IiBkPSJNMjMsMTA3LjFjMS4yLDEuNSwyLjEsMi44LDMuMSw0LjFjMTkuOCwyNC40LDM5LjcsNDguOSw1OS42LDczLjNjMC42LDAuOCwxLjMsMS41LDEuOSwyLjNjMy4zLDQuNCwzLjEsOS4xLTAuNiwxMS45Yy0zLjUsMi42LTguMSwxLjgtMTEuNC0yLjJjLTExLTEzLjQtMjEuOS0yNi45LTMyLjgtNDAuM2MtMTMtMTYtMjYuMS0zMi4xLTM5LjEtNDguMWMtNC44LTUuOS00LjctOC4zLTAuMS0xNEMyNy4yLDY1LjMsNTAuOCwzNi40LDc0LjQsNy41YzAuNC0wLjUsMC44LTEsMS4zLTEuNWMzLjYtNC4xLDcuNy00LjcsMTEuNC0xLjhjMy41LDIuOCwzLjgsNy41LDAuNSwxMS41Yy03LjMsOS4xLTE0LjcsMTguMS0yMi4xLDI3LjFDNTMuNiw1Ny40LDQxLjcsNzIsMjkuOCw4Ni42Yy0wLjksMS4xLTEuNywyLjMtMyw0LjJjMTQ4LjIsMCwyOTUuNiwwLDQ0My45LDBjLTEuMy0xLjgtMi40LTMuMy0zLjUtNC43Yy0xOS0yMy40LTM4LTQ2LjgtNTcuMS03MC4yYy0wLjUtMC42LTEuMS0xLjMtMS42LTEuOWMtMy43LTQuNy0zLjYtOS40LDAuMi0xMi4zYzMuNi0yLjgsOC4yLTEuOSwxMS43LDIuNGM3LjcsOS40LDE1LjQsMTguOCwyMy4xLDI4LjNDNDU5LjcsNTIuMiw0NzUuOSw3Mi4xLDQ5Miw5MmM0LjksNiw0LjgsOC4zLTAuMSwxNC40Yy0yMy41LDI4LjgtNDcuMSw1Ny41LTcwLjYsODYuM2MtMC44LDEtMS42LDIuMS0yLjYsM2MtMy4yLDIuOS03LjQsMy0xMC40LDAuMWMtMy4xLTIuOS0zLjQtNi40LTEuMy0xMGMxLjEtMS44LDIuNi0zLjQsNC01LjFjMTguNi0yMi43LDM3LjItNDUuNCw1NS43LTY4LjFjMS4zLTEuNSwyLjUtMy4xLDQuNC01LjZDMzIxLjQsMTA3LjEsMTcyLjUsMTA3LjEsMjMsMTA3LjF6Ii8+PC9nPjwvc3ZnPg==') 50% 12px no-repeat, #f5f5f5;
+    background-size: auto 20px;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 20%);
+    margin: 24px -10px 0 -10px;
+    overflow: auto;
+    overflow-y: hidden;
+    padding: 45px 10px 10px 10px;
   }
 }

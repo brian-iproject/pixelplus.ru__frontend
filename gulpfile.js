@@ -119,6 +119,7 @@ function compileSass() {
         debug({title: 'Compiles '}),
         replace(/..\/..\/blocks\/([a-zA-Z0-9_-]+)\/images\/([a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/blocks/$1/$2.$3'),
         debug({title: 'Replaces path to image '}),
+        replace(/^[ \t]*\@charset[ \t]+\"UTF\-8\"[ \t]*;/gmi, '@charset "windows-1251";'),
         /** TODO: autoprefixer сыпет ошибки в конечный css - надо разобрать их и вернуть */
         //debug({title: 'Add browser prefix '}),
         //autoprefixer(config.autoprefixer),

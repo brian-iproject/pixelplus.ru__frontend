@@ -1,24 +1,37 @@
 .tile-cms {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  @media (min-width: 576px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
   &__item {
-    width: 23%;
-    &:hover img {
-      filter: grayscale(0) contrast(1);
+    @media (min-width: 576px) {
+      &:hover img {
+        filter: grayscale(0) contrast(1);
+      }
     }
+    @media (min-width: 992px) {  
+      width: 23%;  
+    }
+    @media (min-width: 576px) {
+      width: 50%;
+    }
+    width: 100%;  
   }
   &__inner {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 65px;
+    margin-bottom: 20px;
     img {
       max-width: 80%;
-      max-height: 65px;
-      margin-bottom: 20px;
-      filter: grayscale(1) contrast(0.5);
-      transition: filter 0.25s ease 0s;
+      max-height: 65px;     
+      @media (min-width: 576px) {
+        filter: grayscale(1) contrast(0.5);
+        transition: filter 0.25s ease 0s;
+      }
     }
   }
   &__link {
