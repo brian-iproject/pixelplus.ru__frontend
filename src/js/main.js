@@ -105,6 +105,7 @@ const app = {
 
         ToggleBlock.init('.phones');
         ToggleBlock.init('.header-search');
+        ToggleBlock.init('.faq');
 
         Tabs.init('.address__cities', '.address__address');
         Tabs.init('.phones__regions ul', '.phones__regions-inner');

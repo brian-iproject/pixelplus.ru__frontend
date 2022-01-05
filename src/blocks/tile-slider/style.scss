@@ -15,27 +15,6 @@
 		transition: var(--transition-time);
 	}
 
-	&--place-shadow {
-
-		&.flickity-enabled {
-			padding-bottom: 0;
-
-			& .flickity-viewport {
-				box-sizing: content-box;
-				margin: 0 -15px;
-				padding: 0 0 calc(var(--grid-gutter-y) * 2) 0;
-			}
-
-			& .flickity-slider {
-				box-sizing: border-box;
-				height: calc(100% - var(--grid-gutter-y) * 2);
-				margin-left: 15px;
-				margin-right: 15px;
-				width: calc(100% - 30px);
-			}
-		}
-	}
-
 	& .flickity-page-dots {
 		align-items: center;
 		bottom: 0;
@@ -96,6 +75,27 @@
 	@media (min-width: $screen-lg) {
 		&::after {
 			content: '';
+		}
+
+		&--place-shadow {
+
+			&.flickity-enabled {
+				padding-bottom: 0;
+
+				& .flickity-viewport {
+					box-sizing: content-box;
+					margin: 0 -15px;
+					padding: 0 0 calc(var(--grid-gutter-y) * 2) 0;
+				}
+
+				& .flickity-slider {
+					box-sizing: border-box;
+					height: calc(100% - var(--grid-gutter-y) * 2);
+					margin-left: 15px;
+					margin-right: 15px;
+					width: calc(100% - 30px);
+				}
+			}
 		}
 	}
 }

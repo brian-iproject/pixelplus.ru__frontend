@@ -16,10 +16,14 @@
 		background-color: var(--color-gray--lighten);
 	}
 
+	&--gray-darken {
+		background-color: var(--color-gray--darken);
+		color: var(--color-white);
+	}
+
 	&--city {
 		background-image: url(../../blocks/wide-block/images/city.jpg);
 		color: var(--color-white);
-
 	}
 
 	&--meeting {

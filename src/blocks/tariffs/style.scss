@@ -1,0 +1,128 @@
+.tariffs {
+
+	$block-name: &; // #{$block-name}__element
+
+	&__item {
+		border-radius: .4375em;
+		position: relative;
+		text-align: center;
+		background: var(--color-white);
+		margin-right: var(--grid-gutter-x);
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		&--favorite {
+			z-index: 2;
+		}
+	}
+
+	&__title {
+		background: var(--color-gray--dark);
+		border-radius: .4375em .4375em 0 0;
+		padding: 1em;
+		color: var(--color-white);
+		margin: 0;
+		position: relative;
+
+		@at-root #{$block-name}__item--favorite & {
+			background: var(--color-primary);
+		}
+
+		& svg {
+			vertical-align: middle;
+			margin-right: .5em;
+			margin-top: -.2em;
+		}
+	}
+
+	&__info {
+		padding: 2.5em 1.5em 1.5em 1.5em;
+		border: .25em solid transparent;
+		border-top: none;
+		flex-grow: 1;
+		border-radius:  0 0 .4375em .4375em;
+		line-height: 1.4;
+
+		@at-root #{$block-name}__item--favorite & {
+			border-color: var(--color-primary);
+			padding-top: 1.5em;
+		}
+	}
+
+	&__label {
+		font-weight: bold;
+		font-size: var(--font-size--large);
+		color: var(--color-primary);
+		margin-bottom: .72em;
+		white-space: nowrap;
+	}
+
+	&__intro {
+		color: var(--color-gray--dark);
+	}
+
+	&__price {
+		color: var(--color-primary);
+	}
+
+	&__description {
+		font-size: var(--font-size--medium);
+	}
+
+	& ul.list-checked--figure {
+		display: inline-flex;
+		font-size: var(--font-size--medium);
+		margin-top: 0;
+	}
+
+	@media (min-width: $screen-md) {
+		&__item {
+			width: calc(50% - var(--grid-gutter-x));
+		}
+	}
+
+	@media (min-width: $screen-lg) {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+
+		&__item {
+			box-shadow: var(--shadow);
+			width: auto;
+			margin-right: 0;
+
+			&:not(&--favorite) {
+				margin-top: 1.5em;
+				margin-bottom: 1.5em;
+			}
+		}
+
+		&__title {
+			@at-root #{$block-name}__item--favorite & {
+				margin: 0 -.625em;
+			}
+
+			@at-root #{$block-name}__item--favorite &::before {
+				content: '';
+				position: absolute;
+				top: 100%;
+				left: 0;
+				border-style: solid;
+				border-width: 1.5em 0 0 .625em;
+				border-color: var(--color-primary--dark) var(--color-primary--dark) transparent transparent;
+				z-index: 2;
+			}
+
+			@at-root #{$block-name}__item--favorite &::after {
+				content: '';
+				position: absolute;
+				top: 100%;
+				right: 0;
+				border-style: solid;
+				border-width: 1.5em .625em 0 0;
+				border-color: var(--color-primary--dark) transparent transparent var(--color-primary--dark);
+				z-index: 2;
+			}
+		}
+	}
+}

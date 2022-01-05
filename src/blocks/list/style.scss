@@ -11,6 +11,7 @@ TODO: сделать сброс списков миксином
 	list-style: none;
 	margin: var(--typo-margin-vertical) 0;
 	padding: 0;
+	text-align: left;
 
 	& li {
 		padding: 0 0 0 1.5em;
@@ -57,9 +58,13 @@ ol.ol-numbers {
 }
 
 ul.list-checked {
+	display: flex;
+	flex-direction: column;
+	line-height: var(--line-height);
 	list-style: none;
 	margin: var(--typo-margin-vertical) 0;
 	padding: 0;
+	text-align: left;
 
 	& li {
 		padding: 0 0 0 1.8em;
