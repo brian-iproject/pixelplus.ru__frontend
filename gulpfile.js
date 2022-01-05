@@ -26,6 +26,7 @@ import debug            from 'gulp-debug'
 import multipipe        from 'multipipe'
 import imagemin         from 'gulp-imagemin'
 import notify           from 'gulp-notify'
+import convertEncoding  from 'gulp-convert-encoding'
 
 
 const config = {
@@ -129,6 +130,30 @@ function compileSass() {
     ).on('error', notify.onError("<%= error.title %>: <%= error.message %>"));
 }
 
+/**
+ * Функция генерирует бандл в кодировке windows-1251
+ * для загрузки на бэкенд проекта. Больше не для чего.
+ * Когда проект будет в utf-8 можно убить функцию
+ */
+function compileSassWin1251() {
+    return multipipe(
+        src('src/scss/styles.scss'),
+        sass(),
+        debug({title: 'Compiles '}),
+        replace(/..\/..\/blocks\/([a-zA-Z0-9_-]+)\/images\/([a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/blocks/$1/$2.$3'),
+        debug({title: 'Replaces path to image '}),
+        replace('@charset "UTF-8";', ''),
+        /** TODO: autoprefixer сыпет ошибки в конечный css - надо разобрать их и вернуть */
+        //debug({title: 'Add browser prefix '}),
+        //autoprefixer(config.autoprefixer),
+        cleancss( {...config.cleancss, format: 'beautify'} ),
+        rename({ basename: 'main-1251' }),
+        debug({title: 'Renames '}),
+        convertEncoding({to: 'windows-1251'}),
+        dest('build/css')
+    ).on('error', notify.onError("<%= error.title %>: <%= error.message %>"));
+}
+
 function compilePug() {
     return multipipe(
         src('src/pug/pages/*.pug'),
@@ -145,6 +170,22 @@ function compileJs() {
     return multipipe(
         src('src/js/main.js'),
         webpackStream(config.webpack),
+        dest('build/js'),
+    ).on('error', notify.onError());
+}
+
+/**
+ * Функция генерирует бандл в кодировке windows-1251
+ * для загрузки на бэкенд проекта. Больше не для чего.
+ * Когда проект будет в utf-8 можно убить функцию
+ */
+function compileJsWin1251() {
+    return multipipe(
+        src('src/js/main.js'),
+        webpackStream(config.webpack),
+        rename({ basename: 'main-1251' }),
+        debug({title: 'Renames '}),
+        convertEncoding({to: 'windows-1251'}),
         dest('build/js'),
     ).on('error', notify.onError());
 }
@@ -187,8 +228,8 @@ function serve() {
 
 function startWatch() {
     watch('src/**/*.pug', compilePug)
-    watch('src/**/*.{sass,scss}', compileSass)
-    watch('src/**/*.js', compileJs)
+    watch('src/**/*.{sass,scss}', parallel(compileSass, compileSassWin1251))
+    watch('src/**/*.js', parallel(compileJs, compileJsWin1251))
 
     watch('src/assets/**/*', copyAssets);
     watch('src/blocks/**/images/*', copyImagesBlocks);
@@ -204,7 +245,7 @@ export { clearBuild };
 export { copyAssets, copyImagesBlocks, copyImages, copyFonts, copyFavicon }
 
 // Compiles
-export { compilePug, compileSass, compileJs, compileLibsSass, compileLibsJs }
+export { compilePug, compileSass, compileSassWin1251, compileJs, compileJsWin1251, compileLibsSass, compileLibsJs }
 
 export let compileLibs = parallel(compileLibsSass, compileLibsJs);
 
@@ -212,10 +253,10 @@ export let compileLibs = parallel(compileLibsSass, compileLibsJs);
 export let build = series(
     clearBuild,
     parallel(copyAssets, copyImagesBlocks, copyImages, copyFonts, copyFavicon),
-    parallel(compileSass, compilePug, compileJs, compileLibs)
+    parallel(compileSass, compileSassWin1251, compilePug, compileJs, compileJsWin1251, compileLibs)
 );
 
 export default series(
-    parallel(compileSass, compilePug, compileJs, compileLibs),
+    parallel(compileSass, compileSassWin1251, compilePug, compileJs, compileJsWin1251, compileLibs),
     parallel(startWatch, serve)
 );

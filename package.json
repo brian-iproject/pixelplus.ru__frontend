@@ -29,6 +29,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
+    "gulp-convert-encoding": "^2.1.0",
     "gulp-debug": "^4.0.0",
     "gulp-imagemin": "^7.1.0",
     "gulp-notify": "^4.0.0",
