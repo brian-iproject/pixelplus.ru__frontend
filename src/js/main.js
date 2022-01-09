@@ -119,7 +119,7 @@ const app = {
 
         if (typeof WOW !== 'undefined') {
             const wow = new WOW({
-                animateClass: 'animated',
+                animateClass: 'animate__animated',
                 offset: 50,
                 mobile: false
             });

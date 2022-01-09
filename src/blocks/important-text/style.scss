@@ -2,12 +2,20 @@
 
 	$block-name: &; // #{$block-name}__element
 
+	background: var(--color-white);
 	border-radius: 7px;
 	box-shadow: var(--shadow--light);
 	line-height: 1.667;
 	margin: 2.5em 0;
 	padding: 30px 50px 40px 50px;
 
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 
 	&--large {
 		font-size: var(--font-size--large);

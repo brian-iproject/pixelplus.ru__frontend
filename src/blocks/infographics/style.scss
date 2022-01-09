@@ -4,6 +4,10 @@
 
 	line-height: 1.4;
 
+	&:not(:last-child) {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+
 	&__item {
 	}
 
@@ -46,7 +50,7 @@
 		font-weight: 500;
 	}
 
-	&__description {
+	&__title + &__description {
 		margin-top: .5em;
 	}
 
