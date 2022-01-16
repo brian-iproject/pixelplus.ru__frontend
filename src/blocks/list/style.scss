@@ -13,7 +13,7 @@ TODO: сделать сброс списков миксином
 	padding: 0;
 	text-align: left;
 
-	& li {
+	& > li {
 		padding: 0 0 0 1.5em;
 		position: relative;
 
@@ -32,7 +32,7 @@ TODO: сделать сброс списков миксином
 ul.list,
 ul.ul-marker {
 
-	& li {
+	& > li {
 
 		&::before {
 			color: inherit;
@@ -48,7 +48,7 @@ ol.list,
 ol.ol-numbers {
 	counter-reset: item;
 
-	& li {
+	& > li {
 
 		&::before {
 			content: counters(item,".") ". ";
@@ -66,7 +66,7 @@ ul.list-checked {
 	padding: 0;
 	text-align: left;
 
-	& li {
+	& > li {
 		padding: 0 0 0 1.8em;
 		position: relative;
 

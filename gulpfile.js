@@ -193,7 +193,7 @@ function compileJsWin1251() {
 function compileLibsJs() {
     return multipipe(
         src([
-            'node_modules/@fancyapps/ui/dist/fancybox.umd.js',
+            //'node_modules/@fancyapps/ui/dist/fancybox.umd.js',
             'node_modules/flickity/dist/flickity.pkgd.min.js',
             'node_modules/wow.js/dist/wow.min.js'
         ]),
@@ -207,7 +207,7 @@ function compileLibsSass() {
         src([
             'node_modules/normalize.css/normalize.css',
             'node_modules/animate.css/animate.css',
-            'node_modules/@fancyapps/ui/dist/fancybox.css',
+            //'node_modules/@fancyapps/ui/dist/fancybox.css',
             'node_modules/flickity/dist/flickity.css'
         ]),
         sass(),

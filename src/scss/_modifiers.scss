@@ -7,8 +7,10 @@
 .-fw-n { font-weight: normal; }
 
 .-ta-l { text-align: left; }
-.-ta-c { text-align: center; }
+.-ta-c { text-align: center !important; }
 .-ta-r { text-align: right; }
+
+.-justify-center { justify-content: center }
 
 .-no-margin { margin: 0; }
 .-no-padding { padding: 0; }

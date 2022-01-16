@@ -110,6 +110,30 @@
 		}
 	}
 
+	&--sevalnev-big {
+		background-color: var(--color-black);
+		background-repeat: no-repeat;
+		background-size: auto;
+		color: var(--color-white);
+
+		& .page-container,
+		& .page-container__inner {
+			height: 100%;
+			position: relative;
+			margin-top: -9.5em;
+		}
+
+		@media (min-width: $screen-md) {
+			background-image: url(../../blocks/wide-block/images/sevalnev-big.png);
+			background-position: calc(50% - 396px) 100%;
+			min-height: calc(950px + 6.5em);
+		}
+	}
+
+
+
+
+
 	@media (min-width: $screen-md) {
 		padding-bottom: 6.5em;
 		padding-top: 6.5em;
@@ -119,7 +143,7 @@
 		& h1,
 		& .h1,
 		& .subtitle {
-			max-width: 75%;
+			max-width: 80%;
 		}
 
 		& [class*=block-width--] h1:not([class*=block-width--]),

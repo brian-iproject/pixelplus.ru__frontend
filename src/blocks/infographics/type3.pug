@@ -37,8 +37,13 @@
 		}
 	]
 .tile-slider.infographics.infographics--type3(data-flickity-options='{ "cellAlign": "left", "prevNextButtons": true, "watchCSS": true, "lazyLoad": true }')
-	each item, i in dataInfographicsType3
+	each item, i in [dataInfographicsType3[0], dataInfographicsType3[1], dataInfographicsType3[2]]
 		.infographics__item
 			.infographics__icon.infographics__icon--shadow !{item.icon}
 			.infographics__title #{item.title}
+			.infographics__description #{item.description}
+
+	each item, i in [dataInfographicsType3[3], dataInfographicsType3[4], dataInfographicsType3[5]]
+		.infographics__item
+			.infographics__icon.infographics__icon--shadow !{item.icon}
 			.infographics__description #{item.description}

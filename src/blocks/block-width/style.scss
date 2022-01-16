@@ -1,5 +1,4 @@
 .block-width {
-
 	$block-name: &; // #{$block-name}__element
 
 	width: auto;
@@ -7,56 +6,104 @@
 	@media (min-width: $screen-sm) {
 		&--sm-75 {
 			max-width: 75%;
+
+			&#{$block-name}--right {
+				margin-left: 25%;
+			}
 		}
 
 		&--sm-50 {
-			max-width: 75%;
+			max-width: 50%;
+
+			&#{$block-name}--right {
+				margin-left: 50%;
+			}
 		}
 
 		&--sm-25 {
 			max-width: 25%;
+
+			&#{$block-name}--right {
+				margin-left: 75%;
+			}
 		}
 	}
 
 	@media (min-width: $screen-md) {
 		&--md-75 {
 			max-width: 75%;
+
+			&#{$block-name}--right {
+				margin-left: 25%;
+			}
 		}
 
 		&--md-50 {
-			max-width: 75%;
+			max-width: 50%;
+
+			&#{$block-name}--right {
+				margin-left: 50%;
+			}
 		}
 
 		&--md-25 {
 			max-width: 25%;
+
+			&#{$block-name}--right {
+				margin-left: 75%;
+			}
 		}
 	}
 
 	@media (min-width: $screen-lg) {
 		&--lg-75 {
 			max-width: 75%;
+
+			&#{$block-name}--right {
+				margin-left: 25%;
+			}
 		}
 
 		&--lg-50 {
-			max-width: 75%;
+			max-width: 50%;
+
+			&#{$block-name}--right {
+				margin-left: 50%;
+			}
 		}
 
 		&--lg-25 {
 			max-width: 25%;
+
+			&#{$block-name}--right {
+				margin-left: 75%;
+			}
 		}
 	}
 
 	@media (min-width: $screen-xl) {
 		&--xl-75 {
 			max-width: 75%;
+
+			&#{$block-name}--right {
+				margin-left: 25%;
+			}
 		}
 
 		&--xl-50 {
-			max-width: 75%;
+			max-width: 50%;
+
+			&#{$block-name}--right {
+				margin-left: 50%;
+			}
 		}
 
 		&--xl-25 {
 			max-width: 25%;
+
+			&#{$block-name}--right {
+				margin-left: 75%;
+			}
 		}
 	}
 }

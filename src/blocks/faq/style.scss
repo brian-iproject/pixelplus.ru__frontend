@@ -31,6 +31,9 @@
 		 & svg {
 			display: inline-block;
 			margin-right: .5em;
+			max-height: 1em;
+			max-width: 1em;
+			vertical-align: text-top;
 		}
 
 		&:after {
@@ -39,6 +42,7 @@
 			content: '';
 			display: block;
 			height: .7em;
+			opacity: .4;
 			position: absolute;
 			right: 1.5em;
 			top: .3em;
@@ -46,7 +50,6 @@
 			transform-origin: 25% 65%;
 			transition: var(--animate-duration);
 			width: .7em;
-			opacity: .4;
 		}
 
 		&.-is-active:after {

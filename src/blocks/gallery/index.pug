@@ -1,0 +1,62 @@
+-
+	var galley = [
+		{
+			'src': '../../assets/gallery-01.jpg',
+			'width': '724',
+			'height': '338',
+			'animationDelay': 0
+		},
+		{
+			'src': '../../assets/gallery-02.jpg',
+			'width': '724',
+			'height': '338',
+			'animationDelay': 0.5
+		},
+		{
+			'src': '../../assets/gallery-03.jpg',
+			'width': '724',
+			'height': '337',
+			'animationDelay': 1
+		},
+		{
+			'src': '../../assets/gallery-04.jpg',
+			'width': '724',
+			'height': '337',
+			'animationDelay': 0
+		},
+		{
+			'src': '../../assets/gallery-05.jpg',
+			'width': '724',
+			'height': '337',
+			'animationDelay': 0.5
+		},
+		{
+			'src': '../../assets/gallery-06.jpg',
+			'width': '724',
+			'height': '337',
+			'animationDelay': 1
+		},
+		{
+			'src': '../../assets/gallery-07.jpg',
+			'width': '724',
+			'height': '336',
+			'animationDelay': 0
+		},
+		{
+			'src': '../../assets/gallery-07.jpg',
+			'width': '724',
+			'height': '336',
+			'animationDelay': 0.5
+		},
+		{
+			'src': '../../assets/gallery-07.jpg',
+			'width': '724',
+			'height': '336',
+			'animationDelay': 1
+		}
+	]
+.tile-slider.gallery(data-flickity-options='{ "cellAlign": "left", "prevNextButtons": true, "watchCSS": true, "lazyLoad": true }')
+	each item, i in galley
+		.gallery__item.wow.animate__zoomIn(data-wow-duration=".5s" data-wow-delay=item.animationDelay+"s")
+			a.gallery__link(href=item.src data-fancybox)
+				img(src=item.src width=item.width height=item.height alt="")
