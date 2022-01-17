@@ -16,6 +16,7 @@
 	&__container {
 		max-width: 100%;
 		overflow: auto;
+		padding: 6px 0;
 	}
 
 	@media (max-width: $screen-md - 1) {
@@ -70,6 +71,17 @@
 			background: var(--color-primary);
 			color: var(--color-white);
 			border-color: var(--color-primary);
+
+			&::before {
+				content: "";
+				height: 6px;
+				background: var(--color-primary);
+				border-radius: 6px 6px 0 0;
+				position: absolute;
+				top: -6px;
+				left: 0;
+				right: -2px;
+			}
 		}
 
 		& thead th {
