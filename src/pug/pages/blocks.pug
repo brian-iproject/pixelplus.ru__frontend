@@ -30,6 +30,10 @@ block content
       include ../../blocks/infographics/type3
   .wide-block
     .page-container
+      .h1 Инфографика тип #4
+      include ../../blocks/infographics/type4
+  .wide-block
+    .page-container
       .h1 Наша команда
       -
         let dataTeams = [
@@ -81,12 +85,22 @@ block content
       .h1 Галереи
       include ../../blocks/gallery/index
 
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      .h1 Одиночное изображение
+      include ../../blocks/gallery/index
+
   .wide-block
     .page-container
       .h1 Таблица
       include ../../blocks/table/index
       .h1 Таблица с равными колонками
       include ../../blocks/table/layout-fixed
+
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      .h1 Этапы работ
+      include ../../blocks/work-stages/index
 
   .wide-block.wide-block--sevalnev-big
     .page-container

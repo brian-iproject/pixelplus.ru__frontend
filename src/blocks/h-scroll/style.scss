@@ -1,0 +1,41 @@
+.h-scroll {
+	$block-name: &; // #{$block-name}__element
+
+	position: relative;
+
+	&:not(:first-child) {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+
+	&__container {
+		max-width: 100%;
+		overflow: auto;
+		padding: 6px 0;
+	}
+
+	@media (max-width: $screen-md - 1) {
+		&::before,
+		&::after {
+			color: var(--color-gray--light);
+			content: '🡐 Используйте горизонтальную прокрутку 🡒';
+			display: block;
+			font-size: var(--font-size--small);
+			margin: var(--typo-margin-vertical) 0;
+			text-align: center;
+		}
+
+		&__container::after {
+			box-shadow: 0 0 6.25em 2em var(--color-white);
+			content: '';
+			display: block;
+			height: 100%;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+}

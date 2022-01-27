@@ -143,4 +143,9 @@
 			flex-grow: 1;
 		}
 	}
+
+	&--center {
+		justify-items: center;
+		justify-content: center;
+	}
 }

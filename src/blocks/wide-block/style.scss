@@ -120,13 +120,17 @@
 		& .page-container__inner {
 			height: 100%;
 			position: relative;
-			margin-top: -9.5em;
 		}
 
 		@media (min-width: $screen-md) {
 			background-image: url(../../blocks/wide-block/images/sevalnev-big.png);
 			background-position: calc(50% - 396px) 100%;
 			min-height: calc(950px + 6.5em);
+
+			& .page-container,
+			& .page-container__inner {
+				margin-top: -9.5em;
+			}
 		}
 	}
 

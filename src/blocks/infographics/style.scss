@@ -98,17 +98,17 @@
 		}
 
 		@media (min-width: $screen-lg) {
-			--x-gap: calc(var(--grid-gutter-x) * 5.5);
 			display: flex;
 			flex-wrap: wrap;
+			--x-gap: calc(var(--grid-gutter-x) * 5.5);
 			gap: calc(var(--grid-gutter-y) * 3.5) var(--x-gap);
 
 			& #{$block-name}__item {
-				margin: 0;
-				min-height: unset;
 				flex: 1 1 calc(50% - var(--x-gap) / 2);
-				width: unset;
+				margin: 0;
 				max-width: calc(50% - var(--x-gap) / 2);
+				min-height: unset;
+				width: unset;
 			}
 		}
 	}
@@ -146,9 +146,9 @@
 		}
 
 		@media (min-width: $screen-lg) {
-			--x-gap: calc(var(--grid-gutter-x) * 5.5);
 			display: flex;
 			flex-wrap: wrap;
+			--x-gap: calc(var(--grid-gutter-x) * 5.5);
 			gap: calc(var(--grid-gutter-y) * 3.5) var(--x-gap);
 
 			& #{$block-name}__item {
@@ -159,6 +159,77 @@
 				width: unset;
 			}
 		}
+	}
+
+	&--type4 {
+		counter-reset: item;
+
+		& #{$block-name}__item {
+			background: var(--color-gray--lighter);
+			display: grid;
+			gap: calc(var(--grid-gutter-x) / 2) calc(var(--grid-gutter-x) / 2);
+			grid-template-areas:  "icon title"
+	                          "description description";
+			grid-template-columns: minmax(60px, 70px) auto;
+			grid-template-rows: minmax(0, max-content) auto;
+
+			margin-right: var(--grid-gutter-x);
+			min-height: 100%;
+			padding: 1.5em;
+			position: relative;
+			width: 100%;
+
+			&::after {
+				color: var(--color-gray--light);
+				content: "0"counter(item);
+				counter-increment: item;
+				position: absolute;
+				right: .5em;
+				top: .5em;
+			}
+
+			@media (min-width: $screen-sm) {
+				margin-right: var(--grid-gutter-x);
+				width: calc(50% - var(--grid-gutter-x) / 2);
+			}
+		}
+
+		& #{$block-name}__icon {
+			grid-area: icon;
+			margin: 0;
+
+			& svg {
+				height: auto;
+				max-width: 50px;
+			}
+		}
+
+		& #{$block-name}__title {
+			align-items: center;
+			display: flex;
+			grid-area: title;
+		}
+
+		& #{$block-name}__description {
+			color: var(--color-gray--dark);
+			grid-area: description;
+		}
+
+		@media (min-width: $screen-lg) {
+			display: flex;
+			flex-wrap: wrap;
+			--x-gap: calc(var(--grid-gutter-x) * 2);
+			gap: var(--x-gap);
+
+			& #{$block-name}__item {
+				flex: 1 1 calc(25% - var(--x-gap) * 3 / 4);
+				margin: 0;
+				max-width: calc(25% - var(--x-gap) * 3 / 4);
+				min-height: unset;
+				width: unset;
+			}
+		}
+
 	}
 
 	@media (min-width: $screen-xl) {

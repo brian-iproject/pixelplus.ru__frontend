@@ -9,9 +9,17 @@ TODO: сделать сброс списков миксином
 	flex-direction: column;
 	line-height: var(--line-height);
 	list-style: none;
-	margin: var(--typo-margin-vertical) 0;
+	margin: 0;
 	padding: 0;
 	text-align: left;
+
+	&:not(:first-child) {
+		margin-top: var(--typo-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--typo-margin-vertical);
+	}
 
 	& > li {
 		padding: 0 0 0 1.5em;

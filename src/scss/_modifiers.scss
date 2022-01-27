@@ -10,6 +10,13 @@
 .-ta-c { text-align: center !important; }
 .-ta-r { text-align: right; }
 
+.-fs-tiny { font-size: var(--font-size--tiny) }
+.-fs-small { font-size: var(--font-size--small) }
+.-fs-medium { font-size: var(--font-size--medium) }
+.-fs-normal { font-size: var(--font-size) }
+.-fs-large { font-size: var(--font-size--large) }
+.-fs-huge { font-size: var(--font-size--huge) }
+
 .-justify-center { justify-content: center }
 
 .-no-margin { margin: 0; }

@@ -24,7 +24,7 @@
 		box-shadow: none;
 	}
 
-	& svg {
+	& > svg {
 		float: left;
 		margin-right: var(--grid-gutter-x);
 		fill: var(--color-primary);

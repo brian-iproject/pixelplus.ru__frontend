@@ -143,10 +143,12 @@ function compileSassWin1251() {
         replace(/..\/..\/blocks\/([a-zA-Z0-9_-]+)\/images\/([a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/blocks/$1/$2.$3'),
         debug({title: 'Replaces path to image '}),
         replace('@charset "UTF-8";', ''),
+        replace('🡐 ', '\\1F850\\0020'),
+        replace(' 🡒', '\\0020\\1F852'),
         /** TODO: autoprefixer сыпет ошибки в конечный css - надо разобрать их и вернуть */
         //debug({title: 'Add browser prefix '}),
         //autoprefixer(config.autoprefixer),
-        cleancss( {...config.cleancss, format: 'beautify'} ),
+        //cleancss( {...config.cleancss, format: 'beautify'} ),
         rename({ basename: 'main-1251' }),
         debug({title: 'Renames '}),
         convertEncoding({to: 'windows-1251'}),

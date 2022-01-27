@@ -24,6 +24,10 @@
 		color: var(--color-white);
 		margin: 0;
 		position: relative;
+		font-size: var(--font-size-h3);
+		font-weight: 500;
+		line-height: 1.2;
+
 
 		@at-root #{$block-name}__item--favorite & {
 			background: var(--color-primary);
@@ -64,6 +68,11 @@
 
 	&__price {
 		color: var(--color-primary);
+		font-size: var(--font-size-h2);
+		font-weight: 500;
+		line-height: 1.2;
+		margin: 1em 0 .75em 0;
+		padding: 0;
 	}
 
 	&__description {
