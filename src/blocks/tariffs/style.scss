@@ -1,6 +1,13 @@
 .tariffs {
-
 	$block-name: &; // #{$block-name}__element
+
+	&:not(:first-child) {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
 
 	&__item {
 		border-radius: .4375em;

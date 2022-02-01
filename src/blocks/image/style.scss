@@ -1,5 +1,4 @@
 .image {
-
 	$block-name: &; // #{$block-name}__element
 
 	&:not(:first-child) {
@@ -10,11 +9,13 @@
 		margin-bottom: var(--blocks-margin-vertical);
 	}
 
-	& img {
-		display: block;
-		border: 1px solid var(--color-gray--lighten);
-		max-width: 768px;
-		margin: 0 auto;
+	@media (min-width: $screen-md) {
+		& img {
+			display: block;
+			border: 1px solid var(--color-gray--lighten);
+			max-width: 768px;
+			margin: 0 auto;
+		}
 	}
 
 	&__link {

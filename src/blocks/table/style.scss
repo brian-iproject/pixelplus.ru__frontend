@@ -101,4 +101,8 @@
 	@media (max-width: $screen-md - 1) {
 		table-layout: auto;
 	}
+
+	&--no-fixed {
+		table-layout: auto;
+	}
 }
