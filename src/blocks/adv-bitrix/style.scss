@@ -1,0 +1,43 @@
+.awards {
+  @media (min-width: $screen-lg) {
+    &-block {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-item {
+      width: 210px;
+      padding: 46px 12px 14px;
+      background-color: #fff;
+      border-radius: 7px;
+      position: relative;
+      svg {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+      }
+      &__picture {
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 28px;
+        img {
+          max-width: 100%;
+        }
+      }
+      &__text {    
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 26px;
+        color: #202020;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      &__date {
+        font-size: 18px;
+        color: #999;
+        text-align: center;
+      }
+    }
+  }
+}

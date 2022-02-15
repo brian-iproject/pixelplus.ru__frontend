@@ -1,5 +1,5 @@
 .awards {
-  @media (min-width: 576px) {
+  @media (min-width: $screen-lg) {
     &__items {
       display: flex;
       justify-content: flex-start;

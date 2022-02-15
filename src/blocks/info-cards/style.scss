@@ -78,6 +78,24 @@
   }
 }
 
+@media screen and (max-width: ($screen-lg - 1)) {
+  .cards {
+    display: block;
+    margin: 32px 0 0;
+  }
+  .card-item {
+    margin: 0 10px;
+    width: calc(50% - 16px);
+    padding: 32px 23px 30px 32px;
+    &__title {
+      margin-bottom: 16px;
+    }
+    &__img {
+      margin-bottom: 16px;
+    }
+  }
+}
+
 @media screen and (max-width: ($screen-sm - 1)) {
   .cards {
     display: block;
