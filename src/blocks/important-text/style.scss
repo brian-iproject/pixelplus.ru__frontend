@@ -6,6 +6,7 @@
 	border-radius: 7px;
 	box-shadow: var(--shadow--light);
 	padding: 1.875em 3.125em 2.5em 3.125em;
+	overflow: hidden; // Сброс float при наличии иконки
 
 	&:not(:first-child) {
 		margin-top: var(--blocks-margin-vertical);

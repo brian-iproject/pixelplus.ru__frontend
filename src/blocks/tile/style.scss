@@ -25,6 +25,11 @@
 			box-shadow: var(--shadow);
 		}
 
+		&:not(&--form) {
+			display: flex;
+			flex-direction: column;
+		}
+
 		&--form {
 			background: var(--color-gray--lighten);
 			border: none;
@@ -71,6 +76,11 @@
 	&__description {
 		color: var(--color-gray--dark);
 		font-size: var(--font-size--medium);
+		flex-grow: 1;
+	}
+
+	&__footer {
+		margin-top: var(--typo-margin-vertical);
 	}
 
 	&__price {

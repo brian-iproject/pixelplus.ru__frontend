@@ -47,6 +47,7 @@
     "@fancyapps/ui": "^4.0.12",
     "animate.css": "^4.1.1",
     "flickity": "^2.3.0",
+    "flickity-fade": "^1.0.0",
     "normalize.css": "^8.0.1",
     "wow.js": "^1.2.2"
   }

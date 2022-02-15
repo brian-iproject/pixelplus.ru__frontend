@@ -60,8 +60,8 @@
 
 		& svg {
 			fill: var(--color-white);
-			height: calc(var(--circle-size) - 3em);
-			width: calc(var(--circle-size) - 3em);
+			max-height: calc(var(--circle-size) * 2 / 4);
+			max-width: calc(var(--circle-size) * 2 / 4);
 		}
 	}
 

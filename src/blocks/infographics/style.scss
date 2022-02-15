@@ -257,6 +257,75 @@
 
 	}
 
+	&--type5 {
+		& #{$block-name}__item {
+			--circle-size: 5em;
+
+			display: grid;
+			gap: 0 var(--grid-gutter-x);
+			grid-template-areas:  "icon title"
+                            "icon description";
+			grid-template-rows: minmax(0,max-content) auto;
+		}
+
+		& #{$block-name}__icon {
+			grid-area: icon;
+			margin: 0;
+
+			&-inner {
+				align-items: center;
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%), #CC0000;
+				background-blend-mode: overlay, normal;
+				border-radius: 50%;
+				display: flex;
+				height: var(--circle-size);
+				justify-content: center;
+				position: relative;
+				width: var(--circle-size);
+			}
+
+			& svg {
+				fill: var(--color-white);
+				max-height: calc(var(--circle-size) * 2 / 4);
+				max-width: calc(var(--circle-size) * 2 / 4);
+			}
+		}
+
+		& #{$block-name}__title {
+			grid-area: title;
+		}
+
+		& #{$block-name}__description {
+			grid-area: description;
+		}
+
+		@media (min-width: $screen-md) {
+			& #{$block-name}__item {
+				--circle-size: 7.5em;
+
+				gap: 0 calc(var(--grid-gutter-x) * 2);
+			}
+		}
+
+		@media (min-width: $screen-lg) {
+			& #{$block-name}__item {
+				display: flex;
+				align-items: center;
+				margin: 0 0 var(--blocks-margin-vertical) 0;
+				padding: var(--blocks-margin-vertical) 0 0 0;
+
+				& + #{$block-name}__item {
+					border-top: 1px solid var(--color-gray--lighten);
+				}
+			}
+
+			& #{$block-name}__title {
+				max-width: 25%;
+				flex: 0 0 25%;
+			}
+		}
+	}
+
 	@media (min-width: $screen-xl) {
 		&--xl-nowrap {
 			flex-wrap: nowrap;

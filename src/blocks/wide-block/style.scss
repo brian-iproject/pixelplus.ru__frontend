@@ -1,12 +1,14 @@
 .wide-block {
-
 	$block-name: &; // #{$block-name}__element
 
+	/** position: relative ставить блоку нельзя,
+	т.к. будет конфликт с блоком main-slider
+	 */
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding-bottom: 3.25em;
-	padding-top: 3.25em;
+	padding-bottom: 3.25rem;
+	padding-top: 3.25rem;
 
 	&--gray-lighter {
 		background-color: var(--color-gray--lighter);
@@ -29,6 +31,23 @@
 	&--meeting {
 		background-image: url(../../blocks/wide-block/images/meeting.jpg);
 		color: var(--color-white);
+	}
+
+	&--notebook-book {
+		background-image: url(../../blocks/wide-block/images/notebook-book.jpg);
+		color: var(--color-white);
+	}
+
+	&--bottom-wave {
+		background-image: url(../../blocks/wide-block/images/bottom-wave.jpg);
+		background-position: 100% 50%;
+		background-color: var(--color-gray--darken);
+		color: var(--color-white);
+
+		& a,
+		& a:hover {
+			color: var(--color-white);
+		}
 	}
 
 	@at-root #{$block-name}#{$block-name}--footer {
@@ -134,15 +153,39 @@
 		}
 	}
 
+	&--kutuzov-big {
+		background-color: var(--color-black);
+		background-repeat: no-repeat;
+		background-size: auto;
+		color: var(--color-white);
+
+		& .page-container,
+		& .page-container__inner {
+			height: 100%;
+			position: relative;
+		}
+
+		@media (min-width: $screen-md) {
+			background-image: url(../../blocks/wide-block/images/kutuzov-big.png);
+			background-position: calc(50% - 396px) 100%;
+			min-height: calc(950px + 6.5em);
+
+			& .page-container,
+			& .page-container__inner {
+				margin-top: -9.5em;
+			}
+		}
+	}
+
 	@media (min-width: $screen-md) {
-		padding-bottom: 6.5em;
-		padding-top: 6.5em;
+		padding-bottom: 6.5rem;
+		padding-top: 6.5rem;
 	}
 
 	@media (min-width: $screen-xl) {
-		& h1,
-		& .h1,
-		& .subtitle {
+		& h1:not(.-ta-c),
+		& .h1:not(.-ta-c),
+		& .subtitle:not(.-ta-c) {
 			max-width: 80%;
 		}
 
@@ -150,6 +193,27 @@
 		& [class*=block-width--] .h1:not([class*=block-width--]),
 		& [class*=block-width--] .subtitle:not([class*=block-width--]) {
 			max-width: none;
+		}
+	}
+
+	&__number {
+		color: var(--color-gray);
+		font-size: 140px;
+		font-weight: 700;
+		left: 0;
+		opacity: 0.2;
+		position: absolute;
+		margin-top: -3.25rem;
+
+		@media (min-width: $screen-md) {
+			margin-top: -6.5rem;
+		}
+
+		@media (min-width: $screen-xl) {
+			font-size: 170px;
+			letter-spacing: -0.05em;
+			left: 50%;
+			margin-left: calc(1140px / -2);
 		}
 	}
 }

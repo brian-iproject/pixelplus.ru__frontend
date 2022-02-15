@@ -1,0 +1,55 @@
+-
+	let dataLogoList = [
+		{
+			"image": "assets/heineken-logo.png",
+			"title": "Компания «HEINEKEN Russia»",
+		},
+		{
+			"image": "assets/bridgestone-logo.png",
+			"title": "Компания «Bridgestone»",
+		},
+		{
+			"image": "assets/samsonite-logo.png",
+			"title": "Компания «Samsonite»",
+		},
+		{
+			"image": "assets/garmin-logo.png",
+			"title": "Компания «Garmin»",
+		},
+		{
+			"image": "assets/oknarosta-logo.png",
+			"title": "Компания «Окна Роста»",
+		},
+		{
+			"image": "assets/askona-logo.png",
+			"title": "Компания «Аскона»",
+		},
+		{
+			"image": "assets/psb-logo.png",
+			"title": "Банк «Промсвязьбанк»",
+		},
+		{
+			"image": "assets/sovkombank-logo.png",
+			"title": "Банк «Совкомбанк»",
+		},
+		{
+			"image": "assets/goodyear-logo.png",
+			"title": "Компания «Goodyear»",
+		},
+		{
+			"image": "assets/mailru-logo.png",
+			"title": "Компания «Mail.Ru Group»",
+		},
+		{
+			"image": "assets/ulmart-logo.png",
+			"title": "Компания «Юлмарт»",
+		},
+		{
+			"image": "assets/gazprom-logo.png",
+			"title": "Компания «Газпром теплоэнерго»",
+		}
+	]
+.logo-list
+	each item, i in dataLogoList
+		.logo-list__item
+			img(src=item.image)
