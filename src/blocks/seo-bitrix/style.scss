@@ -1,0 +1,230 @@
+.seo-bitrix {
+  .advantages {
+    &-subtitle {
+      font-size: 16px;
+      line-height: 26px;
+      color: #202020;
+      padding: 0;
+      margin: 0 0 32px;
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+      &__item {
+        width: calc(50% - 15px);
+      }
+    }
+    &-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    &-item {
+      width: 48%;
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      &__info {
+        flex: 1;
+      }
+      &__img {
+        width: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 35px;
+      }
+      &__title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 26px;
+        color: #202020;
+        margin-bottom: 12px;
+      }
+      &__text {
+        font-size: 16px;
+        line-height: 24px;
+        color: #757575;
+      }
+    }
+  }
+
+  .features {
+    &-title {
+      margin-bottom: 58px;
+    }
+    &-subtitle {
+      margin-bottom: 43px;
+    }
+    &-items {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      .advantages-item {
+        width: 32%;
+      }
+    }
+    &-text {
+      font-size: 16px;
+      line-height: 26px;
+      color: #202020;
+      margin-bottom: 53px;
+    }
+    &-bottom {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-form {
+      width: 680px;
+      margin-right: 50px;
+    }
+    &-discount {
+      width: 406px;
+      &__title {
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 40px;
+        color: #202020;
+        margin-bottom: 26px;
+        span {
+          font-weight: bold;
+          text-transform: uppercase;
+          color: #CC0000;
+        }
+      }
+      &__text {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #757575;
+        margin-bottom: 15px;
+      }
+    }
+    .features-circle {
+      width: 90px;
+      height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border: 7px solid #e3e3e3;
+      border-radius: 50%;
+      &__title {
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 1;
+        margin-bottom: 2px;
+        color: #000000;
+      }
+      &__subtitle {
+        font-size: 14px;
+        line-height: 1;
+        color: #000000;
+      }
+    }
+    &-form {
+      background: #F7F7F8;
+      border-radius: 5px;
+      padding: 35px;
+    }
+  }
+  .seo-traffic-form-wrapper.scroll-to-me {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  .seo-traffic-form-wrapper.scroll-to-me form {
+    width: 100%;
+  }
+  .seo-traffic-form-wrapper .send-ok {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+  }
+  .time_circles > div {
+    display: flex;
+    flex-direction: column-reverse;
+    & > h4 {
+      font-family: 'Ubuntu';
+      text-transform: lowercase;
+      font-weight: 400;
+    }
+    & > span {
+      font-family: 'Ubuntu';
+      font-weight: 500;
+      line-height: 0.5;
+      margin-bottom: 7px;
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    .section {
+      &__title {
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 36px;
+        margin-bottom: 24px;
+      }
+      &__subtitle {
+        font-size: 16px;
+        line-height: 26px;
+      }
+    }
+
+    .advantages {
+      &-items {
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        display: block;
+        margin-bottom: 60px;
+      }
+      &-item {
+        margin: 0 10px;
+        &__img {
+          width: auto;
+          margin-bottom: 8px;
+          height: 55px;
+        }
+      }
+    }
+
+    .features {
+      &-title {
+        margin-bottom: 20px;
+      }
+      &-subtitle {
+        margin-bottom: 43px;
+      }
+      &-items .advantages-item {
+        width: 100%;
+      }
+      &-form {
+        width: 100%;
+        margin-right: 0;
+        padding: 32px 24px 24px;
+      }
+      &-discount {
+        width: 100%;
+        margin-top: 32px;
+        &__title {
+          font-size: 22px;
+          line-height: 32px;
+        }
+        &__text {
+          font-size: 16px;
+        }
+      }
+      &-bottom {
+        display: block;
+      }
+      &-circles {
+        display: block;
+        width: 100%;
+      }
+      &-text {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}

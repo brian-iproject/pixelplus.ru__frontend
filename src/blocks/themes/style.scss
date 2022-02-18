@@ -1,0 +1,92 @@
+.theme {
+  &-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  &-item {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    &__img {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      background-color: #f7f7f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+    &__text {
+      font-size: 20px;
+      line-height: 24px;
+      color: #202020;
+    }
+    &__desc {
+      color: #757575;
+    }
+  }
+}
+
+.themes {
+  &__all {
+    margin-top: 32px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    &-link {
+      font-size: 16px;
+      line-height: 20px;
+      color: #757575;
+      position: relative;
+      padding-right: 24px;
+      text-decoration: none;
+      -webkit-transition: opacity 0.25s ease 0s;
+      -o-transition: opacity 0.25s ease 0s;
+      transition: opacity 0.25s ease 0s;
+      &:hover {
+        opacity: 0.75;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 6px;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNSAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNC4zOTgyIDQuNTE4ODJMMTAuMDU0NiAwLjE5ODIxOUM5Ljc5MDI5IC0wLjA2NjA3MyA5LjM2NTEyIC0wLjA2NjA3MyA5LjA4OTM0IDAuMTk4MjE5QzguODI1MDUgMC40NjI1MTEgOC44MjUwNSAwLjg4NzY3NiA5LjA4OTM0IDEuMTUxOTdMMTIuMjcyMyA0LjMyMzQ3SDAuNjc3OTY2QzAuMjk4NzY1IDQuMzIzNDcgMCA0LjYyMjIzIDAgNS4wMDE0NEMwIDUuMzY5MTUgMC4yOTg3NjUgNS42Nzk0IDAuNjc3OTY2IDUuNjc5NEgxMi4yNzIzTDkuMDg5MzQgOC44NTA5MUM4LjgyNTA1IDkuMTE1MiA4LjgyNTA1IDkuNTQwMzYgOS4wODkzNCA5LjgwNDY1QzkuMjI3MjMgOS45MzEwNiA5LjM5OTYgMTAgOS41NzE5NiAxMEM5Ljc0NDMzIDEwIDkuOTE2NjkgOS45MzEwNiAxMC4wNTQ2IDkuODA0NjVMMTQuMzk4MiA1LjQ4NDA2QzE0LjY2MjUgNS4yMTk3NiAxNC42NjI1IDQuNzgzMTEgMTQuMzk4MiA0LjUxODgyWiIgZmlsbD0iIzc1NzU3NSIvPgo8L3N2Zz4K");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 15px;
+        height: 10px;
+      }
+    }    
+  }
+}
+
+@media (max-width: 1023px) {
+  .theme-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    &__img {
+      width: 32px;
+      height: 32px;
+      svg {
+        max-width: 18px;
+        max-height: 18px;
+        margin-left: 2px;
+      }
+    }
+    &__text {
+      font-size: 18px;
+      line-height: 23px;
+    }
+  }
+}
