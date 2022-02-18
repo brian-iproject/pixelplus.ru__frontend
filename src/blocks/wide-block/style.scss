@@ -111,6 +111,13 @@
 		padding-top: 6.5em;
 	}
 
+	&--no-padding {
+		@media (min-width: $screen-md) {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+
 	@media (min-width: $screen-xl) {
 		& h1,
 		& .h1,

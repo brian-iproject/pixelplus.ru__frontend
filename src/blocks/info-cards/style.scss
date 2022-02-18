@@ -9,6 +9,27 @@
   &:not(.cards-not-link) .card-item:hover::before {
     background-color: #cc0000;
   }
+  &--grey {
+    .card-item {
+      width: calc(25% - 32px);
+      padding: 30px 20px 23px 18px;
+      background: #F7F7F8;
+      border-radius: 7px;
+      &__head {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      &__title {
+        margin-left: 16px;
+      }
+      &__text {
+        font-size: 16px;
+        line-height: 26px;
+        color: #757575;
+      }
+    }
+  }  
 }
 .card {
   &-item {

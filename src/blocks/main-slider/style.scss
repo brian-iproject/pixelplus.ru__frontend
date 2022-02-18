@@ -70,6 +70,19 @@
 		}
 	}
 
+	&__subtitle {
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.5;
+    color: var( --color-gray--lighten);
+    margin-bottom: 1.85em;
+    max-width: 750px;
+		@media (max-width: $screen-md) {
+			font-size: 20px;
+			margin-bottom: 1.8em;
+		}
+	}
+
 	&__description {
 		font-size: var(--font-size--large);
 	}
