@@ -75,7 +75,7 @@ mixin svgIcon
     li.advantages-subtitle__item Популярный движок позволяет создать презентабельные сайты-визитки и&nbsp;крупные многофункциональные проекты&nbsp;— интернет-магазины, онлайн-платформы и&nbsp;сервисы. Предусмотрены готовые шаблоны с&nbsp;возможностью персонализации под потребности каждого бизнеса.
     li.advantages-subtitle__item Благодаря широким возможностям системы, SEO&#8209;оптимизация сайта на&nbsp;Bitrix происходит максимально эффективно. Команда специалистов «Пиксель&nbsp;Плюс» имеет большой опыт внедрения доработок на&nbsp;CMS и&nbsp;умело использует инструменты раскрутки.
 
-  .awards-block    
+  .awards-block(data-flickity-options='{ "cellAlign": "left", "prevNextButtons": true, "watchCSS": true, "lazyLoad": true }')
     each item, i in dataAdv
       .awards-item
         +svgIcon

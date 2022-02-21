@@ -8,6 +8,11 @@
   border-radius: 7px;
   padding: 28px 40px 22px 50px;
   color: #202020;
+  @media (max-width: $screen-lg) {
+    position: static;
+    bottom: 0;
+    margin-top: 100px;
+  }
   &--mob {
     display: none;
   }
