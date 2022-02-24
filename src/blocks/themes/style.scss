@@ -14,7 +14,7 @@
       position: relative;
       width: 50px;
       height: 50px;
-      background-color: #f7f7f8;
+      background-color: var(--color-gray--lighter);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -24,10 +24,10 @@
     &__text {
       font-size: 20px;
       line-height: 24px;
-      color: #202020;
+      color: var(--color-gray--darker);
     }
     &__desc {
-      color: #757575;
+      color: var(--color-gray--dark);
     }
   }
 }
@@ -35,21 +35,15 @@
 .themes {
   &__all {
     margin-top: 32px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
     justify-content: flex-end;
     &-link {
       font-size: 16px;
       line-height: 20px;
-      color: #757575;
+      color: var(--color-gray--dark);
       position: relative;
       padding-right: 24px;
       text-decoration: none;
-      -webkit-transition: opacity 0.25s ease 0s;
-      -o-transition: opacity 0.25s ease 0s;
       transition: opacity 0.25s ease 0s;
       &:hover {
         opacity: 0.75;

@@ -1,7 +1,7 @@
 .seo-landing {
   &-case-banner {
     background: linear-gradient(89.58deg, #040507 0.19%, #1C2431 49.46%, #131A23 99.76%);
-    color: #fff;
+    color: var(--color-white);
     margin-bottom: 30px;
     padding: 46px 25px;
     text-align: center;
@@ -19,7 +19,7 @@
       }
     }
     &__text {
-      border-top: 1px solid #fff;
+      border-top: 1px solid var(--color-white);
       font-size: 16px;
       font-weight: 300;
       line-height: 1.6;
@@ -53,7 +53,7 @@
         font-size: 36px;
       }
       &__text {
-        border-left: 1px solid #fff;
+        border-left: 1px solid var(--color-white);
         border-top: none;
         font-size: 20px;
         margin: 0 0 0 45px;
@@ -66,7 +66,7 @@
   &-case {
     margin-bottom: 40px;
     &__item {
-      background-color: #fff;
+      background-color: var(--color-white);
       background-position: 0 100%;
       background-repeat: no-repeat;
       background-size: contain;
@@ -97,7 +97,7 @@
     }
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $screen-lg) {
     &-case__item {
       background-size: auto;
       box-shadow: none;
@@ -123,7 +123,7 @@
   background-image: url('/prodvizhenie-sajtov/trafik/images/get-kp-bg.jpg');
   background-position: 50% 100%;
   background-size: cover;
-  color: #fff;
+  color: var(--color-white);
 }
 .wide-block--get-kp .h2 {
   font-size: 28px;
@@ -141,9 +141,9 @@
 
 .seo-landing-button2 {
   background: transparent;
-  border: 1px solid #000;
+  border: 1px solid var(--color-black);
   border-radius: 7px;
-  color: #000;
+  color: var(--color-black);
   cursor: pointer;
   display: inline-block;
   font-size: .93em;
@@ -153,19 +153,20 @@
   text-align: center;
   text-decoration: none;
   transition: .3s;
+  margin-top: 16px;
   font-family: 'Ubuntu', sans-serif;
 }
 .seo-landing-button2:hover {
-  background: #000;
-  color: #fff;
+  background: var(--color-black);
+  color: var(--color-white);
 }
 .seo-landing-button2--invert {
-  border-color: #fff;
-  color: #fff;
+  border-color: var(--color-white);
+  color: var(--color-white);
 }
 .seo-landing-button2--invert:hover {
-  background: #fff;
-  color: #000;
+  background: var(--color-white);
+  color: var(--color-black);
 }
 
 .seo-bitrix {

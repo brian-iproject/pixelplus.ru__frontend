@@ -33,13 +33,13 @@
         font-weight: 500;
         font-size: 18px;
         line-height: 26px;
-        color: #202020;
+        color: var(--color-gray--darker);
         margin-bottom: 12px;
       }
       &__text {
         font-size: 16px;
         line-height: 24px;
-        color: #757575;
+        color: var(--color-gray--dark);
       }
     }
   }
@@ -62,7 +62,7 @@
     &-text {
       font-size: 16px;
       line-height: 26px;
-      color: #202020;
+      color: var(--color-gray--darker);
       margin-bottom: 53px;
     }
     &-bottom {
@@ -79,19 +79,19 @@
         font-weight: 500;
         font-size: 30px;
         line-height: 40px;
-        color: #202020;
+        color: var(--color-gray--darker);
         margin-bottom: 26px;
         span {
           font-weight: bold;
           text-transform: uppercase;
-          color: #CC0000;
+          color: var(--color-primary);
         }
       }
       &__text {
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
-        color: #757575;
+        color: var(--color-gray--dark);
         margin-bottom: 15px;
       }
     }
@@ -109,16 +109,16 @@
         font-size: 30px;
         line-height: 1;
         margin-bottom: 2px;
-        color: #000000;
+        color: var(--color-black);
       }
       &__subtitle {
         font-size: 14px;
         line-height: 1;
-        color: #000000;
+        color: var(--color-black);
       }
     }
     &-form {
-      background: #F7F7F8;
+      background: var(--color-gray--lighter);
       border-radius: 5px;
       padding: 35px;
     }
@@ -140,12 +140,12 @@
     display: flex;
     flex-direction: column-reverse;
     & > h4 {
-      font-family: 'Ubuntu';
+      font-family: var(--font-family-primary);
       text-transform: lowercase;
       font-weight: 400;
     }
     & > span {
-      font-family: 'Ubuntu';
+      font-family: var(--font-family-primary);
       font-weight: 500;
       line-height: 0.5;
       margin-bottom: 7px;
