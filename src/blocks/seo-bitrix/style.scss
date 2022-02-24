@@ -169,16 +169,16 @@
 
     .advantages {
       &-items {
-        width: calc(100% + 20px);
-        margin-left: -10px;
+        width: 100%;
         display: block;
-        margin-bottom: 60px;
+        margin-bottom: 30px;
       }
       &-item {
-        margin: 0 10px;
+        margin: 0 0 16px;
         &__img {
           width: auto;
           margin-bottom: 8px;
+          margin-right: 0;
           height: 55px;
           svg {
             max-height: 55px;

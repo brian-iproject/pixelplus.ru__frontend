@@ -10,7 +10,7 @@
   }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: $screen-lg) {
   .hide-mob {
     display: none;
   }
@@ -24,10 +24,13 @@
     &__item {
       margin: 0 10px;
     }
+    &__subtitle {
+      margin-bottom: 24px;
+    }
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $screen-lg + 1) {
   .hide-lg {
     display: none;  
   }
