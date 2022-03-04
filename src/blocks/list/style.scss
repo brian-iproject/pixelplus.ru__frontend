@@ -13,12 +13,22 @@ TODO: сделать сброс списков миксином
 	padding: 0;
 	text-align: left;
 
-	&:not(:first-child) {
-		margin-top: var(--typo-margin-vertical);
+	&:not(:first-child),
+	&--not-first-child {
+		margin-top: var(--blocks-margin-vertical);
 	}
 
-	&:not(:last-child) {
-		margin-bottom: var(--typo-margin-vertical);
+	&:not(:last-child),
+	&--not-last-child {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+
+	li:not(:first-child) &:first-child {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	li:not(:last-child) &:last-child {
+		margin-bottom: var(--blocks-margin-vertical);
 	}
 
 	& > li {
@@ -74,12 +84,22 @@ ul.list-checked {
 	padding: 0;
 	text-align: left;
 
-	&:not(:first-child) {
-		margin-top: var(--typo-margin-vertical);
+	&:not(:first-child),
+	&--not-first-child {
+		margin-top: var(--blocks-margin-vertical);
 	}
 
-	&:not(:last-child) {
-		margin-bottom: var(--typo-margin-vertical);
+	&:not(:last-child),
+	&--not-last-child {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+
+	li:not(:first-child) &:first-child {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	li:not(:last-child) &:last-child {
+		margin-bottom: var(--blocks-margin-vertical);
 	}
 
 	& > li {

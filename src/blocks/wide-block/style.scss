@@ -38,6 +38,21 @@
 		color: var(--color-white);
 	}
 
+	&--meeting-analytics {
+		background-image: url(../../blocks/wide-block/images/meeting-analytics.jpg);
+		color: var(--color-white);
+	}
+
+	&--company-team {
+		background-image: url(../../blocks/wide-block/images/company-team.jpg);
+		color: var(--color-white);
+	}
+
+	&--woman {
+		background-image: url(../../blocks/wide-block/images/woman.jpg);
+		color: var(--color-white);
+	}
+
 	&--bottom-wave {
 		background-image: url(../../blocks/wide-block/images/bottom-wave.jpg);
 		background-position: 100% 50%;

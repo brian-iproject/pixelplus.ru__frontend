@@ -1,0 +1,11 @@
+.field-required {
+	$block-name: &; // #{$block-name}__element
+
+	line-height: 1.5;
+	font-size: var(--font-size--small);
+
+	&::before {
+		content: "* ";
+		color: var(--color-primary);
+	}
+}

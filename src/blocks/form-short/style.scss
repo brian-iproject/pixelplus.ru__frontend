@@ -1,5 +1,4 @@
 .form-short {
-
 	$block-name: &; // #{$block-name}__element
 
 	&__field {
@@ -8,11 +7,42 @@
 		& + & {
 			margin-top: var(--typo-margin-vertical);
 		}
+
+		@media (min-width: $screen-lg) {
+			&--button {
+				text-align: center;
+			}
+		}
 	}
 
 	&__note {
 		color: var(--color-gray--dark);
 		font-size: var(--font-size--medium);
 		margin-top: .85em;
+	}
+
+	&--flex {
+
+		@media (min-width: $screen-md) {
+			display: flex;
+			flex-wrap: wrap;
+			gap: calc(var(--grid-gutter-y) * 2) var(--grid-gutter-x);
+
+			& #{$block-name}__field {
+				--width: calc(50% - var(--grid-gutter-x) / 2);
+				flex: 0 0 var(--width);
+				max-width: var(--width);
+
+				& + #{$block-name}__field {
+					margin-top: 0;
+				}
+			}
+		}
+
+		@media (min-width: $screen-lg) {
+			& #{$block-name}__field {
+				--width: calc(33.33333% - var(--grid-gutter-x) * 2 / 3);
+			}
+		}
 	}
 }

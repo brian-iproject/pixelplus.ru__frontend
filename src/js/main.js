@@ -125,9 +125,22 @@ const app = {
             });
             wow.init();
         }
+
+
     }
 };
 
 document.addEventListener("DOMContentLoaded", function (e) {
     app.init();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const fieldSelect = document.querySelectorAll('.field-select select');
+    for (let i = 0; i < fieldSelect.length; ++i) {
+        const el = fieldSelect[i];
+        new Choices(el, {
+            allowHTML: true,
+            searchEnabled: false
+        });
+    }
+})

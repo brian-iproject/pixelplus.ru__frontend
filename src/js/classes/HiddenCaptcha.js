@@ -102,7 +102,7 @@ class HiddenCaptcha {
 HiddenCaptcha.init({
     formSelector: '.js-hidden-captcha',
     hiddenInput: '[name=MIDDLE_NAME]',
-    buttonSelector: 'div[class*=button]'
+    buttonSelector: 'div[class*=js-hidden-button]'
 });
 
 export default HiddenCaptcha;

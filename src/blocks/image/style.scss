@@ -1,19 +1,32 @@
 .image {
 	$block-name: &; // #{$block-name}__element
 
-	&:not(:first-child) {
+	display: block;
+	text-decoration: none;
+	max-width: 768px;
+	margin: 0 auto;
+
+	&:not(:first-child),
+	&--not-first-child {
 		margin-top: var(--blocks-margin-vertical);
 	}
 
-	&:not(:last-child) {
+	&:not(:last-child),
+	&--not-last-child {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+
+	li:not(:first-child) &:first-child {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	li:not(:last-child) &:last-child {
 		margin-bottom: var(--blocks-margin-vertical);
 	}
 
 	@media (min-width: $screen-md) {
 		& img {
 			display: block;
-			max-width: 768px;
-			margin: 0 auto;
 		}
 
 		&:not(&--no-border) {

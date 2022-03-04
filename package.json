@@ -23,6 +23,7 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-add-module-exports": "^1.0.4",
     "browser-sync": "^2.27.7",
+    "choices.js": "^10.1.0",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",

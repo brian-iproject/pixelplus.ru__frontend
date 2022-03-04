@@ -30,6 +30,12 @@ class FlickitySet {
      */
     init = ($block) => {
         const options = this.getOptions($block);
+        options.on = {
+            ready: function() {
+                const startIndex = this.element.dataset.flickityStartIndex;
+                this.select(startIndex);
+            }
+        }
         const flkty = new Flickity($block, options);
         this.addToSet(flkty);
     }

@@ -68,13 +68,13 @@
 	}
 
 	&--green {
-		background-color: #009628;
-		border-color: #009628;
+		background-color: var(--color-green);
+		border-color: var(--color-green);
 
 		&:hover,
 		&:active {
-			background-color: #15a53c;
-			border-color: #15a53c;
+			background-color: var(--color-green--light);
+			border-color: var(--color-green--light);
 			box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.15);
 			color: var(--color-white);
 		}

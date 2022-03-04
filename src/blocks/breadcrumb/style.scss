@@ -3,7 +3,7 @@
 	$block-name: &; // #{$block-name}__element
 
 	color: var(--color-white);
-	font-weight: 500;
+	font-size: var(--font-size--medium);
 
 	&__list {
 		display: flex;
