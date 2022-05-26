@@ -1,0 +1,17 @@
+extends ../layout.pug
+
+block meta
+	title Портфолио
+	meta(name='description', content='')
+
+block content
+	.wide-block.wide-block--gray-lighter
+		.page-container
+			.h1 Результаты наших клиентов
+			include ../../blocks/bn-text/index
+			include ../../blocks/seo-cases/index
+
+	.wide-block
+		.page-container
+			.h1 Наши последние работы
+		include ../../blocks/case-wide/index

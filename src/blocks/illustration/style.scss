@@ -1,0 +1,27 @@
+.illustration {
+	$block-name: &; // #{$block-name}__element
+
+	&__image {
+		display: none;
+	}
+
+	@media (min-width: $screen-lg) {
+		display: flex;
+		gap: 10%;
+
+		&__text {
+			flex: 1 1 50%;
+			max-width: 50%;
+		}
+
+		&__image {
+			flex: 1 1 40%;
+			max-width: 40%;
+			display: block;
+
+			&--top5 {
+				margin-top: -5%;
+			}
+		}
+	}
+}

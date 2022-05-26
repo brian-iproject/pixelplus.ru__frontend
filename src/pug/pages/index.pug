@@ -69,38 +69,7 @@ block content
 	.wide-block.wide-block--city
 		.page-container
 			h2.h1.wow.animate__fadeInDown(data-wow-duration=".5s") «Пиксель плюс» в цифрах
-			-
-				let dataNumbers = [
-					{
-						"title": "100+",
-						"description": "В штате компании более 100 сотрудников"
-					},
-					{
-						"title": "250+",
-						"description": "Сайтов в успешном продвижении на постоянной основе"
-					},
-					{
-						"title": "200+",
-						"description": "Сайтов на постоянной технической основе"
-					},
-					{
-						"title": "15 лет",
-						"description": "Компания существует с 2006 года"
-					},
-					{
-						"title": "250.000+",
-						"description": "Запросов продвигается в поисковых системах Яндекса и Google"
-					},
-					{
-						"title": "750+",
-						"description": "Участие в разработке более 750 проектов"
-					}
-				]
-			.about-numbers.tile-slider(data-flickity-options='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "watchCSS": true, "lazyLoad": true }')
-				each item, i in dataNumbers
-					.about-numbers__item.wow.animate__zoomIn(data-wow-duration=".5s")
-						.about-numbers__title #{item.title}
-						.about-numbers__description #{item.description}
+			include ../../blocks/about-numbers/index
 
 	.wide-block
 		.page-container
@@ -233,7 +202,7 @@ block content
 	.wide-block.wide-block--gray-lighter
 		.page-container
 			h2.h1 Наши клиенты
-			include ../../blocks/tile-clients/index
+			include ../../blocks/logo-tile/index
 			.v-space--x3
 			.buttons-group
 				a.button.button--primary Отзывы клиентов

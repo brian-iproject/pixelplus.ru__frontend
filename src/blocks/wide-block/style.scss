@@ -1,7 +1,8 @@
 .wide-block {
 	$block-name: &; // #{$block-name}__element
 
-	/** position: relative ставить блоку нельзя,
+	/** ВАЖНО!!!
+	position: relative ставить блоку нельзя,
 	т.к. будет конфликт с блоком main-slider
 	 */
 	background-position: 50% 50%;
@@ -36,6 +37,11 @@
 	&--notebook-book {
 		background-image: url(../../blocks/wide-block/images/notebook-book.jpg);
 		color: var(--color-white);
+
+		& a,
+		& a:hover {
+			color: var(--color-white);
+		}
 	}
 
 	&--meeting-analytics {
@@ -182,7 +188,7 @@
 
 		@media (min-width: $screen-md) {
 			background-image: url(../../blocks/wide-block/images/kutuzov-big.png);
-			background-position: calc(50% - 396px) 100%;
+			background-position: calc(50% - 425px) 100%;
 			min-height: calc(950px + 6.5em);
 
 			& .page-container,

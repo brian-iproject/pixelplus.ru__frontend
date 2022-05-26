@@ -5,118 +5,16 @@ block meta
   meta(name='description', content='')
 
 block content
-  include ../../blocks/main-slider/index
-
-  .wide-block.wide-block--gray-lighter
-    .page-container
-      include ../../blocks/reviews/type1
-
-  .wide-block.wide-block--gray-lighten
-    .page-container
-      .block-width.block-width--xl-50
-        .h1 Отзывы наших клиентов
-      include ../../blocks/reviews/type2
-
-  .wide-block
-    .page-container
-      .h1 Важный текст
-      include ../../blocks/important-text/index
-
-  .wide-block.wide-block--gray-lighter
-    .page-container
-      .h1 Инфографика тип #1
-      include ../../blocks/infographics/type1
-  .wide-block.wide-block--gray-circle
-    .page-container
-      .h1 Инфографика тип #2
-      include ../../blocks/infographics/type2
-  .wide-block.wide-block--gray-lighter
-    .page-container
-      .h1 Инфографика тип #3
-      include ../../blocks/infographics/type3
-  .wide-block
-    .page-container
-      .h1 Инфографика тип #4
-      include ../../blocks/infographics/type4
-  .wide-block.wide-block--gray-lighter
-    .page-container
-      .h1 Инфографика тип #4
-      include ../../blocks/infographics/type4-1
-
-  .wide-block
-    .page-container
-      .h1 Инфографика тип #5
-      include ../../blocks/infographics/type5
+  include ../../blocks/main-slider/index-single
 
   .wide-block
     .page-container
       .h1 Наша команда
-      -
-        let dataTeams = [
-          {
-            "photo": "assets/dubenchak.jpg",
-            "name": "Анатолий Дубенчак",
-            "post": "Генеральный директор",
-            "filterTarget": "ceo"
-          },
-          {
-            "photo": "assets/sevalnev.jpg",
-            "name": "Дмитрий Севальнев",
-            "post": "Руководитель департамента SEO",
-            "filterTarget": "ceo"
-          },
-          {
-            "photo": "assets/homyakov.jpg",
-            "name": "Игорь Хомяков",
-            "post": "Руководитель отдела SEO",
-            "filterTarget": "ceo"
-          },
-          {
-            "photo": "assets/parhomenko.jpg",
-            "name": "Оксана Пархоменко",
-            "post": "Руководитель отдела сопровождения",
-            "filterTarget": "ceo"
-          },
-        ]
-      .team-list.team-list--columns-4.tile-slider(data-filter-block="team", data-flickity-options='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "watchCSS": true, "groupCells": true, "cellSelector": ".team-list__item:not(.-is-hidden)", "lazyLoad": true }')
-        each item, i in dataTeams
-          .team-list__item(data-filter-target=item.filterTarget)
-            .team-list__image
-              a(href="#")
-                img(src=item.photo, width="165", height="165")
-            .team-list__name
-              a(href="#") #{item.name}
-            .team-list__post #{item.post}
+      include ../../blocks/team-list/index
   .wide-block.wide-block--city
     .page-container
       .h1 Популярные вопросы
       include ../../blocks/faq/index
-  .wide-block.wide-block--gray-lighter
-    .page-container
-      .h1 Тарифы
-      include ../../blocks/tariffs/index
-
-  .wide-block
-    .page-container
-      .h1 Галереи
-      include ../../blocks/gallery/index
-
-  .wide-block.wide-block--gray-lighter
-    .page-container
-      .h1 Одиночное изображение
-      include ../../blocks/gallery/index
-
-  .wide-block
-    .page-container
-      .h1 Таблица
-      include ../../blocks/table/index
-      .h1 Таблица с равными колонками
-      include ../../blocks/table/layout-fixed
-
-  .wide-block.wide-block--gray-lighter
-    .page-container
-      .h1 Этапы работ
-      include ../../blocks/work-stages/index
 
   .wide-block.wide-block--gray-darken
     .wide-block__number 250+
@@ -124,12 +22,6 @@ block content
       .h1 Наши клиенты
       .subtitle Компания «Пиксель Плюс» успешно продвигает более 250 проектов, включая и таких крупных игроков
       include ../../blocks/logo-list/index
-
-  .wide-block.wide-block--gray-lighter
-    .page-container
-      .h1 Результаты наших клиентов
-      include ../../blocks/bn-text/index
-      include ../../blocks/seo-cases/index
 
   .wide-block.wide-block--meeting-analytics.wide-block--fields-transparent
     .page-container
@@ -140,6 +32,12 @@ block content
     .page-container
       .h1 Эксперты в области SEO
       include ../../blocks/tile-experts/index
+
+  .wide-block
+    .page-container
+      .h1 Блок загрузки файла
+      include ../../blocks/download-block/index
+
 
   .wide-block.wide-block--sevalnev-big
     .page-container

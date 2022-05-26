@@ -3,8 +3,19 @@
 
 	display: block;
 	text-decoration: none;
-	max-width: 768px;
 	margin: 0 auto;
+
+	image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+	image-rendering: -moz-crisp-edges;          /* Firefox                        */
+	image-rendering: -o-crisp-edges;            /* Opera                          */
+	image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+	//image-rendering: pixelated;               /* Chrome                         */
+	image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+	-ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+
+	&:not(&--wide) {
+		max-width: 768px;
+	}
 
 	&:not(:first-child),
 	&--not-first-child {
@@ -27,6 +38,7 @@
 	@media (min-width: $screen-md) {
 		& img {
 			display: block;
+			margin: 0 auto;
 		}
 
 		&:not(&--no-border) {

@@ -1,0 +1,29 @@
+.video {
+	$block-name: &; // #{$block-name}__element
+
+	position: relative;
+	display: block;
+
+	&::after {
+		content: '';
+		width: 3.125em;
+		height: 2.45em;
+		background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='512' height='388.414' viewBox='0 0 512 388.414'><path d='M506.703,83.862S501.406,45.903,486.4,29.131C466.979,7.062,444.91,7.062,435.2,6.179,363.697.883,256,0,256,0h0S148.303.883,76.8,6.179c-9.71.883-31.779,1.766-51.2,22.952C9.71,45.904,5.297,83.862,5.297,83.862S0,128.883,0,173.904v41.49c0,45.021,5.297,89.159,5.297,89.159s5.297,37.959,20.303,54.731c19.421,22.069,45.021,21.186,56.497,23.835C122.703,387.531,256,388.414,256,388.414s107.697,0,179.2-6.179c9.71-.883,31.779-1.766,51.2-22.952,15.007-16.772,20.303-54.731,20.303-54.731S512,259.531,512,215.393v-41.49c0-45.02-5.297-90.041-5.297-90.041' style='fill: rgb(32, 32, 32)'/><polygon points='194.207 105.048 194.207 296.607 361.931 203.035 194.207 105.048' style='fill: rgb(255,255,255)'/></svg>");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: 50% 50%;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		margin: auto;
+		display: block;
+		opacity: .5;
+		transition: var(--transition-time);
+	}
+
+	&:hover::after {
+		opacity: 1;
+	}
+}

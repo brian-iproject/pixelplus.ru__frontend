@@ -1,0 +1,44 @@
+.show-more {
+	$block-name: &; // #{$block-name}__element
+
+	position: relative;
+	padding-bottom: calc(var(--line-height) * 1em);
+	margin-top: var(--typo-margin-vertical);
+
+	&__button {
+		list-style: none;
+		color: var(--color-primary);
+		cursor: pointer;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+
+		&::after {
+			content: 'Показать ещё';
+		}
+	}
+
+	&[open] &__button {
+		&::after {
+			content: 'Скрыть';
+		}
+	}
+
+	&__inner {
+		max-height: 0;
+		overflow: hidden;
+		margin-bottom: 1em;
+	}
+
+	&[open] &__inner {
+		max-height: 99em;
+		animation: spoiler 1s;
+	}
+
+	@keyframes spoiler {
+		0%   {max-height: 0;}
+		100% {max-height: 99em;}
+	}
+}

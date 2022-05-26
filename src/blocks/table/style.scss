@@ -1,7 +1,7 @@
 .table {
 	$block-name: &; // #{$block-name}__element
 
-	font-size: var(--font-size--middle);
+	font-size: var(--font-size--medium);
 	border: 0;
 	border-collapse: collapse;
 	width: 100%;
@@ -29,7 +29,7 @@
 		& td {
 			background: var(--color-gray--lighten);
 			font-weight: 500;
-			font-size: var(--font-size--huge);
+			font-size: var(--font-size--large);
 
 			&.table__favorite {
 				background: var(--color-primary);

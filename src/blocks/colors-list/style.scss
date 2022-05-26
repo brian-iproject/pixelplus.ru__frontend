@@ -1,0 +1,36 @@
+// Технический блок. На продакшене не использовать
+.colors-list {
+	$block-name: &; // #{$block-name}__element
+
+	&__item {
+		align-items: center;
+		display: flex;
+
+		& + & {
+			margin-top: 30px;
+		}
+	}
+
+	&__color {
+		border-radius: 50%;
+		color: #fff;
+		display: block;
+		flex: 0 0 100px;
+		height: 100px;
+		margin-right: 15px;
+		width: 100px;
+	}
+
+	&__text {
+		color: var(--color-gray--dark);
+		font-size: var(--font-size--small);
+
+		& p {
+			margin: 0;
+		}
+
+		& p + p {
+			margin-top: .2em;
+		}
+	}
+}

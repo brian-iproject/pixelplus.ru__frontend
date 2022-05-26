@@ -1,5 +1,4 @@
 .tile-slider {
-
 	$block-name: &; // #{$block-name}__element
 
 	&.flickity-enabled {
@@ -13,6 +12,25 @@
 
 	& .flickity-viewport {
 		transition: var(--transition-time);
+	}
+
+	& .flickity-prev-next-button {
+		background: none;
+		bottom: 0;
+		height: 1.5em;
+		padding: 0;
+		top: auto;
+		transform: translateY(50%);
+		width: 1.5em;
+		z-index: 6;
+
+		& svg {
+			fill: var(--color-gray--light);
+			height: 100%;
+			left: 0;
+			top: 0;
+			width: 100%;
+		}
 	}
 
 	& .flickity-page-dots {
@@ -54,23 +72,13 @@
 		}
 	}
 
-	& .flickity-prev-next-button {
-		background: none;
-		bottom: 0;
-		height: 1.5em;
-		padding: 0;
-		top: auto;
-		transform: translateY(50%);
-		width: 1.5em;
-		z-index: 6;
+	&:not(.is-draggable) .flickity-prev-next-button,
+	&:not(.is-draggable) .flickity-page-dots {
+		display: none;
+	}
 
-		& svg {
-			fill: var(--color-gray--light);
-			height: 100%;
-			left: 0;
-			top: 0;
-			width: 100%;
-		}
+	& .flickity-prev-next-button[disabled] + .flickity-prev-next-button[disabled] + .flickity-page-dots {
+		display: none;
 	}
 
 	@media (min-width: $screen-lg) {

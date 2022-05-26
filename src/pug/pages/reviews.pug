@@ -1,0 +1,16 @@
+extends ../layout.pug
+
+block meta
+	title Отзывы
+	meta(name='description', content='')
+
+block content
+	.wide-block.wide-block--gray-lighter
+		.page-container
+			.h1 Отзывы наших клиентов
+			include ../../blocks/reviews/type1
+	.wide-block.wide-block--gray-lighten
+		.page-container
+			.block-width.block-width--xl-50
+				.h1 Отзывы наших клиентов
+			include ../../blocks/reviews/type2

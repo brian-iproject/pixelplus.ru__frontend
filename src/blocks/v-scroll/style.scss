@@ -1,0 +1,20 @@
+.v-scroll {
+	$block-name: &; // #{$block-name}__element
+
+	position: relative;
+
+	&:not(:first-child) {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+
+	@media (max-width: $screen-md - 1) {
+		&__container {
+			overflow: auto;
+			max-height: 60vh;
+		}
+	}
+}

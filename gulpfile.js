@@ -200,6 +200,7 @@ function compileLibsJs() {
             'node_modules/flickity-fade/flickity-fade.js',
             'node_modules/wow.js/dist/wow.min.js',
             'node_modules/choices.js/public/assets/scripts/choices.min.js',
+            //'node_modules/animejs/lib/anime.min.js',
         ]),
         concat('libs.min.js'),
         dest('build/js/'),

@@ -96,7 +96,7 @@ const app = {
             buttonSelector: '.form__button'
         });
 
-        Utils.maskPhone('[type=tel]');
+        Utils.maskPhone('[type=tel]:not(.form__input)');
         Utils.replaceLink('data-href');
 
         SvgLoad.init((window.location.hostname === 'localhost')?'/images/icons.svg':'/local/templates/pixelplus.ru_2021/images/icons.svg');
@@ -106,6 +106,7 @@ const app = {
         ToggleBlock.init('.phones');
         ToggleBlock.init('.header-search');
         ToggleBlock.init('.faq');
+        ToggleBlock.init('.main-slider');
 
         Tabs.init('.address__cities', '.address__address');
         Tabs.init('.phones__regions ul', '.phones__regions-inner');
@@ -125,7 +126,6 @@ const app = {
             });
             wow.init();
         }
-
 
     }
 };

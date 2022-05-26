@@ -1,5 +1,4 @@
 .tile {
-
 	$block-name: &; // #{$block-name}__element
 
 	&:not(:first-child) {
@@ -48,9 +47,29 @@
 	}
 
 	&__icon {
+		margin-bottom: 1.75em;
+		position: relative;
 
 		& svg {
+			display: block;
+			margin-left: 1.2em;
+			position: relative;
+			z-index: 1;
 			fill: var(--color-primary);
+			max-height: 58px;
+			width: auto;
+		}
+
+		&::before {
+			background: var(--color-gray--lighten);
+			border-radius: 50%;
+			content: '';
+			display: block;
+			height: 55px;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 55px;
 		}
 	}
 
@@ -76,6 +95,13 @@
 	&__description {
 		color: var(--color-gray--dark);
 		font-size: var(--font-size--medium);
+		flex-grow: 1;
+	}
+
+	&__logo {
+		justify-content: center;
+		align-items: center;
+		display: flex;
 		flex-grow: 1;
 	}
 
@@ -115,29 +141,7 @@
 			width: auto;
 		}
 
-		&__icon {
-			margin-bottom: 1.75em;
-			position: relative;
 
-			& svg {
-				display: block;
-				margin-left: 1.2em;
-				position: relative;
-				z-index: 1;
-			}
-
-			&::before {
-				background: var(--color-gray--lighten);
-				border-radius: 50%;
-				content: '';
-				display: block;
-				height: 55px;
-				left: 0;
-				position: absolute;
-				top: 0;
-				width: 55px;
-			}
-		}
 	}
 
 	@media (min-width: $screen-xl) {

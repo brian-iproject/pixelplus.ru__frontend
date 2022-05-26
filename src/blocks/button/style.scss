@@ -56,6 +56,11 @@
 		width: 100%;
 	}
 
+	&--small {
+		font-size: var(--font-size--medium);
+		padding: .9em 1.5em 1em 1.5em;
+	}
+
 	&--primary {
 		@include button--primary;
 

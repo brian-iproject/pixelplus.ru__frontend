@@ -1,0 +1,16 @@
+extends ../layout.pug
+
+block meta
+	title Таблицы
+	meta(name='description', content='')
+
+block content
+	.wide-block
+		.page-container
+			.h1 Таблица сравнения тарифов
+			include ../../blocks/table-compare/index
+
+			.h1 Таблица
+			include ../../blocks/table/index
+			.h1 Таблица с равными колонками
+			include ../../blocks/table/layout-fixed

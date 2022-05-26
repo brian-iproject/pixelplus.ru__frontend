@@ -1,6 +1,14 @@
 .form-short {
 	$block-name: &; // #{$block-name}__element
 
+	&:not(:first-child) {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+
 	&__field {
 		display: block;
 
@@ -21,7 +29,7 @@
 		margin-top: .85em;
 	}
 
-	&--flex {
+	&--flex form {
 
 		@media (min-width: $screen-md) {
 			display: flex;

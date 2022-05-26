@@ -1,0 +1,32 @@
+-
+	let dataNumbers = [
+		{
+			"title": "100+",
+			"description": "В штате компании более 100 сотрудников"
+		},
+		{
+			"title": "250+",
+			"description": "Сайтов в успешном продвижении на постоянной основе"
+		},
+		{
+			"title": "200+",
+			"description": "Сайтов на постоянной технической основе"
+		},
+		{
+			"title": "15 лет",
+			"description": "Компания существует с 2006 года"
+		},
+		{
+			"title": "250.000+",
+			"description": "Запросов продвигается в поисковых системах Яндекса и Google"
+		},
+		{
+			"title": "750+",
+			"description": "Участие в разработке более 750 проектов"
+		}
+	]
+.about-numbers.tile-slider(data-flickity-options='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "watchCSS": true, "lazyLoad": true }')
+	each item, i in dataNumbers
+		.about-numbers__item.wow.animate__zoomIn(data-wow-duration=".5s")
+			.about-numbers__title #{item.title}
+			.about-numbers__description #{item.description}

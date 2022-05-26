@@ -15,20 +15,20 @@ TODO: сделать сброс списков миксином
 
 	&:not(:first-child),
 	&--not-first-child {
-		margin-top: var(--blocks-margin-vertical);
+		margin-top: var(--typo-margin-vertical);
 	}
 
 	&:not(:last-child),
 	&--not-last-child {
-		margin-bottom: var(--blocks-margin-vertical);
+		margin-bottom: var(--typo-margin-vertical);
 	}
 
 	li:not(:first-child) &:first-child {
-		margin-top: var(--blocks-margin-vertical);
+		margin-top: var(--typo-margin-vertical);
 	}
 
 	li:not(:last-child) &:last-child {
-		margin-bottom: var(--blocks-margin-vertical);
+		margin-bottom: var(--typo-margin-vertical);
 	}
 
 	& > li {
@@ -86,20 +86,20 @@ ul.list-checked {
 
 	&:not(:first-child),
 	&--not-first-child {
-		margin-top: var(--blocks-margin-vertical);
+		margin-top: var(--typo-margin-vertical);
 	}
 
 	&:not(:last-child),
 	&--not-last-child {
-		margin-bottom: var(--blocks-margin-vertical);
+		margin-bottom: var(--typo-margin-vertical);
 	}
 
 	li:not(:first-child) &:first-child {
-		margin-top: var(--blocks-margin-vertical);
+		margin-top: var(--typo-margin-vertical);
 	}
 
 	li:not(:last-child) &:last-child {
-		margin-bottom: var(--blocks-margin-vertical);
+		margin-bottom: var(--typo-margin-vertical);
 	}
 
 	& > li {

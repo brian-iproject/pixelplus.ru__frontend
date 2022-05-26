@@ -1,0 +1,104 @@
+.grid {
+	$block-name: &; // #{$block-name}__element
+
+	display: flex;
+	gap: calc(var(--grid-gutter-y) * 2) calc(var(--grid-gutter-x) * 2);
+
+	&:not(:first-child) {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+
+	&:not(&--nowrap) {
+		flex-wrap: wrap;
+	}
+
+	@mixin column-10 { --width: 10%; }
+	@mixin column-15 { --width: 15%; }
+	@mixin column-20 { --width: 20%; }
+	@mixin column-25 { --width: 25%; }
+	@mixin column-33 { --width: 33.33333%; }
+	@mixin column-40 { --width: 40%; }
+	@mixin column-50 { --width: 50%; }
+	@mixin column-60 { --width: 60%; }
+	@mixin column-66 { --width: 66.66667%; }
+	@mixin column-75 { --width: 75%; }
+	@mixin column-80 { --width: 80%; }
+	@mixin column-85 { --width: 85%; }
+	@mixin column-90 { --width: 90%; }
+
+	&__item {
+		--flex-basis: calc(var(--width) - var(--grid-gutter-x) * 2);
+		flex-grow: 1;
+		flex-shrink: 1;
+		flex-basis: var(--flex-basis, 100%);
+		max-width: var(--width, 100%);
+
+		@media (min-width: $screen-sm) {
+			&--sm-10 { @include column-10 }
+			&--sm-15 { @include column-15 }
+			&--sm-20 { @include column-20 }
+			&--sm-25 { @include column-25 }
+			&--sm-33 { @include column-33 }
+			&--sm-40 { @include column-40 }
+			&--sm-50 { @include column-50 }
+			&--sm-60 { @include column-60 }
+			&--sm-66 { @include column-66 }
+			&--sm-75 { @include column-75 }
+			&--sm-80 { @include column-80 }
+			&--sm-85 { @include column-85 }
+			&--sm-90 { @include column-90 }
+		}
+
+		@media (min-width: $screen-md) {
+			&--md-10 { @include column-10 }
+			&--md-15 { @include column-15 }
+			&--md-20 { @include column-20 }
+			&--md-25 { @include column-25 }
+			&--md-33 { @include column-33 }
+			&--md-40 { @include column-40 }
+			&--md-50 { @include column-50 }
+			&--md-60 { @include column-60 }
+			&--md-66 { @include column-66 }
+			&--md-75 { @include column-75 }
+			&--md-80 { @include column-80 }
+			&--md-85 { @include column-85 }
+			&--md-90 { @include column-90 }
+		}
+
+		@media (min-width: $screen-lg) {
+			&--lg-10 { @include column-10 }
+			&--lg-15 { @include column-15 }
+			&--lg-20 { @include column-20 }
+			&--lg-25 { @include column-25 }
+			&--lg-33 { @include column-33 }
+			&--lg-40 { @include column-40 }
+			&--lg-50 { @include column-50 }
+			&--lg-60 { @include column-60 }
+			&--lg-66 { @include column-66 }
+			&--lg-75 { @include column-75 }
+			&--lg-80 { @include column-80 }
+			&--lg-85 { @include column-85 }
+			&--lg-90 { @include column-90 }
+		}
+
+		@media (min-width: $screen-xl) {
+			&--xl-10 { @include column-10 }
+			&--xl-15 { @include column-15 }
+			&--xl-20 { @include column-20 }
+			&--xl-25 { @include column-25 }
+			&--xl-33 { @include column-33 }
+			&--xl-40 { @include column-40 }
+			&--xl-50 { @include column-50 }
+			&--xl-60 { @include column-60 }
+			&--xl-66 { @include column-66 }
+			&--xl-75 { @include column-75 }
+			&--xl-80 { @include column-80 }
+			&--xl-85 { @include column-85 }
+			&--xl-90 { @include column-90 }
+		}
+ 	}
+}

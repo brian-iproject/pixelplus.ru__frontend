@@ -18,12 +18,11 @@
 .-fs-huge { font-size: var(--font-size--huge) }
 .-fs-xxx-huge { font-size: var(--font-size--xxx-huge) }
 
-
-
-.-justify-center { justify-content: center }
-
 .-no-margin { margin: 0; }
 .-no-padding { padding: 0; }
+.-no-padding-bottom { padding-bottom: 0 !important; }
+
+.-ws-nowrap { white-space: nowrap }
 
 .-c-primary { color: var(--color-primary); }
 .-c-green { color: var(--color-green); }

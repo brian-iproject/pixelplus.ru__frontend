@@ -1,0 +1,27 @@
+extends ../layout.pug
+
+block meta
+	title Изображения
+	meta(name='description', content='')
+
+block content
+	.wide-block
+		.page-container
+			.h1 Иллюстрация
+			include ../../blocks/illustration/index
+
+	.wide-block.wide-block--gray-lighten
+		.page-container
+			.h1 Сертификаты и награды
+			include ../../blocks/docs/index
+
+	.wide-block
+		.page-container
+			.h1 Галереи
+			include ../../blocks/gallery/index
+
+	.wide-block.wide-block--gray-lighter
+		.page-container
+			.h1 Одиночное изображение
+			include ../../blocks/image/index
+

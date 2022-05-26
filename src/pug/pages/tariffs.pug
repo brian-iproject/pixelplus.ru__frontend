@@ -1,0 +1,21 @@
+extends ../layout.pug
+
+block meta
+	title Отзывы
+	meta(name='description', content='')
+
+block content
+	.wide-block.wide-block--gray-lighter
+		.page-container
+			.h1 Тарифы
+			include ../../blocks/tariffs/index
+
+	.wide-block
+		.page-container
+			.h1 Таблица сравнения тарифов
+			include ../../blocks/table-compare/index
+
+	.wide-block
+		.page-container
+			.h1 Таблица тарифов
+			include ../../blocks/table/index

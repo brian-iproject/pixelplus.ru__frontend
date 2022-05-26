@@ -11,13 +11,12 @@
 		margin-bottom: var(--blocks-margin-vertical);
 	}
 
-	&__container {
-		max-width: 100%;
-		overflow: auto;
-		padding: 6px 0;
-	}
-
 	@media (max-width: $screen-md - 1) {
+		&__container {
+			max-width: 100%;
+			overflow: auto;
+		}
+
 		&::before,
 		&::after {
 			color: var(--color-gray--light);

@@ -1,5 +1,4 @@
 .gallery {
-
 	$block-name: &; // #{$block-name}__element
 
 	&:not(:first-child) {
@@ -10,6 +9,10 @@
 		margin-bottom: var(--blocks-margin-vertical);
 	}
 
+	&--center {
+		justify-content: center;
+	}
+
 	& img {
 		display: block;
 	}
@@ -18,6 +21,9 @@
 		border: 1px solid var(--color-gray--lighten);
 		margin-right: var(--grid-gutter-x);
 		width: 100%;
+		display: flex;
+		align-items: center;
+		background-color: var(--color-gray--lighter);
 
 		@media (min-width: $screen-sm) {
 			margin-right: var(--grid-gutter-x);
@@ -26,34 +32,11 @@
 	}
 
 	&__link {
-		display: block;
+		display: flex;
 		position: relative;
 		transition: var(--transition-time);
-
-		&::after {
-			background: var(--color-white);
-			background-image: url("data:image/svg+xml;charset=utf-8,<svg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M17.5854 3.01298C13.5681 -1.00433 7.02963 -1.00433 3.01233 3.01298C-1.00411 7.03116 -1.00411 13.5688 3.01233 17.5869C6.58985 21.1636 12.1617 21.5468 16.1763 18.7539C16.2608 19.1536 16.4542 19.5351 16.7651 19.846L21.281 24.3619C22.1335 25.2127 23.5113 25.2127 24.3595 24.3619C25.2112 23.5102 25.2112 22.1325 24.3595 21.2834L19.8436 16.7657C19.5344 16.4574 19.1521 16.2632 18.7524 16.1787C21.547 12.1632 21.1638 6.59224 17.5854 3.01298ZM15.7383 15.7398C12.739 18.7391 7.85783 18.7391 4.85944 15.7398C1.86191 12.7406 1.86191 7.86022 4.85944 4.86096C7.85783 1.86257 12.739 1.86257 15.7383 4.86096C18.7376 7.86022 18.7376 12.7406 15.7383 15.7398Z' fill='rgb(204, 0, 0)'></path></svg>");
-			background-position: 50% 50%;
-			background-repeat: no-repeat;
-			background-size: 40%;
-			border-radius: 50%;
-			bottom: 0;
-			content: '';
-			height: 4em;
-			left: 0;
-			margin: auto;
-			opacity: .8;
-			position: absolute;
-			right: 0;
-			top: 0;
-			transition: var(--transition-time);
-			width: 4em;
-		}
-
-		&:hover::after {
-			box-shadow: var(--shadow--light);
-			transform: scale(1.1);
-		}
+		align-self: stretch;
+		align-items: center;
 	}
 
 	@media (min-width: $screen-lg) {

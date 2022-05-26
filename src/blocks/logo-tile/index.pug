@@ -64,16 +64,16 @@
 			"description": "Специализированный теплоэнергетический холдинг, работающий в области энергетики.",
 		}
 	]
-.tile-clients
+.logo-tile
 	each item, i in dataClients
-		.tile-clients__item
-			.tile-clients__inner
+		.logo-tile__item
+			.logo-tile__inner
 				img(src=item.image)
 				if (item.link)
-					a.tile-clients__info(href=item.link)
-						.tile-clients__title !{item.title}
-						p.tile-clients__description !{item.description}
+					a.logo-tile__info(href=item.link)
+						.logo-tile__title !{item.title}
+						p.logo-tile__description !{item.description}
 				else
-					.tile-clients__info
-						.tile-clients__title !{item.title}
-						p.tile-clients__description !{item.description}
+					.logo-tile__info
+						.logo-tile__title !{item.title}
+						p.logo-tile__description !{item.description}
