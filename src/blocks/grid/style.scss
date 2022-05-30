@@ -1,8 +1,10 @@
 .grid {
 	$block-name: &; // #{$block-name}__element
 
-	display: flex;
-	gap: calc(var(--grid-gutter-y) * 2) calc(var(--grid-gutter-x) * 2);
+	&:not(.flickity-enabled) {
+		display: flex;
+		gap: calc(var(--grid-gutter-y) * 2) calc(var(--grid-gutter-x) * 2);
+	}
 
 	&:not(:first-child) {
 		margin-top: var(--blocks-margin-vertical);
@@ -14,6 +16,10 @@
 
 	&:not(&--nowrap) {
 		flex-wrap: wrap;
+	}
+
+	&--j-center {
+		justify-content: center;
 	}
 
 	@mixin column-10 { --width: 10%; }
@@ -31,11 +37,18 @@
 	@mixin column-90 { --width: 90%; }
 
 	&__item {
-		--flex-basis: calc(var(--width) - var(--grid-gutter-x) * 2);
-		flex-grow: 1;
-		flex-shrink: 1;
-		flex-basis: var(--flex-basis, 100%);
-		max-width: var(--width, 100%);
+		#{$block-name}:not(.flickity-enabled) & {
+			--flex-basis: calc(var(--width) - var(--grid-gutter-x) * 2);
+			flex-grow: 1;
+			flex-shrink: 1;
+			flex-basis: var(--flex-basis, 100%);
+			max-width: var(--width, 100%);
+		}
+
+		#{$block-name}.flickity-enabled & {
+			width: calc(var(--width, 100%) - var(--grid-gutter-x));
+			margin-right: var(--grid-gutter-x);
+		}
 
 		@media (min-width: $screen-sm) {
 			&--sm-10 { @include column-10 }

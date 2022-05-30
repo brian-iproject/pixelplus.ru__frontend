@@ -39,6 +39,10 @@
 		text-align: center;
 	}
 
+	&__description {
+		margin: 0 auto var(--typo-margin-vertical) auto;
+	}
+
 	&__image {
 		margin: 0 auto var(--typo-margin-vertical) auto;
 	}

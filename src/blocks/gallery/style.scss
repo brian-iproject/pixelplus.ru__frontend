@@ -41,13 +41,13 @@
 
 	@media (min-width: $screen-lg) {
 		display: flex;
-		flex: 1 1 auto;
 		flex-wrap: wrap;
 		gap: var(--grid-gutter-y) var(--grid-gutter-x);
 
 		&__item {
+			flex-shrink: 1;
+			flex-grow: 1;
 			margin: 0;
-			max-width: calc(50% - var(--grid-gutter-x) / 2);
 			max-width: calc(33.33333% - var(--grid-gutter-x) * 2 / 3);
 			min-height: auto;
 			width: auto;

@@ -1,36 +1,37 @@
-form.form-short.form-short--flex.js-hidden-captcha(action="", type="post")
-	label.field-text.form-short__field
-		span.field-text__input-wrap
-			input.field-text__input.js-moving-placeholder(type="text", placeholder="Ваше имя", required)
-	label.field-text.form-short__field
-		span.field-text__input-wrap
-			input.field-text__input.js-moving-placeholder(type="tel", placeholder="Номер телефона", required)
-	label.field-text.form-short__field
-		span.field-text__input-wrap
-			input.field-text__input.js-moving-placeholder(type="email", placeholder="E-mail", required)
-	label.field-text.form-short__field
-		span.field-text__input-wrap
-			input.field-text__input.js-moving-placeholder(type="text", placeholder="Адрес сайта")
-	label.field-text.form-short__field
-		span.field-text__input-wrap
-			input.field-text__input.js-moving-placeholder(type="text", placeholder="Бюджет проекта")
-	label.field-select.form-short__field
-		span.field-select__select-wrap
-			select(name="")
-				option(value="" placeholder) Откуда узнали про нас
-				option(value="1103") Поиск в интернет
-				option(value="1119") Конференции и выступления
-				option(value="1118") Рекомендации
-				option(value="1121") Копирайт на сайт
-				option(value="1120") Социальные сети
-	label.field-checkbox.form-short__field
-		span.field-checkbox__input-wrap
-			input.field-checkbox__input(type='checkbox')
-			span.field-checkbox__name
-			span.field-checkbox__help-text
-				| Согласен с обработкой персональных данных в соответствии с <a href="#">политикой конфиденциальности</a>
-	div.form-short__field.form-short__field--button
-		div.button.button--primary.js-hidden-button Оставить заявку
-	div.form-short__field
-		.field-required — Поля, обязательные к заполнению.
-	input(type="text", name="MIDDLE_NAME")
+div.form-short.form-short--flex.js-hidden-captcha
+	form(action="", type="post")
+		label.field-text.form-short__field
+			span.field-text__input-wrap
+				input.field-text__input.js-moving-placeholder(type="text", placeholder="Ваше имя", required)
+		label.field-text.form-short__field
+			span.field-text__input-wrap
+				input.field-text__input.js-moving-placeholder(type="tel", placeholder="Номер телефона", required)
+		label.field-text.form-short__field
+			span.field-text__input-wrap
+				input.field-text__input.js-moving-placeholder(type="email", placeholder="E-mail", required)
+		label.field-text.form-short__field
+			span.field-text__input-wrap
+				input.field-text__input.js-moving-placeholder(type="text", placeholder="Адрес сайта")
+		label.field-text.form-short__field
+			span.field-text__input-wrap
+				input.field-text__input.js-moving-placeholder(type="text", placeholder="Бюджет проекта")
+		label.field-select.form-short__field
+			span.field-select__select-wrap
+				select(name="")
+					option(value="" placeholder) Откуда узнали про нас
+					option(value="1103") Поиск в интернет
+					option(value="1119") Конференции и выступления
+					option(value="1118") Рекомендации
+					option(value="1121") Копирайт на сайт
+					option(value="1120") Социальные сети
+		label.field-checkbox.form-short__field
+			span.field-checkbox__input-wrap
+				input.field-checkbox__input(type='checkbox')
+				span.field-checkbox__name
+				span.field-checkbox__help-text
+					| Согласен с обработкой персональных данных в соответствии с <a href="#">политикой конфиденциальности</a>
+		div.form-short__field.form-short__field--button
+			div.button.button--primary.js-hidden-button Оставить заявку
+		div.form-short__field
+			.field-required — Поля, обязательные к заполнению.
+		input(type="text", name="MIDDLE_NAME")
