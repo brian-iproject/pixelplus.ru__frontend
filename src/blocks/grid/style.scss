@@ -18,7 +18,8 @@
 		flex-wrap: wrap;
 	}
 
-	&--j-center {
+	&--j-center,
+	&--jc-center {
 		justify-content: center;
 	}
 
@@ -37,6 +38,8 @@
 	@mixin column-90 { --width: 90%; }
 
 	&__item {
+		min-height: 100%;
+
 		#{$block-name}:not(.flickity-enabled) & {
 			--flex-basis: calc(var(--width) - var(--grid-gutter-x) * 2);
 			flex-grow: 1;
@@ -48,6 +51,25 @@
 		#{$block-name}.flickity-enabled & {
 			width: calc(var(--width, 100%) - var(--grid-gutter-x));
 			margin-right: var(--grid-gutter-x);
+
+			max-width: var(--width);
+			display: inline-grid;
+		}
+
+		@media (max-width: $screen-sm - 1) {
+			&--xs-10 { @include column-10 }
+			&--xs-15 { @include column-15 }
+			&--xs-20 { @include column-20 }
+			&--xs-25 { @include column-25 }
+			&--xs-33 { @include column-33 }
+			&--xs-40 { @include column-40 }
+			&--xs-50 { @include column-50 }
+			&--xs-60 { @include column-60 }
+			&--xs-66 { @include column-66 }
+			&--xs-75 { @include column-75 }
+			&--xs-80 { @include column-80 }
+			&--xs-85 { @include column-85 }
+			&--xs-90 { @include column-90 }
 		}
 
 		@media (min-width: $screen-sm) {

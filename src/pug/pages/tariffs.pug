@@ -1,7 +1,7 @@
 extends ../layout.pug
 
 block meta
-	title Отзывы
+	title Тарифы
 	meta(name='description', content='')
 
 block content
@@ -19,3 +19,9 @@ block content
 		.page-container
 			.h1 Таблица тарифов
 			include ../../blocks/table/index
+			include ../../blocks/table/index2
+
+	.wide-block.wide-block--gray-lighten
+		.page-container
+			.h1 Группа тарифов
+			include ../../blocks/tariffs-group/index

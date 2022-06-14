@@ -20,11 +20,18 @@
 		&::before,
 		&::after {
 			color: var(--color-gray--light);
-			content: '🡐 Используйте горизонтальную прокрутку 🡒';
+			content: 'Используйте горизонтальную прокрутку';
 			display: block;
 			font-size: var(--font-size--small);
-			margin: var(--typo-margin-vertical) 0;
+			margin: var(--typo-margin-vertical) auto;
 			text-align: center;
+			padding: 0 1.5rem;
+			background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='7.74999' viewBox='0 0 16 7.74999'><path d='M.18332,4.3174l.00056.0006,3.26575,3.25a.625.625,0,0,0,.88182-.886L2.13882,4.5H15.375a.625.625,0,0,0,0-1.25H2.13885L4.33141,1.068A.625.625,0,0,0,3.4496.182L.18385,3.432l-.00056.00059A.62553.62553,0,0,0,.18332,4.3174Z' fill='rgb(196, 196, 196)'/></svg>"),
+												url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='7.74999' viewBox='0 0 16 7.74999'><path d='M15.81668,3.43259,15.81612,3.432,12.55037.182a.625.625,0,0,0-.88181.886L13.86118,3.25H.625a.625.625,0,0,0,0,1.25H13.86115L11.66859,6.682a.625.625,0,0,0,.88181.886l3.26575-3.25.00056-.0006A.62553.62553,0,0,0,15.81668,3.43259Z' fill='rgb(196, 196, 196)'/></svg>");
+			background-repeat: no-repeat;
+			background-position:  0 50%,
+														100% 50%;
+			width: fit-content;
 		}
 
 		&__container::after {

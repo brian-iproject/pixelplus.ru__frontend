@@ -11,12 +11,13 @@
 	display: inline-flex;
 	justify-content: center;
 	margin: 0;
-	padding: .85em 2em .95em 2em;
+	padding: .6em 2em .7em 2em;
 	text-align: center;
 	text-decoration: none;
 	transition: var(--transition-time);
 	font-weight: 500;
 	font-size: var(--font-size);
+	line-height: var(--line-height);
 }
 
 @mixin button--primary {
@@ -58,7 +59,7 @@
 
 	&--small {
 		font-size: var(--font-size--medium);
-		padding: .9em 1.5em 1em 1.5em;
+		padding: .6em 1.5em .7em 1.5em;
 	}
 
 	&--primary {
@@ -75,6 +76,7 @@
 	&--green {
 		background-color: var(--color-green);
 		border-color: var(--color-green);
+		color: var(--color-white);
 
 		&:hover,
 		&:active {

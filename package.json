@@ -41,6 +41,7 @@
     "gulp-sass": "^5.0.0",
     "multipipe": "^4.0.0",
     "sass": "^1.44.0",
+    "tippy.js": "^6.3.7",
     "webpack": "^5.65.0",
     "webpack-stream": "^7.0.0"
   },

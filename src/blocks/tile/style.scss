@@ -93,6 +93,8 @@
 	}
 
 	&__description {
+		--link-color: var(--color-gray--dark);
+
 		color: var(--color-gray--dark);
 		font-size: var(--font-size--medium);
 		flex-grow: 1;

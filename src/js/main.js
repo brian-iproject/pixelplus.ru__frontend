@@ -127,6 +127,14 @@ const app = {
             wow.init();
         }
 
+        if (typeof tippy !== 'undefined') {
+            tippy('[data-tippy-content]',{
+                animation: 'shift-toward',
+                theme: 'light',
+                allowHTML: true,
+                interactive: true
+            });
+        }
     }
 };
 

@@ -5,12 +5,13 @@ block meta
 	meta(name='description', content='')
 
 block content
-	.wide-block
+	.wide-block.wide-block--gray-lighter
 		.page-container
 			.h1 Таблица сравнения тарифов
 			include ../../blocks/table-compare/index
 
 			.h1 Таблица
 			include ../../blocks/table/index
+			include ../../blocks/table/index2
 			.h1 Таблица с равными колонками
 			include ../../blocks/table/layout-fixed

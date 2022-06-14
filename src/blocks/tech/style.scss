@@ -1,0 +1,70 @@
+.tech {
+	$block-name: &; // #{$block-name}__element
+
+	&__item {
+		background-color: var(--color-white);
+		border-radius: .625em;
+		display: flex;
+		flex-direction: column;
+		margin-right: calc(var(--grid-gutter-x) + 1px); // +1px убирает белую полосу справа
+		min-height: 100%;
+		min-height: 100%;
+		padding: 2.5em 1.75em 1.75em 1.75em;
+		transition: var(--transition-time);
+		width: 100%;
+		border: 2px solid var(--color-gray--lighten);
+		text-align: center;
+		position: relative;
+
+		&:hover {
+			border-color: var(--color-primary);
+
+			& .tooltip {
+				background-color: var(--color-primary);
+			}
+		}
+	}
+
+	&__tooltip {
+		position: absolute;
+		top: .625em;
+		right: .625em;
+	}
+
+	&__info {
+		border-top: none;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+
+	&__note {
+		color: var(--text-color-muted);
+		margin-top: .5em;
+	}
+
+	@media (min-width: $screen-sm) {
+		&__item {
+			width: calc(33.33333% - var(--grid-gutter-x) * 2 / 3 - 1px); // без -1px обрезается border справа
+		}
+	}
+
+	@media (min-width: $screen-md) {
+
+		&__item {
+			width: calc(25% - var(--grid-gutter-x) * 3 / 4 - 1px);
+		}
+	}
+
+	@media (min-width: $screen-lg) {
+		display: grid;
+		gap: var(--grid-gutter-y) var(--grid-gutter-x);
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+		&__item {
+			margin-right: 0;
+			min-height: auto;
+			width: auto;
+		}
+	}
+}
