@@ -37,6 +37,9 @@ class MovingPlaceholder {
         input.removeAttribute('placeholder');
         input.classList.add(classWrapper+'__input');
         input.classList.remove(classWrapper.replace('.', ''));
+        if (input.value) {
+            input.classList.add('-is-focus');
+        }
     }
 
     /**

@@ -1,0 +1,37 @@
+.tariff-options {
+	$block-name: &; // #{$block-name}__element
+
+	@include list-reset;
+	display: flex;
+	gap: 0.625em;
+
+	@include typo-margin-vertical;
+
+	&--wrap {
+		flex-wrap: wrap;
+	}
+
+	&__item {
+		align-items: center;
+		border: 1px solid var(--color-gray);
+		border-radius: calc(2.43em / 2);
+		color: var(--color-gray);
+		cursor: pointer;
+		display: flex;
+		font-size: var(--font-size--medium);
+		justify-content: center;
+		justify-items: center;
+		line-height: 1;
+		min-height: 2.43em;
+		padding: .625em .862em;
+		text-align: center;
+		transition: var(--transition-time);
+
+		&.-is-selected,
+		&:hover {
+			background: var(--color-primary);
+			border-color: var(--color-primary);
+			color: var(--color-white);
+		}
+	}
+}

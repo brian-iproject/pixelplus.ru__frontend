@@ -1,0 +1,12 @@
+.svg-icon {
+	$block-name: &; // #{$block-name}__element
+
+	fill: var(--fill, var(--color-primary));
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+
+	&--nonzero {
+		fill-rule: nonzero;
+	}
+}

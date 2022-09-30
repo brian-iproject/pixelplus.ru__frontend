@@ -40,7 +40,7 @@ class Utils {
 
         return wrapper;
     }
-
+    /*
     static maskPhone = function(selector, masked = '+7 (___) ___-__-__') {
         const elems = document.querySelectorAll(selector);
 
@@ -78,6 +78,7 @@ class Utils {
         }
 
     }
+    */
 }
 
 export default Utils;

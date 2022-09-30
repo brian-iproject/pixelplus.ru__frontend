@@ -15,6 +15,7 @@
 		border: 2px solid var(--color-gray--lighten);
 		text-align: center;
 		position: relative;
+		justify-content: center;
 
 		&:hover {
 			border-color: var(--color-primary);
@@ -23,12 +24,29 @@
 				background-color: var(--color-primary);
 			}
 		}
+
+		@at-root
+		.wide-block--gray-lighter & {
+			border-color: var(--color-white);
+
+			&:hover {
+				border-color: var(--color-white);
+				box-shadow: var(--shadow);
+			}
+		}
 	}
 
 	&__tooltip {
 		position: absolute;
 		top: .625em;
 		right: .625em;
+	}
+
+	&__image {
+		& img {
+			max-height: 130px;
+			width: auto;
+		}
 	}
 
 	&__info {
@@ -60,6 +78,10 @@
 		display: grid;
 		gap: var(--grid-gutter-y) var(--grid-gutter-x);
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+		&--columns-4 {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
 
 		&__item {
 			margin-right: 0;

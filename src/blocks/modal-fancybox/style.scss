@@ -1,0 +1,8 @@
+.modal-fancybox {
+	$block-name: &; // #{$block-name}__element
+
+	& .fancybox__content {
+		width: 100%;
+		max-width: 900px;
+	}
+}

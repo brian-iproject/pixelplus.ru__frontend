@@ -28,6 +28,7 @@ import imagemin         from 'gulp-imagemin'
 import notify           from 'gulp-notify'
 import convertEncoding  from 'gulp-convert-encoding'
 
+const mode = process.env.MODE || 'development';
 
 const config = {
     sourcePath: 'src',
@@ -39,7 +40,9 @@ const config = {
         content_unformatted: [],
     },
     webpack: {
-        mode: 'production',
+        //mode: 'development',
+        //devtool: mode === 'development' ? 'inline-source-map' : false,
+        //mode: mode,
         //devtool: mode === 'development' ? 'inline-source-map' : false,
         module: {
             rules: [
@@ -52,7 +55,8 @@ const config = {
                     use: {
                         loader: "babel-loader",
                         options: {
-                            presets: ['@babel/preset-env']
+                            presets: ['@babel/preset-env'],
+                            plugins: ['@babel/plugin-transform-runtime']
                         }
                     }
                 }
@@ -158,7 +162,7 @@ function compileSassWin1251() {
 
 function compilePug() {
     return multipipe(
-        src('src/pug/pages/*.pug'),
+        src('src/pug/pages/**/*.pug'),
         pug(),
         debug({title: 'Compiles '}),
         prettyHtml(config.prettyHtml),
@@ -195,7 +199,7 @@ function compileJsWin1251() {
 function compileLibsJs() {
     return multipipe(
         src([
-            //'node_modules/@fancyapps/ui/dist/fancybox.umd.js',
+            'node_modules/@fancyapps/ui/dist/fancybox.umd.js',
             'node_modules/flickity/dist/flickity.pkgd.min.js',
             'node_modules/flickity-fade/flickity-fade.js',
             'node_modules/wow.js/dist/wow.min.js',
@@ -203,6 +207,9 @@ function compileLibsJs() {
             //'node_modules/animejs/lib/anime.min.js',
             'node_modules/@popperjs/core/dist/umd/popper.min.js',
             'node_modules/tippy.js/dist/tippy-bundle.umd.min.js',
+            'node_modules/autosize/dist/autosize.min.js',
+            'node_modules/inputmask/dist/inputmask.min.js',
+            'node_modules/js-cookie/dist/js.cookie.js',
         ]),
         concat('libs.min.js'),
         dest('build/js/'),
@@ -214,7 +221,7 @@ function compileLibsSass() {
         src([
             'node_modules/normalize.css/normalize.css',
             'node_modules/animate.css/animate.css',
-            //'node_modules/@fancyapps/ui/dist/fancybox.css',
+            'node_modules/@fancyapps/ui/dist/fancybox.css',
             'node_modules/flickity/dist/flickity.css',
             'node_modules/flickity-fade/flickity-fade.css',
             'node_modules/choices.js/public/assets/styles/choices.min.css',

@@ -66,6 +66,7 @@
 		@include button--primary;
 
 		&:hover,
+		&:focus,
 		&:active {
 			@include button--primary-light;
 			box-shadow: 0 7px 20px rgba(204, 0, 0, .35), 0 20px 35px rgba(204, 0, 0, .15);
@@ -79,6 +80,7 @@
 		color: var(--color-white);
 
 		&:hover,
+		&:focus,
 		&:active {
 			background-color: var(--color-green--light);
 			border-color: var(--color-green--light);
@@ -91,6 +93,7 @@
 		@include button--gray-lighten;
 
 		&:hover,
+		&:focus,
 		&:active {
 			@include button--white;
 			box-shadow: 0px 10px 35px rgba(0, 0, 0, .15);
@@ -101,6 +104,7 @@
 		@include button--gray--dark;
 
 		&:hover,
+		&:focus,
 		&:active {
 			@include button--primary-light;
 		}
@@ -111,7 +115,12 @@
 		border-color: var(--color-gray--dark);
 		color: inherit;
 
+		&-white {
+			border-color: var(--color-white);
+		}
+
 		&:hover,
+		&:focus,
 		&:active {
 			@include button--white;
 			box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.15);
@@ -124,6 +133,7 @@
 		padding: .9em 1.5em 1em 1.5em;
 
 		&:hover,
+		&:focus,
 		&:active {
 			@include button--white;
 			box-shadow: 0px 10px 35px rgba(0, 0, 0, .15);
@@ -141,9 +151,7 @@
 	gap: 1em;
 	justify-items: center;
 
-	* + & {
-		margin-top: var(--typo-margin-vertical);
-	}
+	@include blocks-margin-vertical;
 
 	@media (max-width: $screen-sm - 1) {
 		& .button {

@@ -24,6 +24,22 @@
 		color: var(--color-white);
 	}
 
+	&--gray-darker {
+		background-color: var(--color-gray--darker);
+		color: var(--color-white);
+
+		--link-color: var(--color-white);
+		--link-color--hover: var(--color-white);
+	}
+
+	&--blue-dark {
+		background-color: var(--color-blue--dark);
+		color: var(--color-white);
+
+		--link-color: var(--color-white);
+		--link-color--hover: var(--color-white);
+	}
+
 	&--city {
 		background-image: url(../../blocks/wide-block/images/city.jpg);
 		color: var(--color-white);
@@ -56,6 +72,11 @@
 
 	&--woman {
 		background-image: url(../../blocks/wide-block/images/woman.jpg);
+		color: var(--color-white);
+	}
+
+	&--abstract-lines {
+		background-image: url(../../blocks/wide-block/images/abstract-lines.jpg);
 		color: var(--color-white);
 	}
 
@@ -212,7 +233,10 @@
 
 		& [class*=block-width--] h1:not([class*=block-width--]),
 		& [class*=block-width--] .h1:not([class*=block-width--]),
-		& [class*=block-width--] .subtitle:not([class*=block-width--]) {
+		& [class*=block-width--] .subtitle:not([class*=block-width--]),
+		& [class*=grid] h1,
+		& [class*=grid] .h1,
+		& [class*=grid] .subtitle {
 			max-width: none;
 		}
 	}

@@ -14,10 +14,13 @@
 		border-radius: 5px;
 		border-top: 8px solid var(--color-white);
 		margin-right: var(--grid-gutter-x);
-		min-height: 100%;
 		padding: 1.5em;
 		transition: var(--transition-time);
 		width: 100%;
+
+		#{$block-name}.flickity-enabled & {
+			min-height: 100%;
+		}
 
 		&:hover {
 			border-color: var(--color-primary);
@@ -44,10 +47,15 @@
 				border-color: var(--color-white);
 			}
 		}
+
+		@at-root a#{$block-name}__item {
+			--link-color: var(--text-color);
+			--link-color--hover: var(--color-primary);
+			text-decoration: none;
+		}
 	}
 
 	&__icon {
-		margin-bottom: 1.75em;
 		position: relative;
 
 		& svg {
@@ -73,12 +81,27 @@
 		}
 	}
 
-	&__title {
+	&__title:nth-child(n) { // nth-child для того, чтобы перебить стили h3
 		font-size: var(--font-size-h3);
 		font-weight: 500;
 		line-height: 1.2;
 		margin: 1em 0 .75em 0;
 		padding: 0;
+		color: var(--text-color); // Возвращает цвет заголовка, если wide-block темный с белым шрифтом
+
+		@at-root a#{$block-name}__item & {
+			text-decoration: none;
+			text-decoration: underline;
+			text-decoration-color: transparent;
+			transition: var(--transition-time);
+		}
+
+		@at-root
+		a#{$block-name}__item:hover &,
+		a#{$block-name}__item:active & {
+			color: var(--link-color--hover);
+			text-decoration-color: currentColor;
+		}
 	}
 
 	&__link {
@@ -104,7 +127,10 @@
 		justify-content: center;
 		align-items: center;
 		display: flex;
-		flex-grow: 1;
+
+		&:first-child:last-child {
+			flex-grow: 1;
+		}
 	}
 
 	&__footer {
@@ -115,7 +141,10 @@
 		font-size: var(--font-size--huge);
 		color: var(--color-primary);
 		font-weight: 500;
-		margin-bottom: var(--typo-margin-vertical);
+
+		&:not(:last-child) {
+			margin-bottom: .75em;
+		}
 	}
 
 	&__note {
@@ -125,7 +154,6 @@
 	}
 
 	@media (min-width: $screen-sm) {
-
 		&__item {
 			margin-right: var(--grid-gutter-x);
 			width: calc(50% - var(--grid-gutter-x) / 2);
@@ -142,8 +170,6 @@
 			padding: 2em;
 			width: auto;
 		}
-
-
 	}
 
 	@media (min-width: $screen-xl) {

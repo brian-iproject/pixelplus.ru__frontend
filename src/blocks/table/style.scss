@@ -99,8 +99,8 @@
 			border-bottom-color: var(--color-background);
 		}
 
-		& th.table__favorite,
-		& td.table__favorite {
+		& th#{$block-name}__favorite,
+		& td#{$block-name}__favorite {
 			&::before {
 				content: '';
 				position: absolute;
@@ -122,11 +122,20 @@
 			}
 		}
 
-		& tr:last-child th.table__favorite,
-		& tr:last-child td.table__favorite {
+		& tr:last-child th#{$block-name}__favorite,
+		& tr:last-child td#{$block-name}__favorite {
 			border-bottom-color: var(--color-primary);
 		}
+
+		& tr#{$block-name}__group th,
+		& tr#{$block-name}__group td {
+			--color-background: rgb(243, 243, 243);
+			--color-border: rgb(243, 243, 243);
+			font-weight: 500;
+		}
 	}
+
+
 
 	@media (max-width: $screen-md - 1) {
 		table-layout: auto;

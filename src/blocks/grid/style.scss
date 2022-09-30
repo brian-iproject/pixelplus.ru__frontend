@@ -4,13 +4,14 @@
 	&:not(.flickity-enabled) {
 		display: flex;
 		gap: calc(var(--grid-gutter-y) * 2) calc(var(--grid-gutter-x) * 2);
+		align-items: flex-start;
 	}
 
-	&:not(:first-child) {
+	&:not(:first-child):not(&__item) {
 		margin-top: var(--blocks-margin-vertical);
 	}
 
-	&:not(:last-child) {
+	&:not(:last-child):not(&__item) {
 		margin-bottom: var(--blocks-margin-vertical);
 	}
 
@@ -37,8 +38,15 @@
 	@mixin column-85 { --width: 85%; }
 	@mixin column-90 { --width: 90%; }
 
+	@mixin order-0 { order: 0; }
+	@mixin order-1 { order: 1; }
+	@mixin order-2 { order: 2; }
+	@mixin order-3 { order: 3; }
+	@mixin order-4 { order: 4; }
+	@mixin order-5 { order: 5; }
+
 	&__item {
-		min-height: 100%;
+		--width: 100%;
 
 		#{$block-name}:not(.flickity-enabled) & {
 			--flex-basis: calc(var(--width) - var(--grid-gutter-x) * 2);
@@ -48,12 +56,15 @@
 			max-width: var(--width, 100%);
 		}
 
-		#{$block-name}.flickity-enabled & {
+		#{$block-name}.flickity-enabled .flickity-slider > & {
 			width: calc(var(--width, 100%) - var(--grid-gutter-x));
 			margin-right: var(--grid-gutter-x);
-
 			max-width: var(--width);
-			display: inline-grid;
+
+			&:not(#{$block-name}) {
+				display: inline-grid;
+				min-height: 100%;
+			}
 		}
 
 		@media (max-width: $screen-sm - 1) {
@@ -70,6 +81,13 @@
 			&--xs-80 { @include column-80 }
 			&--xs-85 { @include column-85 }
 			&--xs-90 { @include column-90 }
+
+			&--xs-order-0 { @include order-0 }
+			&--xs-order-1 { @include order-1 }
+			&--xs-order-2 { @include order-2 }
+			&--xs-order-3 { @include order-3 }
+			&--xs-order-4 { @include order-4 }
+			&--xs-order-5 { @include order-5 }
 		}
 
 		@media (min-width: $screen-sm) {
@@ -86,6 +104,13 @@
 			&--sm-80 { @include column-80 }
 			&--sm-85 { @include column-85 }
 			&--sm-90 { @include column-90 }
+
+			&--sm-order-0 { @include order-0 }
+			&--sm-order-1 { @include order-1 }
+			&--sm-order-2 { @include order-2 }
+			&--sm-order-3 { @include order-3 }
+			&--sm-order-4 { @include order-4 }
+			&--sm-order-5 { @include order-5 }
 		}
 
 		@media (min-width: $screen-md) {
@@ -102,6 +127,13 @@
 			&--md-80 { @include column-80 }
 			&--md-85 { @include column-85 }
 			&--md-90 { @include column-90 }
+
+			&--md-order-0 { @include order-0 }
+			&--md-order-1 { @include order-1 }
+			&--md-order-2 { @include order-2 }
+			&--md-order-3 { @include order-3 }
+			&--md-order-4 { @include order-4 }
+			&--md-order-5 { @include order-5 }
 		}
 
 		@media (min-width: $screen-lg) {
@@ -118,6 +150,13 @@
 			&--lg-80 { @include column-80 }
 			&--lg-85 { @include column-85 }
 			&--lg-90 { @include column-90 }
+
+			&--lg-order-0 { @include order-0 }
+			&--lg-order-1 { @include order-1 }
+			&--lg-order-2 { @include order-2 }
+			&--lg-order-3 { @include order-3 }
+			&--lg-order-4 { @include order-4 }
+			&--lg-order-5 { @include order-5 }
 		}
 
 		@media (min-width: $screen-xl) {
@@ -134,6 +173,13 @@
 			&--xl-80 { @include column-80 }
 			&--xl-85 { @include column-85 }
 			&--xl-90 { @include column-90 }
+
+			&--xl-order-0 { @include order-0 }
+			&--xl-order-1 { @include order-1 }
+			&--xl-order-2 { @include order-2 }
+			&--xl-order-3 { @include order-3 }
+			&--xl-order-4 { @include order-4 }
+			&--xl-order-5 { @include order-5 }
 		}
  	}
 }

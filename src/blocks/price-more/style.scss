@@ -1,0 +1,36 @@
+.price-more {
+	$block-name: &; // #{$block-name}__element
+
+	@include blocks-margin-vertical;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 0 var(--grid-gutter-x);
+	font-size: var(--font-size--huge);
+	line-height: 1;
+
+	&__actual {
+		color: var(--color-primary);
+		font-weight: 500;
+		grid-column: 1;
+	}
+
+	&__old {
+		grid-column: 1;
+		font-size: .8em;
+		text-decoration: line-through;
+		color: var(--color-gray);
+	}
+
+	&__discount {
+		grid-column: 2;
+		grid-row: 1 / 3;
+
+		& .alert {
+			font-size: var(--font-size--small);
+			border-radius: 10px;
+			line-height: 1.2;
+		}
+	}
+}

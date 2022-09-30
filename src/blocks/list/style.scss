@@ -5,11 +5,10 @@ TODO: сделать сброс списков миксином
 .list {
 	$block-name: &; // #{$block-name}__element
 
+	@include list-reset;
+
 	flex-direction: column;
 	line-height: var(--line-height);
-	list-style: none;
-	margin: 0;
-	padding: 0;
 	text-align: left;
 
 	&:not(:first-child),
@@ -45,7 +44,7 @@ TODO: сделать сброс списков миксином
 		margin-top: calc(var(--typo-margin-vertical) * .5);
 	}
 
-	&:not(&--column-2) {
+	&:not(&--column-2):not(.text-columns) {
 		display: flex; // Исправляет обтекание картинки списком
 	}
 
@@ -119,9 +118,35 @@ TODO: сделать сброс списков миксином
 			}
 		}
 	}
+
+	&--icon {
+
+		& li {
+			display: flex;
+			flex-wrap: wrap;
+			align-content: center;
+			align-items: center;
+			margin-bottom: 1.25em;
+			padding: 0 !important;
+
+			&::before {
+				content: none !important;
+			}
+		}
+
+		& svg {
+			margin-right: 1.2em;
+			max-width: 1.4em;
+			max-height: 1.4em;
+		}
+
+		& span {
+			margin-left: .25em;
+		}
+	}
 }
 
-// Устаревшие стили, надо постепенно вывести с проекта
+// TODO: Устаревшие стили, надо постепенно вывести с проекта
 .list-checked {
 	display: flex;
 	flex-direction: column;

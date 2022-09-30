@@ -25,7 +25,7 @@
 			"filterTarget": "ceo"
 		},
 	]
-.team-list.team-list--columns-4.tile-slider(data-filter-block="team", data-flickity-options='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "watchCSS": true, "groupCells": true, "cellSelector": ".team-list__item:not(.-is-hidden)", "lazyLoad": true }')
+.team-list.team-list--columns-4.tile-slider.wow.animate__zoomIn(data-filter-block="team", data-flickity-options='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "watchCSS": true, "groupCells": true, "cellSelector": ".team-list__item:not(.-is-hidden)", "lazyLoad": true }' data-wow-duration=".5s")
 	each item, i in dataTeams
 		.team-list__item(data-filter-target=item.filterTarget)
 			.team-list__image

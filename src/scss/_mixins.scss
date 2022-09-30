@@ -1,3 +1,29 @@
 // Helpers
 @import "mixins/_burger";
 @import "mixins/_form-mixins";
+
+@mixin list-reset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@mixin blocks-margin-vertical {
+	&:not(:first-child) {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+}
+
+@mixin typo-margin-vertical {
+	&:not(:first-child) {
+		margin-top: var(--typo-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--typo-margin-vertical);
+	}
+}

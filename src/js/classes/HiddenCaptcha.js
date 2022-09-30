@@ -39,12 +39,11 @@ class HiddenCaptcha {
      * @param e
      */
     handlerSubmit = (e) => {
-        e.preventDefault();
         const   $form = e.target,
                 $hiddenInput = this.getHiddenInput($form);
 
-        if (this.isEmpty($hiddenInput))
-            $form.submit();
+        if (!this.isEmpty($hiddenInput))
+            e.preventDefault();
     }
 
     /**

@@ -29,7 +29,10 @@
 @import '../blocks/field-select/style';
 @import '../blocks/field-required/style';
 @import '../blocks/moving-placeholder/style';
+
 @import '../blocks/tile/style';
+@import '../blocks/tile-item/style';
+
 @import '../blocks/tile-slider/style';
 @import '../blocks/about-numbers/style';
 @import '../blocks/tile-news/style';
@@ -51,7 +54,7 @@
 @import '../blocks/table-compare/style';
 @import '../blocks/work-stages/style';
 @import '../blocks/logo-list/style';
-@import '../blocks/seo-cases/style';
+@import '../blocks/case-full/style';
 @import '../blocks/bn-text/style';
 @import '../blocks/tile-experts/style';
 @import '../blocks/video/style';
@@ -66,12 +69,21 @@
 @import '../blocks/tech/style';
 @import '../blocks/promo/style';
 @import '../blocks/tariffs-group/style';
+@import '../blocks/svg-icon/style';
+@import '../blocks/text-columns/style';
+
+@import '../blocks/tariff-options/style';
+@import '../blocks/timing/style';
+@import '../blocks/price-more/style';
+@import '../blocks/tools/style';
 
 @import '../blocks/block-width/style';
 @import '../blocks/v-space/style';
 @import '../blocks/h-scroll/style';
 @import '../blocks/v-scroll/style';
 @import '../blocks/show-more/style';
+@import '../blocks/modal-fancybox/style';
+@import '../blocks/accept-cookie/style';
 
 // Технические стили, не использовать на продакшене
 @import '../blocks/colors-list/style';

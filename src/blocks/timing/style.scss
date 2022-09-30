@@ -1,0 +1,20 @@
+.timing {
+	$block-name: &; // #{$block-name}__element
+
+	color: var(--color-gray--dark);
+	display: flex;
+	align-items: center;
+
+	&::before {
+		background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='11.5175' height='17' viewBox='0 0 11.5175 17'><path d='M7.73638,9.30144,6.59668,8.29562l-.12962-.2975V6.37531a.70832.70832,0,0,0-1.41664,0v2.125a.70869.70869,0,0,0,.23942.53125L6.79859,10.3632a.70831.70831,0,1,0,.93779-1.06176ZM9.30043,3.9688V1.41668A1.4181,1.4181,0,0,0,7.88375,0h-4.25A1.4181,1.4181,0,0,0,2.21707,1.41668V3.9688a5.73892,5.73892,0,0,0,0,9.0624v2.5521A1.41812,1.41812,0,0,0,3.63375,17h4.25a1.41812,1.41812,0,0,0,1.41668-1.4167V13.0312a5.73892,5.73892,0,0,0,0-9.0624ZM7.88375,1.41668V3.1528a5.6937,5.6937,0,0,0-4.2507,0V1.41668Zm0,14.16662h-4.25V13.8472a5.69254,5.69254,0,0,0,4.25,0Zm-2.125-2.7412A4.34209,4.34209,0,1,1,10.1008,8.5,4.34712,4.34712,0,0,1,5.75875,12.8421Z' style='fill: rgb(117, 117, 117)'/></svg>");
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-size: contain;
+		content: '';
+		display: inline-block;
+		height: 1em;
+		margin-right: .5em;
+		vertical-align: middle;
+		width: .7em;
+	}
+}

@@ -18,14 +18,20 @@
 .-fs-huge { font-size: var(--font-size--huge) }
 .-fs-xxx-huge { font-size: var(--font-size--xxx-huge) }
 
-.-no-margin { margin: 0; }
+.-no-margin { margin: 0 !important; }
+.-no-margin--bottom { margin-bottom: 0 !important; }
 .-no-padding { padding: 0; }
 .-no-padding-bottom { padding-bottom: 0 !important; }
 
 .-ws-nowrap { white-space: nowrap }
 
-.-c-primary { color: var(--color-primary); }
-.-c-green { color: var(--color-green); }
+.-c-primary { color: var(--color-primary) }
+.-c-green { color: var(--color-green) }
+.-c-gray--dark { color: var(--color-gray--dark) }
+.-c-white { color: var(--color-white) }
+
+.-bg-gray--lighter { background-color: var(--color-gray--lighter) }
+.-bg-gray--lighten { background-color: var(--color-gray--lighten) }
 
 .-is-hidden,
 [hidden] {

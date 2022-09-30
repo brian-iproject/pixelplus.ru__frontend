@@ -17,7 +17,7 @@
 	}
 
 	&__header {
-		//position: sticky;
+		//position: sticky; // Отключали, т.к. занимало много места
 		//top: 0;
 		z-index: 15;
 	}
@@ -47,9 +47,15 @@
 		height: 0;
 
 		&:not(:empty) .breadcrumb {
-			padding-top: 3em;
+			padding-top: 1em;
 			position: relative;
 			z-index: 5;
+		}
+
+		@media (min-width: $screen-sm) {
+			&:not(:empty) .breadcrumb {
+				padding-top: 3em;
+			}
 		}
 	}
 
@@ -68,7 +74,6 @@ body {
 	word-wrap: break-word;
 
 	@media (max-width: $screen-lg - 1 ) {
-
 		&.-no-scroll {
 			overflow: hidden;
 		}

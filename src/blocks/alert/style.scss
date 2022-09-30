@@ -8,9 +8,16 @@
 	border-width: 1px;
 	color: hsl(var(--hue), 50%, 20%);
 	font-size: var(--font-size--medium);
-	margin: 1.5em 0;
 	padding: .75em 1.25em;
 	position: relative;
+
+	&:not(:first-child) {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
 
 	&--info {
 		--hue: var(--hue-info);

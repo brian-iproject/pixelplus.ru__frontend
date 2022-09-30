@@ -1,7 +1,8 @@
 .field-text {
-	$block-name:                    &; // #{$block-name}__element
+	$block-name: &; // #{$block-name}__element
 
-	&__input-wrap {}
+	&__input-wrap {
+	}
 
 	&__input {
 		background: var(--color-white);
@@ -36,6 +37,11 @@
 		[class*=--fields-transparent] & + .moving-placeholder__name,
 		.main-slider & + .moving-placeholder__name {
 			color: inherit;
+		}
+
+		[class*=-bg-gray] & {
+			--field-text-border-color: var(--color-gray--light);
+			--field-text-color: var(--text-color);
 		}
 	}
 

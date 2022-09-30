@@ -29,16 +29,18 @@
 	&__item-inner {
 		align-items: center;
 		display: flex;
-		width: calc(100% - 2 * var(--v-padding));
-		height: calc(var(--min-height) - 2 * var(--v-padding));
+		//width: calc(100% - 2 * var(--grid-gutter-x));
+		//height: calc(var(--min-height) - 2 * var(--v-padding)); убираем на мобиле, чтобы была адаптивная высота
+		//min-height: calc(var(--min-height) - 2 * var(--v-padding)); //убираем на мобиле, чтобы была адаптивная высота
+		min-height: calc(var(--min-height)); //убираем на мобиле, чтобы была адаптивная высота
 		flex-grow: 1;
 		padding-top: var(--v-padding);
 		padding-bottom: var(--v-padding);
-		box-sizing: content-box;
+		// box-sizing: content-box; // не помню зачем было, пока мешает
 
-		& * {
+		/*& * {
 			box-sizing: border-box;
-		}
+		}*/
 
 		@at-root #{$block-name}--negative-margin #{$block-name}__item-inner {
 			margin-bottom: var(--v-padding);
@@ -109,23 +111,11 @@
 			padding-bottom: 2em;
 		}
 
-		&-left {
-			--width: calc(66.66666% - var(--grid-gutter-x) / 2);
-			flex: 0 0 var(--width);
-			max-width: var(--width);
-		}
-
-		&-right {
-			--width: calc(33.33333% - var(--grid-gutter-x) / 2);
-			flex: 0 0 var(--width);
-			max-width: var(--width);
-
-			& video {
-				max-width: 100%;
-				height: auto;
-				display: block;
-				border-radius: 1em;
-			}
+		& video {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			border-radius: 1em;
 		}
 	}
 
@@ -142,10 +132,7 @@
 		display: flex;
 		align-items: center;
 		padding: 1em 4.625em;
-
-		& svg {
-			margin-right: 1em;
-		}
+		justify-content: center;
 
 		&::before {
 			display: inline-block;
@@ -155,6 +142,8 @@
 			width: 14px;
 			height: 17px;
 			margin-right: 1em;
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
 		}
 
 		&::after {
@@ -166,6 +155,8 @@
 			content: "";
 			margin-left: 1em;
 			transition: var(--transition-time);
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
 		}
 
 		&.-is-active::after {
@@ -202,8 +193,16 @@
 		}
 	}
 
-	@media (min-width: $screen-md) {
+	@media (max-width: $screen-sm - 1) {
+		&__show-more {
+			left: auto;
+			padding: 1em 2em;
+			justify-content: center;
+			left: var(--grid-gutter-x);
+		}
+	}
 
+	@media (min-width: $screen-md) {
 		&--negative-margin {
 			margin-bottom: calc((3.75em + 6.5em) * -1);
 		}

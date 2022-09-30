@@ -1,12 +1,10 @@
 .form-short {
 	$block-name: &; // #{$block-name}__element
 
-	&:not(:first-child) {
-		margin-top: var(--blocks-margin-vertical);
-	}
+	@include blocks-margin-vertical;
 
-	&:not(:last-child) {
-		margin-bottom: var(--blocks-margin-vertical);
+	&[class*=-bg-] {
+		padding: 1.5em
 	}
 
 	&__field {
