@@ -8,6 +8,7 @@ import Tabs from "./classes/Tabs"
 import HiddenCaptcha from "./classes/HiddenCaptcha"
 import Tariffs from "./classes/Tariffs";
 import AcceptCookie from "./classes/AcceptCookie";
+import YtVideoLoad from "./classes/YtVideoLoad";
 
 const appnew = {
     filterBlocks: function() {
@@ -147,4 +148,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
         acceptCookie.init();
     }
 
+
+    const moveTo = new MoveTo();
+    document.querySelectorAll('[data-target]').forEach((item) => {
+        moveTo.registerTrigger(item);
+    });
+
+    if (typeof YtVideoLoad !== 'undefined') {
+        document.querySelectorAll('.yt-video').forEach((item) => {
+            new YtVideoLoad.init(item);
+        });
+
+    }
 })

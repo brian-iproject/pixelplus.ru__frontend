@@ -20,19 +20,15 @@
 
     img {
       display: block;
-      width: 165px;
+      width: 150px;
     }
   }
 
   &__slogan,
   &__top-menu,
-  &__phones,
+  //&__phones,
   &__order {
     display: none;
-  }
-
-  &__search {
-    padding: 0 calc(var(--grid-gutter-x) * .75);
   }
 
   &__burger {
@@ -94,7 +90,6 @@
       padding-left: var(--grid-gutter-x);
     }
 
-    &__search,
     &__burger {
       display: none;
     }

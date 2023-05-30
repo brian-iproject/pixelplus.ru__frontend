@@ -10,6 +10,7 @@ import pug              from 'gulp-pug'
 import gulpSass         from 'gulp-sass'
 import dartSass         from 'sass'
 const  sass             = gulpSass(dartSass)
+import gcmq             from 'gulp-group-css-media-queries'
 
 import prettyHtml       from 'gulp-pretty-html'
 import rename           from 'gulp-rename'
@@ -69,9 +70,8 @@ const config = {
     },
     cleancss: {
         inline: ['none'],
-        level: {
-            1: { specialComments: 0 }
-        }
+        level: 2,
+        //format: 'beautify'
     }
 }
 
@@ -121,41 +121,16 @@ function compileSass() {
     return multipipe(
         src('src/scss/styles.scss'),
         sass(),
+        gcmq(),
         debug({title: 'Compiles '}),
         replace(/..\/..\/blocks\/([a-zA-Z0-9_-]+)\/images\/([a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/blocks/$1/$2.$3'),
         debug({title: 'Replaces path to image '}),
         /** TODO: autoprefixer сыпет ошибки в конечный css - надо разобрать их и вернуть */
         //debug({title: 'Add browser prefix '}),
         //autoprefixer(config.autoprefixer),
-        cleancss( {...config.cleancss, format: 'beautify'} ),
+        cleancss( {...config.cleancss} ),
         rename({ basename: 'main' }),
         debug({title: 'Renames '}),
-        dest('build/css')
-    ).on('error', notify.onError("<%= error.title %>: <%= error.message %>"));
-}
-
-/**
- * Функция генерирует бандл в кодировке windows-1251
- * для загрузки на бэкенд проекта. Больше не для чего.
- * Когда проект будет в utf-8 можно убить функцию
- */
-function compileSassWin1251() {
-    return multipipe(
-        src('src/scss/styles.scss'),
-        sass(),
-        debug({title: 'Compiles '}),
-        replace(/..\/..\/blocks\/([a-zA-Z0-9_-]+)\/images\/([a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/blocks/$1/$2.$3'),
-        debug({title: 'Replaces path to image '}),
-        replace('@charset "UTF-8";', ''),
-        replace('🡐 ', '\\1F850\\0020'),
-        replace(' 🡒', '\\0020\\1F852'),
-        /** TODO: autoprefixer сыпет ошибки в конечный css - надо разобрать их и вернуть */
-        //debug({title: 'Add browser prefix '}),
-        //autoprefixer(config.autoprefixer),
-        //cleancss( {...config.cleancss, format: 'beautify'} ),
-        rename({ basename: 'main-1251' }),
-        debug({title: 'Renames '}),
-        convertEncoding({to: 'windows-1251'}),
         dest('build/css')
     ).on('error', notify.onError("<%= error.title %>: <%= error.message %>"));
 }
@@ -180,22 +155,6 @@ function compileJs() {
     ).on('error', notify.onError());
 }
 
-/**
- * Функция генерирует бандл в кодировке windows-1251
- * для загрузки на бэкенд проекта. Больше не для чего.
- * Когда проект будет в utf-8 можно убить функцию
- */
-function compileJsWin1251() {
-    return multipipe(
-        src('src/js/main.js'),
-        webpackStream(config.webpack),
-        rename({ basename: 'main-1251' }),
-        debug({title: 'Renames '}),
-        convertEncoding({to: 'windows-1251'}),
-        dest('build/js'),
-    ).on('error', notify.onError());
-}
-
 function compileLibsJs() {
     return multipipe(
         src([
@@ -210,6 +169,7 @@ function compileLibsJs() {
             'node_modules/autosize/dist/autosize.min.js',
             'node_modules/inputmask/dist/inputmask.min.js',
             'node_modules/js-cookie/dist/js.cookie.js',
+            'node_modules/moveto/dist/moveTo.min.js',
         ]),
         concat('libs.min.js'),
         dest('build/js/'),
@@ -247,8 +207,8 @@ function serve() {
 
 function startWatch() {
     watch('src/**/*.pug', compilePug)
-    watch('src/**/*.{sass,scss}', parallel(compileSass, compileSassWin1251))
-    watch('src/**/*.js', parallel(compileJs, compileJsWin1251))
+    watch('src/**/*.{sass,scss}', parallel(compileSass))
+    watch('src/**/*.js', parallel(compileJs))
 
     watch('src/assets/**/*', copyAssets);
     watch('src/blocks/**/images/*', copyImagesBlocks);
@@ -264,7 +224,7 @@ export { clearBuild };
 export { copyAssets, copyImagesBlocks, copyImages, copyFonts, copyFavicon }
 
 // Compiles
-export { compilePug, compileSass, compileSassWin1251, compileJs, compileJsWin1251, compileLibsSass, compileLibsJs }
+export { compilePug, compileSass, compileJs, compileLibsSass, compileLibsJs }
 
 export let compileLibs = parallel(compileLibsSass, compileLibsJs);
 
@@ -272,10 +232,10 @@ export let compileLibs = parallel(compileLibsSass, compileLibsJs);
 export let build = series(
     clearBuild,
     parallel(copyAssets, copyImagesBlocks, copyImages, copyFonts, copyFavicon),
-    parallel(compileSass, compileSassWin1251, compilePug, compileJs, compileJsWin1251, compileLibs)
+    parallel(compileSass, compilePug, compileJs, compileLibs)
 );
 
 export default series(
-    parallel(compileSass, compileSassWin1251, compilePug, compileJs, compileJsWin1251, compileLibs),
+    parallel(compileSass, compilePug, compileJs, compileLibs),
     parallel(startWatch, serve)
 );

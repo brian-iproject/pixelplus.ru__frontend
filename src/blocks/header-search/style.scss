@@ -65,4 +65,24 @@
 			width: 18px;
 		}
 	}
+
+	@media (max-width: $screen-lg - 1) {
+		.page-nav &__button {
+			display: none;
+		}
+
+		.page-nav &__inner {
+			position: static;
+			visibility: visible;
+			opacity: 1;
+			width: 100%;
+			transform: none;
+			background: none;
+		}
+
+		.page-nav &__input {
+			background-color: var(--color-gray--darken);
+			border-radius: .5em 0 0 .5em;
+		}
+	}
 }

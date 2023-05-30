@@ -1,8 +1,24 @@
 .modal-fancybox {
 	$block-name: &; // #{$block-name}__element
 
+	box-sizing: border-box;
+
+	& *,
+	& *::before,
+	& *::after {
+		box-sizing: inherit;
+	}
+
 	& .fancybox__content {
 		width: 100%;
 		max-width: 900px;
+
+		& .field-text__input:focus {
+			outline: none;
+		}
+	}
+
+	&--sm .fancybox__content {
+		max-width: 520px;
 	}
 }

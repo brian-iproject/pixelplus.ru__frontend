@@ -49,6 +49,7 @@
 
 	&__bottom {
 		background-color: var(--color-black);
+		color: var(--color-gray--dark);
 		padding: 12px 0 27px 0;
 
 		&-inner {
@@ -98,9 +99,9 @@
 
 	&__copy-c {}
 
-	&__copy-recaptcha {
-		color: var(--color-gray--dark);
-	}
+	//&__copy-recaptcha {
+	//	color: var(--color-gray--dark);
+	//}
 
 	@media (min-width: $screen-md) {
 

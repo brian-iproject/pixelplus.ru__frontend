@@ -128,9 +128,40 @@ TODO: сделать сброс списков миксином
 			align-items: center;
 			margin-bottom: 1.25em;
 			padding: 0 !important;
+			break-inside: avoid;
+			page-break-inside: avoid;
 
 			&::before {
 				content: none !important;
+			}
+		}
+
+		& #{$block-name}__icon {
+			width: 2.5em;
+			height: 2.5em;
+			align-items: center;
+			justify-content: center;
+			display: flex;
+			margin-right: 1.2em;
+			position: relative;
+
+			&::before {
+				content: '';
+				background-color: currentColor;
+				opacity: .1;
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				position: absolute;
+				left: 0;
+				top: 0;
+
+			}
+
+			& svg {
+				margin-right: 0;
+				position: relative;
+				z-index: 1;
 			}
 		}
 

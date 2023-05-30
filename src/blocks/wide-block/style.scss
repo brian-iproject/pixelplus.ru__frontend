@@ -92,6 +92,21 @@
 		}
 	}
 
+	&--world-map {
+		background-image: url(../../blocks/wide-block/images/world-map.jpg);
+		color: var(--color-white);
+	}
+
+	&--city-towers {
+		background-image: url(../../blocks/wide-block/images/city-towers.jpg);
+		color: var(--color-white);
+	}
+
+	&--office {
+		background-image: url(../../blocks/wide-block/images/office.jpg);
+		color: var(--color-white);
+	}
+
 	@at-root #{$block-name}#{$block-name}--footer {
 		position: relative;
 		padding-bottom: 0;

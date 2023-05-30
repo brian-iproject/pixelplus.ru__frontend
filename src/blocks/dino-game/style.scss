@@ -1,0 +1,29 @@
+.dino-game {
+	$block-name: &; // #{$block-name}__element
+
+	& iframe {
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+.dino-joystick {
+	position: absolute;
+	right: 0;
+	bottom: -154px;
+	cursor: pointer;
+
+	@media (max-width: $screen-md - 1) {
+		display: none;
+	}
+}
+
+.dino-arrow {
+	position: absolute;
+	left: 40%;
+	bottom: 0;
+
+	@media (max-width: $screen-lg - 1) {
+		display: none;
+	}
+}

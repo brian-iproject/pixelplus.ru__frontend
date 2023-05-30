@@ -14,12 +14,12 @@
 			position: relative;
 		}
 
-		.page-header &--regions {
+		.page-header &:last-child {
 			display: none;
 		}
 
 		@media (min-width: $screen-lg) {
-			.page-header &--regions {
+			.page-header &:last-child {
 				display: block;
 			}
 		}
@@ -124,7 +124,7 @@
 	}
 
 	&__number {
-		font-size: var(--font-size--huge);
+
 		font-weight: 500;
 
 		& a {
@@ -134,6 +134,13 @@
 			&:hover {
 				color: var(--link-color--hover);
 				text-decoration-color: transparent;
+			}
+		}
+
+		@media (max-width: $screen-md - 1) {
+			.page-header & {
+				--link-color: var(--color-white);
+				--link-color--hover: var(--color-white);
 			}
 		}
 	}
@@ -153,6 +160,10 @@
 	}
 
 	@media (min-width: $screen-md) {
+		&__number {
+			font-size: var(--font-size--huge);
+		}
+
 		.page-footer & {
 			display: flex;
 		}

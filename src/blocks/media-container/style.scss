@@ -1,0 +1,26 @@
+.media-container {
+	$block-name: &; // #{$block-name}__element
+
+	&:not(:first-child) {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+
+	box-shadow: var(--shadow);
+	border-radius: 10px;
+	overflow: hidden;
+	margin: 0 auto;
+
+	&:not(&--wide) {
+		max-width: 768px;
+	}
+
+	@media (min-width: $screen-md) {
+		&:hover {
+			box-shadow: var(--shadow);
+		}
+	}
+}

@@ -5,10 +5,13 @@
 .-strong { font-weight: bold; }
 .-fw-sb { font-weight: 500; }
 .-fw-n { font-weight: normal; }
+.-fw-l { font-weight: 300; }
 
 .-ta-l { text-align: left; }
 .-ta-c { text-align: center !important; }
 .-ta-r { text-align: right; }
+
+.-td-lt { text-decoration: line-through }
 
 .-fs-tiny { font-size: var(--font-size--tiny) }
 .-fs-small { font-size: var(--font-size--small) }

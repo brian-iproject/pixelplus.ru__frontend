@@ -31,11 +31,15 @@ html(class="page" lang="en")
 
 			+page-header('page__header')
 
-			block breadcrumb
-				.page__breadcrumb.page-container
-					include ../blocks/breadcrumb/index
+			.page__heading
+				block slider
+					include ../blocks/main-slider/index-single
+				block breadcrumb
+					.page__breadcrumb.page-container
+						include ../blocks/breadcrumb/index
 
 			main.page__content
+
 				block content
 					p содержимое
 

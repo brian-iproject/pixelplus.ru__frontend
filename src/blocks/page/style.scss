@@ -43,13 +43,25 @@
 		}
 	}
 
+	&__heading {
+		display: flex;
+		flex-direction: column-reverse;
+		position: relative;
+	}
+
 	&__breadcrumb {
 		height: 0;
+
 
 		&:not(:empty) .breadcrumb {
 			padding-top: 1em;
 			position: relative;
 			z-index: 5;
+		}
+
+		.main-slider + & {
+			--breadcrumb-color: var(--color-white);
+			--arrow-filter: brightness(999%);
 		}
 
 		@media (min-width: $screen-sm) {
@@ -164,10 +176,13 @@ a {
 }
 
 .pseudo-link {
-	color: #5c90fe;
+	color: var(--link-color);
 	cursor: pointer;
-	text-decoration-color: rgba(92,144,254,0);
+	text-decoration-color: currentColor;
+	text-decoration-line: underline;
 	text-decoration-style: dashed;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
 	transition: text-decoration-color .3s, color .3s;
 
 	&:hover,

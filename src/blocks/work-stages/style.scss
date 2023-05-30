@@ -16,8 +16,8 @@
 
 		display: grid;
 		gap: 1em;
-		grid-template-areas:  "icon title"
-                          "description description";
+		//grid-template-areas:  "icon title"
+    //                      "description description";
 		grid-template-columns: var(--circle-size) auto;
 		line-height: 1.4;
 		position: relative;
@@ -25,7 +25,9 @@
 	}
 
 	&__icon {
-		grid-area: icon;
+		//grid-area: icon;
+		grid-column: 1;
+		grid-row: 1 / 3;
 		position: relative;
 
 		&-inner {
@@ -67,17 +69,36 @@
 
 	&__title {
 		font-weight: 500;
-		grid-area: title;
+		//grid-area: title;
+		grid-column: 2;
+		grid-row: 1;
 
 		& span {
 			color: var(--color-primary);
+		}
+
+		& a {
+			color: var(--text-color);
+			text-decoration-color: transparent;
+
+			&:hover,
+			&:active {
+				color: var(--link-color--hover);
+				text-decoration-color: currentColor;
+			}
 		}
 	}
 
 	&__description {
 		color: var(--color-gray);
 		font-size: var(--font-size--medium);
-		grid-area: description;
+		//grid-area: description;
+		grid-column: 2;
+		grid-row: 1 / 3;
+	}
+
+	&__title + &__description {
+		grid-row: 2;
 	}
 
 	@media (min-width: $screen-sm) {

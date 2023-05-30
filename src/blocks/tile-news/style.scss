@@ -57,6 +57,11 @@
 			max-width: 80%;
 			max-height: 80%;
 		}
+
+		@at-root
+		.wide-block--gray-lighter & {
+			background-color: var(--color-gray--lighten);
+		}
 	}
 
 	&__info {

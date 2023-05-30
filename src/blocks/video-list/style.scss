@@ -5,16 +5,22 @@
 	&__item {
 		margin-right: calc(var(--grid-gutter-x) + 1px); // +1px убирает белую полосу справа
 		width: 100%;
+
+		@at-root #{$block-name}--tile & {
+			background: var(--color-white);
+			padding: 1em;
+			border-radius: 10px;
+		}
 	}
 
 	&__link {
-		color: var(--color-white);
+		color: inherit;
 		display: block;
 		text-decoration-color: transparent;
 
 		&:hover,
 		&:focus {
-			color: var(--color-white);
+			color: inherit;
 			text-decoration-color: transparent;
 		}
 	}

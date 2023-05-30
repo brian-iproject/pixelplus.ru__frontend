@@ -85,35 +85,6 @@
 		}
 	}
 
-	&--type2 {
-
-		& #{$block-name}__item {
-			margin-right: var(--grid-gutter-x);
-			min-height: 100%;
-			width: 100%;
-
-			@media (min-width: $screen-sm) {
-				margin-right: var(--grid-gutter-x);
-				width: calc(50% - var(--grid-gutter-x) / 2);
-			}
-		}
-
-		@media (min-width: $screen-lg) {
-			display: flex;
-			flex-wrap: wrap;
-			--x-gap: calc(var(--grid-gutter-x) * 5.5);
-			gap: calc(var(--grid-gutter-y) * 3.5) var(--x-gap);
-
-			& #{$block-name}__item {
-				flex: 1 1 calc(50% - var(--x-gap) / 2);
-				margin: 0;
-				max-width: calc(50% - var(--x-gap) / 2);
-				min-height: unset;
-				width: unset;
-			}
-		}
-	}
-
 	&--type3 {
 
 		& #{$block-name}__item {

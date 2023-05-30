@@ -1,6 +1,14 @@
 .tech {
 	$block-name: &; // #{$block-name}__element
 
+	&:not(:first-child) {
+		margin-top: var(--blocks-margin-vertical);
+	}
+
+	&:not(:last-child) {
+		margin-bottom: var(--blocks-margin-vertical);
+	}
+
 	&__item {
 		background-color: var(--color-white);
 		border-radius: .625em;
@@ -16,6 +24,7 @@
 		text-align: center;
 		position: relative;
 		justify-content: center;
+		gap: var(--grid-gutter-y);
 
 		&:hover {
 			border-color: var(--color-primary);
@@ -26,6 +35,7 @@
 		}
 
 		@at-root
+		.wide-block--gray-lighten &,
 		.wide-block--gray-lighter & {
 			border-color: var(--color-white);
 
@@ -43,17 +53,22 @@
 	}
 
 	&__image {
-		& img {
+		display: flex;
+		flex-grow: 1;
+		align-content: center;
+		justify-content: center;
+
+		& img,
+		& svg {
 			max-height: 130px;
-			width: auto;
+			width: 100%;
+			height: 100%;
+			object-fit: scale-down;
+			display: block;
 		}
 	}
 
 	&__info {
-		border-top: none;
-		display: flex;
-		flex-direction: column;
-		flex-grow: 1;
 	}
 
 	&__note {

@@ -63,7 +63,8 @@
 @import '../blocks/zoom/style';
 @import '../blocks/case-wide/style';
 @import '../blocks/illustration/style';
-@import '../blocks/grid/style';
+@import '../blocks/grid/style'; // Старый вариант сетки на флексах - надо вывести с проекта
+@import '../blocks/d-grid/style'; // Обновленный вариант сетки на гридах
 @import '../blocks/download-block/style';
 @import '../blocks/tooltip/style';
 @import '../blocks/tech/style';
@@ -71,6 +72,13 @@
 @import '../blocks/tariffs-group/style';
 @import '../blocks/svg-icon/style';
 @import '../blocks/text-columns/style';
+@import '../blocks/logo-line/style';
+@import '../blocks/media-container/style';
+@import '../blocks/order-service/style';
+@import '../blocks/vote/style';
+@import '../blocks/rating/style';
+
+@import '../blocks/dino-game/style';
 
 @import '../blocks/tariff-options/style';
 @import '../blocks/timing/style';

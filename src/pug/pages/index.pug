@@ -5,9 +5,9 @@ block meta
 	meta(name='description', content='')
 
 block breadcrumb
-block content
+block slider
 	include ../../blocks/main-slider/index
-
+block content
 	.wide-block.wide-block--gray-lighter
 		.page-container
 			-
@@ -72,7 +72,7 @@ block content
 			include ../../blocks/about-numbers/index
 
 	.wide-block
-		.page-container
+		.page-container(id="team")
 			h2.h1 Наша команда
 			.buttons-group(data-filter="team")
 				button.button.button--tab.-is-active(data-filter-source="all") Все сотрудники
@@ -349,6 +349,7 @@ block content
 				.team-list__item
 					a.team-list__image.team-list__image--join(href="#")
 					.team-list__name
+
 						a(href="#") Присоединиться к команде
 			.v-space
 			p.-ta-r

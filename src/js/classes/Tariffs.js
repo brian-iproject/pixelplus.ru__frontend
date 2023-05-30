@@ -55,9 +55,14 @@ class Tariffs {
             this.initTariff();
             this.setCurrentTariff();
             const $button = this.$service.querySelector('button');
-            if ($button && !$button.closest('.modal-fancybox')) {
+            if ($button && !$button.closest('form')) {
                 $button.addEventListener('click', this.buyServiceHandler);
             }
+
+            const forms = this.$service.querySelectorAll('form');
+            forms.forEach((item) => {
+                item.addEventListener('submit', this.sendOrderHandler);
+            });
         } catch (e) {
             console.error( e.name + ' ' + e.message );
         }
@@ -77,20 +82,20 @@ class Tariffs {
 
     startLoading = () => {
         const $loader = document.createElement('div');
-        const $fancyContent = document.querySelector('.fancybox__content');
+        const $orderWrap = document.querySelector('.order-service');
 
         $loader.innerHTML = this.$loader;
         $loader.style.cssText = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.8); z-index: 5;';
 
-        $fancyContent.append($loader);
+        $orderWrap.append($loader);
 
         return $loader;
     }
 
     addAlert = (alertText, type = 'info') => {
         try {
-            const $based = document.querySelector('.fancybox__content');
-            const $head = $based.querySelector('h3');
+            const $based = document.querySelector('.order-service');
+            const $head = $based.querySelector('h1, h2, h3');
             const $alert = document.createElement('div');
             $alert.classList.add('alert', 'alert--' + type);
 
@@ -119,12 +124,11 @@ class Tariffs {
 
     removeAlert = () => {
         try {
-            const $based = document.querySelector('.fancybox__content');
+            const $based = document.querySelector('.order-service');
             $based.querySelector('.alert').remove();
         } catch (error) {
             console.error(error);
         }
-
     }
 
     sendOrder = async ($form) => {
@@ -160,7 +164,6 @@ class Tariffs {
                         result['data']['success'],
                         'success'
                     );
-
                     const confirmationUrl = result['data']['confirmationUrl'];
                     window.open(confirmationUrl);
                 }
@@ -185,7 +188,7 @@ class Tariffs {
             on : {
                 done: () => {
                     const servicesNode = document.querySelectorAll('.modal-fancybox [data-service]');
-                    const forms = document.querySelectorAll('.modal-fancybox [data-service] form');
+                   // const forms = document.querySelectorAll('.modal-fancybox [data-service] form');
 
                     servicesNode.forEach((item) => {
                         const service = new Tariffs(item, {
@@ -215,9 +218,9 @@ class Tariffs {
                         Inputmask({"mask": "+9 (999) 999-99-99"}).mask('[type=tel]:not(.form__input)');
                     }
 
-                    forms.forEach((item) => {
-                        item.addEventListener('submit', this.sendOrderHandler);
-                    });
+                    // forms.forEach((item) => {
+                    //     item.addEventListener('submit', this.sendOrderHandler);
+                    // });
                 }
             }
         });

@@ -1,0 +1,16 @@
+.vote
+  .vote__container(itemscope="" itemtype="https://schema.org/CreativeWorkSeries")
+    meta(itemprop="name" content="Продвижение сайтов под ключ")
+    .vote__intro Оцените полноту информации<br>на странице
+    .vote__inner(itemprop="aggregateRating" itemscope="" itemtype="https://schema.org/AggregateRating")
+      meta(itemprop="ratingValue" content="5")
+      meta(itemprop="bestRating" content="5")
+      .rating.vote__stars
+        button 5
+        button 4
+        button(data-form-rating="3") 1
+        button(data-form-rating="2") 1
+        button(data-form-rating="1") 1
+        .rating__current
+          span(style="width: 71%")
+      .vote__result (<span itemprop="reviewCount">193</span> оценок)

@@ -1,6 +1,11 @@
 .field-text {
 	$block-name: &; // #{$block-name}__element
 
+	&__name {
+		display: block;
+		margin-bottom: .5em;
+	}
+
 	&__input-wrap {
 	}
 
@@ -15,6 +20,7 @@
 		padding: 1rem;
 		vertical-align: middle;
 		width: 100%;
+		box-sizing: border-box;
 
 		&.moving-placeholder__input {
 			padding: 1.25rem 1rem .75rem 1rem;
@@ -39,6 +45,7 @@
 			color: inherit;
 		}
 
+		#{$block-name}--gray &,
 		[class*=-bg-gray] & {
 			--field-text-border-color: var(--color-gray--light);
 			--field-text-color: var(--text-color);

@@ -1,0 +1,117 @@
+.d-grid {
+  $block-name: &; // #{$block-name}__element
+
+  //&:not([role=presentation]) {
+    display: grid;
+    gap: var(--grid-gutter);
+  //}
+
+  &--fit-content {
+    width: fit-content;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &:not(:first-child) {
+    margin-top: var(--offset--lg);
+  }
+
+  &:not(:last-child) {
+    margin-bottom: var(--offset--lg);
+  }
+
+  @mixin grid-template-columns($count) {
+    grid-template-columns: repeat($count, 1fr);
+  }
+
+  @mixin grid-column($count) {
+    grid-column: auto / span $count;
+  }
+
+  @each $screen-name, $screen in $screen-map {
+    @for $i from 1 through 12 {
+      &--#{$screen-name}-#{$i} {
+        @if ($screen-name == 'xs') {
+          @media (max-width: $screen) {
+            @include grid-template-columns(#{$i})
+          }
+        } @else {
+          @media (min-width: $screen) {
+            @include grid-template-columns(#{$i})
+          }
+        }
+      }
+    }
+  }
+
+  &__item {
+    @each $screen-name, $screen in $screen-map {
+      @for $i from 1 through 12 {
+        &--#{$screen-name}-#{$i} {
+          @if ($screen-name == 'xs') {
+            @media (max-width: $screen) {
+              @include grid-column(#{$i})
+            }
+          } @else {
+            @media (min-width: $screen) {
+              @include grid-column(#{$i})
+            }
+          }
+        }
+      }
+
+      &--#{$screen-name}-aself-center {
+        @if ($screen-name == 'xs') {
+          @media (max-width: $screen) {
+            align-self: center;
+          }
+        } @else {
+          @media (min-width: $screen) {
+            align-self: center;
+          }
+        }
+      }
+
+      &--#{$screen-name}-jself-center {
+        @if ($screen-name == 'xs') {
+          @media (max-width: $screen) {
+            justify-self: center;
+          }
+        } @else {
+          @media (min-width: $screen) {
+            justify-self: center;
+          }
+        }
+      }
+
+      &--#{$screen-name}-jself-end {
+        @if ($screen-name == 'xs') {
+          @media (max-width: $screen) {
+            justify-self: end;
+          }
+        } @else {
+          @media (min-width: $screen) {
+            justify-self: end;
+          }
+        }
+      }
+
+      @for $i from 1 through 12 {
+        &--#{$screen-name}-start-column-#{$i} {
+          @if ($screen-name == 'xs') {
+            @media (max-width: $screen) {
+              grid-column-start: #{$i};
+            }
+          } @else {
+            @media (min-width: $screen) {
+              grid-column-start: #{$i};
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
