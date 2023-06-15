@@ -9,6 +9,7 @@ import HiddenCaptcha from "./classes/HiddenCaptcha"
 import Tariffs from "./classes/Tariffs";
 import AcceptCookie from "./classes/AcceptCookie";
 import YtVideoLoad from "./classes/YtVideoLoad";
+import CallToAction from "./classes/CallToAction.js";
 
 const appnew = {
     filterBlocks: function() {
@@ -78,6 +79,8 @@ const appnew = {
 
         Tabs.init('.address__cities', '.address__address');
         Tabs.init('.phones__regions ul', '.phones__regions-inner');
+
+        CallToAction.init();
 
         const mainMenu = new MobileMenu('.main-menu', '.page-nav');
         const footerMenu = new MobileMenu('.footer-menu');
