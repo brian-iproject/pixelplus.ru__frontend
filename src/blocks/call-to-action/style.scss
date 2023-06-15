@@ -1,0 +1,227 @@
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}
+
+.call-to-action {
+	$block-name: &;
+
+	--cta-right-offset: 15px;
+	--cta-bottom-offset: 15px;
+
+	position: fixed;
+	bottom: var(--cta-bottom-offset);
+	right: var(--cta-right-offset);
+	z-index: 10;
+
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+
+	@media (min-width: $screen-sm) {
+		--cta-right-offset: 48px;
+		--cta-bottom-offset: 28px;
+	}
+
+	&--hidden {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	&__open {
+		position: relative;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 70px;
+		height: 70px;
+
+		border-radius: 50%;
+		border: none;
+
+		background-color: #FFFFFF;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+		cursor: pointer;
+
+		transition: opacity 0.3s ease, visibility 0.3s ease;
+
+		@at-root #{$block-name}--opened & {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		&::before {
+			content: '';
+
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+
+			display: block;
+			width: 100%;
+			height: 100%;
+
+			border-radius: 50%;
+
+			background: white;
+			box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+			animation: pulse 2s infinite;
+		}
+	}
+
+	&__image {
+		display: block;
+		width: 32px;
+		height: 32px;
+
+		background-image: url("../images/rocket.png");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center center;
+	}
+
+	&__open-text {
+		position: absolute;
+		bottom: calc(100% + 12px);
+		right: 0;
+
+		display: block;
+		width: max-content;
+
+		padding: 4px 8px;
+
+		background-color: #FFFFFF;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		border-radius: 100px;
+
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 1;
+
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(10px);
+
+		transition: opacity 0.3s 1s ease, visibility 0.3s 1s ease, transform 0.3s 1s ease;
+
+		@at-root #{$block-name}--shown & {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+	}
+
+	&__form {
+		position: absolute;
+		bottom: calc(-1 * var(--cta-bottom-offset));
+		right: calc(-1 * var(--cta-right-offset));
+		transform: translateY(100%);
+
+		display: block;
+		min-width: 100vw;
+		padding: 48px 16px 24px;
+
+		background-color: #EEEEEF;
+
+		opacity: 0;
+		visibility: hidden;
+
+		transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+
+		@at-root #{$block-name}--opened & {
+			transform: translateY(0);
+			opacity: 1;
+			visibility: visible;
+		}
+
+		@media (min-width: $screen-sm) {
+			min-width: 420px;
+			padding: 48px 32px 24px;
+		}
+	}
+
+	&__title {
+		margin-bottom: 24px;
+
+		font-size: 28px;
+		font-weight: 300;
+	}
+
+	.field-text {
+		display: block;
+		margin-bottom: 24px;
+
+		&__input {
+			background-color: transparent;
+			border-width: 0 0 1px;
+			border-radius: 0;
+			border-color: var(--color-gray--dark);
+			color: inherit;
+
+			& + .moving-placeholder__name {
+				color: inherit;
+			}
+		}
+	}
+
+	.field-checkbox {
+		display: block;
+		margin-top: 24px;
+
+		color: var(--color-gray--dark);
+
+		&__name {
+			top: 8px;
+		}
+
+		&__help-text {
+			font-size: var(--font-size--medium);
+		}
+	}
+
+	.field-required {
+		display: block;
+		margin-top: 8px;
+
+		color: var(--color-gray--dark);
+		font-size: var(--font-size--medium);
+	}
+
+	&__close {
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+
+		border: none;
+
+		background-color: #CC0000;
+
+		cursor: pointer;
+
+		svg {
+			width: 16px;
+			height: 16px;
+			stroke: white;
+		}
+	}
+}

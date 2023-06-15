@@ -9,6 +9,7 @@ import HiddenCaptcha from "./classes/HiddenCaptcha"
 import Tariffs from "./classes/Tariffs";
 import AcceptCookie from "./classes/AcceptCookie";
 import YtVideoLoad from "./classes/YtVideoLoad";
+import CallToAction from "./classes/CallToAction.js";
 
 const appnew = {
     filterBlocks: function() {
@@ -160,4 +161,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         });
 
     }
+
+    // CTA на страницах портфолио
+    new CallToAction('call-to-action', 0.5);
 })

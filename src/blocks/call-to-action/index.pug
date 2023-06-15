@@ -1,0 +1,22 @@
+.call-to-action.call-to-action--hidden
+    button.call-to-action__open
+        span.call-to-action__image
+        span.call-to-action__open-text Хотите такие результаты?
+    form.call-to-action__form.js-hidden-captcha
+        h3.call-to-action__title Хотите такие результаты?
+        label.field-text
+            span.field-text__input-wrap
+                input.field-text__input.js-moving-placeholder(type="text", placeholder="Имя", required)
+        label.field-text
+            span.field-text__input-wrap
+                input.field-text__input.js-moving-placeholder(type="tel", placeholder="Телефон", required)
+        button.button.button--primary(type="submit") Оставить заявку
+        label.field-checkbox
+            span.field-checkbox__input-wrap
+                input.field-checkbox__input(type='checkbox', checked)
+                span.field-checkbox__name
+                span.field-checkbox__help-text
+                    | Согласен с обработкой персональных данных в соответствии с <a href="#">политикой конфиденциальности</a>
+        .field-required – обязательные поля
+        button.call-to-action__close(type="button", title="Закрыть")
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="m1 1 14.6 14.6M15.6 1 1 15.6"/></svg>
