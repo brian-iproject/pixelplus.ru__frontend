@@ -92,7 +92,7 @@ function copyImagesBlocks() {
         .pipe(debug({title: 'Copies '}))
         .pipe(imagemin())
         .pipe(debug({title: 'Minify '}))
-        .pipe(rename((file) => file.dirname = file.dirname.replace('\\images', '')))
+        .pipe(rename((file) => file.dirname = file.dirname.replace('\\images', '').replace('/images', '')))
         .pipe(debug({title: 'Renames '}))
         .pipe(dest('build/images/'));
 }
