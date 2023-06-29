@@ -20,6 +20,7 @@ const appnew = {
 
             item.addEventListener('click', (e) => {
                 const targetName = e.target.dataset.filterSource;
+                if (!targetName) return;
                 const elAll = block.querySelectorAll(`[data-filter-target]`);
                 const elShow = block.querySelectorAll(`[data-filter-target*=${targetName}]`)
                 item.querySelector('.-is-active').classList.remove('-is-active');
