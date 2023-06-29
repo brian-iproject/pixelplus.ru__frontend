@@ -1,4 +1,4 @@
-class CallToAction {
+export default class CallToAction {
     constructor(cssClass, threshold = 1) {
         this.cssClass = cssClass;
         this.threshold = threshold;
@@ -84,6 +84,8 @@ class CallToAction {
             this._onClose();
         }
     }
-}
 
-export default CallToAction;
+    static init() {
+        new CallToAction('call-to-action', 0.5);
+    }
+}

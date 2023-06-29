@@ -20,7 +20,6 @@ const appnew = {
 
             item.addEventListener('click', (e) => {
                 const targetName = e.target.dataset.filterSource;
-                if (!targetName) return;
                 const elAll = block.querySelectorAll(`[data-filter-target]`);
                 const elShow = block.querySelectorAll(`[data-filter-target*=${targetName}]`)
                 item.querySelector('.-is-active').classList.remove('-is-active');
@@ -80,6 +79,8 @@ const appnew = {
 
         Tabs.init('.address__cities', '.address__address');
         Tabs.init('.phones__regions ul', '.phones__regions-inner');
+
+        CallToAction.init();
 
         const mainMenu = new MobileMenu('.main-menu', '.page-nav');
         const footerMenu = new MobileMenu('.footer-menu');
@@ -162,7 +163,4 @@ document.addEventListener("DOMContentLoaded", function (e) {
         });
 
     }
-
-    // CTA на страницах портфолио
-    new CallToAction('call-to-action', 0.5);
 })
