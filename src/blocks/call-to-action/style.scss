@@ -1,17 +1,14 @@
 @keyframes pulse {
 	0% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+		transform: scale(1);
 	}
 
-	70% {
-		transform: scale(1);
-		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	50% {
+		transform: scale(1.1);
 	}
 
 	100% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+		transform: scale(1);
 	}
 }
 
@@ -51,8 +48,7 @@
 		border-radius: 50%;
 		border: none;
 
-		background-color: #FFFFFF;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		background-color: var(--color-white);
 
 		cursor: pointer;
 
@@ -77,8 +73,8 @@
 
 			border-radius: 50%;
 
-			background: white;
-			box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+			background-color: var(--color-white);
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 			animation: pulse 2s infinite;
 		}
 	}
@@ -88,7 +84,7 @@
 		width: 32px;
 		height: 32px;
 
-		background-image: url("../images/rocket.png");
+		background-image: url("../../blocks/call-to-action/images/rocket.png");
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: center center;
@@ -104,7 +100,7 @@
 
 		padding: 4px 8px;
 
-		background-color: #FFFFFF;
+		background-color: var(--color-white);
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 		border-radius: 100px;
 
@@ -126,16 +122,19 @@
 	}
 
 	&__form {
+		--field-text-border-color: var(--color-gray--light);
+		--field-text-color: var(--text-color);
+
 		position: absolute;
 		bottom: calc(-1 * var(--cta-bottom-offset));
 		right: calc(-1 * var(--cta-right-offset));
 		transform: translateY(100%);
 
 		display: block;
-		min-width: 100vw;
+		min-width: calc(100vw - 17px);
 		padding: 48px 16px 24px;
 
-		background-color: #EEEEEF;
+		background-color: var(--color-gray--lighten);
 
 		opacity: 0;
 		visibility: hidden;
@@ -154,53 +153,6 @@
 		}
 	}
 
-	&__title {
-		margin-bottom: 24px;
-
-		font-size: 28px;
-		font-weight: 300;
-	}
-
-	.field-text {
-		display: block;
-		margin-bottom: 24px;
-
-		&__input {
-			background-color: transparent;
-			border-width: 0 0 1px;
-			border-radius: 0;
-			border-color: var(--color-gray--dark);
-			color: inherit;
-
-			& + .moving-placeholder__name {
-				color: inherit;
-			}
-		}
-	}
-
-	.field-checkbox {
-		display: block;
-		margin-top: 24px;
-
-		color: var(--color-gray--dark);
-
-		&__name {
-			top: 8px;
-		}
-
-		&__help-text {
-			font-size: var(--font-size--medium);
-		}
-	}
-
-	.field-required {
-		display: block;
-		margin-top: 8px;
-
-		color: var(--color-gray--dark);
-		font-size: var(--font-size--medium);
-	}
-
 	&__close {
 		position: absolute;
 		top: 0;
@@ -214,14 +166,14 @@
 
 		border: none;
 
-		background-color: #CC0000;
+		background-color: var(--color-primary);
 
 		cursor: pointer;
 
 		svg {
 			width: 16px;
 			height: 16px;
-			stroke: white;
+			stroke: var(--color-white);
 		}
 	}
 }
