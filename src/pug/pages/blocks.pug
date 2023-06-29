@@ -60,6 +60,26 @@ block content
       include ../../blocks/tile/index-full
 
 
+  .wide-block.wide-block--gray-lighten
+    .page-container
+      .h1 Примеры и антипримеры
+
+      p.-fs-large #[span.-c-green Соответствует] общей цели по лояльности
+      .v-space
+      .infographics.infographics--type6.-no-margin
+        each item, i in cardsPositive
+            .infographics__item.infographics__item--bl-green
+              .infographics__icon.infographics__icon--no-shadow !{item.icon}
+              .infographics__title #{item.title}
+      .v-space.v-space--x3
+      p.-fs-large #[span.-c-primary Не соответствует] общей цели по лояльности
+      .v-space
+      .infographics.infographics--type6.infographics--type6--two-columns.-no-margin
+          each item, i in cardsNegative
+            .infographics__item.infographics__item--bl-primary
+              .infographics__icon.infographics__icon--no-shadow !{item.icon}
+              .infographics__title #{item.title}
+              .infographics__description !{item.description}
 
 
   .wide-block.wide-block--blue-dark

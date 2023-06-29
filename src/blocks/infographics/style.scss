@@ -12,6 +12,7 @@
 	}
 
 	&__item {
+		transition: var(--transition-time);
 	}
 
 	&__icon {
@@ -295,6 +296,20 @@
 			padding: 1.5em;
 			transition: var(--transition-time);
 			width: 100%;
+
+			&:hover {
+				box-shadow: var(--shadow);
+			}
+		}
+
+		& #{$block-name}__item--bl-primary {
+			border-top: 0;
+			border-left: 8px solid var(--color-primary);
+		}
+
+		& #{$block-name}__item--bl-green {
+			border-top: 0;
+			border-left: 8px solid var(--color-green);
 		}
 
 		@at-root
@@ -324,6 +339,16 @@
 				position: absolute;
 				top: 0;
 				width: 55px;
+			}
+
+			&--no-shadow {
+				& svg {
+					margin-left: 0;
+				}
+
+				&::before {
+					content: none;
+				}
 			}
 		}
 
