@@ -16,6 +16,13 @@
 		margin-bottom: var(--blocks-margin-vertical);
 	}
 
+	&--centered {
+		box-shadow: none;
+		padding: 0;
+		max-width: 580px;
+		margin: 0 auto;
+	}
+
 	&--large {
 		font-size: var(--font-size--large);
 	}
@@ -61,6 +68,19 @@
 		}
 	}
 
+	&--small {
+		& #{$block-name}__icon {
+			width: 55px;
+			height: 55px;
+		}
+
+		& #{$block-name}__text p {
+			margin-top: 0.5em;
+
+            color: var(--color-gray--dark);
+		}
+	}
+
 	&__text {
 		align-self: center;
 	}
@@ -74,5 +94,9 @@
 
 	@media (min-width: $screen-md) {
 		padding: 1.875em 3.125em 2.5em 3.125em;
+
+		&--centered {
+			padding: 0;
+		}
 	}
 }

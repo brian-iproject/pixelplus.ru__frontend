@@ -10,6 +10,7 @@ import Tariffs from "./classes/Tariffs";
 import AcceptCookie from "./classes/AcceptCookie";
 import YtVideoLoad from "./classes/YtVideoLoad";
 import CallToAction from "./classes/CallToAction.js";
+import SimpleDiagram from "./classes/SimpleDiagram.js";
 
 const appnew = {
     filterBlocks: function() {
@@ -81,6 +82,7 @@ const appnew = {
         Tabs.init('.phones__regions ul', '.phones__regions-inner');
 
         CallToAction.init();
+        SimpleDiagram.init();
 
         const mainMenu = new MobileMenu('.main-menu', '.page-nav');
         const footerMenu = new MobileMenu('.footer-menu');

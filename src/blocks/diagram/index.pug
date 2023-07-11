@@ -1,0 +1,70 @@
+-
+	var data = {
+		text: 'exist.ru',
+		date: 'Дата проверки: 08.05.2023',
+		image: {
+			src: 'blocks/diagram/images/exist.png',
+			alt: 'экзист'
+		},
+		columns: [
+			{
+				color: '#828282',
+				percent: '57.97',
+				label: 'Прямой трафик',
+				isAccent: false
+			},
+			{
+				color: '#009628',
+				percent: '9.37',
+				label: 'Реферальный трафик',
+				isAccent: false
+			},
+			{
+				color: '#CC0000',
+				percent: '25.67',
+				label: 'Поисковый (SEO) трафик',
+				isAccent: true
+			},
+			{
+				color: '#5AC8F3',
+				percent: '0.01',
+				label: 'Контекстная реклама',
+				isAccent: false
+			},
+			{
+				color: '#00EADC',
+				percent: '1.86',
+				label: 'Социальные сети',
+				isAccent: false
+			},
+			{
+				color: '#FFE600',
+				percent: '5.09',
+				label: 'E-mail рассылки',
+				isAccent: false
+			},
+			{
+				color: '#333333',
+				percent: '0.03',
+				label: 'Медийная реклама',
+				isAccent: false
+			},
+		]
+	}
+
+.diagram.js-simple-diagram
+	.diagram__head
+		span.diagram__text !{data.text}
+		.diagram__logo
+			img(src=`${data.image.src}`, alt=`${data.image.alt}`)
+
+	.diagram__scroll-wrapper
+		.diagram__body
+			for column in data.columns
+				.diagram__item
+					.diagram__column-wrapper
+						.diagram__column(style=`background-color: ${column.color};`, data-percent=`${column.percent}%`)
+					.diagram__label(class=(column.isAccent ? "diagram__label--accent" : "")) !{column.label}
+
+	.diagram__footer
+		span.diagram__text !{data.date}
