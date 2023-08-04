@@ -10,7 +10,7 @@ import Tariffs from "./classes/Tariffs";
 import AcceptCookie from "./classes/AcceptCookie";
 import YtVideoLoad from "./classes/YtVideoLoad";
 import CallToAction from "./classes/CallToAction.js";
-import SimpleDiagram from "./classes/SimpleDiagram.js";
+import {SimpleDiagramGroup} from "./classes/SimpleDiagram.js";
 
 const appnew = {
     filterBlocks: function() {
@@ -22,7 +22,7 @@ const appnew = {
             item.addEventListener('click', (e) => {
                 const targetName = e.target.dataset.filterSource;
                 if (!targetName) return;
-                
+
                 const elAll = block.querySelectorAll(`[data-filter-target]`);
                 const elShow = block.querySelectorAll(`[data-filter-target*=${targetName}]`)
                 item.querySelector('.-is-active').classList.remove('-is-active');
@@ -84,7 +84,7 @@ const appnew = {
         Tabs.init('.phones__regions ul', '.phones__regions-inner');
 
         CallToAction.init();
-        SimpleDiagram.init();
+        SimpleDiagramGroup.init();
 
         const mainMenu = new MobileMenu('.main-menu', '.page-nav');
         const footerMenu = new MobileMenu('.footer-menu');
