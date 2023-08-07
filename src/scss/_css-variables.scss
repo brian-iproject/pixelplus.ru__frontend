@@ -65,6 +65,17 @@
   --grid-gutter-y:          15px;
   --grid-gutter:            20px;
 
+  /* Отступы */
+  --offset--xxxs:           4px;
+  --offset--xxs:            4px;
+  --offset--xs:             4px;
+  --offset--sm:             8px;
+  --offset--md:             12px;
+  --offset:                 16px;
+  --offset--lg:             20px;
+  --offset--xl:             24px;
+  --offset--xxl:            30px;
+
   /* Разное */
   --transition-time:        .3s;
   --animate-duration:       var(--transition-time);
@@ -89,6 +100,17 @@
     --font-size-h4:         18px;
     --font-size-h5:         16px;
     --font-size-h6:         14px;
+
+    /* Отступы */
+    --offset--xxxs:         4px;
+    --offset--xxs:          4px;
+    --offset--xs:           8px;
+    --offset--sm:           12px;
+    --offset--md:           16px;
+    --offset:               20px;
+    --offset--lg:           24px;
+    --offset--xl:           32px;
+    --offset--xxl:          40px;
   }
 
   @media (min-width: 992px) {
@@ -99,5 +121,16 @@
     --font-size-h4:         18px;
     --font-size-h5:         16px;
     --font-size-h6:         14px;
+
+    /* Отступы */
+    --offset--xxxs:         4px;
+    --offset--xxs:          8px;
+    --offset--xs:           12px;
+    --offset--sm:           16px;
+    --offset--md:           20px;
+    --offset:               24px;
+    --offset--lg:           32px;
+    --offset--xl:           40px;
+    --offset--xxl:          60px;
   }
 }

@@ -1,0 +1,148 @@
+.flex {
+
+  $block-name: &; // #{$block-name}__element
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--grid-gutter);
+
+  &:not(&__item) {
+    @include offset('lg');
+  }
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
+
+  &--align-items-center {
+    align-items: center;
+  }
+
+  &__item {
+  }
+
+  @mixin order($number) {
+    order: $number;
+  }
+
+  @mixin gap($type) {
+    @if $type == 'n' {
+      $type: --offset;
+    } @else if $type == 'default' {
+      $type: --grid-gutter;
+    } @else {
+      $type: --offset-- + $type;
+    }
+    gap: var($type);
+  }
+
+  @each $type in ['xxxs', 'xxs', 'xs', 'sm', 'n', 'md', 'lg', 'xl', 'xxl'] {
+    &--gap-#{$type} {
+      @include gap($type)
+    }
+  }
+
+  @each $screen-name, $screen in $screen-map {
+    @each $type in ['default', 'xxxs', 'xxs', 'xs', 'sm', 'n', 'md', 'lg', 'xl', 'xxl'] {
+      @if ($screen-name == 'xs') {
+        @media (max-width: $screen) {
+          &--#{$screen-name}-gap-#{$type} {
+            @include gap($type)
+          }
+        }
+      } @else {
+        @media (min-width: $screen) {
+          &--#{$screen-name}-gap-#{$type} {
+            @include gap($type)
+          }
+        }
+      }
+    }
+  }
+
+  @each $screen-name, $screen in $screen-map {
+    &--#{$screen-name}-justify-content-between {
+      @if ($screen-name == 'xs') {
+        @media (max-width: $screen) {
+          justify-content: space-between;
+        }
+      } @else {
+        @media (min-width: $screen) {
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  @each $screen-name, $screen in $screen-map {
+    &--#{$screen-name}-justify-content-end {
+      @if ($screen-name == 'xs') {
+        @media (max-width: $screen) {
+          justify-content: end;
+        }
+      } @else {
+        @media (min-width: $screen) {
+          justify-content: end;
+        }
+      }
+    }
+  }
+
+  @each $screen-name, $screen in $screen-map {
+    &--#{$screen-name}-justify-content-center {
+      @if ($screen-name == 'xs') {
+        @media (max-width: $screen) {
+          justify-content: center;
+        }
+      } @else {
+        @media (min-width: $screen) {
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  @each $screen-name, $screen in $screen-map {
+    &--#{$screen-name}-column {
+      @if ($screen-name == 'xs') {
+        @media (max-width: $screen) {
+          flex-direction: column;
+        }
+      } @else {
+        @media (min-width: $screen) {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+
+  &__item {
+    @each $screen-name, $screen in $screen-map {
+      &--#{$screen-name}-aself-center {
+        @if ($screen-name == 'xs') {
+          @media (max-width: $screen) {
+            align-self: center;
+          }
+        } @else {
+          @media (min-width: $screen) {
+            align-self: center;
+          }
+        }
+      }
+
+      @for $i from 0 through 12 {
+        &--#{$screen-name}-order-#{$i} {
+          @if ($screen-name == 'xs') {
+            @media (max-width: $screen) {
+              @include order(#{$i})
+            }
+          } @else {
+            @media (min-width: $screen) {
+              @include order(#{$i})
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -11,6 +11,7 @@ import AcceptCookie from "./classes/AcceptCookie";
 import YtVideoLoad from "./classes/YtVideoLoad";
 import CallToAction from "./classes/CallToAction.js";
 import SimpleDiagram from "./classes/SimpleDiagram.js";
+import Splide from '@splidejs/splide';
 
 const appnew = {
     filterBlocks: function() {
@@ -124,6 +125,7 @@ const appnew = {
 document.addEventListener("DOMContentLoaded", function (e) {
     appnew.init();
 
+    // Оформленный select
     const fieldSelect = document.querySelectorAll('.field-select select');
     for (let i = 0; i < fieldSelect.length; ++i) {
         const el = fieldSelect[i];
@@ -133,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         });
     }
 
+    // Покупка услуг
     document.querySelectorAll('[data-service]').forEach((item) => {
         const service = new Tariffs(item, {
             tariffsContainer: '.tariff-options',
@@ -148,6 +151,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         service.init();
     });
 
+    // Предупреждение об использовании кук
     if (typeof AcceptCookie !== 'undefined') {
         const acceptCookie = new AcceptCookie({
             text: 'Оставаясь на сайте, вы соглашаетесь с использованием cookie-файлов и обработкой <a href="/privacy-policy/">персональных данных</a>.'
@@ -155,16 +159,77 @@ document.addEventListener("DOMContentLoaded", function (e) {
         acceptCookie.init();
     }
 
-
+    // Плавный скролл до элемента
     const moveTo = new MoveTo();
     document.querySelectorAll('[data-target]').forEach((item) => {
         moveTo.registerTrigger(item);
     });
 
+    // Подгрузка видео
     if (typeof YtVideoLoad !== 'undefined') {
         document.querySelectorAll('.yt-video').forEach((item) => {
             new YtVideoLoad.init(item);
         });
+    }
 
+    // Слайдер
+    const carouselList = document.querySelectorAll( '.splide.carousel' );
+    if (carouselList.length > 0) {
+        carouselList.forEach((item) => {
+            new Splide(item, {
+                mediaQuery: 'min',
+                gap: 'var(--grid-gutter)',
+                perPage: 1,
+                autoWidth: true,
+                arrows: true,
+                pagination: true,
+                arrowPath: 'M15.5387,34.6673a2.20921,2.20921,0,0,1-1.562-3.7729L24.8721,20.0006,13.9767,9.10511A2.20907,2.20907,0,1,1,17.1008,5.981L29.5599,18.4385a2.21446,2.21446,0,0,1,0,3.1241L17.1008,34.0217A2.21276,2.21276,0,0,1,15.5387,34.6673Z',
+            }).mount({
+                function(Splide, Components, options) {
+                    function mount() {
+                        const stages = Splide.root.querySelector('.carousel__stages');
+                        if (stages) {
+                            Splide
+                                .on('mounted', () => {
+                                    const slides = Components.Elements.slides;
+
+                                    slides.forEach((item, index) => {
+                                        const button = document.createElement('button');
+                                        button.classList.add('tag');
+
+                                        if (item.classList.contains('is-active')) {
+                                            button.classList.add('-is-selected');
+                                        }
+                                        button.innerText = `${index + 1} этап`;
+                                        button.addEventListener('click', () => {
+                                            Splide.go( index );
+
+                                        });
+                                        stages.append(button);
+                                    });
+                                })
+
+                                .on('inactive', (slide) => {
+                                        const button = stages.children[slide.index];
+                                        if (button) {
+                                            button.classList.remove('-is-selected');
+                                        }
+                                    })
+
+                                .on('active', (slide) => {
+                                const button = stages.children[slide.index];
+                                if (button) {
+                                    button.classList.add('-is-selected');
+                                }
+                            });
+                        }
+                    }
+
+                    return {
+                        mount,
+                    };
+                }
+            });
+        });
     }
 })

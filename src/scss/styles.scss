@@ -7,6 +7,7 @@
 
 @import '../blocks/page/style';
 @import '../blocks/button/style';
+@import '../blocks/tag/style';
 @import '../blocks/list/style';
 @import '../blocks/page-container/style';
 @import '../blocks/page-header/style';
@@ -29,9 +30,12 @@
 @import '../blocks/field-select/style';
 @import '../blocks/field-required/style';
 @import '../blocks/moving-placeholder/style';
+@import '../blocks/carousel/style';
+@import '../blocks/splide-nav/style';
 
 @import '../blocks/tile/style';
 @import '../blocks/tile-item/style';
+@import '../blocks/tile-el/style';
 
 @import '../blocks/tile-slider/style';
 @import '../blocks/about-numbers/style';
@@ -63,6 +67,7 @@
 @import '../blocks/zoom/style';
 @import '../blocks/case-wide/style';
 @import '../blocks/illustration/style';
+@import '../blocks/flex/style';
 @import '../blocks/grid/style'; // Старый вариант сетки на флексах - надо вывести с проекта
 @import '../blocks/d-grid/style'; // Обновленный вариант сетки на гридах
 @import '../blocks/download-block/style';

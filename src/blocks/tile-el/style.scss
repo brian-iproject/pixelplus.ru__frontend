@@ -10,7 +10,8 @@
   display: flex;
   flex-direction: column;
 
-  @at-root a#{$block-name}__item {
+  @at-root
+  a#{$block-name} {
     --link-color: var(--text-color);
     --link-color--hover: var(--color-primary);
     text-decoration: none;
@@ -19,6 +20,11 @@
   &:hover {
     border-color: var(--color-primary);
     box-shadow: var(--shadow);
+  }
+
+  @at-root
+  .d-grid__item > &:last-child:first-child {
+    height: 100%;
   }
 
   &__header {
@@ -49,5 +55,63 @@
       top: 0;
       width: 55px;
     }
+  }
+
+  &__title {
+    font-size: var(--font-size-h3);
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 1em 0 .75em 0;
+    padding: 0;
+    color: var(--text-color);
+
+    @at-root
+    a#{$block-name}__item & {
+      text-decoration: none;
+      text-decoration-color: transparent;
+      transition: var(--transition-time);
+    }
+
+    @at-root
+    a#{$block-name}__item:hover &,
+    a#{$block-name}__item:active & {
+      color: var(--link-color--hover);
+      text-decoration-color: currentColor;
+    }
+  }
+
+  &__link {
+    color: var(--text-color);
+    text-decoration-color: transparent;
+
+    &:hover,
+    &:active {
+      color: var(--link-color--hover);
+      text-decoration-color: currentColor;
+    }
+  }
+
+  &__description {
+    --link-color: var(--color-gray--dark);
+
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--medium);
+    flex-grow: 1;
+  }
+
+  &__footer {
+
+  }
+
+  &__price {
+    font-size: var(--font-size--huge);
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  &__note {
+    color: var(--color-gray);
+    font-size: var(--font-size--small);
+    margin-top: 1em;
   }
 }

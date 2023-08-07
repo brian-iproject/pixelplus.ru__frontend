@@ -1,0 +1,19 @@
+mixin tag(props)
+
+    //- Принимает:
+    //-   props {
+    //-     tag: ''           {string} - тэг, если не button
+    //-     title: ''         {string} - текст в кнопке
+    //-     mods: ''          {array}  - модификаторы блока
+
+    if typeof (props) === 'undefined'
+        - props = {};
+
+    - let allClass = 'tag';
+    if typeof (props.mods) !== 'undefined' && props.mods
+        each mods in props.mods
+            - allClass += ' tag--' + mods;
+
+    #{props.tag ? props.tag : 'button'}(class = allClass)&attributes(attributes)
+        if typeof (props.title) !== 'undefined' && props.title
+            != props.title

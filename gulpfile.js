@@ -119,7 +119,7 @@ function copyFavicon() {
 
 function compileSass() {
     return multipipe(
-        src('src/scss/styles.scss'),
+        src('src/scss/*.scss'),
         sass(),
         gcmq(),
         debug({title: 'Compiles '}),
@@ -129,7 +129,10 @@ function compileSass() {
         //debug({title: 'Add browser prefix '}),
         //autoprefixer(config.autoprefixer),
         cleancss( {...config.cleancss} ),
-        rename({ basename: 'main' }),
+        rename({
+            //basename: 'main',
+            extname: '.min.css'
+        }),
         debug({title: 'Renames '}),
         dest('build/css')
     ).on('error', notify.onError("<%= error.title %>: <%= error.message %>"));
@@ -176,25 +179,25 @@ function compileLibsJs() {
     ).on('error', notify.onError());
 }
 
-function compileLibsSass() {
-    return multipipe(
-        src([
-            'node_modules/normalize.css/normalize.css',
-            'node_modules/animate.css/animate.css',
-            'node_modules/@fancyapps/ui/dist/fancybox.css',
-            'node_modules/flickity/dist/flickity.css',
-            'node_modules/flickity-fade/flickity-fade.css',
-            'node_modules/choices.js/public/assets/styles/choices.min.css',
-            'node_modules/tippy.js/dist/tippy.css',
-            'node_modules/tippy.js/animations/shift-toward.css',
-            'node_modules/tippy.js/themes/light.css',
-        ]),
-        sass(),
-        cleancss( config.cleancss ),
-        concat('libs.min.css'),
-        dest('build/css')
-    ).on('error', notify.onError("<%= error.title %>: <%= error.message %>"));
-}
+// function compileLibsSass() {
+//     return multipipe(
+//         src([
+//             'node_modules/normalize.css/normalize.css',
+//             'node_modules/animate.css/animate.css',
+//             'node_modules/@fancyapps/ui/dist/fancybox.css',
+//             'node_modules/flickity/dist/flickity.css',
+//             'node_modules/flickity-fade/flickity-fade.css',
+//             'node_modules/choices.js/public/assets/styles/choices.min.css',
+//             'node_modules/tippy.js/dist/tippy.css',
+//             'node_modules/tippy.js/animations/shift-toward.css',
+//             'node_modules/tippy.js/themes/light.css',
+//         ]),
+//         sass(),
+//         cleancss( config.cleancss ),
+//         concat('libs.min.css'),
+//         dest('build/css')
+//     ).on('error', notify.onError("<%= error.title %>: <%= error.message %>"));
+// }
 
 function serve() {
     browserSync.init({
@@ -224,9 +227,9 @@ export { clearBuild };
 export { copyAssets, copyImagesBlocks, copyImages, copyFonts, copyFavicon }
 
 // Compiles
-export { compilePug, compileSass, compileJs, compileLibsSass, compileLibsJs }
+export { compilePug, compileSass, compileJs, compileLibsJs }
 
-export let compileLibs = parallel(compileLibsSass, compileLibsJs);
+export let compileLibs = parallel(compileLibsJs);
 
 // Build
 export let build = series(
