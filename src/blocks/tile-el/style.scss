@@ -4,7 +4,7 @@
   background: var(--color-white);
   border-radius: var(--border-radius);
   border-top: 8px solid var(--color-white);
-  padding: 1.5em;
+  padding: 2em;
   transition: var(--transition-time);
   width: 100%;
   display: flex;
@@ -28,7 +28,7 @@
   }
 
   &__header {
-
+    margin-bottom: 1.125em;
   }
 
   &__icon {
@@ -61,7 +61,7 @@
     font-size: var(--font-size-h3);
     font-weight: 500;
     line-height: 1.2;
-    margin: 1em 0 .75em 0;
+    margin: 1em 0 0 0;
     padding: 0;
     color: var(--text-color);
 
@@ -113,5 +113,17 @@
     color: var(--color-gray);
     font-size: var(--font-size--small);
     margin-top: 1em;
+  }
+
+  @media (min-width: $screen-md) {
+    &__header--line {
+      display: flex;
+      align-items: center;
+      gap: var(--grid-gutter);
+
+      & #{$block-name}__title {
+        margin: 0;
+      }
+    }
   }
 }
