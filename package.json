@@ -55,6 +55,7 @@
     "animate.css": "^4.1.1",
     "animejs": "^3.2.1",
     "autosize": "^5.0.1",
+    "body-scroll-lock": "^4.0.0-beta.0",
     "flickity": "^2.3.0",
     "flickity-fade": "^1.0.0",
     "inputmask": "^5.0.7",

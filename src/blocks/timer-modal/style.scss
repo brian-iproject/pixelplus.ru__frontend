@@ -1,0 +1,397 @@
+.timer-modal {
+  $block-name: &;
+
+  $rocketWidth: 88px;
+  $rocketHeight: 176px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 601;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s 1.3s ease;
+
+  // --initialized - инициализация
+  // --ready - завершение таймера
+  // --active - движение ракеты
+  // --complete - завершение движения
+  // --closed - закрытие модалки
+
+  &--initialized {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &--active {
+    background-color: rgba(#0F3759, 0.8);
+
+    pointer-events: all;
+  }
+
+  &--closed {
+    opacity: 0;
+    visibility: hidden;
+    background-color: transparent;
+  }
+
+  .page-container {
+    height: 100%;
+  }
+
+  &__rocket-wrapper {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+
+    @at-root #{$block-name}--active & {
+      overflow: hidden;
+    }
+  }
+
+  &__rocket-block {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: 100%;
+
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    @at-root #{$block-name}--complete & {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &__rocket {
+    position: relative;
+
+    width: $rocketWidth;
+    height: 100%;
+
+    transform: translateY(calc(100% - #{$rocketHeight}));
+
+    transition: transform var(--js-timer-modal-animation-duration) ease-in;
+
+    @at-root #{$block-name}--active & {
+      transform: translateY(calc(-1 * #{$rocketHeight}));
+    }
+
+    // Шлейф
+    &::before {
+      @at-root #{$block-name}--ready & {
+        content: '';
+      }
+
+      @at-root #{$block-name}--active & {
+        content: '';
+      }
+
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 3px;
+      height: calc(100vh + #{$rocketHeight});
+
+      background-color: var(--color-white);
+      opacity: 0;
+
+      transition: opacity var(--js-timer-modal-animation-duration) ease-in;
+
+      @at-root #{$block-name}--active & {
+        opacity: 0.7;
+      }
+    }
+
+    // Таймер
+    &::after {
+      content: attr(data-timer);
+
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      display: block;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background-color: var(--color-gray--darker);
+
+      font-size: var(--font-size--huge);
+      line-height: 1;
+      color: var(--color-gray--lighten);
+
+      @at-root #{$block-name}--ready & {
+        content: none;
+      }
+
+      @at-root #{$block-name}--active & {
+        content: none;
+      }
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: $rocketWidth;
+      height: $rocketHeight;
+
+      object-fit: contain;
+
+      &#{$block-name}__rocket-default-image {
+        @at-root #{$block-name}--ready & {
+          display: none;
+        }
+
+        @at-root #{$block-name}--active & {
+          display: none;
+        }
+      }
+
+      &#{$block-name}__rocket-active-image {
+        transition: transform 0.3s ease;
+
+        @at-root #{$block-name}:not(#{$block-name}--active):not(#{$block-name}--ready) & {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__rocket-button {
+    position: relative;
+
+    display: block;
+    width: $rocketWidth;
+    height: $rocketHeight;
+
+    padding: 0;
+    border: 0;
+    background: none;
+
+    cursor: pointer;
+
+    color: var(--color-gray--lighten);
+
+    font-size: var(--font-size--huge);
+    line-height: 1;
+    text-transform: uppercase;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(24px);
+
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+
+    @at-root #{$block-name}--ready & {
+      pointer-events: all;
+
+      opacity: 1;
+      visibility: visible;
+
+      transform: translateY(0);
+    }
+
+    @at-root #{$block-name}--active & {
+      display: none;
+    }
+
+    &:hover {
+      & ~ #{$block-name}__rocket-active-image {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__rocket-button-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    transform: translate(-50%, -100%);
+
+    @media (min-width: $screen-md) {
+      transform: translate(50%, -100%);
+    }
+
+    svg {
+      transform: scaleX(-1) translateX(-80%);
+      width: 58px;
+      height: 38px;
+
+      fill: #329CEB;
+
+      @media (min-width: $screen-md) {
+        transform: translateX(-5px);
+      }
+    }
+  }
+
+  &__rocket-button-label {
+    display: block;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background-color: #222730;
+  }
+
+  // Модалка
+  &__window {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 18px;
+    width: 230px;
+    min-height: 370px;
+    padding: 10px 15px 15px;
+
+    border-radius: 12px;
+    background-color: var(--color-primary--light);
+    background-image: url("../../blocks/timer-modal/images/bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: var(--color-white);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100vw);
+
+    transition: opacity 0.3s 1.3s ease, visibility 0.3s 1.3s ease, transform 0.3s 1.3s ease;
+
+    @media (min-width: $screen-md) {
+      grid-template-columns: 1fr 200px;
+      gap: 120px;
+      width: 700px;
+      padding: 36px;
+    }
+
+    @at-root #{$block-name}--active & {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+
+      pointer-events: all;
+    }
+
+    @at-root #{$block-name}--closed & {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &__content {
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    font-size: 21px;
+    text-transform: uppercase;
+    text-decoration: underline;
+
+    @media (min-width: $screen-md) {
+      margin-bottom: 24px;
+
+      font-size: var(--font-size-h2);
+      text-decoration: none;
+    }
+  }
+
+  &__text {
+    margin-bottom: 18px;
+
+    font-size: 13px;
+    line-height: 1.3;
+
+    @media (min-width: $screen-md) {
+      margin-bottom: 45px;
+
+      font-size: var(--font-size-h3);
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+
+  &__button {
+    border: 2px solid var(--color-gray--lighten);
+  }
+
+  &__promotion {
+    position: relative;
+
+    width: 200px;
+    height: 300px;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    &:hover {
+      img {
+        transform: scale(1.02);
+        box-shadow: var(--shadow);
+      }
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+
+    display: block;
+    padding: 0;
+    border: none;
+
+    background: none;
+
+    cursor: pointer;
+
+    &:hover svg {
+      fill: var(--color-primary);
+    }
+
+    svg {
+      fill: var(--color-white);
+
+      transition: fill 0.3s ease;
+    }
+  }
+}
