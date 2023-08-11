@@ -151,6 +151,13 @@
 
 		& #{$block-name}__info {}
 
+		& #{$block-name}__text {
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 10;
+			-webkit-box-orient: vertical;
+		}
+
 		@media (min-width: $screen-sm) {
 			& #{$block-name}__item {
 				align-items: center;

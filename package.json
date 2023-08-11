@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^4.0.12",
+    "@splidejs/splide": "^4.1.4",
     "animate.css": "^4.1.1",
     "animejs": "^3.2.1",
     "autosize": "^5.0.1",

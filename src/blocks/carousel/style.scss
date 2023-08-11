@@ -1,0 +1,25 @@
+@use "sass:selector";
+
+.carousel {
+
+  $block-name: &; // #{$block-name}__element
+
+  &.is-active .splide__list.d-grid {
+    display: flex;
+    gap: unset;
+  }
+
+  &.splide.is-initialized:not(.is-active) .splide__list.d-grid {
+    display: grid;
+  }
+
+  &--not-hidden .splide__track {
+    overflow: visible;
+  }
+
+  &--shadow .splide__track {
+    margin: 0 -15px -30px -15px;// - было для фикса теней, но низ скрывался
+    padding: 0 15px 30px 15px !important;// - поэтому делаю просто нижний паддинг
+    //padding-bottom: 20px;
+  }
+}

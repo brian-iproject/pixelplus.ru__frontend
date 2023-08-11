@@ -1,40 +1,64 @@
 extends ../layout.pug
 
 block meta
-	title Инфографика
-	meta(name='description', content='')
+  title Инфографика
+  meta(name='description', content='')
 
 block breadcrumb
 block content
-	.wide-block.wide-block--gray-lighter
-		.page-container
-			.h1 Инфографика тип #1
-			include ../../blocks/infographics/type1
-	.wide-block.wide-block--gray-circle
-		.page-container
-			.h1 Инфографика тип #2
-			include ../../blocks/infographics/type2
-	.wide-block.wide-block--gray-lighter
-		.page-container
-			.h1 Инфографика тип #3
-			include ../../blocks/infographics/type3
-	.wide-block
-		.page-container
-			.h1 Инфографика тип #4
-			include ../../blocks/infographics/type4
-	.wide-block.wide-block--gray-lighter
-		.page-container
-			.h1 Инфографика тип #4 - 2
-			include ../../blocks/infographics/type4-1
-	.wide-block
-		.page-container
-			.h1 Инфографика тип #5
-			include ../../blocks/infographics/type5
-	.wide-block.wide-block--gray-lighter
-		.page-container
-			.h1 Инфографика тип #6
-			include ../../blocks/infographics/type6
-	.wide-block
-		.page-container
-			.h1 Этапы работ
-			include ../../blocks/work-stages/index
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      .h1 Плитка
+
+      .splide.carousel.carousel--shadow.splide-nav(data-splide='{"autoWidth": true, "arrows": false, "breakpoints": { "1350": { "arrows": true }} }')
+        .carousel__stages.flex.flex--gap-md.flex--wrap
+
+
+        ul.splide__pagination.splide__pagination--default
+        .splide__track
+          .splide__list.d-grid
+              each item, i in serviceList
+                .tile-el.splide__slide.d-grid__item
+                  .tile-el__header.tile-el__header--line
+                    .tile-el__icon !{item.icon}
+                    .tile-el__title
+                      a.tile-el__link(href="#") !{item.title}
+                  .tile-el__body
+                    .tile-el__description !{item.description}
+                  .tile-el__footer
+        .splide__arrows.splide__arrows--default
+
+
+
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      .h1 Инфографика тип #1
+      include ../../blocks/infographics/type1
+  .wide-block.wide-block--gray-circle
+    .page-container
+      .h1 Инфографика тип #2
+      include ../../blocks/infographics/type2
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      .h1 Инфографика тип #3
+      include ../../blocks/infographics/type3
+  .wide-block
+    .page-container
+      .h1 Инфографика тип #4
+      include ../../blocks/infographics/type4
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      .h1 Инфографика тип #4 - 2
+      include ../../blocks/infographics/type4-1
+  .wide-block
+    .page-container
+      .h1 Инфографика тип #5
+      include ../../blocks/infographics/type5
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      .h1 Инфографика тип #6
+      include ../../blocks/infographics/type6
+  .wide-block
+    .page-container
+      .h1 Этапы работ
+      include ../../blocks/work-stages/index

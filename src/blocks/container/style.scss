@@ -1,0 +1,19 @@
+.container {
+
+  $block-name: &; // #{$block-name}__element
+
+  @include offset();
+
+  @each $size in ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'] {
+    &--#{$size} {
+      @include offset($size);
+    }
+  }
+
+  .splide.is-active &.splide__slide {
+    margin: {
+      top: 0;
+      bottom: 0
+    };
+  }
+}
