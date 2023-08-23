@@ -10,7 +10,7 @@ import Tariffs from "./classes/Tariffs";
 import AcceptCookie from "./classes/AcceptCookie";
 import YtVideoLoad from "./classes/YtVideoLoad";
 import CallToAction from "./classes/CallToAction.js";
-import SimpleDiagram from "./classes/SimpleDiagram.js";
+import {SimpleDiagramGroup} from "./classes/SimpleDiagram.js";
 import TimerModal from "./classes/TimerModal.js";
 import Splide from '@splidejs/splide';
 
@@ -86,7 +86,7 @@ const appnew = {
         Tabs.init('.phones__regions ul', '.phones__regions-inner');
 
         CallToAction.init();
-        SimpleDiagram.init();
+        SimpleDiagramGroup.init();
         TimerModal.init();
 
         const mainMenu = new MobileMenu('.main-menu', '.page-nav');

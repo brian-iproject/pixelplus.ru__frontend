@@ -1,12 +1,15 @@
-export default class SimpleDiagram {
+export class SimpleDiagram {
     constructor(element) {
         this.element = element;
 
         this.columns = [...this.element.querySelectorAll('.diagram__column')];
         this.percents = this.columns.map(column => Math.round(Number(column.dataset.percent.replace('%', ''))) / 100);
+        this.scalingCoefficient = 1 / Math.max(...this.percents);
 
         this._handleIntersect = this._handleIntersect.bind(this);
+    }
 
+    init() {
         this._createObserver();
     }
 
@@ -30,17 +33,39 @@ export default class SimpleDiagram {
     }
 
     _animate() {
-        const k = 1 / Math.max(...this.percents);
-
         this.columns.forEach((column, i) => {
-            column.style.transform = `translateY(${100 - Math.round(this.percents[i] * k * 100)}%)`
+            column.style.transform = `translateY(${100 - Math.round(this.percents[i] * this.scalingCoefficient * 100)}%)`
         })
     }
 
     static init() {
         const elements = document.querySelectorAll('.js-simple-diagram');
         elements.forEach(element => {
-            new SimpleDiagram(element);
+            const diagram = new SimpleDiagram(element);
+            diagram.init();
+        })
+    }
+}
+
+export class SimpleDiagramGroup {
+    constructor(container) {
+        const elements = [...container.querySelectorAll('.js-simple-diagram')];
+        const diagrams = elements.map(element => {
+            return new SimpleDiagram(element);
+        })
+
+        // Находим минимальный коэффициент среди диаграм и задаём его для всех диаграм
+        const min = Math.min(...diagrams.map(diagram => diagram.scalingCoefficient));
+        diagrams.forEach(diagram => {
+            diagram.scalingCoefficient = min;
+            diagram.init();
+        })
+    }
+
+    static init() {
+        const containers = document.querySelectorAll('.js-simple-diagram-group');
+        containers.forEach(container => {
+            new SimpleDiagramGroup(container);
         })
     }
 }
