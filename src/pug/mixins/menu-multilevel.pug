@@ -16,6 +16,14 @@ mixin menu-list(data, blockName)
           if (item.iconID)
             svg: use(xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#' + item.iconID)
           = item.title
+          if (item.label)
+            span(class=blockName + '__label', class=blockName + '__label--' + item.label)
+              if (item.label === 'new')
+                | NEW
+              if (item.label === 'action')
+                | Акци
+              if (item.label === 'hit')
+                | Хит
 
 
         if (item.submenu && item.dropdownBtn)

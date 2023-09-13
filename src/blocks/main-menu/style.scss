@@ -38,7 +38,35 @@
 		}
 
 		&--lvl2 {
-			display: block;
+			display: flex;
+			gap: var(--offset--xxs);
+			align-items: center;
+		}
+
+		&--lvl3 {
+			display: flex;
+			gap: var(--offset--xxs);
+			align-items: center;
+		}
+	}
+
+	&__label {
+		font-size: var(--font-size--tiny);
+		border-radius: 1em;
+		padding: 2px 8px;
+		border: 1px solid currentColor;
+		line-height: 1.4;
+
+		&--action {
+			color: var(--color-white);
+			background-color: var(--color-primary);
+			border: none;
+		}
+
+		&--new {
+			color: var(--color-primary);
+			background-color: var(--color-white);
+			border: none;
 		}
 	}
 
@@ -248,7 +276,7 @@
 
 			&--lvl3 {
 				color: var(--color-gray--lighten);
-				display: block;
+				/*display: block;*/
 				padding: .25em 1rem;
 
 				&:hover,
