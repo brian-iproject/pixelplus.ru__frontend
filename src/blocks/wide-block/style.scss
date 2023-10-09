@@ -5,11 +5,13 @@
 	position: relative ставить блоку нельзя,
 	т.к. будет конфликт с блоком main-slider
 	 */
+
+	--padding: 3.25rem;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding-bottom: 3.25rem;
-	padding-top: 3.25rem;
+	padding-bottom: var(--padding);
+	padding-top: var(--padding);
 
 	&--gray-lighter {
 		background-color: var(--color-gray--lighter);
@@ -235,8 +237,7 @@
 	}
 
 	@media (min-width: $screen-md) {
-		padding-bottom: 6.5rem;
-		padding-top: 6.5rem;
+		--padding: 6.5rem;
 	}
 
 	@media (min-width: $screen-xl) {
@@ -275,5 +276,9 @@
 			left: 50%;
 			margin-left: calc(1140px / -2);
 		}
+	}
+
+	&__half-top {
+		margin-top: calc(var(--padding) * -1.5);
 	}
 }
