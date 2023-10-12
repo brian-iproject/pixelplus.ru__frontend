@@ -23,7 +23,7 @@
   }
 
   @mixin grid-template-columns($count) {
-    grid-template-columns: repeat($count, 1fr);
+    grid-template-columns: repeat($count, minmax(0, 1fr));
   }
 
   @mixin grid-column($count) {

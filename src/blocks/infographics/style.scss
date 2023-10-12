@@ -36,13 +36,7 @@
 				display: block;
 				height: .625em;
 				margin: .9em auto 0 auto;
-				width: 70px;
-			}
-
-			@supports (width: fit-content) {
-				&::after {
-					width: 100%;
-				}
+				width: 100%;
 			}
 		}
 

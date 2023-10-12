@@ -1,0 +1,21 @@
+.infographics-list {
+  $block-name: &; // #{$block-name}__element
+
+  &--stages {
+    counter-reset: item;
+
+    & .infographics-item {
+      position: relative;
+
+      &::after {
+        color: var(--color-gray--light);
+        content: "шаг "counter(item);
+        counter-increment: item;
+        position: absolute;
+        right: .5em;
+        top: .5em;
+        font-size: var(--font-size--medium);
+      }
+    }
+  }
+}
