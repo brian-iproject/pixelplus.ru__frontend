@@ -1,10 +1,31 @@
+@mixin grid-template-columns($count) {
+  grid-template-columns: repeat($count, minmax(0, 1fr));
+}
+
+@mixin grid-column($count) {
+  grid-column: auto / span $count;
+}
+
+@mixin order($number) {
+  order: $number;
+}
+
+@mixin gap($type) {
+  @if $type == 'n' {
+    $type: --offset;
+  } @else if $type == 'default' {
+    $type: --grid-gutter;
+  } @else {
+    $type: --offset-- + $type;
+  }
+  gap: var($type);
+}
+
 .d-grid {
   $block-name: &; // #{$block-name}__element
 
-  //&:not([role=presentation]) {
-    display: grid;
-    gap: var(--grid-gutter);
-  //}
+  display: grid;
+  gap: var(--grid-gutter);
 
   &--fit-content {
     width: fit-content;
@@ -14,20 +35,16 @@
     align-items: center;
   }
 
-  &:not(:first-child) {
-    margin-top: var(--offset--lg);
+  &--align-end {
+    align-items: end;
   }
 
-  &:not(:last-child) {
-    margin-bottom: var(--offset--lg);
-  }
+  @include offset('lg');
 
-  @mixin grid-template-columns($count) {
-    grid-template-columns: repeat($count, minmax(0, 1fr));
-  }
-
-  @mixin grid-column($count) {
-    grid-column: auto / span $count;
+  @each $type in ['default', 'xxxs', 'xxs', 'xs', 'sm', 'n', 'md', 'lg', 'xl', 'xxl'] {
+    &--gap-#{$type} {
+      @include gap($type)
+    }
   }
 
   @each $screen-name, $screen in $screen-map {
@@ -70,6 +87,18 @@
         } @else {
           @media (min-width: $screen) {
             align-self: center;
+          }
+        }
+      }
+
+      &--#{$screen-name}-aself-end {
+        @if ($screen-name == 'xs') {
+          @media (max-width: $screen) {
+            align-self: end;
+          }
+        } @else {
+          @media (min-width: $screen) {
+            align-self: end;
           }
         }
       }
