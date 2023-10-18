@@ -168,7 +168,7 @@ a {
     // На больших экранах телефоны-ссылки делаем обычным текстом
     @media (min-width: $screen-md) {
       color: inherit;
-      pointer-events: none;
+      /*pointer-events: none;*/
       text-decoration: inherit;
       white-space: nowrap;
     }

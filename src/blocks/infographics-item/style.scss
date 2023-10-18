@@ -141,6 +141,8 @@
 
 
   &__icon {
+    --size: 55px;
+
     position: relative;
     width: fit-content;
     margin-bottom: 1rem;
@@ -152,8 +154,8 @@
       fill: var(--color-primary);
       //max-height: 55px;
       //width: auto;
-      width: 55px;
-      height: 55px;
+      width: var(--size);
+      height: var(--size);
     }
 
     &--shadow-bottom {
@@ -178,12 +180,16 @@
         border-radius: 50%;
         content: '';
         display: block;
-        height: 55px;
         left: 0;
         position: absolute;
         top: 0;
-        width: 55px;
+        width: var(--size);
+        aspect-ratio: 1;
       }
+    }
+
+    &--lg {
+      --size: 85px;
     }
   }
 
@@ -389,7 +395,6 @@
       grid-row: 3;
     }
   }
-
 
 
   &__footer {
