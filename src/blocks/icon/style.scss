@@ -1,0 +1,13 @@
+.icon {
+  $block-name: &; // #{$block-name}__element
+
+  transition: var(--transition-time);
+  flex-shrink: 0;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+
+  &--primary {
+    fill: var(--color-primary);
+  }
+}

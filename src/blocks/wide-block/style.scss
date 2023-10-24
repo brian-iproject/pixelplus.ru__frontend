@@ -114,6 +114,11 @@
 		color: var(--color-white);
 	}
 
+	&--space {
+		background-image: url(../../blocks/wide-block/images/space.jpg);
+		color: var(--color-white);
+	}
+
 	@at-root #{$block-name}#{$block-name}--footer {
 		position: relative;
 		padding-bottom: 0;

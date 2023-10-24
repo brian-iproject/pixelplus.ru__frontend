@@ -87,7 +87,6 @@ const appnew = {
 
         CallToAction.init();
         SimpleDiagramGroup.init();
-        TimerModal.init();
 
         const mainMenu = new MobileMenu('.main-menu', '.page-nav');
         const footerMenu = new MobileMenu('.footer-menu');
