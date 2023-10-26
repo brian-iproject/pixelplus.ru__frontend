@@ -186,7 +186,7 @@ a {
 	transition: text-decoration-color .3s, color .3s;
 
 	&:hover,
-  &:focus {
+  	&:focus {
     color: var(--link-color--hover);
 		text-decoration-color: transparent;
   }
@@ -194,11 +194,11 @@ a {
 
 p {
 	// http://clagnut.com/blog/2395
-	hyphenate-limit-chars: 6 3 3;
-	hyphenate-limit-last: always;
-	hyphenate-limit-lines: 2;
-	hyphenate-limit-zone: 8%;
-	hyphens: auto;
+	//hyphenate-limit-chars: 6 3 3;
+	//hyphenate-limit-last: always;
+	//hyphenate-limit-lines: 2;
+	//hyphenate-limit-zone: 8%;
+	//hyphens: auto;
 	margin-bottom: 0;
 	margin-top: 0;
 

@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 mediaQuery: 'min',
                 gap: 'var(--grid-gutter)',
                 perPage: 1,
-                autoWidth: true,
+                autoWidth: false,
                 arrows: true,
                 pagination: true,
                 arrowPath: 'M15.5387,34.6673a2.20921,2.20921,0,0,1-1.562-3.7729L24.8721,20.0006,13.9767,9.10511A2.20907,2.20907,0,1,1,17.1008,5.981L29.5599,18.4385a2.21446,2.21446,0,0,1,0,3.1241L17.1008,34.0217A2.21276,2.21276,0,0,1,15.5387,34.6673Z',
