@@ -42,7 +42,7 @@
       text-decoration: none;
     }
 
-    .wide-block:not([class*="wide-block--"]) &:not(#{$block-name}--shadow-light) {
+    .wide-block:not([class*="wide-block--"]) &:not(#{$block-name}--shadow-light):not(#{$block-name}--gray-lighter) {
       border: 1px solid var(--color-gray--lighten);
 
       &:hover {
@@ -110,6 +110,10 @@
 
   &--shadow-light {
     box-shadow: var(--shadow--light);
+  }
+
+  &--gray-lighter {
+    background-color: var(--color-gray--lighter);
   }
 
   @media (min-width: $screen-md) {
@@ -312,7 +316,8 @@
     display: grid;
     gap: 0 var(--grid-gutter);
     grid-template-columns: minmax(60px, 70px) auto;
-    grid-template-rows: minmax(0, max-content) auto;
+    //grid-template-rows: minmax(0, max-content) auto; // при отсутствии второй строки был лишний гэп
+    grid-template-rows: minmax(0, max-content);
     min-height: 100%;
     width: 100%;
 
@@ -368,7 +373,8 @@
     display: grid;
     gap: var(--grid-gutter) calc(var(--grid-gutter) * 2);
     grid-template-columns: minmax(60px, 70px) auto;
-    grid-template-rows: minmax(0, max-content) auto;
+    //grid-template-rows: minmax(0, max-content) auto; // при отсутствии второй строки был лишний гэп
+    grid-template-rows: minmax(0, max-content);
     min-height: 100%;
     width: 100%;
 

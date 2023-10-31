@@ -1,6 +1,7 @@
 .infographics-list {
   $block-name: &; // #{$block-name}__element
 
+  &--number,
   &--stages {
     counter-reset: item;
 
@@ -9,13 +10,24 @@
 
       &::after {
         color: var(--color-gray--light);
-        content: "шаг "counter(item);
         counter-increment: item;
         position: absolute;
         right: .5em;
         top: .5em;
         font-size: var(--font-size--medium);
       }
+    }
+  }
+
+  &--stages {
+    & .infographics-item::after {
+      content: "шаг "counter(item);
+    }
+  }
+
+  &--number {
+    & .infographics-item::after {
+      content: "0" counter(item);
     }
   }
 }
