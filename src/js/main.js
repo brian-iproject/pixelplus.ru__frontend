@@ -13,6 +13,7 @@ import CallToAction from "./classes/CallToAction.js";
 import {SimpleDiagramGroup} from "./classes/SimpleDiagram.js";
 import TimerModal from "./classes/TimerModal.js";
 import Splide from '@splidejs/splide';
+import { SplideFilter } from "./classes/Splide/Filter.js"
 
 const appnew = {
     filterBlocks: function() {
@@ -186,14 +187,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 pagination: true,
                 arrowPath: 'M15.5387,34.6673a2.20921,2.20921,0,0,1-1.562-3.7729L24.8721,20.0006,13.9767,9.10511A2.20907,2.20907,0,1,1,17.1008,5.981L29.5599,18.4385a2.21446,2.21446,0,0,1,0,3.1241L17.1008,34.0217A2.21276,2.21276,0,0,1,15.5387,34.6673Z',
             }).mount({
+                SplideFilter,
+
                 function(Splide, Components, options) {
+                    const slides = Components.Elements.slides;
+                    const stages = Splide.root.querySelector('.carousel__stages');
+
                     function mount() {
-                        const stages = Splide.root.querySelector('.carousel__stages');
                         if (stages) {
                             Splide
                                 .on('mounted', () => {
-                                    const slides = Components.Elements.slides;
-
                                     slides.forEach((item, index) => {
                                         const button = document.createElement('button');
                                         button.classList.add('tag');
@@ -209,7 +212,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                         stages.append(button);
                                     });
                                 })
-
                                 .on('inactive', (slide) => {
                                         const button = stages.children[slide.index];
                                         if (button) {
