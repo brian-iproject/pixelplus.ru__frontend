@@ -1,0 +1,24 @@
+mixin text-icon(data, props)
+
+  //- Принимает:
+  //-   data {
+  //-     svgId:            {string} - id иконки в спрайте
+  //-     text:             {string} - текст
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+  //-     iconMods:         {array} - модификаторы иконки
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'text-icon--' + mods;
+
+  .text-icon(class = allMods)&attributes(attributes)
+    +icon({ id: data.svgId, mods: props.iconMods ? props.iconMods : ['md'] })
+    .text-icon__text !{data.text}
+      if block
+        block

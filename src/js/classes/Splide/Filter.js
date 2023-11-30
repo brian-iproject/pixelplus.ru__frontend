@@ -11,9 +11,11 @@ export function SplideFilter( Splide, Components, options ) {
 
         const categoryList = [];
         slides.forEach((item, index) => {
-            if (!categoryList.includes(item.dataset.splideCategory)) {
-                categoryList.push(item.dataset.splideCategory);
-            }
+            item.dataset.splideCategory.split(', ').forEach(categoryName => {
+                if (!categoryList.includes(categoryName)) {
+                    categoryList.push(categoryName);
+                }
+            });
         });
 
         addButton(filter, 'Все', {
@@ -22,11 +24,11 @@ export function SplideFilter( Splide, Components, options ) {
                 Splide.add(allSlides);
                 Splide.refresh();
             }
-        });
+        }, true);
         categoryList.forEach((categoryItem, index) => {
             addButton(filter, categoryItem, {
                 click: () => {
-                    const newSlides = allSlides.filter(item => item.dataset.splideCategory === categoryItem);
+                    const newSlides = allSlides.filter(item => item.dataset.splideCategory.includes(categoryItem));
                     Splide.remove(Slide => Slide.index % 1 === 0);
                     Splide.add(newSlides);
                     Splide.refresh();
@@ -35,9 +37,15 @@ export function SplideFilter( Splide, Components, options ) {
         });
     }
 
-    const addButton = (container, text, on) =>  {
+    const addButton = (container, text, on, active) =>  {
         const button = document.createElement('button');
-        button.classList.add('tag');
+
+        if (options.filter.buttonClass && typeof options.filter.buttonClass == 'object') {
+            options.filter.buttonClass.forEach(cssClass => button.classList.add(cssClass));
+        } else {
+            button.classList.add('tag');
+        }
+
         button.innerText = text;
         if (on.click) {
             button.addEventListener('click', (e) => {
@@ -46,6 +54,11 @@ export function SplideFilter( Splide, Components, options ) {
                 e.target.classList.add('-is-selected');
             });
         }
+
+        if (active) {
+            button.classList.add('-is-selected');
+        }
+
         container.append(button);
     }
 

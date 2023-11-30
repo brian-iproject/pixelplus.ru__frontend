@@ -1,27 +1,32 @@
 extends ../layout.pug
 
 block meta
-	title Тарифы
-	meta(name='description', content='')
+    title Тарифы
+    meta(name='description', content='')
 
 block content
-	.wide-block.wide-block--gray-lighter
-		.page-container
-			.h1 Тарифы
-			include ../../blocks/tariffs/index
+    .wide-block.wide-block--gray-lighter
+        .page-container
+            .h1 Тарифы
+            include ../../blocks/tariffs/index
 
-	.wide-block
-		.page-container
-			.h1 Таблица сравнения тарифов
-			include ../../blocks/table-compare/index
+    .wide-block.wide-block--gray-lighter
+        .page-container
+            .h1 Тарифы с выбором
+            include ../../blocks/tariffs/index2
 
-	.wide-block
-		.page-container
-			.h1 Таблица тарифов
-			include ../../blocks/table/index
-			include ../../blocks/table/index2
+    .wide-block
+        .page-container
+            .h1 Таблица сравнения тарифов
+            include ../../blocks/table-compare/index
 
-	.wide-block.wide-block--gray-lighten
-		.page-container
-			.h1 Группа тарифов
-			include ../../blocks/tariffs-group/index
+    .wide-block
+        .page-container
+            .h1 Таблица тарифов
+            include ../../blocks/table/index
+            include ../../blocks/table/index2
+
+    .wide-block.wide-block--gray-lighten
+        .page-container
+            .h1 Группа тарифов
+            include ../../blocks/tariffs-group/index

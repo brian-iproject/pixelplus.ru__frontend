@@ -1,0 +1,72 @@
+@use "sass:selector";
+
+.case-small {
+  $block-name: &; // #{$block-name}__element
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gutter);
+  color: var(--text-color);
+
+  padding: 2em;
+  background: var(--color-white);
+  border-radius: var(--border-radius);
+  width: 100%;
+
+  .splide__slide & {
+    min-height: 100%;
+  }
+
+  &__title {
+    font-size: var(--font-size--large);
+    font-weight: 500;
+    color: var(--text-color);
+
+    @at-root
+    #{selector.unify(&, a)} {
+      @include link-inversion(true)
+    }
+
+    @at-root
+    a#{$block-name} {
+      --link-color: var(--text-color);
+      --link-color--hover: var(--color-primary);
+      text-decoration: none;
+    }
+
+    @at-root
+    #{$block-name} & a,
+    a#{$block-name}__title,
+    a#{$block-name} & {
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      color: var(--text-color);
+      transition: var(--transition-time);
+    }
+
+    @at-root
+    #{$block-name} & a:hover,
+    #{$block-name} & a:active,
+    a#{$block-name}__title:hover,
+    a#{$block-name}__title:active,
+    a#{$block-name}:hover &,
+    a#{$block-name}:active & {
+      color: var(--link-color--hover);
+      text-decoration-color: currentColor;
+    }
+  }
+
+  &__description {
+    font-size: var(--font-size--medium);
+    color: var(--color-gray--dark);
+    flex-grow: 1;
+  }
+
+  &__footer {
+
+  }
+
+  &__logo img {
+    max-height: 30px;
+  }
+}

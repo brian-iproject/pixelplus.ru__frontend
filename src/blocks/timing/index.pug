@@ -1,0 +1,19 @@
+mixin timing(data, props)
+
+    //- Принимает:
+    //-   data {
+    //-     text:             {string} - текст
+    //-   props {
+    //-     mods: ''          {array}  - модификаторы блока
+    //-     iconMods:         {array} - модификаторы иконки
+
+    if typeof (props) === 'undefined'
+        - props = {};
+
+    - let allMods = '';
+    if typeof (props.mods) !== 'undefined' && props.mods
+        each mods, index in props.mods
+            - allMods += index ? ' ': '';
+            - allMods += 'timing--' + mods;
+
+    .timing(class = allMods)&attributes(attributes) !{data}

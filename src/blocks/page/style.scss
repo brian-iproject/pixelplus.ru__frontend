@@ -153,8 +153,8 @@ h6:not(:first-child), .h6:not(:first-child) {
 }
 
 a {
-  background-color: transparent;
-  color: var(--link-color);
+	background-color: transparent;
+	color: var(--link-color);
 	text-decoration-color: currentColor;
 	transition: text-decoration-color .3s, color .3s;
 
@@ -187,7 +187,7 @@ a {
 
 	&:hover,
   	&:focus {
-    color: var(--link-color--hover);
+    	color: var(--link-color--hover);
 		text-decoration-color: transparent;
   }
 }

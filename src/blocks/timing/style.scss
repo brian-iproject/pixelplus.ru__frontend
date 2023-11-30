@@ -2,7 +2,7 @@
 	$block-name: &; // #{$block-name}__element
 
 	color: var(--color-gray--dark);
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 
 	&::before {
@@ -16,5 +16,11 @@
 		margin-right: .5em;
 		vertical-align: middle;
 		width: .7em;
+	}
+
+	&--gray {
+		background-color: var(--color-gray--lighter);
+		border-radius: calc((1em * var(--line-height) + .5em) / 2);
+		padding: .25em 1em;
 	}
 }

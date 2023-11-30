@@ -128,13 +128,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
     appnew.init();
 
     // Оформленный select
-    const fieldSelect = document.querySelectorAll('.field-select select');
-    for (let i = 0; i < fieldSelect.length; ++i) {
-        const el = fieldSelect[i];
-        new Choices(el, {
-            allowHTML: true,
-            searchEnabled: false
-        });
+    if (typeof Choices !== 'undefined') {
+        const fieldSelect = document.querySelectorAll('.field-select select');
+        for (let i = 0; i < fieldSelect.length; ++i) {
+            const el = fieldSelect[i];
+            new Choices(el, {
+                allowHTML: true,
+                searchEnabled: false
+            });
+        }
     }
 
     // Покупка услуг
@@ -162,10 +164,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
 
     // Плавный скролл до элемента
-    const moveTo = new MoveTo();
-    document.querySelectorAll('[data-target]').forEach((item) => {
-        moveTo.registerTrigger(item);
-    });
+    if (typeof MoveTo !== 'undefined') {
+        const moveTo = new MoveTo();
+        document.querySelectorAll('[data-target]').forEach((item) => {
+            moveTo.registerTrigger(item);
+        });
+    }
 
     // Подгрузка видео
     if (typeof YtVideoLoad !== 'undefined') {

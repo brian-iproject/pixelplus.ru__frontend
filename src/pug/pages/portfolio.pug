@@ -1,19 +1,33 @@
 extends ../layout.pug
 
 block meta
-	title Портфолио
-	meta(name='description', content='')
+    title Портфолио
+    meta(name='description', content='')
 
 block content
-	.wide-block.wide-block--gray-lighter
-		.page-container
-			.h1 Результаты наших клиентов
-			include ../../blocks/bn-text/index
-			include ../../blocks/case-full/index
+    .wide-block.wide-block--gray-lighter
+        .page-container
+            .h1 Результаты наших клиентов
+            include ../../blocks/bn-text/index
+            include ../../blocks/case-full/index
 
-	.wide-block
-		.page-container
-			.h1 Наши последние работы
-		include ../../blocks/case-wide/index
+    .wide-block
+        .page-container
+            .h1 Наши последние работы
+        include ../../blocks/case-wide/index
 
-	include ../../blocks/call-to-action/index
+
+    .wide-block.wide-block--meeting-analytics
+        .page-container
+            .h1 Пример оценки времени
+            .splide.carousel.splide-nav(data-splide='{"perPage": 1, "arrows": false, "breakpoints": { "768": { "perPage": 2 }, "992": { "perPage": 3 }, "1200": { "perPage": 4 }, "1350": { "arrows": true }}, "filter": { "buttonClass": ["button", "button--tab"] } }')
+                .carousel__filter.flex.flex--gap-xs.flex--wrap
+                ul.splide__pagination.splide__pagination--default
+                .splide__track
+                    .splide__list
+                        each item, i in caseSupport
+                            .splide__slide(data-splide-category = item.category)
+                                +case-small(item)
+                .splide__arrows.splide__arrows--default
+
+    include ../../blocks/call-to-action/index

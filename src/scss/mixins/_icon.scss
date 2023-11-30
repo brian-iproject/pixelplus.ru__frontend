@@ -1,0 +1,19 @@
+@mixin icon--xs {
+  width: 16px;
+}
+
+@mixin icon--sm {
+  width: 20px;
+}
+
+@mixin icon--md {
+  width: 24px;
+}
+
+@mixin icon--lg {
+  width: 32px;
+}
+
+@mixin icon--xl {
+  width: 40px;
+}

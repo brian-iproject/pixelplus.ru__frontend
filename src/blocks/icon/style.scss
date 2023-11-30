@@ -7,7 +7,50 @@
   height: auto;
   aspect-ratio: 1;
 
+  &--xs,
+  &--sm {
+    @include icon--xs;
+  }
+
+  &--md {
+    @include icon--sm;
+  }
+
+  &--lg {
+    @include icon--md;
+  }
+
+  &--xl {
+    @include icon--md;
+  }
+
+  @media (min-width: $screen-md) {
+    &--xs {
+      @include icon--xs;
+    }
+
+    &--sm {
+      @include icon--sm;
+    }
+
+    &--md {
+      @include icon--md;
+    }
+
+    &--lg {
+      @include icon--lg;
+    }
+
+    &--xl {
+      @include icon--xl;
+    }
+  }
+
   &--primary {
     fill: var(--color-primary);
+  }
+
+  &--gray {
+    fill: var(--color-gray--light);
   }
 }

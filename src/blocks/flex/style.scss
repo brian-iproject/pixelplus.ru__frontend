@@ -6,9 +6,9 @@
   align-items: flex-start;
   gap: var(--grid-gutter);
 
-  &:not(&__item) {
-    @include offset('lg');
-  }
+  //&:not(&__item) {
+  //  @include offset('lg');
+  //}
 
   &--wrap {
     flex-wrap: wrap;

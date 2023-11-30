@@ -1,11 +1,29 @@
 // Helpers
 @import "mixins/_burger";
 @import "mixins/_form-mixins";
+@import "mixins/_icon";
 
 @mixin list-reset {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@mixin link-inversion($static: false) {
+  color: var(--text-color);
+  text-decoration-color: transparent;
+
+  @if ($static == true) {
+    &:hover {
+      color: var(--text-color);
+      text-decoration-color: transparent;
+    }
+  } @else {
+    &:hover {
+      color: var(--link-color--hover);
+      text-decoration-color: currentColor;
+    }
+  }
 }
 
 @mixin offset($type: null) {

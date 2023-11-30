@@ -32,7 +32,7 @@
 
 .-c-text { color: var(--text-color) }
 .-c-muted { color: var(--text-color-muted) }
-.-c-primary { color: var(--color-primary) }
+.-c-primary { color: var(--color-primary) !important }
 .-c-green { color: var(--color-green) }
 .-c-gray--dark { color: var(--color-gray--dark) }
 .-c-white { color: var(--color-white) }

@@ -1,0 +1,14 @@
+.text-icon {
+
+  $block-name: &; // #{$block-name}__element
+
+  display: flex;
+  align-items: center;
+  gap: var(--offset--sm);
+
+  & svg {
+    flex-shrink: 0;
+    align-self: flex-start;
+    transform: translateY(calc((100% - var(--line-height) * 1em) /-2));
+  }
+}

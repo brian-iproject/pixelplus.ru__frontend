@@ -1,0 +1,17 @@
+mixin icon(props)
+
+  //- Принимает:
+  //-   props {
+  //-     id: ''            {id} - id иконки в спрайте
+  //-     mods: ''          {array}  - модификаторы блока
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allClass = 'icon';
+    if typeof (props.mods) !== 'undefined' && props.mods
+      each mods in props.mods
+        - allClass += ' icon--' + mods;
+
+  svg(class = allClass)&attributes(attributes)
+    use(href="#" + props.id + "")

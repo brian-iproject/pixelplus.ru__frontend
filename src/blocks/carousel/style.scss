@@ -27,4 +27,9 @@
     padding: 0 15px 30px 15px !important;// - поэтому делаю просто нижний паддинг
     //padding-bottom: 20px;
   }
+
+  &__stages,
+  &__filter {
+    margin-bottom: var(--offset--lg);
+  }
 }

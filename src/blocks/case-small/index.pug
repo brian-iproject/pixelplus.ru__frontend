@@ -1,0 +1,28 @@
+mixin case-small(data, props)
+
+    //- Принимает:
+    //-   data {
+    //-     text:             {string} - текст
+    //-   props {
+    //-     mods: ''          {array}  - модификаторы блока
+    //-     iconMods:         {array} - модификаторы иконки
+
+    if typeof (props) === 'undefined'
+        - props = {};
+
+    - let allMods = '';
+    if typeof (props.mods) !== 'undefined' && props.mods
+        each mods, index in props.mods
+            - allMods += index ? ' ': '';
+            - allMods += 'case-small--' + mods;
+
+    .case-small(class = allMods)&attributes(attributes)
+        a.case-small__title(href="#") !{data.title}
+        .case-small__description
+            .flex.flex--wrap
+                span.-c-primary !{data.url}
+                +timing(data.time, {mods: ['gray']})
+            p !{data.description}
+        .case-small__footer
+            .case-small__logo
+                img(src="/assets/bitrix.png" alt="")
