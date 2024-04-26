@@ -107,8 +107,8 @@
       &:hover,
       &:focus,
       &:active {
-        @include button--white;
-        box-shadow: 0 10px 35px rgba(0, 0, 0, .15);
+        @include button--primary-light;
+        box-shadow: 0 7px 20px rgba(204, 0, 0, .35), 0 20px 35px rgba(204, 0, 0, .15);
       }
     }
 

@@ -22,4 +22,9 @@
 			}
 		}
 	}
+
+	&.list li {
+		break-inside: avoid;
+		page-break-inside: avoid;
+	}
 }

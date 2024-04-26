@@ -54,6 +54,7 @@
 
   --font-family-primary:    'Ubuntu', sans-serif;
 
+  --line-height--md:        1.375;
   --line-height:            1.625;
 
   --typo-margin-vertical:   1em;
@@ -82,7 +83,9 @@
   --shadow:                 0 15px 15px rgba(14, 16, 20, .15);
   --shadow--light:          0 15px 15px rgba(14, 16, 20, .05);
 
-  --border-radius:          5px;
+  --border-radius--sm:      5px;
+  --border-radius--md:      10px;
+  --border-radius:          15px;
 
   @media (min-width: 768px) {
     /* Базовая типографика */

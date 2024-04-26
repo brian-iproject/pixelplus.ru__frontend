@@ -1,0 +1,21 @@
+.tariffs-wide {
+	$block-name: &; // #{$block-name}__element
+
+	background-color: var(--color-white);
+	border-radius: var(--border-radius--md);
+
+	&__inner {
+		padding: var(--offset--xl);
+	}
+
+	& .table td,
+	& .table th {
+		--color-border: var(--color-gray--lighten);
+		--color-background: var(--color-gray--lighter);
+		--color-background-thead: var(--color-gray--lighten);
+	}
+
+	@media (min-width: $screen-lg) {
+
+	}
+}

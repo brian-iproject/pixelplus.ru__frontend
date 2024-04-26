@@ -28,7 +28,7 @@
     --padding: 2em;
 
     background: var(--color-white);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius--sm);
     width: 100%;
 
     &:hover {
@@ -68,7 +68,7 @@
       height: var(--border-height);
       background-color: var(--color-white);
       transition: background-color var(--transition-time);
-      border-radius: var(--border-radius) var(--border-radius) 0 0;
+      border-radius: var(--border-radius--sm) var(--border-radius--sm) 0 0;
     }
 
     &:hover::before {
@@ -88,7 +88,7 @@
       right: 0;
       height: var(--border-height);
       background-color: var(--color-primary);
-      border-radius: var(--border-radius) var(--border-radius) 0 0;
+      border-radius: var(--border-radius--sm) var(--border-radius--sm) 0 0;
     }
   }
 
@@ -104,7 +104,7 @@
       right: 0;
       height: var(--border-height);
       background-color: var(--color-green);
-      border-radius: var(--border-radius) var(--border-radius) 0 0;
+      border-radius: var(--border-radius--sm) var(--border-radius--sm) 0 0;
     }
   }
 
@@ -127,7 +127,7 @@
         right: calc(var(--padding) * -1);
         padding: 0 var(--padding) var(--padding) var(--padding);
         background: var(--color-white);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius--sm);
         transition: opacity var(--transition-time);
         opacity: 0;
         visibility: hidden;
@@ -150,12 +150,13 @@
     position: relative;
     width: fit-content;
     margin-bottom: 1rem;
+    color: var(--color-primary);
 
     & svg {
       display: block;
       position: relative;
       z-index: 1;
-      fill: var(--color-primary);
+      fill: currentColor;
       //max-height: 55px;
       //width: auto;
       width: var(--size);
@@ -255,7 +256,6 @@
   }
 
 
-
   &--type1 {
     display: flex;
     flex-direction: column;
@@ -273,8 +273,6 @@
     & #{$block-name}__description {
     }
   }
-
-
 
   &--type2 {
     display: flex;
@@ -394,11 +392,75 @@
     & #{$block-name}__description {
       grid-column: 1 / 3;
       grid-row: 2;
+
+      &--gray-lighter {
+        margin: 0 calc(var(--padding) * -1) calc(var(--padding) * -1) calc(var(--padding) * -1);
+        padding: var(--padding);
+        background-color: var(--color-gray--lighter);
+      }
     }
 
     & #{$block-name}__popup {
       grid-column: 1 / 3;
       grid-row: 3;
+    }
+  }
+
+  &--type5 {
+    --circle-size: 5em;
+
+    display: grid;
+    gap: 0 var(--grid-gutter-x);
+    grid-template-areas:  "icon title"
+                          "icon description";
+    grid-template-rows: minmax(0,max-content) auto;
+
+    & #{$block-name}__icon {
+      grid-area: icon;
+      margin: 0;
+
+      &-inner {
+        align-items: center;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%), #CC0000;
+        background-blend-mode: overlay, normal;
+        border-radius: 50%;
+        display: flex;
+        height: var(--circle-size);
+        justify-content: center;
+        position: relative;
+        width: var(--circle-size);
+      }
+
+      & svg {
+        fill: var(--color-white);
+        max-height: calc(var(--circle-size) * 2 / 4);
+        max-width: calc(var(--circle-size) * 2 / 4);
+      }
+    }
+
+    & #{$block-name}__title {
+      grid-area: title;
+      font-size: var(--font-size--large);
+    }
+
+    & #{$block-name}__description {
+      grid-area: description;
+    }
+
+    @media (min-width: $screen-md) {
+      --circle-size: 7.5em;
+
+      gap: 0 calc(var(--grid-gutter-x) * 2);
+    }
+
+    @media (min-width: $screen-lg) {
+      display: flex;
+      align-items: center;
+
+      & #{$block-name}__title {
+        max-width: 25%;
+        flex: 0 0 25%;
+      }
     }
   }
 

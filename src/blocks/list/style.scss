@@ -175,6 +175,16 @@ TODO: сделать сброс списков миксином
 			margin-left: .25em;
 		}
 	}
+
+	&--not-marker {
+		& > li {
+			padding-left: 0;
+
+			&::before {
+				content: none !important;
+			}
+		}
+	}
 }
 
 // TODO: Устаревшие стили, надо постепенно вывести с проекта

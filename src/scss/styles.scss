@@ -1,7 +1,6 @@
 @import '_variables';
 @import '_css-variables';
 
-@import '_modifiers';
 @import '_mixins';
 @import '_fonts';
 
@@ -54,7 +53,6 @@
 @import '../blocks/infographics/style';
 @import '../blocks/breadcrumb/style';
 @import '../blocks/faq/style';
-@import '../blocks/tariffs/style';
 @import '../blocks/image/style';
 @import '../blocks/gallery/style';
 @import '../blocks/table/style';
@@ -77,7 +75,7 @@
 @import '../blocks/tooltip/style';
 @import '../blocks/tech/style';
 @import '../blocks/promo/style';
-@import '../blocks/tariffs-group/style';
+
 @import '../blocks/svg-icon/style';
 @import '../blocks/text-columns/style';
 @import '../blocks/logo-line/style';
@@ -89,7 +87,6 @@
 
 @import '../blocks/dino-game/style';
 
-@import '../blocks/tariff-options/style';
 @import '../blocks/timing/style';
 @import '../blocks/price-more/style';
 @import '../blocks/tools/style';
@@ -106,6 +103,14 @@
 @import '../blocks/warranty/style';
 @import '../blocks/case-small/style';
 @import '../blocks/timing/style';
+@import '../blocks/details/style';
+
+@import '../blocks/tariff/style';
+@import '../blocks/tariffs/style';
+@import '../blocks/tariffs-wide/style';
+@import '../blocks/tariff-options/style';
 
 // Технические стили, не использовать на продакшене
 @import '../blocks/colors-list/style';
+
+@import '_modifiers';

@@ -1,0 +1,38 @@
+.details {
+
+  $block-name: &; // #{$block-name}__element
+
+  position: relative;
+  padding-bottom: calc(2em * var(--line-height));
+
+  &__button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    list-style: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    border-bottom: 1px dotted var(--color-primary);
+    transition: border-color var(--transition-time);
+
+    &:hover {
+      border-color: transparent;
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  &:not([open]) &__close {
+    display: none;
+  }
+
+  &[open] &__show {
+    display: none;
+  }
+
+  &__content {
+    overflow: hidden;
+  }
+}

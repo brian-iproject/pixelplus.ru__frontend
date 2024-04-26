@@ -9,11 +9,14 @@ import HiddenCaptcha from "./classes/HiddenCaptcha"
 import Tariffs from "./classes/Tariffs";
 import AcceptCookie from "./classes/AcceptCookie";
 import YtVideoLoad from "./classes/YtVideoLoad";
+import DetailsSpoiler from "./classes/DetailsSpoiler.js";
+
 import CallToAction from "./classes/CallToAction.js";
 import {SimpleDiagramGroup} from "./classes/SimpleDiagram.js";
 import TimerModal from "./classes/TimerModal.js";
 import Splide from '@splidejs/splide';
 import { SplideFilter } from "./classes/Splide/Filter.js"
+import LoadScripts from "./classes/LoadScripts.js";
 
 const appnew = {
     filterBlocks: function() {
@@ -157,11 +160,47 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     // Предупреждение об использовании кук
     if (typeof AcceptCookie !== 'undefined') {
-        const acceptCookie = new AcceptCookie({
-            text: 'Оставаясь на сайте, вы соглашаетесь с использованием cookie-файлов и обработкой <a href="/privacy-policy/">персональных данных</a>.'
+        new AcceptCookie({
+            cookie: {
+                name: 'ACCEPT_COOKIE'
+            },
+            showModal: true,
+            text: `
+                <div>
+                    <div class="h3">Пиксель Плюс — агентство без неожиданностей!</div>
+                    <p>Наша миссия: помогать бизнесу зарабатывать больше</p>
+                    <ol class="list">
+                        <li>С 2006 года остались верны своим убеждениям и подходу. Мы помогли 1000+ бизнесам наших клиентов. Наша цель — стать № 1 по лояльности клиентов.</li>
+                        <li>Мы используем cookie-файлы для аналитики, чтобы ваше посещение сайта было удобным и персонализированным. Нажимая «Продолжить» или закрывая окно вы соглашаетесь с использованием cookie-файлов и обработку персональных данных с использованием Яндекс.Метрики и Google Analytics.</li>
+                    </ol>
+                    <div class="-ta-c"><button class="button button--green" data-fancybox-close="">Продолжить</button></div>
+                </div>
+            `,
+            on: {
+                afterSet: () => {
+                    if (typeof LoadScripts !== 'undefined') {
+                        new LoadScripts([
+                            {
+                                html: `<script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym"); ym(11819104, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); <\/script> <noscript><div><img src="https://mc.yandex.ru/watch/11819104" style="position:absolute; left:-9999px;" alt="" \/><\/div><\/noscript>`,
+                                areaSelector: '#loadCounters'
+                            },
+                            {
+                                html: `<script async src="https://www.googletagmanager.com/gtag/js?id=123456789"><\/script><script>function getCid(){var match=document.cookie.match('(?:^|;)\\\\s*_ga=([^;]*)');var raw=(match)?decodeURIComponent(match[1]):null;if(raw)match=raw.match(/(\\d+\\.\\d+)$/);var gacid=(match)?match[1]:null;return gacid?gacid:false;}<\/script>`,
+                                areaSelector: '#loadCounters'
+                            },
+                            {
+                                html: `<script async src="https://www.googletagmanager.com/gtag/js?id=G-0RP8TPZEPS"><\/script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-0RP8TPZEPS');<\/script>`,
+                                areaSelector: '#loadCounters'
+                            }
+                        ],{
+                            uaSearchBotCustom: ['PixelTools', 'PixelBot'],
+                        });
+                    }
+                }
+            }
         });
-        acceptCookie.init();
     }
+
 
     // Плавный скролл до элемента
     if (typeof MoveTo !== 'undefined') {
@@ -238,5 +277,21 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 }
             });
         });
+    }
+
+    // Спойлер для элементов details
+    if (typeof DetailsSpoiler !== 'undefined') {
+        document.querySelectorAll('.details').forEach((el) => {
+            new DetailsSpoiler(el);
+        });
+
+        // document.querySelectorAll('details.faq__item').forEach((el) => {
+        //     new DetailsSpoiler(el, {
+        //         selectors: {
+        //             button: '.faq__question',
+        //             content: '.faq__answer'
+        //         }
+        //     });
+        // });
     }
 })
