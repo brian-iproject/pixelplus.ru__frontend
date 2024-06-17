@@ -44,3 +44,22 @@
 [hidden] {
 	display: none;
 }
+
+.-d-none { display: none !important; }
+.-d-block { display: block !important; }
+.-d-flex { display: flex !important; }
+.-d-grid { display: grid !important; }
+
+@media (min-width: $screen-md) {
+	.-d-none-md { display: none !important; }
+	.-d-block-md { display: block !important; }
+	.-d-flex-md { display: flex !important; }
+	.-d-grid-md { display: grid !important; }
+}
+
+@media (min-width: $screen-lg) {
+	.-d-none-lg { display: none !important; }
+	.-d-block-lg { display: block !important; }
+	.-d-flex-lg { display: flex !important; }
+	.-d-grid-lg { display: grid !important; }
+}

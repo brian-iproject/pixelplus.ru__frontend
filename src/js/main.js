@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             selectorTitle: '.tile__title',
             selectorPrice: '.price-more__old span',
             selectorPriceDiscount: '.price-more__actual span',
-            discount: 0.15,
+            discount: 0.05,
             priceSymbol: 'руб.',
             paramsSelectors: [
                 '.timing'
@@ -157,6 +157,114 @@ document.addEventListener("DOMContentLoaded", function (e) {
         });
         service.init();
     });
+
+    // Плавный скролл до элемента
+    if (typeof MoveTo !== 'undefined') {
+        const moveTo = new MoveTo();
+        document.querySelectorAll('[data-target]').forEach((item) => {
+            moveTo.registerTrigger(item);
+        });
+    }
+
+    // Подгрузка видео
+    if (typeof YtVideoLoad !== 'undefined') {
+        document.querySelectorAll('.yt-video').forEach((item) => {
+            new YtVideoLoad.init(item);
+        });
+    }
+
+    // Слайдер
+    if (typeof Splide !== 'undefined') {
+        const mainslider = document.querySelector('.splide.main-slider');
+        if (mainslider) {
+            new Splide(mainslider, {
+                type: 'fade',
+                rewind: true,
+                autoplay: false,
+                interval: 3000,
+                speed: 0,
+                pauseOnHover: true,
+                mediaQuery: 'min',
+                perPage: 1,
+                autoWidth: false,
+                dragMinThreshold: {
+                    mouse: 100,
+                    touch: 10,
+                },
+                arrows: true,
+                pagination: true,
+                arrowPath: 'M15.5387,34.6673a2.20921,2.20921,0,0,1-1.562-3.7729L24.8721,20.0006,13.9767,9.10511A2.20907,2.20907,0,1,1,17.1008,5.981L29.5599,18.4385a2.21446,2.21446,0,0,1,0,3.1241L17.1008,34.0217A2.21276,2.21276,0,0,1,15.5387,34.6673Z',
+            }).mount();
+        }
+
+        const carouselList = document.querySelectorAll('.splide.carousel');
+        if (carouselList.length > 0) {
+            carouselList.forEach((item) => {
+                new Splide(item, {
+                    mediaQuery: 'min',
+                    gap: 'var(--grid-gutter)',
+                    perPage: 1,
+                    autoWidth: false,
+                    arrows: true,
+                    pagination: true,
+                    arrowPath: 'M15.5387,34.6673a2.20921,2.20921,0,0,1-1.562-3.7729L24.8721,20.0006,13.9767,9.10511A2.20907,2.20907,0,1,1,17.1008,5.981L29.5599,18.4385a2.21446,2.21446,0,0,1,0,3.1241L17.1008,34.0217A2.21276,2.21276,0,0,1,15.5387,34.6673Z',
+                }).mount({
+                    SplideFilter,
+
+                    function(Splide, Components, options) {
+                        const slides = Components.Elements.slides;
+                        const stages = Splide.root.querySelector('.carousel__stages');
+
+                        function mount() {
+                            if (stages) {
+                                Splide
+                                    .on('mounted', () => {
+                                        slides.forEach((item, index) => {
+                                            const button = document.createElement('button');
+                                            button.classList.add('tag');
+
+                                            if (item.classList.contains('is-active')) {
+                                                button.classList.add('-is-selected');
+                                            }
+                                            button.innerText = `${index + 1} этап`;
+                                            button.addEventListener('click', () => {
+                                                Splide.go(index);
+
+                                            });
+                                            stages.append(button);
+                                        });
+                                    })
+                                    .on('inactive', (slide) => {
+                                        const button = stages.children[slide.index];
+                                        if (button) {
+                                            button.classList.remove('-is-selected');
+                                        }
+                                    })
+
+                                    .on('active', (slide) => {
+                                        const button = stages.children[slide.index];
+                                        if (button) {
+                                            button.classList.add('-is-selected');
+                                        }
+                                    });
+                            }
+                        }
+
+                        return {
+                            mount,
+                        };
+                    }
+                });
+            });
+        }
+    }
+
+    // Спойлер для элементов details
+    if (typeof DetailsSpoiler !== 'undefined') {
+        document.querySelectorAll('.details').forEach((el) => {
+            new DetailsSpoiler(el);
+        });
+    }
 
     // Предупреждение об использовании кук
     if (typeof AcceptCookie !== 'undefined') {
@@ -185,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                 areaSelector: '#loadCounters'
                             },
                             {
-                                html: `<script async src="https://www.googletagmanager.com/gtag/js?id=123456789"><\/script><script>function getCid(){var match=document.cookie.match('(?:^|;)\\\\s*_ga=([^;]*)');var raw=(match)?decodeURIComponent(match[1]):null;if(raw)match=raw.match(/(\\d+\\.\\d+)$/);var gacid=(match)?match[1]:null;return gacid?gacid:false;}<\/script>`,
+                                html: `<script async src="https://www.googletagmanager.com/gtag/js?id=UA-10559811-1"></script><script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());gtag('config', 'UA-10559811-1');</script>`,
                                 areaSelector: '#loadCounters'
                             },
                             {
@@ -199,99 +307,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 }
             }
         });
-    }
-
-
-    // Плавный скролл до элемента
-    if (typeof MoveTo !== 'undefined') {
-        const moveTo = new MoveTo();
-        document.querySelectorAll('[data-target]').forEach((item) => {
-            moveTo.registerTrigger(item);
-        });
-    }
-
-    // Подгрузка видео
-    if (typeof YtVideoLoad !== 'undefined') {
-        document.querySelectorAll('.yt-video').forEach((item) => {
-            new YtVideoLoad.init(item);
-        });
-    }
-
-    // Слайдер
-    const carouselList = document.querySelectorAll( '.splide.carousel' );
-    if (carouselList.length > 0) {
-        carouselList.forEach((item) => {
-            new Splide(item, {
-                mediaQuery: 'min',
-                gap: 'var(--grid-gutter)',
-                perPage: 1,
-                autoWidth: false,
-                arrows: true,
-                pagination: true,
-                arrowPath: 'M15.5387,34.6673a2.20921,2.20921,0,0,1-1.562-3.7729L24.8721,20.0006,13.9767,9.10511A2.20907,2.20907,0,1,1,17.1008,5.981L29.5599,18.4385a2.21446,2.21446,0,0,1,0,3.1241L17.1008,34.0217A2.21276,2.21276,0,0,1,15.5387,34.6673Z',
-            }).mount({
-                SplideFilter,
-
-                function(Splide, Components, options) {
-                    const slides = Components.Elements.slides;
-                    const stages = Splide.root.querySelector('.carousel__stages');
-
-                    function mount() {
-                        if (stages) {
-                            Splide
-                                .on('mounted', () => {
-                                    slides.forEach((item, index) => {
-                                        const button = document.createElement('button');
-                                        button.classList.add('tag');
-
-                                        if (item.classList.contains('is-active')) {
-                                            button.classList.add('-is-selected');
-                                        }
-                                        button.innerText = `${index + 1} этап`;
-                                        button.addEventListener('click', () => {
-                                            Splide.go( index );
-
-                                        });
-                                        stages.append(button);
-                                    });
-                                })
-                                .on('inactive', (slide) => {
-                                        const button = stages.children[slide.index];
-                                        if (button) {
-                                            button.classList.remove('-is-selected');
-                                        }
-                                    })
-
-                                .on('active', (slide) => {
-                                const button = stages.children[slide.index];
-                                if (button) {
-                                    button.classList.add('-is-selected');
-                                }
-                            });
-                        }
-                    }
-
-                    return {
-                        mount,
-                    };
-                }
-            });
-        });
-    }
-
-    // Спойлер для элементов details
-    if (typeof DetailsSpoiler !== 'undefined') {
-        document.querySelectorAll('.details').forEach((el) => {
-            new DetailsSpoiler(el);
-        });
-
-        // document.querySelectorAll('details.faq__item').forEach((el) => {
-        //     new DetailsSpoiler(el, {
-        //         selectors: {
-        //             button: '.faq__question',
-        //             content: '.faq__answer'
-        //         }
-        //     });
-        // });
     }
 })

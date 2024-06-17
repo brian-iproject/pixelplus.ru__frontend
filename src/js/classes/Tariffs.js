@@ -197,7 +197,7 @@ class Tariffs {
                             tariffsContainer: '.tariff-options',
                             selectorPrice: '.price-more__old span',
                             selectorPriceDiscount: '.price-more__actual span',
-                            discount: 0.15,
+                            discount: 0.05,
                             priceSymbol: 'руб.',
                             paramsSelectors: [
                                 '.timing'

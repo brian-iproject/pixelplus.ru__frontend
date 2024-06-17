@@ -27,12 +27,14 @@
 		}
 
 		& + .moving-placeholder__name {
-			color: var(--color-gray--dark);
+			color: var(--color-gray--light);
 			left: 1rem;
 		}
 
-		[class*=--fields-transparent] &,
-		.main-slider & {
+		//[class*=--fields-transparent] &,
+		//.main-slider & {
+		@at-root
+		#{$block-name}--transparent & {
 			background-color: transparent;
 			border: none;
 			border-bottom: 1px solid var(--field-text-border-color, var(--color-white));
@@ -40,8 +42,10 @@
 			color: var(--field-text-color, var(--color-white));
 		}
 
-		[class*=--fields-transparent] & + .moving-placeholder__name,
-		.main-slider & + .moving-placeholder__name {
+		//[class*=--fields-transparent] & + .moving-placeholder__name,
+		//.main-slider & + .moving-placeholder__name {
+		@at-root
+		#{$block-name}--transparent & + .moving-placeholder__name {
 			color: inherit;
 		}
 
