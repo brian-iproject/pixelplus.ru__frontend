@@ -12,9 +12,21 @@
 	& .fancybox__content {
 		width: 100%;
 		max-width: 900px;
+		border-radius: var(--border-radius--md);
 
 		& .field-text__input:focus {
 			outline: none;
+		}
+
+		& .carousel__button.is-close {
+			top: 10px;
+			right: 10px;
+			color: var(--color-primary);
+			box-shadow: none;
+
+			& svg {
+				filter: none;
+			}
 		}
 	}
 

@@ -60,6 +60,7 @@ class AcceptCookie {
             type: "html"
         }], {
             dragToClose: false,
+            click: null,
             mainClass: 'modal-fancybox',
             on : {
                 closing: () => {
@@ -70,18 +71,21 @@ class AcceptCookie {
     }
 
     _setCookie = () => {
+        const cookieTime = new Date(Date.now() + this.config.cookie.time * 24 * 60 * 60 * 1000);
+
         if (typeof Cookies !== 'undefined') {
             Cookies.set(
                 this.config.cookie.name,
                 true,
                 {
                     path: '/',
-                    maxAge: `${this.config.cookie.time * 24 * 60 * 60}`
+                    expires: cookieTime
                 }
             );
         } else {
-            document.cookie = `${this.config.cookie.name}=true; max-age=${this.config.cookie.time * 24 * 60 * 60}; path=/`;
+            document.cookie = `${this.config.cookie.name}=true; expires=${cookieTime}; path=/`;
         }
+
         this.config.on.afterSet();
     }
 

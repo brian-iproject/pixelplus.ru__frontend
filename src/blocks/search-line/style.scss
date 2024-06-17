@@ -1,0 +1,65 @@
+.search-line {
+
+  $block-name: &; // #{$block-name}__element
+
+  line-height: var(--line-height);
+
+  &__form {
+    display: flex;
+  }
+
+  &__field--input {
+    flex: 1 1 auto;
+  }
+
+  &__field--button {
+    flex: 0 0 auto;
+  }
+
+  & .field-text {
+    //width: calc(100% - 50px);
+    font-size: var(--font-size--medium);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+  }
+
+  & .field-text__input {
+    border-radius: 7px 0 0 7px;
+    flex: 1 1 auto;
+    height: 42px;
+    padding: .6em 2.75rem .7em;
+    border-color: var(--color-gray--lighten);
+
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='17' viewBox='0 0 16 17'><path d='M14.2716,13.6684l-2.9403-2.9403a5.46525,5.46525,0,1,0-1.1032,1.1032l2.9403,2.9403a.78131.78131,0,0,0,1.1032-1.1032ZM3.06,7.46a3.90476,3.90476,0,1,1,1.14365,2.7563A3.9,3.9,0,0,1,3.06,7.46Z' style='fill: rgb(196, 196, 196)'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 1.17em 50%;
+
+    &::placeholder {
+      color: var(--color-gray--light);
+    }
+  }
+
+  &__button {
+    border-radius: 0 7px 7px 0;
+    padding: .6em 2em .7em;
+    font-size: var(--font-size--medium);
+    height: 42px;
+  }
+
+  &__fast {
+    color: inherit;
+    font-size: var(--font-size--small);
+    margin-top: 1.25em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--offset--xxxs) var(--offset--sm);
+  }
+
+  @media (min-width: $screen-md) {
+    & .field-text__input,
+    &__button {
+      height: 48px;
+    }
+  }
+}

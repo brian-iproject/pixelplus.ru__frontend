@@ -119,6 +119,11 @@
 		color: var(--color-white);
 	}
 
+	&--notebook-information {
+		background-image: url(../../blocks/wide-block/images/notebook-information.jpg);
+		color: var(--color-white);
+	}
+
 	@at-root #{$block-name}#{$block-name}--footer {
 		position: relative;
 		padding-bottom: 0;
