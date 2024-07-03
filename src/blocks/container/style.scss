@@ -1,5 +1,6 @@
+// Аналог row из бутстрапа,
+// не путать с page-container
 .container {
-
   $block-name: &; // #{$block-name}__element
 
   @include offset();

@@ -13,7 +13,6 @@ import DetailsSpoiler from "./classes/DetailsSpoiler.js";
 
 import CallToAction from "./classes/CallToAction.js";
 import {SimpleDiagramGroup} from "./classes/SimpleDiagram.js";
-import TimerModal from "./classes/TimerModal.js";
 import Splide from '@splidejs/splide';
 import { SplideFilter } from "./classes/Splide/Filter.js"
 import LoadScripts from "./classes/LoadScripts.js";
