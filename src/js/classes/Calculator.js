@@ -3,6 +3,7 @@
 class Calculator {
     constructor() {
         this.$calcFrame = document.querySelector('.calculator');
+        if (!this.$calcFrame) return;
 
         this.$inputs = this.$calcFrame.querySelectorAll('.calculator__input');
         this.$detailResult = this.$calcFrame.querySelector('.calculator__detail-result');
@@ -157,6 +158,9 @@ class Calculator {
         });
     }
 
+    static init() {
+        new Calculator();
+    }
 }
 
 export default Calculator;
