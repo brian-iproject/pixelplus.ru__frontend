@@ -1,0 +1,28 @@
+.calculator
+    .calculator__inner
+        form.calculator__form
+            .calculator__field
+                .calculator__field-name Поисковый трафик за последний месяц
+                input.calculator__input(type='text' placeholder='30 000 визитов' value='30000' name='TRAFFIC' data-unit=' визитов')
+            .calculator__field
+                .calculator__field-name Брендовый трафик, в % (примерно)
+                input.calculator__input(type='text' placeholder='30%' value='30' name='TRAFFIC_BRAND' data-unit='%')
+            .calculator__field
+                .calculator__field-name Итоговый трафик в конце месяца (любой)
+                input.calculator__input(type='text' placeholder='39 000 визитов' value='39000' name='TRAFFIC_NEW' data-unit=' визитов')
+        .calculator__result
+            | Итоговая* сумма платежа =&nbsp;
+            span.calculator__total-price
+            | &nbsp;рублей
+            button.calculator__toggle-detail
+                | Расчеты
+                svg(width='12' height='7' viewbox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg')
+                    path(fill-rule='evenodd' clip-rule='evenodd' d='M5.65837 7L0.274424 1.61605C-0.0914748 1.25016 -0.0914748 0.640324 0.274424 0.274424C0.640324 -0.0914748 1.25016 -0.0914748 1.61605 0.274424L5.65837 4.31674L9.70068 0.274424C10.0666 -0.0914748 10.6764 -0.0914748 11.0423 0.274424C11.4082 0.640324 11.4082 1.25016 11.0423 1.61605L5.65837 7Z' fill='#757575')
+            .calculator__detail-result
+    .calculator__footer
+        .calculator__footer-text Оставьте заявку и получите коммерческое предложение<br> и подробнейший прогноз трафика и заявок
+        .calculator__footer-button
+            a.button.button--primary.button--wide.js-order(href='#' data-theme='SEO') Оставить заявку
+        .calculator__footer-text
+            span(style='color: #CC0000;') *
+            | без учета фиксированного платежа за поддержания<br> текущего трафика и коэффициента сезонности

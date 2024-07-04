@@ -16,6 +16,7 @@ import {SimpleDiagramGroup} from "./classes/SimpleDiagram.js";
 import Splide from '@splidejs/splide';
 import { SplideFilter } from "./classes/Splide/Filter.js"
 import LoadScripts from "./classes/LoadScripts.js";
+import Calculator from "./classes/Calculator.js";
 
 const appnew = {
     filterBlocks: function() {
@@ -90,6 +91,7 @@ const appnew = {
 
         CallToAction.init();
         SimpleDiagramGroup.init();
+        new Calculator();
 
         const mainMenu = new MobileMenu('.main-menu', '.page-nav');
         const footerMenu = new MobileMenu('.footer-menu');
