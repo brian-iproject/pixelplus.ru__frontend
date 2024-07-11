@@ -1,5 +1,6 @@
 @use "sass:selector";
 
+// Блок для слайдеров
 .carousel {
 
   $block-name: &; // #{$block-name}__element

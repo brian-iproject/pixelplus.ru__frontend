@@ -41,10 +41,7 @@ const config = {
         content_unformatted: [],
     },
     webpack: {
-        //mode: 'development',
-        //devtool: mode === 'development' ? 'inline-source-map' : false,
-        //mode: mode,
-        //devtool: mode === 'development' ? 'inline-source-map' : false,
+        mode,
         module: {
             rules: [
                 {

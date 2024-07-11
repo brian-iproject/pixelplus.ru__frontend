@@ -1,0 +1,153 @@
+.calculator {
+  &__inner {
+    background: #FFFFFF;
+    border-radius: 7px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .05);
+    padding: 30px 30px 0 30px;
+
+    @media (min-width: $screen-md) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__form {
+    padding-bottom: 38px;
+
+    @media (min-width: $screen-md) {
+      display: flex;
+      margin: 0 -15px;
+    }
+  }
+
+  &__field {
+    margin-bottom: 30px;
+
+    @media (min-width: $screen-md) {
+      flex: 0 0 33.33333%;
+      margin-bottom: 0;
+      max-width: 33.33333%;
+      padding: 0 15px;
+    }
+  }
+
+  &__field-name {
+    color: #202020;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    background-color: transparent;
+    background-image: none !important;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    background-size: auto !important;
+    border: none;
+    border-bottom: 1px solid #C4C4C4;
+    color: #757575;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 8px 15px;
+    width: 100%;
+
+    &.-success {
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='25.5' height='25.5' viewBox='0 0 25.5 25.5'><path d='M10.9506,16.6562,6.028,11.7339l-.84167.8417,5.79109,5.792,9.3491-9.973L19.458,7.581ZM12.75.25a12.5,12.5,0,1,0,12.5,12.5A12.51411,12.51411,0,0,0,12.75.25Zm0,23.8095A11.30951,11.30951,0,1,1,24.0595,12.75,11.32223,11.32223,0,0,1,12.75,24.0595Z' style='fill: rgb(0, 150, 40);stroke: rgb(0, 150, 40);stroke-width: 0.5px;fill-rule: evenodd'/></svg>") !important;
+    }
+
+    &.-error {
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='25.5' height='25.5' viewBox='0 0 25.5 25.5'><path d='M7.25,17.0521,17.05213,7.25l1.15318,1.15319L8.40319,18.20528ZM8.40332,7.25l9.80213,9.80213-1.15319,1.15318L7.25013,8.40319Z' style='fill: rgb(204, 0, 0)'/><path d='M12.75.25a12.5,12.5,0,1,0,12.5,12.5A12.51411,12.51411,0,0,0,12.75.25Zm0,23.8095A11.30951,11.30951,0,1,1,24.0595,12.75,11.32223,11.32223,0,0,1,12.75,24.0595Z' style='fill: rgb(204, 0, 0);stroke: rgb(204, 0, 0);stroke-width: 0.5px;fill-rule: evenodd'/></svg>") !important;
+    }
+  }
+
+  &__result {
+    background: rgba(0, 150, 40, .05);
+    border-radius: 0 0 7px 7px;
+    /*display: none;*/
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0 -30px;
+    padding: 23px 30px;
+    position: relative;
+
+    &.-active {
+      display: block;
+    }
+  }
+
+  &__total-price {
+    color: rgb(0, 150, 40);
+  }
+
+  &__toggle-detail {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 30px;
+    display: block;
+
+    @media (min-width: $screen-md) {
+      position: absolute;
+      right: 30px;
+      top: 30px;
+      margin-top: 0;
+    }
+
+    svg {
+      margin-left: 8px;
+      transition: .3s;
+    }
+
+    &.-active svg {
+      transform: scale(1, -1);
+    }
+  }
+
+  &__detail-result {
+    display: none;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.4;
+    margin-top: 30px;
+
+    &.-active {
+      display: block;
+    }
+  }
+
+  &__footer {
+    margin-top: 30px;
+
+    @media (min-width: $screen-md) {
+      align-items: center;
+      display: flex;
+      margin: 0 -15px;
+    }
+  }
+
+  &__footer-text {
+    color: #757575;
+    font-size: 14px;
+    margin-bottom: 15px;
+
+    @media (min-width: $screen-md) {
+      flex: 0 0 40%;
+      margin-bottom: 0;
+      max-width: 40%;
+      padding: 0 15px;
+    }
+  }
+
+  &__footer-button {
+    margin-bottom: 15px;
+    text-align: center;
+
+    @media (min-width: $screen-md) {
+      flex: 0 0 20%;
+      margin-bottom: 0;
+      max-width: 20%;
+      padding: 0 15px;
+    }
+  }
+}

@@ -228,16 +228,16 @@ block content
         .splide__track
           .splide__list
             each item, i in serviceList
-              .splide__slide.infographics-item.infographics-item--type4.infographics-item--tile.infographics-item--border-top-hover(data-splide-category="Отзывы")
+              .splide__slide.infographics-item.infographics-item--type2.infographics-item--tile.infographics-item--border-top-hover(data-splide-category="Отзывы")
                 .infographics-item__icon.infographics-item__icon--shadow-left !{item.icon}
-                .infographics-item__title Отзывы
+                .infographics-item__title
                   a.infographics-item__link(href="#") !{item.title}
                 .infographics-item__description !{item.description}
 
             each item, i in serviceList
-              .infographic-test.splide__slide.infographics-item.infographics-item--type4.infographics-item--tile.infographics-item--border-top-hover(data-splide-category="Меню")
+              .splide__slide.infographics-item.infographics-item--type2.infographics-item--tile.infographics-item--border-top-hover(data-splide-category="Меню")
                 .infographics-item__icon.infographics-item__icon--shadow-left !{item.icon}
-                .infographics-item__title Меню
+                .infographics-item__title
                   a.infographics-item__link(href="#") !{item.title}
                 .infographics-item__description !{item.description}
         .splide__arrows.splide__arrows--default
