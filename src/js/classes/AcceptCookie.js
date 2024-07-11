@@ -44,6 +44,7 @@ class AcceptCookie {
         }
 
         if (!this._checkCookie()) {
+            this.config.on.beforeSet();
             if (this.config.showModal && typeof Fancybox !== 'undefined') {
                 this._showModal();
             } else {

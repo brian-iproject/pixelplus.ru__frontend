@@ -30,7 +30,7 @@ class LoadScripts {
             'YandexMedia', 'YandexBlogs', 'YandexFavicons', 'YandexWebmaster', 'YandexPagechecker', 'YandexImageResizer', 'YandexAdNet',
             'YandexDirect', 'YaDirectFetcher', 'YandexCalendar', 'YandexSitelinks', 'YandexMetrika', 'YandexNews', 'YandexCatalog',
             'YandexMarket', 'YandexVertis', 'YandexForDomain', 'YandexSpravBot', 'YandexSearchShop', 'YandexMedianaBot', 'YandexOntoDB',
-            'YandexOntoDBAPI', 'YandexVerticals', 'Mail.RU_Bot', 'StackRambler', 'Yahoo', 'msnbot', 'bingbot', 'PixelTools', 'PixelBot'
+            'YandexOntoDBAPI', 'YandexVerticals', 'Mail.RU_Bot', 'StackRambler', 'Yahoo', 'msnbot', 'bingbot'
         ];
         if (this.config.uaSearchBotCustom) {
             uaList.push(...this.config.uaSearchBotCustom);
