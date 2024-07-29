@@ -45,6 +45,11 @@
     "gulp-sass": "^5.0.0",
     "multipipe": "^4.0.0",
     "sass": "^1.44.0",
+    "stylelint": "^16.7.0",
+    "stylelint-config-rational-order-fix": "^0.1.9",
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-scss": "^6.4.1",
     "tippy.js": "^6.3.7",
     "webpack": "^5.65.0",
     "webpack-stream": "^7.0.0"

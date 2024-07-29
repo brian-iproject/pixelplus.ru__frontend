@@ -18,9 +18,11 @@ import { SplideFilter } from "./classes/Splide/Filter.js"
 import LoadScripts from "./classes/LoadScripts.js";
 import Calculator from "./classes/Calculator.js";
 import Quiz from "./classes/Quiz.js";
+import TrafficForecast from "./classes/TrafficForecast.js";
 
 window.pixelplus = {
-    Quiz
+    Quiz,
+    TrafficForecast
 };
 
 const appnew = {
@@ -143,7 +145,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
             const el = fieldSelect[i];
             new Choices(el, {
                 allowHTML: true,
-                searchEnabled: false
+                searchEnabled: false,
+                itemSelectText: '',
             });
         }
     }

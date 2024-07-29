@@ -46,6 +46,10 @@
 		& .choices__list--dropdown {
 			color: var(--text-color);
 		}
+
+		& .choices__list--dropdown .choices__item--selectable {
+			padding-right: 10px;
+		}
 	}
 
 	&__help-text {
