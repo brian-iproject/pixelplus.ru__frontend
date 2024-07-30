@@ -3,7 +3,10 @@
 
 	.splide__track
 		.splide__list
-			.main-slider__item.splide__slide(style="background-image: url(blocks/main-slider/images/slider-1.jpg)")
+			.main-slider__item.splide__slide
+				picture
+          source(srcset="blocks/main-slider/images/slider-1-990.jpg", media="(max-width: 991px)")
+					img(src="blocks/main-slider/images/slider-1-1920.jpg" alt="")
 				.page-container.main-slider__item-inner
 					.main-slider__info
 						.main-slider__title Помогаем бизнесу<br>зарабатывать больше!
@@ -14,7 +17,10 @@
 								include ../search-line/index
 
 
-			.main-slider__item.splide__slide(style="background-image: url(blocks/main-slider/images/slider-2.jpg)")
+			.main-slider__item.splide__slide
+				picture
+					source(srcset="blocks/main-slider/images/slider-2-990.jpg", media="(max-width: 991px)")
+					img(src="blocks/main-slider/images/slider-2-1920.jpg" alt="")
 				.page-container.main-slider__item-inner
 					.main-slider__info
 						.main-slider__title Квалификация сотрудников,<br>подтверждённая рынком<br>и победами
@@ -23,6 +29,41 @@
 							.container.container--xl.flex.flex--wrap
 								button.button.button--primary Заказать у эксперта
 								include ../search-line/index
+
+			.main-slider__item.splide__slide
+				picture
+					source(srcset="blocks/main-slider/images/slider-3-990.jpg", media="(max-width: 991px)")
+					img(src="blocks/main-slider/images/slider-3-1920.jpg" alt="")
+				.page-container.main-slider__item-inner
+					.main-slider__info
+						.main-slider__title Квалификация сотрудников,<br>подтверждённая рынком<br>и победами
+						.main-slider__description
+							p Сотрудники и кейсы компании регулярно проходят внешнюю сертификацию<br>и получают награды на отраслевых премиях. Более 30 достижений
+							.container.container--xl.flex.flex--wrap
+								button.button.button--primary Заказать у эксперта
+								include ../search-line/index
+
+			.main-slider__item.splide__slide
+				picture
+					source(srcset="blocks/main-slider/images/slider-4-990.jpg", media="(max-width: 991px)")
+					img(src="blocks/main-slider/images/slider-4-1920.jpg" alt="")
+				.page-container.main-slider__item-inner
+					.main-slider__info
+						.main-slider__title Квалификация сотрудников,<br>подтверждённая рынком<br>и победами
+						.main-slider__description
+							p Сотрудники и кейсы компании регулярно проходят внешнюю сертификацию<br>и получают награды на отраслевых премиях. Более 30 достижений
+							.container.container--xl.flex.flex--wrap
+								button.button.button--primary Заказать у эксперта
+								include ../search-line/index
+
+
+			.main-slider__item.splide__slide
+				img(src="blocks/main-slider/images/main-1.jpg" alt="")
+				.page-container.main-slider__item-inner
+					.main-slider__info
+						.main-slider__title Квалификация сотрудников,<br>подтверждённая рынком<br>и победами
+						.main-slider__description
+							p Сотрудники и кейсы компании регулярно проходят внешнюю сертификацию<br>и получают награды на отраслевых премиях. Более 30 достижений
 
 
 

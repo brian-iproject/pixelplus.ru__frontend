@@ -42,7 +42,6 @@
 
   &__price {
     @extend h2;
-    color: var(--color-primary);
     line-height: var(--line-height--md);
     margin: 0 !important;
   }

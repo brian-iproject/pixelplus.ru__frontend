@@ -2,7 +2,13 @@
 	$block-name: &; // #{$block-name}__element
 
 	--min-height: 500px;
-	--v-padding: 3.75em;
+
+	&:has(picture) {
+		--min-height: 648px;
+	}
+
+	--v-padding: var(--offset--xxl);
+
 
 	&--negative-margin {
 		margin-bottom: calc((3.75em + 3.25em) * -1);
@@ -21,26 +27,41 @@
 		flex-direction: column;
 		min-height: var(--min-height);
 		width: 100%;
+
+		position: relative;
+
+		& img {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
 	}
 
 	&__item-inner {
 		align-items: center;
 		display: flex;
-		//width: calc(100% - 2 * var(--grid-gutter-x));
-		//height: calc(var(--min-height) - 2 * var(--v-padding)); убираем на мобиле, чтобы была адаптивная высота
-		//min-height: calc(var(--min-height) - 2 * var(--v-padding)); //убираем на мобиле, чтобы была адаптивная высота
-		min-height: calc(var(--min-height)); //убираем на мобиле, чтобы была адаптивная высота
 		flex-grow: 1;
-		padding-top: calc(var(--v-padding) * 1.25);
+		padding-top: var(--v-padding);
 		padding-bottom: var(--v-padding);
-		// box-sizing: content-box; // не помню зачем было, пока мешает
+		min-height: var(--min-height);
 
-		/*& * {
-			box-sizing: border-box;
-		}*/
-
-		@at-root #{$block-name}--negative-margin #{$block-name}__item-inner {
+		@at-root
+		#{$block-name}--negative-margin #{$block-name}__item-inner {
 			margin-bottom: var(--v-padding);
+		}
+
+		@at-root
+		#{$block-name}__item:has(picture) #{$block-name}__item-inner {
+			align-items: flex-start;
+		}
+
+		@at-root
+		#{$block-name}:has(+ .page__breadcrumb) #{$block-name}__item-inner {
+			padding-top: calc(var(--v-padding)* 1.25);
 		}
 	}
 
@@ -113,6 +134,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
+		z-index: 5;
 	}
 
 	&__more-info {
@@ -251,6 +273,15 @@
 	}
 
 	@media (min-width: $screen-md) {
+		&:has(picture) {
+			--min-height: 1000px;
+		}
+
+		//&__item-inner {
+		//	padding-top: var(--offset--xxl);
+		//	padding-bottom: var(--offset--xxl);
+		//}
+
 		&--negative-margin {
 			margin-bottom: calc((3.75em + 6.5em) * -1);
 		}
@@ -274,6 +305,14 @@
 
 	@media (min-width: $screen-lg) {
 		--min-height: 590px;
+
+		&:has(picture) {
+			--min-height: 590px;
+		}
+
+		&__item-inner {
+			align-items: center;
+		}
 
 		&__info-right,
 		&__form {
