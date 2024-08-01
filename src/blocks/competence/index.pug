@@ -1,0 +1,22 @@
+mixin competence(data, props)
+
+  //- Принимает:
+  //-   data {
+  //-     src:              {string} - путь до логотипа
+  //-     title:             {string} - текст
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'text-icon--' + mods;
+
+  .competence(class = allMods)&attributes(attributes)
+    .competence__image
+      img(src=data.src alt="")
+    .competence__title !{data.title}
