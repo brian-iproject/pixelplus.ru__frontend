@@ -152,13 +152,18 @@
       transform: rotate(180deg);
     }
 
+    .choices:not(.is-open) {
+      border-bottom: 1px solid #E3E3E3;
+    }
+
     .choices[data-type*=select-one] .choices__inner {
       padding-right: 0;
       padding-left: 0;
     }
 
-    .choices:not(.is-open) {
-      border-bottom: 1px solid #E3E3E3;
+    .choices__list--single .choices__item {
+      color: var(--color-gray--darker);
+      font-weight: 500;
     }
   }
 
@@ -166,6 +171,9 @@
     input {
       padding-right: 0;
       padding-left: 0;
+
+      color: var(--color-gray--darker);
+      font-weight: 500;
 
       border: none;
       border-bottom: 1px solid #E3E3E3;
