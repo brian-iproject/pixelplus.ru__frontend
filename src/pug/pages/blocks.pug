@@ -376,9 +376,10 @@ block content
 
   .wide-block
     .page-container
-      .d-grid.d-grid--lg-3
-        .d-grid__item
-          +competence(competence[0])
-
-        .d-grid__item
-        .d-grid__item
+      .d-grid.d-grid--md-2.d-grid--xl-3.d-grid--gap-lg
+        each section in competence
+          .d-grid__item
+            .h3 !{section.title}
+            .d-grid.d-grid--xs-2.d-grid--sm-3.d-grid--md-2.d-grid--lg-2.d-grid--gap-xxs
+              each item in section.items
+                +competence(item).grid__item
