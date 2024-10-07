@@ -26,8 +26,8 @@
 		}
 	}
 
-	&__input:focus + &__name,
-	&__input.-is-focus + &__name {
+	&__input:focus ~ &__name,
+	&__input.-is-focus ~ &__name {
 		font-size: var(--font-size--small);
 		opacity: .5;
 		top: .275em;

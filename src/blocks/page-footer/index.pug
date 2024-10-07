@@ -32,13 +32,14 @@ mixin page-footer(mods)
             img(src="images/arda.png")
         .page-footer__bottom-item.page-footer__bottom-item--social-media
           include ../socials/index
-        .page-footer__bottom-item
-          p Сайт защищен reCAPTCHA и Google.
-          p <a href="https://policies.google.com/privacy">Конфиденциальность</a> и <a href="https://policies.google.com/terms">Условия</a>.
+        .page-footer__bottom-item.page-footer__bottom-item--policy
+          p Сайт защищен reCAPTCHA и Google. <a href="https://policies.google.com/privacy">Конфиденциальность</a> и <a href="https://policies.google.com/terms">Условия</a>.
           p &nbsp;
-          p: a(href="/oferta/") Публичная оферта
-          p: a(href="/privacy-policy/") Политика конфиденциальности
+          p
+            a(href="/oferta/") Публичная оферта
+            |  |
+            a(href="/privacy-policy/") Политика конфиденциальности
         .page-footer__bottom-item.page-footer__bottom-item--subscribe
           include ../subscribe-footer/index
-        .page-footer__bottom-item
-          include ../vote/index
+        //.page-footer__bottom-item
+        //  include ../vote/index

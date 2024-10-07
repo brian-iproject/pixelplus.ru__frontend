@@ -1,0 +1,61 @@
+@mixin square() {
+  aspect-ratio: 1;
+}
+
+.illustration-preview {
+  $block-name: &; // #{$block-name}__element
+
+  padding: 0;
+  margin: 0;
+  position: relative;
+
+  & [data-fancybox]{
+    cursor: zoom-in;
+  }
+
+  &__image {
+    border-radius: var(--border-radius--md);
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+
+      @include image-rendering();
+    }
+  }
+
+  & figcaption {
+    font-size: var(--font-size--xs);
+    margin-top: var(--offset--sm);
+  }
+
+  @media (min-width: $screen-md) {
+    border-radius: var(--border-radius--md);
+  }
+
+  &--square {
+    & #{$block-name}__image {
+      @include square()
+    }
+  }
+
+  @each $screen-name, $screen in $screen-map {
+    &--square-#{$screen-name} {
+      & #{$block-name}__image {
+        @if ($screen-name == 'xs') {
+          @media (max-width: $screen) {
+            @include square()
+          }
+        } @else {
+          @media (min-width: $screen) {
+            @include square()
+          }
+        }
+      }
+    }
+  }
+}

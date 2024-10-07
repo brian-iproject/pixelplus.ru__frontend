@@ -23,6 +23,10 @@
 
 .-uppercase { text-transform: uppercase }
 
+.-tt-u { text-transform: uppercase }
+.-tt-l { text-transform: lowercase }
+.-tt-n { text-transform: none }
+
 .-no-margin { margin: 0 !important; }
 .-no-margin--bottom { margin-bottom: 0 !important; }
 .-no-padding { padding: 0; }

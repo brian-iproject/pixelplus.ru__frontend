@@ -35,4 +35,8 @@
 			}
 		}
 	}
+
+	&--primary li a {
+		color: var(--color-primary);
+	}
 }

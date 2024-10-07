@@ -5,10 +5,9 @@
 
   display: flex;
   flex-direction: column;
-  gap: var(--grid-gutter);
   color: var(--text-color);
 
-  padding: 2em;
+
   background: var(--color-white);
   border-radius: var(--border-radius--sm);
   width: 100%;
@@ -17,44 +16,102 @@
     min-height: 100%;
   }
 
+  &__image {
+    align-items: center;
+    background-color: var(--color-gray--lighter);
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    height: 200px;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @at-root
+    .wide-block--gray-lighter & {
+      background-color: var(--color-gray--lighten);
+    }
+  }
+
+  &__info {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-gutter);
+    flex-grow: 1;
+  }
+
   &__title {
-    font-size: var(--font-size--large);
-    font-weight: 500;
-    color: var(--text-color);
+    font-size: var(--font-size--medium);
 
-    @at-root
-    #{selector.unify(&, a)} {
-      @include link-inversion(true)
+    &--large {
+      font-size: var(--font-size--large);
+      font-weight: 500;
+      color: var(--text-color);
+
+      @at-root
+      #{selector.unify(&, a)} {
+        @include link-inversion(false)
+      }
     }
 
-    @at-root
-    a#{$block-name} {
-      --link-color: var(--text-color);
-      --link-color--hover: var(--color-primary);
-      text-decoration: none;
-    }
 
-    @at-root
-    #{$block-name} & a,
-    a#{$block-name}__title,
-    a#{$block-name} & {
+
+    /** вроде должно и без этого все норм отображаться,
+        но пока оставлю
+     */
+
+    //@at-root
+    //a#{$block-name} {
+    //  --link-color: var(--text-color);
+    //  --link-color--hover: var(--color-primary);
+    //  text-decoration: none;
+    //}
+    //
+    //@at-root
+    //#{$block-name} & a,
+    //a#{$block-name}__title,
+    //a#{$block-name} & {
+    //  text-decoration: underline;
+    //  text-decoration-color: transparent;
+    //  color: var(--text-color);
+    //  transition: var(--transition-time);
+    //}
+    //
+    //@at-root
+    //#{$block-name} & a:hover,
+    //#{$block-name} & a:active,
+    //a#{$block-name}__title:hover,
+    //a#{$block-name}__title:active,
+    //a#{$block-name}:hover &,
+    //a#{$block-name}:active & {
+    //  color: var(--link-color--hover);
+    //  text-decoration-color: currentColor;
+    //}
+  }
+
+
+  @at-root
+  a#{$block-name} {
+    text-decoration: none;
+
+    & #{$block-name}__title {
       text-decoration: underline;
       text-decoration-color: transparent;
-      color: var(--text-color);
       transition: var(--transition-time);
     }
 
-    @at-root
-    #{$block-name} & a:hover,
-    #{$block-name} & a:active,
-    a#{$block-name}__title:hover,
-    a#{$block-name}__title:active,
-    a#{$block-name}:hover &,
-    a#{$block-name}:active & {
+    &:hover #{$block-name}__title {
       color: var(--link-color--hover);
       text-decoration-color: currentColor;
     }
   }
+
 
   &__description {
     font-size: var(--font-size--medium);
@@ -68,5 +125,11 @@
 
   &__logo img {
     max-height: 30px;
+  }
+
+  &__note {
+    color: var(--color-gray);
+    font-size: var(--font-size--medium);
+    margin-top: 1em;
   }
 }

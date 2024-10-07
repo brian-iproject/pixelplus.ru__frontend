@@ -16,6 +16,7 @@ import {SimpleDiagramGroup} from "./classes/SimpleDiagram.js";
 import Splide from '@splidejs/splide';
 import { SplideFilter } from "./classes/Splide/Filter.js"
 import LoadScripts from "./classes/LoadScripts.js";
+import Like from "./classes/Like.js";
 import Calculator from "./classes/Calculator.js";
 import Quiz from "./classes/Quiz.js";
 import TrafficForecast from "./classes/TrafficForecast.js";
@@ -332,6 +333,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     }
                 }
             }
+        });
+    }
+
+    // Лайк
+    if (typeof Like !== 'undefined') {
+        document.querySelectorAll('.like').forEach((item) => {
+            new Like(item, '/local/templates/pixelplus.ru_2021/components/bitrix/news.detail/team/ajax.php');
         });
     }
 })
