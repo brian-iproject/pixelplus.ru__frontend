@@ -3,7 +3,8 @@
 
 	position: relative;
 	transition: var(--transition-time);
-	display: inline-block;
+	/* Создавал лишний пробел под картинкой, если img вложен в a
+	display: inline-block;*/
 
 	&::after {
 		background: var(--color-white);

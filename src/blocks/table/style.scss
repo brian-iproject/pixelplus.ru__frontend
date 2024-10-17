@@ -22,7 +22,7 @@
 	& th,
 	& td {
 		font-weight: normal;
-		padding: .625em 1.5em;
+		padding: var(--offset--xxs) var(--offset--md);
 		text-align: left;
 		position: relative;
 		border: 2px solid var(--color-border);
