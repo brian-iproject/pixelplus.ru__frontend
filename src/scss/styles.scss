@@ -113,11 +113,14 @@
 @import "../blocks/quiz/style";
 @import "../blocks/traffic-forecast/style";
 @import "../blocks/competence/style";
+@import "../blocks/employee-item/style";
+@import "../blocks/employee-wide/style";
 
 @import '../blocks/tariff/style';
 @import '../blocks/tariffs/style';
 @import '../blocks/tariffs-wide/style';
 @import '../blocks/tariff-options/style';
+@import '../blocks/locked-button/style';
 
 // Технические стили, не использовать на продакшене
 @import '../blocks/colors-list/style';

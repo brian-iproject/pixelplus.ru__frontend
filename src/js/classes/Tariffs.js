@@ -76,8 +76,22 @@ class Tariffs {
 
     sendOrderHandler = async (e) => {
         e.preventDefault();
+        if (typeof grecaptcha !== 'undefined') {
+            grecaptcha.ready(() => {
+                grecaptcha.execute(e.target.querySelector('[name*=RC_KEY]').value, {action: 'service_by'})
+                    .then(function (token) {
+                        var recaptchaResponse = e.target.querySelector('input[name=recaptcha_response]');
 
-        await this.sendOrder(e.target);
+                        if (recaptchaResponse)
+                            recaptchaResponse.value = token;
+                    })
+                    .then(()=> {
+                        this.sendOrder(e.target);
+                    });
+            });
+        } else {
+            await this.sendOrder(e.target);
+        }
     }
 
     startLoading = () => {
@@ -180,7 +194,7 @@ class Tariffs {
                     '/services-order/ajax.php';
 
         Fancybox.show([{
-            src: url + '?SERVICE_ID=' + this.serviceId + '&TARIFF_ID=' + this.currentTariff,
+            src: url + '?SERVICE_ID=' + this.serviceId + '&TARIFF_ID=' + this.currentTariff + '&PAGE_URL=' + window.location.href,
             type: 'ajax'
         }], {
             dragToClose: false,

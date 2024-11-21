@@ -1,0 +1,55 @@
+@use "sass:selector";
+
+.employee-wide {
+  $block-name: &; // #{$block-name}__element
+
+  position: relative;
+  margin: calc(var(--padding) * -1) 0;
+  display: grid;
+  gap: var(--grid-gutter);
+
+  &__image {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    order: -1;
+
+    & img {
+      display: block;
+      margin-top: calc(var(--padding) / -2);
+    }
+  }
+
+  &__info {
+    padding: calc(var(--padding) / 2) 0;
+  }
+
+  &__title {
+    font-size: var(--font-size--large);
+    font-weight: 500;
+  }
+
+  &__post {
+    font-size: var(--font-size--medium);
+  }
+
+  &:hover {
+    #{$block-name}__info {
+      opacity: 1;
+    }
+
+    #{$block-name}__title,
+    #{$block-name}__post {
+      transform: translateX(0);
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    &__image {
+      order: 0;
+    }
+  }
+}

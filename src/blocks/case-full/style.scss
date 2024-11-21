@@ -26,25 +26,38 @@
 		}
 	}
 
-	&__logo {
-		margin-bottom: var(--typo-margin-vertical);
+	&__header {
+		margin-bottom:  var(--offset);
+		display: flex;
+		flex-direction: column;
+		gap: var(--grid-gutter);
+	}
 
+	&__logo {
 		& img {
 			display: block;
 			margin: 0 auto;
 		}
 	}
 
+	/* Чтобы убрать лишние отступы при размещении лого и тайтла в блоке flex */
+	&__item > &__logo{
+		margin-bottom: var(--typo-margin-vertical);
+	}
+
 	&__title {
 		font-size: 26px;
 		font-weight: 500;
 		line-height: 1.2;
-		margin-bottom: var(--typo-margin-vertical);
 		text-align: center;
 	}
 
+	&__item > &__title {
+		margin-bottom: var(--typo-margin-vertical);
+	}
+
 	&__description {
-		margin: 0 auto var(--typo-margin-vertical) auto;
+		margin-bottom: var(--typo-margin-vertical);
 	}
 
 	&__image {
@@ -80,6 +93,17 @@
 
 		&__button {
 			text-align: left;
+		}
+	}
+
+	@media (min-width: $screen-lg) {
+		&__header {
+			flex-direction: row;
+			align-items: center;
+		}
+
+		&__header &__logo {
+			flex-shrink: 0;
 		}
 	}
 }

@@ -404,11 +404,15 @@
 
 			&::after {
 				color: var(--color-gray--light);
-				content: "0"counter(item);
+				content: counter(item);
 				counter-increment: item;
 				position: absolute;
 				right: .5em;
 				top: .5em;
+			}
+
+			&:nth-child(-n+9)::after {
+				content: "0"counter(item);
 			}
 		}
 	}

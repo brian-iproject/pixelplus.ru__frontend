@@ -69,6 +69,20 @@
   }
 
   @each $screen-name, $screen in $screen-map {
+    &--#{$screen-name}-align-items-center {
+      @if ($screen-name == 'xs') {
+        @media (max-width: $screen) {
+          align-items: center;
+        }
+      } @else {
+        @media (min-width: $screen) {
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  @each $screen-name, $screen in $screen-map {
     &--#{$screen-name}-justify-content-between {
       @if ($screen-name == 'xs') {
         @media (max-width: $screen) {
@@ -119,6 +133,20 @@
       } @else {
         @media (min-width: $screen) {
           flex-direction: column;
+        }
+      }
+    }
+  }
+
+  @each $screen-name, $screen in $screen-map {
+    &--#{$screen-name}-row {
+      @if ($screen-name == 'xs') {
+        @media (max-width: $screen) {
+          flex-direction: row;
+        }
+      } @else {
+        @media (min-width: $screen) {
+          flex-direction: row;
         }
       }
     }

@@ -20,6 +20,7 @@ import Like from "./classes/Like.js";
 import Calculator from "./classes/Calculator.js";
 import Quiz from "./classes/Quiz.js";
 import TrafficForecast from "./classes/TrafficForecast.js";
+import LockedButton from "./classes/LockedButton.js";
 
 window.pixelplus = {
     Quiz,
@@ -77,12 +78,6 @@ const appnew = {
     },
 
     init: function() {
-        HiddenCaptcha.init({
-            formSelector: '.form--feedback form',
-            hiddenInput: '[name=MIDDLE_NAME]',
-            buttonSelector: '.form__button'
-        });
-
         Utils.replaceLink('data-href');
 
         SvgLoad.init((window.location.hostname === 'localhost')?'/images/icons.svg':'/local/templates/pixelplus.ru_2021/images/icons.svg');
@@ -131,7 +126,7 @@ const appnew = {
         }
 
         if (typeof Inputmask !== 'undefined') {
-            Inputmask({"mask": "+9 (999) 999-99-99"}).mask('[type=tel]:not(.form__input)');
+            Inputmask({"mask": "+9 (999) 999-99-99", "showMaskOnHover": false}).mask('[type=tel]:not(.form__input)');
         }
     }
 };
@@ -341,5 +336,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.querySelectorAll('.like').forEach((item) => {
             new Like(item, '/local/templates/pixelplus.ru_2021/components/bitrix/news.detail/team/ajax.php');
         });
+    }
+
+    // Блокировка повторного клика по кнопке формы
+    if (typeof LockedButton !== 'undefined') {
+        document.querySelectorAll('form[data-locked-button=true]').forEach((el) => {
+            new LockedButton(el, {
+                selectors: {
+                    button: '.form-short__field .button, button.subscribe-footer__button, .form .form__button',
+                }
+            });
+        })
     }
 })

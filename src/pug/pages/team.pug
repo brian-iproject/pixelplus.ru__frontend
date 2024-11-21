@@ -1,0 +1,38 @@
+extends ../layout.pug
+
+block meta
+	title Изображения
+	meta(name='description', content='')
+
+block content
+	.wide-block.wide-block--gray-lighter
+		.page-container
+			h1 Основатели
+	.wide-block.wide-block--gray-lighter
+		.page-container
+			+employee-wide(employeeList[1])
+	.wide-block
+		.page-container
+			+employee-wide(employeeList[2], { mirror: true })
+
+
+	.wide-block
+		.page-container
+			h1 Руководители
+			.d-grid.d-grid--not-gap.d-grid--md-4
+				+employee-item(employeeList[0])
+				+employee-item(employeeList[0])
+				+employee-item(employeeList[0])
+				+employee-item(employeeList[0])
+	.wide-block
+		.page-container
+			h1 Вся команда
+			.d-grid.d-grid--not-gap.d-grid--md-5
+				+employee-item(employeeList[0])
+				+employee-item(employeeList[0])
+				+employee-item(employeeList[0])
+				+employee-item(employeeList[0])
+				+employee-item(employeeList[0])
+				+employee-item(employeeList[0])
+				+employee-item(employeeList[0])
+				+employee-item(employeeList[0])
