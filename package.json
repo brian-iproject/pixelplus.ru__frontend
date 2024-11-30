@@ -64,6 +64,7 @@
     "flickity": "^2.3.0",
     "flickity-fade": "^1.0.0",
     "inputmask": "^5.0.7",
+    "intl-tel-input": "^24.7.0",
     "js-cookie": "^3.0.1",
     "moveto": "^1.8.2",
     "normalize.css": "^8.0.1",

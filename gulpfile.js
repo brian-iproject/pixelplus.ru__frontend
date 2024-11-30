@@ -121,6 +121,7 @@ function compileSass() {
         gcmq(),
         debug({title: 'Compiles '}),
         replace(/..\/..\/blocks\/([a-zA-Z0-9_-]+)\/images\/([a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/blocks/$1/$2.$3'),
+        replace(/..\/..\/images\/([a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/$1.$2'),
         debug({title: 'Replaces path to image '}),
         /** TODO: autoprefixer сыпет ошибки в конечный css - надо разобрать их и вернуть */
         //debug({title: 'Add browser prefix '}),

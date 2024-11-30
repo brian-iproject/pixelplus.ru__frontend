@@ -21,6 +21,8 @@ import Calculator from "./classes/Calculator.js";
 import Quiz from "./classes/Quiz.js";
 import TrafficForecast from "./classes/TrafficForecast.js";
 import LockedButton from "./classes/LockedButton.js";
+import intlTelInput from 'intl-tel-input';
+import { ru } from "intl-tel-input/i18n";
 
 window.pixelplus = {
     Quiz,
@@ -125,8 +127,33 @@ const appnew = {
             autosize(document.querySelectorAll('.form-short textarea'));
         }
 
-        if (typeof Inputmask !== 'undefined') {
-            Inputmask({"mask": "+9 (999) 999-99-99", "showMaskOnHover": false}).mask('[type=tel]:not(.form__input)');
+        // if (typeof Inputmask !== 'undefined') {
+        //     Inputmask({"mask": "+9 (999) 999-99-99", "showMaskOnHover": false}).mask('[type=tel]:not(.form__input)');
+        // }
+
+        if (typeof intlTelInput !== 'undefined') {
+            const inputsPhone = document.querySelectorAll("[type=tel]:not(.form__input)");
+            inputsPhone.forEach(input => {
+                intlTelInput(input, {
+                    i18n: ru,
+                    placeholderNumberType: 'MOBILE',
+                    initialCountry: "auto",
+                    onlyCountries: ['ru', 'by', 'kz', 'am', 'az', 'kg', 'md', 'tj', 'uz', 'ge', 'us',
+                                    'at', 'ax', 'al', 'ad', 'be', 'bg', 'ba', 'va', 'gb', 'hu', 'de',
+                                    'gr', 'dk', 'ie', 'is', 'es', 'it', 'lv', 'lt', 'li', 'lu', 'mk',
+                                    'mt', 'mk', 'nl', 'no', 'pl', 'pt', 'ro', 'sm', 'rs', 'sk', 'si',
+                                    'fi', 'fr', 'hr', 'me', 'cz', 'ch', 'se', 'sj', 'ee', 'ae'],
+                    //strictMode: true,
+                    nationalMode: false,
+                    geoIpLookup: callback => {
+                        fetch("https://ipapi.co/json")
+                            .then(res => res.json())
+                            .then(data => callback(data.country_code))
+                            .catch(() => callback("ru"));
+                    },
+                    loadUtilsOnInit: `https://cdn.jsdelivr.net/npm/intl-tel-input@${intlTelInput.version}/build/js/utils.js`
+                });
+            });
         }
     }
 };

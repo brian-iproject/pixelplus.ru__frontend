@@ -303,3 +303,26 @@ hr {
 }
 
 .grecaptcha-badge { visibility: hidden; }
+
+.RatingBadgeWidget {
+	display: block;
+
+	width: 150px;
+	height: 50px;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	margin: 0 auto;
+}
+
+.iti {
+	--iti-path-flags-1x: url('../../images/flags.webp');
+	--iti-path-flags-2x: url('../../images/flags@2x.webp');
+	--iti-path-globe-1x: url('../../images/globe.webp');
+	--iti-path-globe-2x: url('../../images/globe@2x.webp');
+}
+
+.iti__dropdown-content {
+	color: var(--text-color);
+}
