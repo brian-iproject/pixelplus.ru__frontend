@@ -1,0 +1,37 @@
+.block-incut {
+  $block-name: &; // #{$block-name}__element
+
+  padding: 20px;
+  margin: 0;
+  background-color: var(--color-gray--lighter);
+
+  @include offset(xl);
+
+  &--border-radius {
+    border-radius: var(--border-radius);
+  }
+
+  &--white {
+    background-color: var(--color-white);
+  }
+
+  &--gray-light {
+    background-color: var(--color-gray--light);
+  }
+
+  &--gray-lighter {
+    background-color: var(--color-gray--lighter);
+  }
+
+  &--stretch {
+    min-height: 100%;
+  }
+
+  &--shadow {
+    box-shadow: var(--shadow);
+  }
+
+  @media (min-width: $screen-md) {
+    padding: 30px 50px;
+  }
+}

@@ -6,10 +6,6 @@
   align-items: flex-start;
   gap: var(--grid-gutter);
 
-  //&:not(&__item) {
-  //  @include offset('lg');
-  //}
-
   &--wrap {
     flex-wrap: wrap;
   }
@@ -48,6 +44,10 @@
     &--gap-#{$type} {
       @include gap($type)
     }
+  }
+
+  &--no-gap {
+    gap: 0;
   }
 
   @each $screen-name, $screen in $screen-map {
@@ -179,6 +179,22 @@
           }
         }
       }
+    }
+
+    &--growing {
+      flex-grow: 1;
+    }
+
+    &--no-growing {
+      flex-grow: 0;
+    }
+
+    &--growing {
+      flex-grow: 1;
+    }
+
+    &--no-growing {
+      flex-grow: 0;
     }
   }
 }

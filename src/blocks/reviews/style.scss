@@ -173,7 +173,8 @@
 	& #{$block-name}__text {
 		overflow: hidden;
 		display: -webkit-box;
-		-webkit-line-clamp: 8;
+		line-clamp: 6;
+		-webkit-line-clamp: 6;
 		-webkit-box-orient: vertical;
 	}
 

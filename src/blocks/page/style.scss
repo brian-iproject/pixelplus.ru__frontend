@@ -326,3 +326,10 @@ hr {
 .iti__dropdown-content {
 	color: var(--text-color);
 }
+
+.iti__search-input {
+	padding: .5rem;
+	background-color: var(--color-gray--lighter);
+	border: 1px solid var(--field-text-border-color, var(--color-white));
+	outline: none;
+}

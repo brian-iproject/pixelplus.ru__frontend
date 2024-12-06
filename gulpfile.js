@@ -65,9 +65,14 @@ const config = {
         overrideBrowserslist: ['last 10 versions'],
         grid: true
     },
+    sass: {
+        outputStyle: 'expanded'
+    },
     cleancss: {
         inline: ['none'],
-        level: 2,
+        level: {
+            1: { specialComments: 0 }
+        }
         //format: 'beautify'
     }
 }
@@ -117,7 +122,7 @@ function copyFavicon() {
 function compileSass() {
     return multipipe(
         src('src/scss/*.scss'),
-        sass(),
+        sass(config.sass, false),
         gcmq(),
         debug({title: 'Compiles '}),
         replace(/..\/..\/blocks\/([@a-zA-Z0-9_-]+)\/images\/([@a-zA-Z0-9_-]+).([a-zA-Z0-9_-]+)/g, '../images/blocks/$1/$2.$3'),

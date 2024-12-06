@@ -11,4 +11,8 @@
     align-self: flex-start;
     transform: translateY(calc((100% - var(--line-height) * 1em) /-2));
   }
+
+  &--align-start {
+    align-items: flex-start;
+  }
 }
