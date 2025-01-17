@@ -160,7 +160,7 @@
   }
 
   & ul.list-checked--figure {
-    display: inline-flex;
+    //display: inline-flex; // при неполном заполнении центровалось. пока убираю
     font-size: var(--font-size--medium);
     margin-top: 0;
   }

@@ -12,6 +12,11 @@ class Calculator {
         this.$detailResult = this.$calcFrame.querySelector('.calculator__detail-result');
         this.$totalPrice = this.$calcFrame.querySelector('.calculator__total-price');
 
+        this.$contentCount = this.$calcFrame.querySelector('.calculator__content-count');
+        this.$designHour = this.$calcFrame.querySelector('.calculator__design-hour');
+        this.$devHour = this.$calcFrame.querySelector('.calculator__dev-hour');
+        this.$studyPeriod = this.$calcFrame.querySelector('.calculator__study-period');
+
         this.trafficValue = 0;
         this.trafficBrandValue = 0;
         this.trafficNewValue = 0;
@@ -25,14 +30,9 @@ class Calculator {
      * @returns {boolean}
      */
     checkInput = (input) => {
-        /*if (input.name === 'TRAFFIC' && (input.value > this.trafficNewValue && this.trafficNewValue > 0))
-            return false*/
 
         if (input.name === 'TRAFFIC_BRAND' && input.value > 100)
             return false
-
-        /*if (input.name === 'TRAFFIC_NEW' && input.value <= this.trafficValue)
-            return false*/
 
         return !!input.value;
     }
@@ -58,7 +58,13 @@ class Calculator {
 
         totalPrice = (totalPrice >= 0) ? Math.ceil(totalPrice) : 0;
 
-        return {traffic, trafficBrand, trafficNew, baseTraffic, totalPrice};
+        let budget = totalPrice - (totalPrice * 0.34),
+            contentCount = Math.round((budget * 0.2 / 1000) * 900 * 100) / 100,
+            designHour = Math.round(((budget * 0.2 / 1200)) * 1.2 * 100) / 100,
+            devHour = Math.round(((budget * 0.2 / 1200)) * 1.2 * 100) / 100,
+            studyPeriod = totalPrice >= 60000 ? 'квартал' : 'год';
+
+        return {traffic, trafficBrand, trafficNew, baseTraffic, totalPrice, budget, contentCount, designHour, devHour, studyPeriod};
     }
 
     /**
@@ -70,7 +76,7 @@ class Calculator {
         this.$result.classList.toggle('-active', dataExists);
 
         if (dataExists) {
-            const {traffic, trafficBrand, trafficNew, baseTraffic, totalPrice} = this.getResult();
+            const {traffic, trafficBrand, trafficNew, baseTraffic, totalPrice, budget, contentCount, designHour, devHour, studyPeriod} = this.getResult();
             this.$totalPrice.innerText = this.numberFormatting(totalPrice);
 
             if (trafficNew > traffic) {
@@ -87,7 +93,10 @@ class Calculator {
                 `;
             }
 
-
+            this.$contentCount.innerText = this.numberFormatting(contentCount);
+            this.$designHour.innerText = this.numberFormatting(designHour);
+            this.$devHour.innerText = this.numberFormatting(devHour);
+            this.$studyPeriod.innerText = studyPeriod;
         } else {
             this.$detailResult.innerText = '';
             this.$totalPrice.innerText = '';

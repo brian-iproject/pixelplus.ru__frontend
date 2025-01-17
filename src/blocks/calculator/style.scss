@@ -1,17 +1,21 @@
+/**
+TODO: рефакторинг вёрстки
+ */
+
 .calculator {
   &__inner {
-    background: #FFFFFF;
+    background: var(--color-white);
     border-radius: 7px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .05);
-    padding: 30px 30px 0 30px;
+    padding: var(--offset--lg) var(--offset--lg) 0 var(--offset--lg);
 
     @media (min-width: $screen-md) {
-      margin-bottom: 30px;
+      margin-bottom: var(--offset--lg);
     }
   }
 
   &__form {
-    padding-bottom: 38px;
+    padding-bottom: var(--offset--xl);
 
     @media (min-width: $screen-md) {
       display: flex;
@@ -20,7 +24,7 @@
   }
 
   &__field {
-    margin-bottom: 30px;
+    margin-bottom: var(--offset--lg);
 
     @media (min-width: $screen-md) {
       flex: 0 0 33.33333%;
@@ -31,8 +35,8 @@
   }
 
   &__field-name {
-    color: #202020;
-    font-size: 16px;
+    color: var(--color-gray--darker);
+    font-size: var(--font-size);
     font-weight: 500;
     margin-bottom: 8px;
   }
@@ -44,9 +48,9 @@
     background-repeat: no-repeat;
     background-size: auto !important;
     border: none;
-    border-bottom: 1px solid #C4C4C4;
-    color: #757575;
-    font-size: 16px;
+    border-bottom: 1px solid var(--color-gray--light);
+    color: var(--color-gray--dark);
+    font-size: var(--font-size);
     line-height: 25px;
     padding: 8px 15px;
     width: 100%;
@@ -63,11 +67,10 @@
   &__result {
     background: rgba(0, 150, 40, .05);
     border-radius: 0 0 7px 7px;
-    /*display: none;*/
-    font-size: 22px;
+    font-size: var(--font-size--huge);
     font-weight: 500;
-    margin: 0 -30px;
-    padding: 23px 30px;
+    margin: 0 calc(var(--offset--lg) * -1);
+    padding: var(--offset--md) var(--offset--lg);
     position: relative;
 
     &.-active {
@@ -76,7 +79,7 @@
   }
 
   &__total-price {
-    color: rgb(0, 150, 40);
+    color: var(--color-green);
   }
 
   &__toggle-detail {
@@ -84,7 +87,7 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    margin-top: 30px;
+    margin-top: var(--offset--lg);
     display: block;
 
     @media (min-width: $screen-md) {
@@ -106,48 +109,83 @@
 
   &__detail-result {
     display: none;
-    font-size: 14px;
+    font-size: var(--font-size--medium);
     font-weight: normal;
-    line-height: 1.4;
-    margin-top: 30px;
+    margin-top: var(--offset--lg);
 
     &.-active {
       display: block;
     }
   }
 
-  &__footer {
-    margin-top: 30px;
+  &__task {
+    margin-top: var(--offset--lg);
+  }
+
+  &__task-list {
+    list-style: none;
+    gap: var(--offset--md) calc(var(--offset--md) * 4);
+    padding: 0;
+    margin: var(--offset--md) 0 0 0;
+    display: grid;
+    font-size: var(--font-size);
+    counter-reset: item 0;
+
+    & li {
+      padding-left: 37px;
+      counter-increment: item;
+      position: relative;
+
+      &::before {
+        content: counter(item);
+        background-color: var(--color-green--light);
+        width: 27px;
+        height: 27px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        justify-content: center;
+        color: var(--color-white);
+        position: absolute;
+        top: -5px;
+        left: 0;
+      }
+    }
+
+    & li span {
+      color: var(--color-green--light);
+    }
 
     @media (min-width: $screen-md) {
+      grid-template-columns: repeat(2, auto);
+    }
+  }
+
+  &__footer {
+    margin-top: var(--offset--lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--offset--sm);
+
+    @media (min-width: $screen-md) {
+      flex-direction: row;
       align-items: center;
-      display: flex;
-      margin: 0 -15px;
+      justify-content: space-between;
+      gap: var(--offset--lg);
     }
   }
 
   &__footer-text {
-    color: #757575;
-    font-size: 14px;
-    margin-bottom: 15px;
-
-    @media (min-width: $screen-md) {
-      flex: 0 0 40%;
-      margin-bottom: 0;
-      max-width: 40%;
-      padding: 0 15px;
-    }
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--medium);
   }
 
   &__footer-button {
-    margin-bottom: 15px;
     text-align: center;
 
     @media (min-width: $screen-md) {
-      flex: 0 0 20%;
-      margin-bottom: 0;
-      max-width: 20%;
-      padding: 0 15px;
+      flex-shrink: 0;
     }
   }
 }

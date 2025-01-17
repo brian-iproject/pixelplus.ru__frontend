@@ -351,6 +351,10 @@
     min-height: 100%;
     width: 100%;
 
+    &:has(#{$block-name}__icon--lg) {
+      grid-template-columns: minmax(90px, 100px) auto;
+    }
+
     @media (min-width: $screen-md) {
       gap: 0 calc(var(--grid-gutter) * 2);
     }
