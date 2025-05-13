@@ -13,7 +13,11 @@ export default class TrafficForecast {
             seoLegendText: '— с работами по SEO'
         };
 
-        this.config = Object.assign(defaultConfig, JSON.parse(this.container.dataset.config));
+        if (this.container.dataset.config) {
+            this.config = Object.assign(defaultConfig, JSON.parse(this.container.dataset.config));
+        } else {
+            this.config = defaultConfig;
+        }
 
         this.isLoaded = false;
 

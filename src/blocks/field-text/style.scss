@@ -15,7 +15,7 @@
 
 	&__input {
 		background: var(--color-white);
-		border: 1px solid var(--field-text-border-color, var(--color-white));
+		border: 1px solid var(--field-border-color, var(--color-white));
 		border-radius: .4em;
 		color: var(--field-text-color, var(--color-gray--dark));
 		font-size: inherit;
@@ -35,13 +35,11 @@
 			left: 1rem;
 		}
 
-		//[class*=--fields-transparent] &,
-		//.main-slider & {
 		@at-root
 		#{$block-name}--transparent & {
 			background-color: transparent;
 			border: none;
-			border-bottom: 1px solid var(--field-text-border-color, var(--color-white));
+			border-bottom: 1px solid var(--field-border-color, var(--color-white));
 			border-radius: 0;
 			color: var(--field-text-color, var(--color-white));
 
@@ -51,8 +49,6 @@
 			}
 		}
 
-		//[class*=--fields-transparent] & + .moving-placeholder__name,
-		//.main-slider & + .moving-placeholder__name {
 		@at-root
 		#{$block-name}--transparent & + .moving-placeholder__name {
 			color: inherit;
@@ -60,8 +56,9 @@
 
 		#{$block-name}--gray &,
 		[class*=-bg-gray] & {
-			--field-text-border-color: var(--color-gray--light);
+			--field-border-color: var(--color-gray--light);
 			--field-text-color: var(--text-color);
+			--field-check: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='7.6665' height='5.58301' viewBox='0 0 7.6665 5.58301'><path d='M2.5835,5.583A.49839.49839,0,0,1,2.23,5.43652l-2.0835-2.083a.5.5,0,0,1,.707-.707l1.73,1.7295L6.813.14648a.49995.49995,0,0,1,.707.707l-4.583,4.583A.49835.49835,0,0,1,2.5835,5.583Z' style='fill: rgb(196, 196, 196)'/></svg>");
 		}
 	}
 

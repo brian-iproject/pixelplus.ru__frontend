@@ -1,0 +1,17 @@
+mixin field-range(props)
+
+  //- Принимает:
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'field-range--' + mods;
+
+  .field-range(class = allMods)&attributes(attributes)
+    .field-range__inner

@@ -1,0 +1,64 @@
+.field-checkbox {
+
+	$block-name:                    &; // #{$block-name}__element
+
+	&__input-wrap {
+		display: block;
+		position: relative;
+	}
+
+	&__input {
+		left: 0;
+		margin: 0;
+		opacity: 0;
+		padding: 0;
+		position: absolute;
+		top: 0;
+	}
+
+	&__name {
+		display: block;
+		padding-left: 1.5rem;
+		position: relative;
+
+		&::before {
+			border: 1px solid currentColor;
+			content: '';
+			display: block;
+			height: 1em;
+			left: 0;
+			position: absolute;
+			top: .3em;
+			width: 1em;
+		}
+
+		&::after {
+			border-bottom: 1px solid currentColor;
+			border-right: 1px solid currentColor;
+			content: '';
+			display: block;
+			height: .5em;
+			left: .4em;
+			opacity: 0;
+			position: absolute;
+			top: .4em;
+			transform: rotate(45deg);
+			transform-origin: 50% 50%;
+			transition: var(--transition-time);
+			width: .25em;
+
+			#{$block-name}__input:checked + & {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__help-text {
+		@include field-help-text;
+		padding-left: 1.5rem;
+
+		a {
+			color: inherit;
+		}
+	}
+}

@@ -7,6 +7,8 @@ class YtVideoLoad {
         this.video = video;
 
         let link = video.querySelector('.yt-video__link');
+        if (!this.link) return false;
+
         let id = this.parseMediaURL(link.href);
 
         video.addEventListener('click', (e) => {

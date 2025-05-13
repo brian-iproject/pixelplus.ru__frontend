@@ -5,11 +5,11 @@ import SvgLoad from "./classes/SvgLoad"
 import MovingPlaceholder from "./classes/MovingPlaceholder"
 import Utils from "./classes/Utils"
 import Tabs from "./classes/Tabs"
-import HiddenCaptcha from "./classes/HiddenCaptcha"
 import Tariffs from "./classes/Tariffs";
 import AcceptCookie from "./classes/AcceptCookie";
 import YtVideoLoad from "./classes/YtVideoLoad";
 import DetailsSpoiler from "./classes/DetailsSpoiler.js";
+import StoriesVideo from "./classes/StoriesVideo.js";
 
 import CallToAction from "./classes/CallToAction.js";
 import {SimpleDiagramGroup} from "./classes/SimpleDiagram.js";
@@ -23,10 +23,18 @@ import TrafficForecast from "./classes/TrafficForecast.js";
 import LockedButton from "./classes/LockedButton.js";
 import intlTelInput from 'intl-tel-input';
 import { ru } from "intl-tel-input/i18n";
+import FieldRange from "./classes/FieldRange.js";
+import noUiSlider from 'nouislider/dist/nouislider.mjs';
+import wNumb from 'wnumb';
 
 window.pixelplus = {
     Quiz,
-    TrafficForecast
+    TrafficForecast,
+    noUiSlider,
+    wNumb,
+    intlTelInput,
+    intlTelInputI18nRu: ru,
+    LockedButton
 };
 
 const appnew = {
@@ -295,6 +303,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.querySelectorAll('.details').forEach((el) => {
             new DetailsSpoiler(el);
         });
+
+        document.querySelectorAll('details.faq__item').forEach((el) => {
+            new DetailsSpoiler(el, {
+                selectors: {
+                    button: '.faq__question',
+                    content: '.faq__answer'
+                }
+            });
+        });
     }
 
     // Предупреждение об использовании кук
@@ -374,4 +391,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
             });
         })
     }
+
+    // Input Range
+    document.querySelectorAll('.field-range').forEach((item) => {
+        //FieldRange.init(item);
+    });
+
+    document.querySelectorAll('.stories-video').forEach((item) => {
+        new StoriesVideo(item, { useCookie: false });
+    });
 })

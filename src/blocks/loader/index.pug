@@ -1,0 +1,16 @@
+mixin loader(props)
+
+  //- Принимает:
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'loader--' + mods;
+
+  .loader(class = allMods)&attributes(attributes)

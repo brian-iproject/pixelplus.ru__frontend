@@ -34,8 +34,9 @@
     background: var(--color-gray--lighten);
     border: none;
 
-    --field-text-border-color: var(--color-gray--light);
+    --field-border-color: var(--color-gray--light);
     --field-text-color: var(--text-color);
+    --field-check: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='7.6665' height='5.58301' viewBox='0 0 7.6665 5.58301'><path d='M2.5835,5.583A.49839.49839,0,0,1,2.23,5.43652l-2.0835-2.083a.5.5,0,0,1,.707-.707l1.73,1.7295L6.813.14648a.49995.49995,0,0,1,.707.707l-4.583,4.583A.49835.49835,0,0,1,2.5835,5.583Z' style='fill: rgb(196, 196, 196)'/></svg>");
   }
 
   &__icon {

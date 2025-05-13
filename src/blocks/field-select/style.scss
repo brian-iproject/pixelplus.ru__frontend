@@ -26,14 +26,14 @@
 
 		[class*=--fields-transparent] &[data-type*=select-one]::after,
 		.main-slider &[data-type*=select-one]::after {
-			border-color: var(--field-text-border-color, var(--color-white)) transparent transparent;
+			border-color: var(--field-border-color, var(--color-white)) transparent transparent;
 		}
 
 		[class*=--fields-transparent] &__inner,
 		.main-slider &__inner {
 			background-color: transparent;
 			border: none;
-			border-bottom: 1px solid var(--field-text-border-color, var(--color-white));
+			border-bottom: 1px solid var(--field-border-color, var(--color-white));
 			color: var(--field-text-color, var(--color-white));
 			border-radius: 0;
 		}

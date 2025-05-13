@@ -30,6 +30,7 @@
 @import '../blocks/field-checkbox/style';
 @import '../blocks/field-select/style';
 @import '../blocks/field-required/style';
+@import '../blocks/field-range/style';
 @import '../blocks/moving-placeholder/style';
 @import '../blocks/search-line/style';
 @import '../blocks/carousel/style';
@@ -122,6 +123,11 @@
 @import '../blocks/tariffs-wide/style';
 @import '../blocks/tariff-options/style';
 @import '../blocks/locked-button/style';
+@import '../blocks/loader/style';
+@import '../blocks/loader-frame/style';
+@import '../blocks/history/style';
+@import '../blocks/stories-video/style';
+@import '../blocks/circle/style';
 
 // Технические стили, не использовать на продакшене
 @import '../blocks/colors-list/style';

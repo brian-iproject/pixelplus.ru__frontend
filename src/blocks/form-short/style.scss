@@ -1,54 +1,54 @@
 .form-short {
-	$block-name: &; // #{$block-name}__element
+  $block-name: &; // #{$block-name}__element
 
-	@include blocks-margin-vertical;
+  @include blocks-margin-vertical;
 
-	&[class*=-bg-] {
-		padding: 1.5em
-	}
+  &[class*=-bg-] {
+    padding: 1.5em
+  }
 
-	&__field {
-		display: block;
+  &__field {
+    display: block;
 
-		& + & {
-			margin-top: var(--typo-margin-vertical);
-		}
+    & + & {
+      margin-top: var(--typo-margin-vertical);
+    }
 
-		@media (min-width: $screen-lg) {
-			&--button {
-				text-align: center;
-			}
-		}
-	}
+    @media (min-width: $screen-lg) {
+      &--button {
+        text-align: center;
+      }
+    }
+  }
 
-	&__note {
-		color: var(--color-gray--dark);
-		font-size: var(--font-size--medium);
-		margin-top: .85em;
-	}
+  &__note {
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--medium);
+    margin-top: .85em;
+  }
 
-	&--flex form {
+  &--flex form {
 
-		@media (min-width: $screen-md) {
-			display: flex;
-			flex-wrap: wrap;
-			gap: calc(var(--grid-gutter-y) * 2) var(--grid-gutter-x);
+    @media (min-width: $screen-md) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: calc(var(--grid-gutter-y) * 2) var(--grid-gutter-x);
 
-			& #{$block-name}__field {
-				--width: calc(50% - var(--grid-gutter-x) / 2);
-				flex: 0 0 var(--width);
-				max-width: var(--width);
+      & #{$block-name}__field {
+        --width: calc(50% - var(--grid-gutter-x) / 2);
+        flex: 0 0 var(--width);
+        max-width: var(--width);
 
-				& + #{$block-name}__field {
-					margin-top: 0;
-				}
-			}
-		}
+        & + #{$block-name}__field {
+          margin-top: 0;
+        }
+      }
+    }
 
-		@media (min-width: $screen-lg) {
-			& #{$block-name}__field {
-				--width: calc(33.33333% - var(--grid-gutter-x) * 2 / 3);
-			}
-		}
-	}
+    @media (min-width: $screen-lg) {
+      & #{$block-name}__field {
+        --width: calc(33.33333% - var(--grid-gutter-x) * 2 / 3);
+      }
+    }
+  }
 }

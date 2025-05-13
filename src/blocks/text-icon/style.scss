@@ -9,7 +9,7 @@
   & svg {
     flex-shrink: 0;
     align-self: flex-start;
-    transform: translateY(calc((100% - var(--line-height) * 1em) /-2));
+    transform: translateY(calc((100% - var(--line-height) * 1em) / -2));
   }
 
   &--align-start {

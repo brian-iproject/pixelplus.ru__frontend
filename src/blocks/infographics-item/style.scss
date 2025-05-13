@@ -42,6 +42,7 @@
       text-decoration: none;
     }
 
+    .wide-block--gray-circle &:not(#{$block-name}--shadow-light):not(#{$block-name}--gray-lighter),
     .wide-block:not([class*="wide-block--"]) &:not(#{$block-name}--shadow-light):not(#{$block-name}--gray-lighter) {
       border: 1px solid var(--color-gray--lighten);
 
@@ -50,8 +51,12 @@
       }
     }
 
-    .wide-block[class*="wide-block--"] & {
+    .wide-block[class*="wide-block--"]:not(.wide-block--gray-circle) & {
       background: var(--color-white);
+    }
+
+    .wide-block--gray-circle & {
+      background: transparent;
     }
   }
 
@@ -287,6 +292,35 @@
     margin-top: 1em;
   }
 
+  &__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    height: 30px;
+    background-color: var(--color-black);
+    border-radius: 0 var(--border-radius--sm) 0 0;
+    padding: 0 22px;
+    color: var(--color-white);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: var(--font-size--medium);
+    display: flex;
+    align-items: center;
+
+    &::after {
+      position: absolute;
+      left: -13px;
+      top: 0;
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg width='15' height='30' viewBox='0 0 15 30' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0.51178 1.67092C-0.0699117 1.02799 0.386299 0 1.25331 0H15V30H1.25331C0.3863 30 -0.0699135 28.972 0.511779 28.3291L11.9644 15.6709C12.309 15.29 12.309 14.71 11.9644 14.3291L0.51178 1.67092Z' fill='currentColor'/></svg>");
+      background-position: left center;
+      background-repeat: no-repeat;
+      content: '';
+      width: 15px;
+      height: 30px;
+    }
+  }
+
 
   &--type1 {
     display: flex;
@@ -303,6 +337,10 @@
     }
 
     & #{$block-name}__description {
+    }
+
+    #{$block-name}__body {
+      flex-grow: 1;
     }
   }
 
@@ -353,10 +391,6 @@
 
     &:has(#{$block-name}__icon--lg) {
       grid-template-columns: minmax(90px, 100px) auto;
-    }
-
-    @media (min-width: $screen-md) {
-      gap: 0 calc(var(--grid-gutter) * 2);
     }
 
     & #{$block-name}__icon {

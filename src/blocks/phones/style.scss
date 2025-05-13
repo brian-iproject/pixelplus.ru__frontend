@@ -145,6 +145,36 @@
 		}
 	}
 
+	&__qr-code {
+		display: flex;
+		align-items: center;
+		gap: var(--grid-gutter);
+		width: 322px;
+		font-size: var(--font-size--small);
+		text-align: left;
+
+		& svg {
+			width: 64px;
+			height: 64px;
+			flex-shrink: 0;
+
+			@media (min-width: $screen-lg) {
+				width: 94px;
+				height: 94px;
+			}
+		}
+
+		& p {
+			margin: 0;
+		}
+
+		& b {
+			display: block;
+			font-size: var(--font-size--medium);
+			margin-bottom: var(--offset--xxs);
+		}
+	}
+
 	&__title {
 		color: var(--color-gray--dark);
 		font-size: 10px;

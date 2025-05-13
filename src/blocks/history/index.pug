@@ -1,0 +1,19 @@
+mixin history(data, props)
+
+  //- Принимает:
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'history--' + mods;
+
+  .history(class = allMods)&attributes(attributes)
+    .history__title !{data.title}
+    .history__delimiter
+    .history__description !{data.description}

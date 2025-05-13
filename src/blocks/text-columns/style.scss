@@ -9,6 +9,7 @@
 	}
 
 	@media (max-width: $screen-sm - 1) {
+		&--xs-1 { @include columns(1) }
 		&--xs-2 { @include columns(2) }
 		&--xs-3 { @include columns(3) }
 		&--xs-4 { @include columns(4) }
@@ -17,7 +18,7 @@
 
 	@each $screen-name, $screen in  (sm: $screen-sm, md: $screen-md, lg: $screen-lg, xl: $screen-xl, xxl: $screen-xxl) {
 		@media (min-width: $screen) {
-			@for $i from 2 through 5 {
+			@for $i from 1 through 5 {
 				&--#{$screen-name}-#{$i} { @include columns(#{$i}) };
 			}
 		}

@@ -1,0 +1,54 @@
+.field-range {
+
+  $block-name: &; // #{$block-name}__element
+
+  & .noUi-target {
+    height: 10px;
+    border-radius: var(--border-radius--sm);
+    background-color: var(--color-white);
+    border: none;
+    box-shadow: 0 0 0 1px var(--color-gray) inset;
+  }
+
+  & .noUi-connects {
+    border-radius: var(--border-radius--sm);
+  }
+
+  & .noUi-connect {
+    background-color: var(--color-primary);
+  }
+
+  & .noUi-handle {
+    background: var(--color-white);
+    box-shadow: 0 0 7px rgba(0, 0, 0, .2);
+    border-radius: 50%;
+    border: none;
+
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+
+  & .noUi-horizontal .noUi-handle {
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    top: -6px;
+
+    border: 2px solid var(--color-primary);
+  }
+
+  & .noUi-pips-horizontal {
+    height: 50px;
+  }
+
+  &:has(.noUi-pips-horizontal) {
+    padding-bottom: 50px;
+  }
+
+  & .noUi-horizontal .noUi-tooltip {
+    bottom: auto;
+    top: 134%;
+  }
+}

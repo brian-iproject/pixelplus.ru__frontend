@@ -248,12 +248,13 @@ img {
 
 hr {
 	border: 0;
-	border-top: 1px solid var(--color-gray);
+	border-top: 1px solid currentColor;
 	box-sizing: content-box; // Проблема Firefox
 	height: 0;               // Проблема Firefox
 	margin-bottom: calc(var(--typo-margin-vertical) * 2);
 	margin-top: calc(var(--typo-margin-vertical) * 2);
 	overflow: visible;       // Проблема Edge и IE
+	color: var(--color-gray);
 }
 
 [data-hidden-captcha] [name=CAPTCHA_HIDDEN],
@@ -330,6 +331,18 @@ hr {
 .iti__search-input {
 	padding: .5rem;
 	background-color: var(--color-gray--lighter);
-	border: 1px solid var(--field-text-border-color, var(--color-white));
+	border: 1px solid var(--field-border-color, var(--color-white));
 	outline: none;
+}
+
+[data-tippy-root] .tippy-box {
+	font-size: var(--font-size--medium);
+	text-transform: none;
+	padding: 1em;
+	font-weight: normal;
+	line-height: var(--line-height--md);
+
+	& ul, & ol, & p {
+		line-height: var(--line-height--md);
+	}
 }

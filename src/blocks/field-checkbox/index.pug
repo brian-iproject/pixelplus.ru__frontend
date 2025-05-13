@@ -1,0 +1,31 @@
+mixin field-checkbox(props)
+
+  //- Принимает:
+  //-   props {
+  //-     title: ''         {string} - текст с названием (выводится над полем)
+  //-     helpText: ''      {string} - пояснение под полем
+  //-     mods: ''          {array}  - модификаторы блока
+  //-     val: ''           {string} - текст в поле
+  //-     multiple: ''      {string} - если true - checkbox, иначе radio
+  //-     attrs:            {object} - любые атрибуты для input/textarea
+  //-       type:           {string}
+  //-       placeholder:    {string}
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ' : '';
+      - allMods += 'field-checkbox--' + mods;
+
+  label.field-checkbox(class = allMods)&attributes(attributes)
+    span.field-checkbox__input-wrap
+      input.field-checkbox__input(type=(props.multiple === true)?'checkbox':'radio', value=props.val)&attributes(props.attrs)
+      if typeof (props.title) !== 'undefined' && props.title
+        span.field-checkbox__name
+          span.field-checkbox__name-text!= props.title
+
+    if (props.helpText)
+      span.field-checkbox__help-text!= props.helpText

@@ -57,7 +57,13 @@
 }
 
 .button {
+  $block-name: &; // #{$block-name}__element
+
   @include button;
+
+  &--not-active {
+    cursor: default;
+  }
 
   &--wide {
     width: 100%;
@@ -133,6 +139,23 @@
     }
   }
 
+  &--telegram {
+    background-color: #2AABEE;
+    color: var(--color-white);
+
+    &.-is-active,
+    &:hover,
+    &:focus {
+      color: var(--color-white);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      color: var(--color-white);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    }
+  }
+
   &--not-fill {
     background-color: transparent;
     border-color: var(--color-gray--dark);
@@ -142,11 +165,13 @@
       border-color: var(--color-white);
     }
 
-    &:hover,
-    &:focus,
-    &:active {
-      @include button--white;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    &:not(#{$block-name}--not-active) {
+      &:hover,
+      &:focus,
+      &:active {
+        @include button--white;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+      }
     }
   }
 
