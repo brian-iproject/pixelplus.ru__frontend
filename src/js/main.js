@@ -177,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 allowHTML: true,
                 searchEnabled: false,
                 itemSelectText: '',
+                sorter: function() {}
             });
         }
     }

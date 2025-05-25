@@ -175,6 +175,11 @@
     }
   }
 
+  &:not(.is-overflow) .splide__arrows,
+  &:not(.is-overflow) .splide__pagination {
+    display: none;
+  }
+
   @media (min-width: $screen-md) {
     &.is-active {
       padding-bottom: 50px;
