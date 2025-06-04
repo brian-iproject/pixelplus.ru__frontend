@@ -25,9 +25,9 @@
       "filterTarget": "ceo"
     },
   ]
-.team-icon.wow.animate__zoomIn(data-wow-duration=".5s")
+.team-icons.wow.animate__zoomIn(data-wow-duration=".5s")
     each item, i in dataTeamsIcon
-      .team-icon__item
+      .team-icons__item
         img(src=item.photo, width="165", height="165")
-    a.team-icon__item(href="#")
+    a.team-icons__item(href="#")
       +icon({ id: 'icon-arrow', mods: ['md'] })

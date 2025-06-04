@@ -1,0 +1,24 @@
+mixin achievements-wide(data, props)
+
+    //- Принимает:
+    //-   data { object } - данные
+    //-   props {
+    //-     mods: ''          {array}  - модификаторы блока
+
+    if typeof (props) === 'undefined'
+        - props = {};
+
+    - let allClass = 'achievements-wide';
+    if typeof (props.mods) !== 'undefined' && props.mods
+        each mods in props.mods
+            - allClass += ' achievements-wide--' + mods;
+
+    .achievements-wide(class = allClass)&attributes(attributes)
+        .achievements-wide__inner
+            .achievements-wide__logo
+                img(src=data.logo)
+            .achievements-wide__text
+                .achievements-wide__title !{data.title}
+                .achievements-wide__description !{data.description}
+            .achievements-wide__image
+                img(src=data.image)
