@@ -1,0 +1,188 @@
+.multiselect {
+
+  $block-name: &; // __element
+
+  position: relative;
+  background-color: var(--color-white);
+
+  &__toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--offset--sm);
+    gap: 10px;
+    font-size: var(--font-size--md);
+    background: var(--color-white);
+    border-radius: var(--border-radius--sm);
+    border: 1px solid var(--color-gray--lighten);
+    transition: var(--transition-time);
+    color: var(--color-gray--light);
+    width: 100%;
+
+    @at-root
+    #{$block-name}:hover & {
+      border-color: var(--color-gray--light);
+    }
+
+    @at-root
+    #{$block-name}:hover &.-is-active,
+    &.-is-active {
+      border-color: var(--color-gray--light);
+
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      border-top: 7px solid var(--color-primary);
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      transition: var(--transition-time);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: fit-content;
+    min-width: 100%;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--offset--sm) var(--offset);
+
+    background: var(--color-white);
+    color: var(--color-gray--dark);
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    border-radius: 0;
+    z-index: 5;
+
+    &.show {
+      display: flex;
+    }
+  }
+
+  &__dropdown-inner {
+    max-height: 300px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 6px;               /* ширина scrollbar */
+    }
+    &::-webkit-scrollbar-track {
+      background: var(--color-gray--lighten);        /* цвет дорожки */
+      border-radius: 20px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-gray--light);    /* цвет плашки */
+      border-radius: 20px;       /* закругления плашки */
+      border: 0 solid transparent;  /* padding вокруг плашки */
+    }
+  }
+
+  &__item {
+    padding: 5px 0;
+
+    &:has(input[disabled]) {
+      color: var(--text-color-muted);
+      display: none;
+    }
+
+    &:has(input[type=radio]:checked) {
+      color: var(--color-primary);
+    }
+  }
+
+  &__checked-all:has(input[type='checkbox']) {
+    border-bottom: 1px solid var(--color-gray);
+    margin: var(--offset--xs) 0;
+  }
+
+  &__selected {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    min-height: 20px;
+  }
+
+  &__search {
+    padding: var(--offset--xxs) var(--offset--sm);
+    border: 1px solid var(--color-gray--lighten);
+    border-radius: var(--border-radius--sm);
+    font-size: var(--font-size--medium);
+    margin-bottom: var(--offset--md);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &--hide-input .field-checkbox__name {
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+}
+
+
+.multiselect-tag {
+
+  $block-name: &; // #{$block-name}__element
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 9px 20px;
+  gap: 10px;
+
+  font-size: var(--font-size--medium);
+
+  background: var(--color-gray--lighten);
+  border-radius: var(--border-radius--sm);
+  border: 1px solid var(--color-gray--lighten);
+
+  color: var(--color-gray);
+
+  transition: var(--transition-time);
+
+  &:hover {
+
+  }
+
+  &__remove {
+    width: 10px;
+    height: 10px;
+    position: relative;
+    cursor: pointer;
+    color: inherit;
+
+    &::before {
+      content: '';
+      width: 14px;
+      border-top: 1px solid currentColor;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    &::after {
+      content: '';
+      width: 14px;
+      border-top: 1px solid currentColor;
+      transform: rotate(-45deg);
+      transform-origin: 0 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}

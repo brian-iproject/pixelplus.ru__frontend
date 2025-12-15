@@ -3,7 +3,6 @@
   $block-name: &; // #{$block-name}__element
 
   display: flex;
-  align-items: center;
   gap: var(--offset--sm);
 
   & svg {

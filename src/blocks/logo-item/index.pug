@@ -1,0 +1,33 @@
+mixin logo-item(data, props)
+
+  //- Принимает:
+  //-   data {
+  //-     svgId:            {string} - id иконки в спрайте
+  //-     text:             {string} - текст
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+  //-     iconMods:         {array} - модификаторы иконки
+  //-     iconAttrs:        {object} - атрибуты иконки
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'logo-item--' + mods;
+
+  .logo-item(class = allMods)&attributes(attributes)
+    .logo-item__image
+      img(src=data.image)
+    if typeof (props.mods) !== 'undefined' && props.mods.includes('tile')
+      if typeof (data.title) !== 'undefined' && data.title || typeof (data.description) !== 'undefined' && data.description
+        .logo-item__info
+          if typeof (data.title) !== 'undefined' && data.title
+            .logo-item__title !{data.title}
+          if typeof (data.description) !== 'undefined' && data.description
+            p.logo-item__description !{data.description}
+
+        if block
+            block

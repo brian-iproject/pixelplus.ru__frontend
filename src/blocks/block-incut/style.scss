@@ -13,10 +13,21 @@
 
   &--white {
     background-color: var(--color-white);
+
+    & .table td,
+    & .table th {
+      --color-border: var(--color-gray--lighten);
+      --color-background: var(--color-gray--lighter);
+      --color-background-thead: var(--color-gray--lighten);
+    }
   }
 
   &--gray-light {
     background-color: var(--color-gray--light);
+  }
+
+  &--gray-lighten {
+    background-color: var(--color-gray--lighten);
   }
 
   &--gray-lighter {
@@ -32,6 +43,10 @@
   }
 
   @media (min-width: $screen-md) {
-    padding: 30px 50px;
+    padding: 30px;
+
+    &--large-padding {
+      padding: 30px 50px;
+    }
   }
 }

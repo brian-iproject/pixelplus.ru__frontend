@@ -1,0 +1,133 @@
+.field-file {
+  $block-name: &; // #{$block-name}__element
+
+  display: block;
+
+  &__name {
+    display: block;
+    margin-bottom: .25em;
+  }
+
+  &__input-wrap {
+    display: flex;
+    align-items: baseline;
+    position: relative;
+    font: var(--font-size--lg) var(--font-family-primary);
+    background: var(--color-gray--lighter);
+    border: 1px solid var(--color-gray--lighter);
+    border-radius: var(--border-radius);
+    line-height: var(--line-height);
+    min-height: 50px;
+
+    &::before {
+      content: attr(data-button-text);
+      display: block;
+      background-color: var(--color-gray--lighten);
+      border-right: 1px solid var(--color-gray--lighten);
+      margin-right: var(--offset--sm);
+      padding: 12px 18px;
+      border-top-left-radius: var(--border-radius);
+      border-bottom-left-radius: var(--border-radius);
+      transition: var(--transition-time);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    &:hover,
+    &:focus {
+
+      &:before {
+        background-color: var(--color-gray--light); // как у обычных кнопок
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+
+    &:active ~ .field-file__name-text,
+    &:focus ~ .field-file__name-text {
+
+    }
+  }
+
+  &__name-text {
+    color: var(--color-gray--dark);
+    max-width: 100%;
+    vertical-align: middle;
+
+    padding: 12px 18px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    overflow: hidden;
+
+    @at-root input:disabled ~ & {
+      background: var(--color-gray--light);
+      cursor: not-allowed;
+    }
+  }
+
+  &--small {
+    & #{$block-name}__input-wrap {
+      border: none;
+      background-color: transparent;
+      font-size: var(--font-size);
+      color: var(--color-primary);
+
+      &::before {
+        border: none;
+        background-color: transparent;
+        background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='rgb(204, 0, 0)'><path d='M13.625,15.9248h-7.5a.5498.5498,0,0,1,0-1.0996h7.5a.70145.70145,0,0,0,.7002-.7002v-8.5a.69556.69556,0,0,0-.20508-.49463l-.88379-.88428a.54966.54966,0,1,1,.77734-.77734l.88379.88379A1.78512,1.78512,0,0,1,15.4248,5.625v8.5A1.80213,1.80213,0,0,1,13.625,15.9248Zm-3.75-2.5h-7.5A1.80181,1.80181,0,0,1,.5752,11.625V1.875A1.8015,1.8015,0,0,1,2.375.0752h6.25A1.79137,1.79137,0,0,1,9.89746.60205V.60254l1.25,1.25A1.78512,1.78512,0,0,1,11.6748,3.125v8.5A1.80213,1.80213,0,0,1,9.875,13.4248Zm-7.5-12.25a.70145.70145,0,0,0-.7002.7002v9.75a.70145.70145,0,0,0,.7002.7002h7.5a.70145.70145,0,0,0,.7002-.7002v-8.5a.69556.69556,0,0,0-.20508-.49463l-1.25-1.25A.69766.69766,0,0,0,8.625,1.1748Zm3.75,8.75h-2.5a.5498.5498,0,1,1,0-1.0996h2.5a.5498.5498,0,0,1,0,1.0996Zm2.5-2.5h-5a.5498.5498,0,0,1,0-1.0996h5a.5498.5498,0,0,1,0,1.0996Zm0-2.5h-5a.5498.5498,0,0,1,0-1.0996h5a.5498.5498,0,0,1,0,1.0996Z'/></svg>");
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+        background-size: 16px 16px;
+        padding-left: 24px;
+
+        text-decoration-color: currentColor;
+        transition: text-decoration-color .3s, color .3s;
+        text-decoration-thickness: 1px;
+        text-decoration-line: underline;
+
+        @at-root
+        .form__field:has(.field-text):has(.field-file) & {
+          padding-left: 48px;
+          background-position: 24px 50%;
+        }
+      }
+
+      &:hover,
+      &:focus {
+
+        &:before {
+          text-decoration-color: transparent;
+        }
+      }
+    }
+
+    & #{$block-name}__name-text {
+
+    }
+  }
+
+  &__help-text {
+    @include field-help-text;
+  }
+
+  &.error {
+    #{$block-name}__name,
+    #{$block-name}__name-text,
+    #{$block-name}__input,
+    #{$block-name}__help-text {
+      color: var(--color-red);
+    }
+
+    #{$block-name}__input {
+      border-color: var(--color-red);
+    }
+  }
+}

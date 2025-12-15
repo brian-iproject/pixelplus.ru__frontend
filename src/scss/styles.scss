@@ -31,6 +31,8 @@
 @import '../blocks/field-select/style';
 @import '../blocks/field-required/style';
 @import '../blocks/field-range/style';
+@import '../blocks/field-file/style';
+@import '../blocks/multiselect/style.scss';
 @import '../blocks/moving-placeholder/style';
 @import '../blocks/search-line/style';
 @import '../blocks/carousel/style';
@@ -130,6 +132,11 @@
 @import '../blocks/circle/style';
 @import '../blocks/team-icons/style';
 @import '../blocks/achievements-wide/style';
+@import '../blocks/logo-item/style';
+@import '../blocks/case-item/style';
+@import '../blocks/author/style';
+@import '../blocks/discount-tile/style';
+@import '../blocks/pager/style';
 
 // Технические стили, не использовать на продакшене
 @import '../blocks/colors-list/style';

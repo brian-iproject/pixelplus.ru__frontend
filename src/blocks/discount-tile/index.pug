@@ -1,0 +1,23 @@
+mixin discount-tile(data, props)
+
+  //- Принимает:
+  //-		data: ''					  {object} - данные автора
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'discount-tile--' + mods;
+
+  .discount-tile(class = allMods)&attributes(attributes)
+    .discount-tile__image
+      if typeof (data.src) !== 'undefined' && data.src
+        img(src=data.src)
+    .discount-tile__info
+      .discount-tile__title !{data.title}
+      .discount-tile__description !{data.description}

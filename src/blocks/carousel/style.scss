@@ -10,8 +10,16 @@
     gap: unset;
   }
 
+  &.is-active .splide__list.flex {
+    flex-wrap: nowrap;
+  }
+
   &.splide.is-initialized:not(.is-active) .splide__list.d-grid {
     display: grid;
+  }
+
+  &.splide.is-initialized:not(.is-active) .splide__list.flex {
+    display: flex;
   }
 
   &:not(.is-active) .splide__track {

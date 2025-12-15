@@ -10,6 +10,8 @@ import AcceptCookie from "./classes/AcceptCookie";
 import YtVideoLoad from "./classes/YtVideoLoad";
 import DetailsSpoiler from "./classes/DetailsSpoiler.js";
 import StoriesVideo from "./classes/StoriesVideo.js";
+import AnimateNumber from "./classes/AnimateNumber.js"
+import FieldFile from "./classes/FieldFile.js";
 
 import CallToAction from "./classes/CallToAction.js";
 import {SimpleDiagramGroup} from "./classes/SimpleDiagram.js";
@@ -26,6 +28,7 @@ import { ru } from "intl-tel-input/i18n";
 import FieldRange from "./classes/FieldRange.js";
 import noUiSlider from 'nouislider/dist/nouislider.mjs';
 import wNumb from 'wnumb';
+import MultiSelectCheckbox from "./classes/MultiSelectCheckbox.js";
 
 window.pixelplus = {
     Quiz,
@@ -34,7 +37,10 @@ window.pixelplus = {
     wNumb,
     intlTelInput,
     intlTelInputI18nRu: ru,
-    LockedButton
+    LockedButton,
+    AnimateNumber,
+    FieldFile,
+    MultiSelectCheckbox
 };
 
 const appnew = {
@@ -175,7 +181,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
             const el = fieldSelect[i];
             new Choices(el, {
                 allowHTML: true,
-                searchEnabled: false,
+                placeholder: true,
+                placeholderValue: 'Выберите...',
+                searchPlaceholderValue: 'Поиск...',
+                searchEnabled: !!el.dataset.search,
                 itemSelectText: '',
                 sorter: function() {}
             });
@@ -393,6 +402,27 @@ document.addEventListener("DOMContentLoaded", function (e) {
         })
     }
 
+    // Анимация числовых значений
+    if (typeof window.pixelplus.AnimateNumber !== 'undefined') {
+        document.querySelectorAll('[data-animate-number]').forEach(el => {
+            new window.pixelplus.AnimateNumber(el);
+        });
+
+        const paidPartners = document.querySelector('.js-total-paid-partners');
+        if (paidPartners) {
+            new window.pixelplus.AnimateNumber(paidPartners, {
+                locale: 'ru-Ru',
+                currency: 'RUB',
+                onSetup: (params) => {
+                    const startNumber = 9938802,
+                        currentDate = new Date(),
+                        overNumber = ((currentDate.getFullYear() - 2020) * 12 + (currentDate.getMonth() + 1)) * 150000;
+                    params.end = startNumber + overNumber;
+                }
+            });
+        }
+    }
+
     // Input Range
     document.querySelectorAll('.field-range').forEach((item) => {
         //FieldRange.init(item);
@@ -401,4 +431,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.querySelectorAll('.stories-video').forEach((item) => {
         new StoriesVideo(item, { useCookie: false });
     });
+
+    if (typeof window.pixelplus.FieldFile !== 'undefined') {
+        document.querySelectorAll('.field-file').forEach((el) => {
+            new window.pixelplus.FieldFile(el);
+        });
+    }
+
+    if (typeof window.pixelplus.MultiSelectCheckbox !== 'undefined') {
+        document.querySelectorAll('.multiselect').forEach(el => {
+            new window.pixelplus.MultiSelectCheckbox(el, {
+                target: '#shared-container',
+                linkBy: 'id',
+                emptyText: null
+            })
+        });
+    }
 })

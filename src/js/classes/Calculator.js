@@ -2,7 +2,7 @@
 
 class Calculator {
     constructor() {
-        this.$calcFrame = document.querySelector('.calculator');
+        this.$calcFrame = document.querySelector('.calculator--traffic');
         if (!this.$calcFrame) return;
 
         this.$inputs = this.$calcFrame.querySelectorAll('.calculator__input');

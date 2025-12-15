@@ -11,6 +11,14 @@
     }
   }
 
+  &--no:not(:first-child):not(.-no-margin) {
+    margin-top: 0;
+  }
+
+  &--no:not(:last-child):not(.-no-margin) {
+    margin-bottom: 0;
+  }
+
   .splide.is-active &.splide__slide {
     margin: {
       top: 0;

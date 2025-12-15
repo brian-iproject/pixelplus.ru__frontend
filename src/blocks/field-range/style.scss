@@ -3,11 +3,11 @@
   $block-name: &; // #{$block-name}__element
 
   & .noUi-target {
-    height: 10px;
+    height: 6px;
     border-radius: var(--border-radius--sm);
     background-color: var(--color-white);
     border: none;
-    box-shadow: 0 0 0 1px var(--color-gray) inset;
+    //box-shadow: 0 0 0 1px var(--color-gray) inset;
   }
 
   & .noUi-connects {
@@ -19,8 +19,8 @@
   }
 
   & .noUi-handle {
-    background: var(--color-white);
-    box-shadow: 0 0 7px rgba(0, 0, 0, .2);
+    background: var(--color-primary);
+    //box-shadow: 0 0 7px rgba(0, 0, 0, .2);
     border-radius: 50%;
     border: none;
 
@@ -34,9 +34,10 @@
     width: 20px;
     height: 20px;
     right: -10px;
-    top: -6px;
+    top: -7px;
+    box-shadow: none;
 
-    border: 2px solid var(--color-primary);
+    //border: 2px solid var(--color-primary);
   }
 
   & .noUi-pips-horizontal {
@@ -49,6 +50,24 @@
 
   & .noUi-horizontal .noUi-tooltip {
     bottom: auto;
-    top: 134%;
+    //top: 134%;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+
+    color: var(--color-primary);
+    transform: translate(-50%, 50%);
+    margin-top: 3px;
+  }
+
+  & .noUi-marker-horizontal.noUi-marker {
+    display: none;
+  }
+
+  & .noUi-pips,
+  & .noUi-value-sub {
+    font-size: var(--font-size);
+    color: var(--text-color-muted);
   }
 }

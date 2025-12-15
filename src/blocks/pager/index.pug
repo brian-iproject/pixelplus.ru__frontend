@@ -1,0 +1,30 @@
+mixin pager(props)
+
+  //- Принимает:
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+  //-     pagerCount: ''    {array}  - количество страниц
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'pager--' + mods;
+
+  .pager(class = allMods)&attributes(attributes)
+    ul.pager__list
+      li.pager__item
+        a(href="#").pager__link
+          +icon({id: 'chevron-left', mods: ['large']})
+
+      - let n = 1;
+      while n <= (props.pagerCount?props.pagerCount:4)
+        li.pager__item
+          a(href="#").pager__link= n++
+
+      li.pager__item
+        a(href="#").pager__link
+          +icon({id: 'chevron-right', mods: ['large']})

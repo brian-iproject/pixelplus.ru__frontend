@@ -45,11 +45,25 @@
 	&--city {
 		background-image: url(../../blocks/wide-block/images/city.jpg);
 		color: var(--color-white);
+
+		--link-color: var(--color-white);
+		--link-color--hover: var(--color-white);
 	}
 
 	&--meeting {
 		background-image: url(../../blocks/wide-block/images/meeting.jpg);
 		color: var(--color-white);
+
+		--link-color: var(--color-white);
+		--link-color--hover: var(--color-white);
+	}
+
+	&--meeting-womans {
+		background-image: url(../../blocks/wide-block/images/meeting-womans.jpg);
+		color: var(--color-white);
+
+		--link-color: var(--color-white);
+		--link-color--hover: var(--color-white);
 	}
 
 	&--notebook-book {
@@ -65,21 +79,33 @@
 	&--meeting-analytics {
 		background-image: url(../../blocks/wide-block/images/meeting-analytics.jpg);
 		color: var(--color-white);
+
+		--link-color: var(--color-white);
+		--link-color--hover: var(--color-white);
 	}
 
 	&--company-team {
 		background-image: url(../../blocks/wide-block/images/company-team.jpg);
 		color: var(--color-white);
+
+		--link-color: var(--color-white);
+		--link-color--hover: var(--color-white);
 	}
 
 	&--woman {
 		background-image: url(../../blocks/wide-block/images/woman.jpg);
 		color: var(--color-white);
+
+		--link-color: var(--color-white);
+		--link-color--hover: var(--color-white);
 	}
 
 	&--abstract-lines {
 		background-image: url(../../blocks/wide-block/images/abstract-lines.jpg);
 		color: var(--color-white);
+
+		--link-color: var(--color-white);
+		--link-color--hover: var(--color-white);
 	}
 
 	&--bottom-wave {

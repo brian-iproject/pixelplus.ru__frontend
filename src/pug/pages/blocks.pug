@@ -5,6 +5,50 @@ block meta
   meta(name='description', content='')
 
 block content
+  .wide-block
+    .page-container
+      +multiselect({ mods: ['hide-input1'], type: 'radio' })("data-ms-placeholder='Все тематики' data-ms-search-placeholder='поиск по тематикам' data-ms-type='radio' data-ms-all-text='Все тематики'")
+
+      #shared-container
+
+
+  .wide-block
+    .page-container
+      .d-grid.d-grid--sm-2.d-grid--lg-3
+        +discount-tile({
+            src: 'blocks/discount-tile/images/discount-01.jpg',
+            title: 'Второй проект дешевле',
+            description: 'Скидка 10% на следующий проект.'
+        })
+        +discount-tile({
+            src: 'blocks/discount-tile/images/discount-02.jpg',
+            title: 'Комплекс выгоднее',
+            description: 'Скидка 10% на тариф: «Поддержка сайта + SEO-продвижение»'
+        })
+        +discount-tile({
+            src: 'blocks/discount-tile/images/discount-02.jpg',
+            title: 'Комплекс выгоднее',
+            description: 'Скидка 10% на тариф: «Поддержка сайта + SEO-продвижение»'
+        })
+        +discount-tile({
+            src: 'blocks/discount-tile/images/discount-02.jpg',
+            title: 'Комплекс выгоднее',
+            description: 'Скидка 10% на тариф: «Поддержка сайта + SEO-продвижение»'
+        })
+        +discount-tile({
+            src: 'blocks/discount-tile/images/discount-02.jpg',
+            title: 'Комплекс выгоднее',
+            description: 'Скидка 10% на тариф: «Поддержка сайта + SEO-продвижение»'
+        })
+
+  .wide-block
+    .page-container
+      +case-item().container
+      +case-item().container
+      +case-item({}, {mods: ['columns']}).container
+      +case-item().container
+
+
   .wide-block.wide-block--gray-lighter
     .page-container
       include ../../blocks/video-list/index2
@@ -16,6 +60,15 @@ block content
 
   .wide-block
     .page-container
+      +field-file({
+          mods: ['small'],
+          text: {
+              selectText: 'Загрузить файл'
+          },
+          attrs: {
+              multiple: true
+          }
+      })
 
   .stories-video(data-video='/assets/video/bitrix.mp4', data-button-delay='2')
     button(class="stories-video__button button button--primary button--small js-order" data-theme="SEO") Узнать подробнее
@@ -35,6 +88,32 @@ block content
       .h1 Наши клиенты
       .subtitle Компания «Пиксель Плюс» успешно продвигает более 250 проектов, включая и таких крупных игроков
       include ../../blocks/logo-list/index
+
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      h2.h1 Наши клиенты
+      .d-grid.d-grid--xs-2.d-grid--sm-3.d-grid--md-3.d-grid--md-4.d-grid--xl-4.d-grid--gap-lg
+          each item in dataClients
+            +logo-item(item, {mods: ['tile']}).d-grid__item
+
+  .wide-block.wide-block--gray-darken
+    .wide-block__number 250+
+    .page-container
+      .h1 Наши клиенты
+      .subtitle Компания «Пиксель Плюс» успешно продвигает более 250 проектов, включая и таких крупных игроков
+      .d-grid.d-grid--xs-2.d-grid--sm-3.d-grid--md-3.d-grid--md-4.d-grid--xl-5.d-grid--gap-lg
+          each item in dataLogoList
+            - item.title = undefined;
+            +logo-item(item).d-grid__item
+
+  .wide-block.wide-block--gray-lighter
+    .page-container
+      h2.h1 Наши клиенты
+      .flex.flex--wrap.flex--align-items-center
+        each item in dataLogoList
+          +logo-item(item).flex__item
+
+
 
   .wide-block.wide-block--meeting-analytics.wide-block--fields-transparent
     .page-container

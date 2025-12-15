@@ -125,21 +125,21 @@
 
 	@media (min-width: $screen-sm) {
 
-		&__item {
+		&__item:not(.d-grid__item) {
 			width: calc(50% - var(--grid-gutter-x) / 2);
 		}
 	}
 
 	@media (min-width: $screen-md) {
 
-		&__item {
+		&__item:not(.d-grid__item) {
 			width: calc(33.33333% - var(--grid-gutter-x) * 2 / 3);
 		}
 	}
 
 	@media (min-width: $screen-xl) {
 
-		&__item {
+		&__item:not(.d-grid__item) {
 			width: calc(25% - var(--grid-gutter-x) * 3 / 4);
 		}
 	}

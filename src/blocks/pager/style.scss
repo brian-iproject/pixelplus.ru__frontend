@@ -1,0 +1,81 @@
+@use "sass:selector";
+
+.pager {
+
+  $block-name: &; // #{$block-name}__element
+
+  --link-size: 24px;
+
+  &__list {
+    @include list-reset();
+
+    display: flex;
+    gap: var(--offset);
+    justify-content: center;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--link-size);
+
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color var(--transition-time),
+                color var(--transition-time);
+
+    --link-color: var(--text-color);
+    color: var(--text-color-muted);
+    border-radius: var(--border-radius--md);
+
+    @at-root
+    #{selector.unify(&, span)},
+    &:hover {
+      --link-color--hover: var(--color-black);
+      color: var(--color-black);
+    }
+
+    @at-root
+    #{$block-name}__item:first-child &,
+    #{$block-name}__item:last-child & {
+      background-color: var(--color-gray--lighten);
+      min-width: var(--link-size);
+      height: var(--link-size);
+    }
+
+    @at-root
+    #{$block-name}__item:first-child & {
+      color: var(--text-color-muted);
+    }
+
+    @at-root
+    #{$block-name}__item:last-child & {
+      color: var(--text-color-muted);
+    }
+
+    @at-root
+    #{$block-name}__item:first-child #{selector.unify(&, span)},
+    #{$block-name}__item:last-child #{selector.unify(&, span)} {
+      color: var(--color-gray);
+    }
+
+    @at-root
+    #{$block-name}__item:first-child #{selector.unify(&, a)}:hover,
+    #{$block-name}__item:last-child #{selector.unify(&, a)}:hover {
+      --link-color--hover: var(--color-white);
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    &__item--hide-mobile {
+      display: none;
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    --link-size: 34px;
+  }
+}

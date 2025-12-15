@@ -1,0 +1,47 @@
+mixin field-file(props)
+
+  //- Принимает:
+  //-   props {
+  //-     title: ''           {string} - текст с названием (выводится над полем)
+  //-     helpText: ''        {string} - пояснение под полем
+  //-     mods: ''            {array}  - модификаторы блока
+  //-     text:               {object} - тексты
+  //-       selectText:       {string} - текст на кнопке «выберите файл(ы)»
+  //-       nothingText:      {string} - текст, показываемый, пока ничего не выбрано
+  //-       flesSelectedText: {string} - текст, показываемый, если выбрано более одного файла («файлов выбрано: 2»)
+  //-     attrs:              {object} - любые атрибуты для input/textarea
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ' : '';
+      - allMods += 'field-file--' + mods;
+
+  - let selectText = 'Выберите файл(ы)'; // Select file(s)
+  - let nothingText = ''; // Nothing selected
+  - let flesSelectedText = 'Выбрано файлов: {count}'; // Selected files: {count}
+
+  if typeof (props.text) !== 'undefined' && props.text !== ''
+    if typeof (props.text.selectText) !== 'undefined'
+      - selectText = props.text.selectText;
+    if typeof (props.text.nothingText) !== 'undefined'
+      - nothingText = props.text.nothingText;
+    if typeof (props.text.flesSelectedText) !== 'undefined'
+      - flesSelectedText = props.text.flesSelectedText + ' {count}';
+
+  .field-file(class = allMods)&attributes(attributes)
+    if typeof (props.title) !== 'undefined' && props.title
+      span.field-file__name!= props.title
+
+    label.field-file__input-wrap(data-button-text=selectText)
+      input.field-file__input(
+        type = 'file',
+        data-multiple-caption = flesSelectedText
+      )&attributes(props.attrs)
+      .field-file__name-text!= nothingText
+
+    if typeof (props.helpText) !== 'undefined' && props.helpText
+      .field-file__help-text!= props.helpText

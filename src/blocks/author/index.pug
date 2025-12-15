@@ -1,0 +1,25 @@
+mixin author(data, props)
+
+  //- Принимает:
+  //-		data: ''					  {object} - данные автора
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'author--' + mods;
+
+  .author(class = allMods)&attributes(attributes)
+    .author__image
+      if typeof (data.src) !== 'undefined' && data.src
+        img(src=data.src)
+      else
+        = data.title[0]
+    .author__info
+      .author__title !{data.title}
+      .author__description !{data.description}

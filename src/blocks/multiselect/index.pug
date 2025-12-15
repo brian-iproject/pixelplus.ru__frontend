@@ -1,0 +1,143 @@
+mixin multiselect(props)
+
+  //- Принимает:
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  - let multiple = true;
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'multiselect--' + mods;
+
+  if typeof (props.type) !== 'undefined' && props.type
+    - multiple = props.type === 'checkbox';
+
+  .multiselect(class = allMods)&attributes(attributes)
+    button.multiselect__toggle
+      .multiselect__placeholder Выберите
+    .multiselect__dropdown
+      .multiselect__dropdown-inner
+        .multiselect__item.multiselect__checked-all
+          +field-checkbox({
+            title: 'Выбрать всё',
+            multiple: multiple,
+            mods: ['primary'],
+            attrs: {
+                class: 'multiselect__input multiselect__all',
+                name: 'test'
+            }
+          })
+        .multiselect__item
+          +field-checkbox({
+              title: 'Пункт 1',
+              multiple: multiple,
+              mods: ['primary'],
+              attrs: {
+                  id: 1,
+                  value: 1,
+                  class: 'multiselect__input',
+                  name: 'test'
+              }
+          })
+        .multiselect__item
+          +field-checkbox({
+              title: 'Пункт 2',
+              multiple: multiple,
+              mods: ['primary'],
+              attrs: {
+                  id: 2,
+                  value: 2,
+                  class: 'multiselect__input',
+                  disabled: 'disabled',
+                  name: 'test'
+              }
+          })
+        .multiselect__item
+          +field-checkbox({
+              title: 'Пункт 3',
+              multiple: multiple,
+              mods: ['primary'],
+              attrs: {
+                  id: 3,
+                  value: 3,
+                  class: 'multiselect__input',
+                  name: 'test'
+              }
+          })
+        .multiselect__item
+          +field-checkbox({
+              title: 'Театр',
+              multiple: multiple,
+              mods: ['primary'],
+              attrs: {
+                  id: 4,
+                  value: 4,
+                  class: 'multiselect__input',
+                  name: 'test'
+              }
+          })
+        .multiselect__item
+          +field-checkbox({
+              title: 'Авто',
+              multiple: multiple,
+              mods: ['primary'],
+              attrs: {
+                  id: 5,
+                  value: 5,
+                  class: 'multiselect__input',
+                  name: 'test'
+              }
+          })
+        .multiselect__item
+          +field-checkbox({
+              title: 'Авто',
+              multiple: multiple,
+              mods: ['primary'],
+              attrs: {
+                  id: 5,
+                  value: 5,
+                  class: 'multiselect__input',
+                  name: 'test'
+              }
+          })
+        .multiselect__item
+          +field-checkbox({
+              title: 'Авто',
+              multiple: multiple,
+              mods: ['primary'],
+              attrs: {
+                  id: 5,
+                  value: 5,
+                  class: 'multiselect__input',
+                  name: 'test'
+              }
+          })
+        .multiselect__item
+          +field-checkbox({
+              title: 'Авто',
+              multiple: multiple,
+              mods: ['primary'],
+              attrs: {
+                  id: 5,
+                  value: 5,
+                  class: 'multiselect__input',
+                  name: 'test'
+              }
+          })
+        .multiselect__item
+          +field-checkbox({
+              title: 'Авто',
+              multiple: multiple,
+              mods: ['primary'],
+              attrs: {
+                  id: 5,
+                  value: 5,
+                  class: 'multiselect__input',
+                  name: 'test'
+              }
+          })

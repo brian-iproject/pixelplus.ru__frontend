@@ -1,32 +1,38 @@
 -
 	let dataNumbers = [
 		{
-			"title": "100+",
+			"title": "100",
+			"titleSuffix": "+",
 			"description": "В штате компании более 100 сотрудников"
 		},
 		{
-			"title": "250+",
+			"title": "250",
+			"titleSuffix": "+",
 			"description": "Сайтов в успешном продвижении на постоянной основе"
 		},
 		{
-			"title": "200+",
+			"title": "200",
+			"titleSuffix": "+",
 			"description": "Сайтов на постоянной технической основе"
 		},
 		{
-			"title": "15 лет",
+			"title": "15",
+			"titleSuffix": " лет",
 			"description": "Компания существует с 2006 года"
 		},
 		{
-			"title": "250.000+",
+			"title": "250.000",
+			"titleSuffix": "+",
 			"description": "Запросов продвигается в поисковых системах Яндекса и Google"
 		},
 		{
-			"title": "750+",
+			"title": "750",
+			"titleSuffix": "+",
 			"description": "Участие в разработке более 750 проектов"
 		}
 	]
 .about-numbers.tile-slider(data-flickity-options='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "watchCSS": true, "lazyLoad": true }')
 	each item, i in dataNumbers
 		.about-numbers__item.wow.animate__zoomIn(data-wow-duration=".5s")
-			.about-numbers__title #{item.title}
+			.about-numbers__title(data-animate-number, data-animate-number-suffix=item.titleSuffix, data-animate-number-thousand-separator=".") #{item.title}
 			.about-numbers__description #{item.description}

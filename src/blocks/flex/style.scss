@@ -170,6 +170,18 @@
         }
       }
 
+      &--#{$screen-name}-jself-end {
+        @if ($screen-name == 'xs') {
+          @media (max-width: $screen) {
+            justify-self: end;
+          }
+        } @else {
+          @media (min-width: $screen) {
+            justify-self: end;
+          }
+        }
+      }
+
       @for $i from 0 through 12 {
         &--#{$screen-name}-order-#{$i} {
           @if ($screen-name == 'xs') {
