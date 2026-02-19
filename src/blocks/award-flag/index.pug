@@ -1,0 +1,25 @@
+mixin award-flag(data, props)
+
+  //- Принимает:
+  //-   data {
+  //-     svgId:            {string} - id иконки в спрайте
+  //-     text:             {string} - текст
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+  //-     iconMods:         {array} - модификаторы иконки
+  //-     iconAttrs:        {object} - атрибуты иконки
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'award-flag--' + mods;
+
+  .award-flag(class = allMods)&attributes(attributes)
+    .award-flag__icon !{data.icon}
+    .award-flag__inner
+      .award-flag__icon !{data.icon}
+      .award-flag__info !{data.info}

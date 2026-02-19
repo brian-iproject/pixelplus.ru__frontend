@@ -40,10 +40,13 @@
 
   &__tags {
     display: flex;
+    align-content: center;
+    justify-content: center;
     flex-wrap: wrap;
     position: absolute;
     gap: var(--offset--sm);
     top: var(--offset--lg);
+    bottom: calc(var(--offset--xl) + var(--border-radius));
     z-index: 5;
 
     & span {
@@ -68,7 +71,7 @@
   }
 
   &__info {
-    padding: var(--offset--lg) var(--offset--xl);
+    padding: calc(var(--offset--xl) * 2) var(--offset--lg) var(--offset--xl) var(--offset--lg);
 
     background: var(--color-white);
     border-radius: var(--border-radius);
@@ -84,13 +87,36 @@
     &:not(:has(#{$block-name}__logo)) {
       padding-top: var(--offset--xxl);
     }
+
+    &:has(#{$block-name}__awards) {
+      padding-top: calc(var(--offset--xxl) * 2);
+    }
   }
 
-  &__badge {
+  &__badge-wrapper {
     position: absolute;
     top: 0;
     right: 0;
+    left: 0;
     z-index: 5;
+    display: flex;
+    gap: var(--offset--sm);
+    justify-content: space-between;
+  }
+
+  &__badge-wrapper &__badge {
+    margin-left: var(--offset--sm);
+  }
+
+  &__awards {
+    display: flex;
+    gap: var(--offset--sm);
+    position: relative;
+    z-index: 1;
+  }
+
+  &__badge {
+    flex-shrink: 0;
     height: 30px;
     background-color: var(--color-black);
     border-radius: 0 var(--border-radius--sm) 0 0;
@@ -101,6 +127,7 @@
     font-size: var(--font-size--medium);
     display: flex;
     align-items: center;
+    position: relative;
 
     &::after {
       position: absolute;
@@ -115,8 +142,13 @@
     }
   }
 
+  &__awards:not(:has(+ &__badge)) {
+    margin-right: var(--offset--lg);
+  }
+
   &__logo {
     grid-area: logo;
+    text-align: center;
 
     & img {
       max-width: 110px;
@@ -179,6 +211,22 @@
     min-width: calc(50% - var(--offset--lg) / 2);
   }
 
+  @media (min-width: $screen-sm) {
+    &__logo {
+      text-align: left;
+    }
+
+    &__info {
+      &:has(#{$block-name}__awards) {
+        padding-top: var(--offset--xxl);
+      }
+    }
+
+    &__badge-wrapper {
+      justify-content: flex-end;
+    }
+  }
+
   @media (min-width: $screen-md) {
     flex-direction: row;
 
@@ -191,7 +239,27 @@
       height: auto;
     }
 
+    &__tags {
+      top: var(--offset);
+      bottom: auto;
+
+      @at-root
+      #{$block-name}:nth-child(2n+1) & {
+        right: calc(var(--offset) + var(--border-radius));
+        left: var(--offset);
+        justify-content: flex-start;
+      }
+
+      @at-root
+      #{$block-name}:nth-child(2n) & {
+        left: calc(var(--offset) + var(--border-radius));
+        right: var(--offset);
+        justify-content: flex-end;
+      }
+    }
+
     &__info {
+      padding: var(--offset--lg) var(--offset--xl);
       width: calc(65% + var(--border-radius) * 2);
       margin-top: 0;
 
@@ -230,6 +298,29 @@
       @at-root
       #{$block-name}:not(#{$block-name}--columns) & {
         flex-wrap: nowrap;
+      }
+    }
+
+    &__badge-wrapper .award-flag__inner {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  @media (min-width: $screen-xl) {
+    &__tags {
+      top: var(--offset--lg);
+
+      @at-root
+      #{$block-name}:nth-child(2n+1) & {
+        right: calc(var(--offset--lg) + var(--border-radius));
+        left: var(--offset--lg);
+      }
+
+      @at-root
+      #{$block-name}:nth-child(2n) & {
+        left: calc(var(--offset--lg) + var(--border-radius));
+        right: var(--offset--lg);
       }
     }
   }

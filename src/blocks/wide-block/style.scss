@@ -13,6 +13,10 @@
 	padding-bottom: var(--padding);
 	padding-top: var(--padding);
 
+	&--small-padding {
+		--padding: 1.625rem;
+	}
+
 	&--gray-lighter {
 		background-color: var(--color-gray--lighter);
 	}
@@ -279,6 +283,10 @@
 
 	@media (min-width: $screen-md) {
 		--padding: 6.5rem;
+
+		&--small-padding {
+			--padding: 3.25rem;
+		}
 	}
 
 	@media (min-width: $screen-xl) {

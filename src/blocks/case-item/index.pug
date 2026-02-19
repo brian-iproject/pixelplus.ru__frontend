@@ -31,7 +31,29 @@ mixin case-item(data, props)
                 span Интернет-магазин
 
         .case-item__info
-            .case-item__badge тариф «Депозитый»
+
+            .case-item__badge-wrapper
+                .case-item__awards
+                    +award-flag({
+                        icon: '<svg width="31" height="32" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+                                '<path d="M11.6541 11.6541L15.6165 0L19.3459 11.6541H31L22.1429 18.6466L26.1053 31.2331L15.6165 23.5414L5.59399 31.2331L9.09023 19.812H11.6541V15.8496H7.69173V19.3459H4.42857V15.8496H7.69173V11.6541H11.6541Z" fill="#CAB66A"/>\n' +
+                                '<path d="M0 14.6842V11.6541H2.79699V14.6842H0Z" fill="#CAB66A"/>\n' +
+                                '<rect x="11.6541" y="11.6543" width="3.72932" height="4.19549" fill="white"/>\n' +
+                                '<rect x="11.6541" y="19.5791" width="3.72932" height="4.19549" fill="white"/>\n' +
+                                '</svg>\n',
+                        info: 'Номинант конкурса«Рейтинг Рунета» 2018 (Промышленность и оборудование)'
+                    })
+                    +award-flag({
+                        icon: '<svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+                                '<path d="M4.49053 29.2854L1.78726e-06 19.0634L11.0063 1.9244e-06L27 9.23403L16.0048 28.2783L4.49053 29.2854Z" fill="#CAB66A"/>\n' +
+                                '<circle cx="8.48742" cy="22.2159" r="3.15245" fill="white"/>\n' +
+                                '</svg>\n',
+                        info: 'Номинант конкурса«Рейтинг Рунета» 2018 (Промышленность и оборудование)'
+                    })
+                .case-item__badge тариф «Депозитый»
+
+
+
             .case-item__logo
                 img(src="/assets/askona-logo.png")
             .case-item__indicators

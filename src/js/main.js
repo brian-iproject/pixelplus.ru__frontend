@@ -1,6 +1,7 @@
 import FlickitySet from './classes/FlickitySet'
 import MobileMenu from "./classes/MobileMenu"
 import ToggleBlock from "./classes/ToggleBlock"
+import Toggle from "./classes/Toggle.js";
 import SvgLoad from "./classes/SvgLoad"
 import MovingPlaceholder from "./classes/MovingPlaceholder"
 import Utils from "./classes/Utils"
@@ -40,7 +41,8 @@ window.pixelplus = {
     LockedButton,
     AnimateNumber,
     FieldFile,
-    MultiSelectCheckbox
+    MultiSelectCheckbox,
+    Toggle
 };
 
 const appnew = {
@@ -445,6 +447,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 linkBy: 'id',
                 emptyText: null
             })
+        });
+    }
+
+    if (typeof window.pixelplus.Toggle !== 'undefined') {
+        document.querySelectorAll('.award-flag').forEach((el) => {
+            new window.pixelplus.Toggle(el, {
+                target: el,
+                on: {
+                    beforeActivate: () => {
+                        const currentActive = document.querySelector('.award-flag.-is-active');
+                        if (currentActive) {
+                            currentActive.classList.remove('-is-active');
+                        }
+                    }
+                }
+            });
         });
     }
 })

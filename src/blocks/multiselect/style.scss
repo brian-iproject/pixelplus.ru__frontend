@@ -88,6 +88,7 @@
 
   &__item {
     padding: 5px 0;
+    cursor: pointer;
 
     &:has(input[disabled]) {
       color: var(--text-color-muted);
@@ -97,6 +98,14 @@
     &:has(input[type=radio]:checked) {
       color: var(--color-primary);
     }
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+
+  &__label {
+    cursor: pointer;
   }
 
   &__checked-all:has(input[type='checkbox']) {

@@ -1,10 +1,12 @@
 .main-slider {
   $block-name: &; // #{$block-name}__element
 
-  --min-height: 500px;
+  &--min-height {
+    --min-height: 500px;
+  }
 
   &:has(picture) {
-    --min-height: 648px;
+    //--min-height: 648px; Мешало в портфолио. Этот и все подобные ниже по коду.
   }
 
   --v-padding: var(--offset--xxl);
@@ -61,7 +63,7 @@
 
     @at-root
     #{$block-name}__item:has(picture) #{$block-name}__item-inner {
-      align-items: flex-start;
+      //align-items: flex-start;
     }
 
     @at-root
@@ -283,7 +285,7 @@
 
   @media (min-width: $screen-md) {
     &:has(picture) {
-      --min-height: 1000px;
+      //--min-height: 1000px;
     }
 
     //&__item-inner {
@@ -313,10 +315,12 @@
   }
 
   @media (min-width: $screen-lg) {
-    --min-height: 590px;
+    &--min-height {
+      --min-height: 590px;
+    }
 
     &:has(picture) {
-      --min-height: 590px;
+      //--min-height: 590px;
     }
 
     &__item-inner {
