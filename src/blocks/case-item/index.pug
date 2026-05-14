@@ -19,7 +19,11 @@ mixin case-item(data, props)
 
     .case-item(class = allMods)&attributes(attributes)
         .case-item__image
-            img(src="/images/blocks/case-item/askona-prev.jpg")
+
+            video(autoplay muted loop)
+                source(src="/assets/video/chib-bot.mp4" type="video/mp4")
+
+
             //if (data.image)
             //    img(src=data.image)
             //else

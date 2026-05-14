@@ -6,9 +6,9 @@ import SvgLoad from "./classes/SvgLoad"
 import MovingPlaceholder from "./classes/MovingPlaceholder"
 import Utils from "./classes/Utils"
 import Tabs from "./classes/Tabs"
-import Tariffs from "./classes/Tariffs";
 import AcceptCookie from "./classes/AcceptCookie";
 import YtVideoLoad from "./classes/YtVideoLoad";
+import VideoLoad from "./classes/VideoLoad";
 import DetailsSpoiler from "./classes/DetailsSpoiler.js";
 import StoriesVideo from "./classes/StoriesVideo.js";
 import AnimateNumber from "./classes/AnimateNumber.js"
@@ -42,7 +42,8 @@ window.pixelplus = {
     AnimateNumber,
     FieldFile,
     MultiSelectCheckbox,
-    Toggle
+    Toggle,
+    VideoLoad
 };
 
 const appnew = {
@@ -193,22 +194,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     }
 
-    // Покупка услуг
-    document.querySelectorAll('[data-service]').forEach((item) => {
-        const service = new Tariffs(item, {
-            tariffsContainer: '.tariff-options',
-            selectorTitle: '.tile__title',
-            selectorPrice: '.price-more__old span',
-            selectorPriceDiscount: '.price-more__actual span',
-            discount: 0.05,
-            priceSymbol: 'руб.',
-            paramsSelectors: [
-                '.timing'
-            ]
-        });
-        service.init();
-    });
-
     // Плавный скролл до элемента
     if (typeof MoveTo !== 'undefined') {
         const moveTo = new MoveTo();
@@ -218,11 +203,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
 
     // Подгрузка видео
-    if (typeof YtVideoLoad !== 'undefined') {
-        document.querySelectorAll('.yt-video').forEach((item) => {
-            new YtVideoLoad.init(item);
-        });
-    }
+    // if (typeof YtVideoLoad !== 'undefined') {
+    //     document.querySelectorAll('.yt-video').forEach((item) => {
+    //         new YtVideoLoad.init(item);
+    //     });
+    // }
 
     // Слайдер
     if (typeof Splide !== 'undefined') {
@@ -463,6 +448,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     }
                 }
             });
+        });
+    }
+
+    if (typeof window.pixelplus.VideoLoad !== 'undefined') {
+        document.querySelectorAll('.yt-video').forEach((item) => {
+            new window.pixelplus.VideoLoad.init(item);
         });
     }
 })

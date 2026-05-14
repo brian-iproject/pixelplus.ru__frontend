@@ -9,6 +9,7 @@
   border-radius: var(--border-radius);
   overflow: hidden;
   min-height: 500px;
+  border: 1px solid var(--color-gray--lighten);
 
   &__image {
     position: relative;
@@ -16,7 +17,8 @@
     border-radius: var(--border-radius);
     height: 170px;
 
-    & img {
+    & img,
+    & video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -25,7 +27,7 @@
       right: 0;
     }
 
-    &::after {
+    &:has(img)::after {
       content: '';
       position: absolute;
       top: 0;
@@ -101,7 +103,12 @@
     z-index: 5;
     display: flex;
     gap: var(--offset--sm);
+
     justify-content: space-between;
+
+    &:has(#{$block-name}__badge:first-child:last-child) {
+      justify-content: flex-end;
+    }
   }
 
   &__badge-wrapper &__badge {
@@ -212,23 +219,21 @@
   }
 
   @media (min-width: $screen-sm) {
+
+  }
+
+  @media (min-width: $screen-md) {
+    flex-direction: row;
+
     &__logo {
       text-align: left;
     }
 
     &__info {
-      &:has(#{$block-name}__awards) {
+      &:has(#{$block-name}__badge-wrapper) {
         padding-top: var(--offset--xxl);
       }
     }
-
-    &__badge-wrapper {
-      justify-content: flex-end;
-    }
-  }
-
-  @media (min-width: $screen-md) {
-    flex-direction: row;
 
     &:nth-child(2n) {
       flex-direction: row-reverse;
@@ -285,11 +290,20 @@
       }
     }
 
+    &__badge-wrapper {
+      justify-content: flex-end;
+    }
+
     &__indicators {
 
       & div {
         flex-wrap: nowrap;
       }
+    }
+
+    &__badge-wrapper .award-flag__inner {
+      left: auto;
+      right: 0;
     }
   }
 
@@ -299,11 +313,6 @@
       #{$block-name}:not(#{$block-name}--columns) & {
         flex-wrap: nowrap;
       }
-    }
-
-    &__badge-wrapper .award-flag__inner {
-      left: auto;
-      right: 0;
     }
   }
 

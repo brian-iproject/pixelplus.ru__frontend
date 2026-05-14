@@ -1,3 +1,5 @@
+@use "sass:selector";
+
 .main-menu {
 
 	$block-name: &; // #{$block-name}__element
@@ -68,6 +70,10 @@
 			background-color: var(--color-white);
 			border: none;
 		}
+	}
+
+	&__link--lvl1 &__label {
+		margin-left: var(--offset--xxs);
 	}
 
 	@media (max-width: $screen-lg - 1 ) {
@@ -267,7 +273,13 @@
 			&--lvl2 {
 				padding: 0 1rem;
 
-				&:hover,
+				@at-root
+				#{selector.unify(&, a)} {
+					&:hover {
+						color: var(--color-primary);
+					}
+				}
+
 				&:active,
 				&#{$block-name}__link--selected {
 					color: var(--color-primary);

@@ -32,11 +32,21 @@
         }
 
         &--next {
-          right: -70px;
+          right: -40px;
         }
 
         &--prev {
-          left: -70px;
+          left: -40px;
+        }
+
+        @media (min-width: $screen-xxl) {
+          &--next {
+            right: -70px;
+          }
+
+          &--prev {
+            left: -70px;
+          }
         }
       }
     }

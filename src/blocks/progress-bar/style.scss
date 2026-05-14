@@ -1,0 +1,37 @@
+.progress-bar {
+
+  $block-name: &; // #{$block-name}__element
+
+  height: 10px;
+  background-color: var(--color-gray--lighten);
+  border-radius: var(--border-radius--sm);
+  overflow: hidden;
+
+  &__inner {
+    position: relative;
+
+    height: 100%;
+
+    text-align: center;
+
+    background-color: var(--color-green);
+
+    &::before {
+      position: absolute;
+      top: calc((var(--font-size--sm) * var(--line-height) - 6px) / -2);
+      left: 0;
+
+      width: 100%;
+
+      color: var(--color-green);
+      font-weight: 500;
+      font-size: var(--font-size--sm);
+      line-height: var(--line-height);
+
+      content: attr(data-width);
+      -webkit-text-stroke: 1px var(--color-white);
+      -webkit-text-fill-color: var(--color-green);
+      paint-order: stroke fill;
+    }
+  }
+}

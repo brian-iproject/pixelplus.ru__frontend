@@ -1,0 +1,43 @@
+.rating-list {
+
+  $block-name: &; // #{$block-name}__element
+
+  &__item {
+
+    & + & {
+      margin-top: var(--offset--sm);
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size);
+    color: var(--text-color);
+  }
+
+  &__bar {
+    margin-top: var(--offset--xs);
+  }
+
+  &__item:nth-child(1) &__bar {
+
+    .progress-bar__inner {
+      background: linear-gradient(90deg, #f6c980, #e2a33c);
+    }
+  }
+
+  &__item:nth-child(2) &__bar {
+
+    .progress-bar__inner {
+      background: linear-gradient(90deg, #cdcdcd, #ababab);
+    }
+  }
+
+  &__item:nth-child(3) &__bar {
+
+    .progress-bar__inner {
+      background: linear-gradient(90deg, #e2bc9c, #d19c73);
+    }
+  }
+}
