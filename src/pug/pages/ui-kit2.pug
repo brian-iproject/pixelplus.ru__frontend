@@ -1,0 +1,1287 @@
+extends ../layout.pug
+
+block meta
+  title UI-KIT 2 — Документация блоков
+  meta(name='description', content='')
+
+block head
+  style.
+    .uk2 { padding-bottom: 60px }
+    .uk2-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 40px; padding: 20px 24px; background: var(--color-gray--lighter); border-radius: 8px; }
+    .uk2-toc a { background: #fff; border: 1px solid var(--color-gray--lighten); border-radius: 20px; padding: 5px 14px; font-size: 13px; text-decoration: none; color: var(--color-gray--darken); transition: border-color .15s, color .15s; }
+    .uk2-toc a:hover { border-color: var(--color-primary); color: var(--color-primary); }
+    .uk2-section { padding: 40px 0; border-bottom: 2px solid var(--color-gray--lighten); }
+    .uk2-section:last-child { border-bottom: none; }
+    .uk2-section > h2 { margin-bottom: 4px; }
+    .uk2-desc { color: var(--color-gray--dark); margin-bottom: 16px; }
+    .uk2-params { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px; }
+    .uk2-params th { background: var(--color-gray--lighten); text-align: left; padding: 8px 12px; font-weight: 600; }
+    .uk2-params td { padding: 8px 12px; border-top: 1px solid var(--color-gray--lighten); vertical-align: top; font-size: 13px; }
+    .uk2-params code { background: var(--color-gray--lighten); padding: 1px 5px; border-radius: 3px; font-size: 11px; font-family: monospace; }
+    .uk2-preview { background: var(--color-gray--lighter); border-radius: 8px; padding: 24px; margin-bottom: 12px; }
+    .uk2-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
+    details.uk2-details summary { cursor: pointer; display: inline-flex; align-items: center; gap: 6px; color: var(--color-primary); font-weight: 600; font-size: 14px; padding: 6px 0; user-select: none; list-style: none; }
+    details.uk2-details summary::before { content: '\25B6'; font-size: 9px; transition: transform .2s; display: inline-block; }
+    details.uk2-details[open] summary::before { transform: rotate(90deg); }
+    details.uk2-details summary::-webkit-details-marker { display: none; }
+    .uk2-code { background: #1a1a2e; color: #e2e8f0; border-radius: 6px; padding: 16px 20px; overflow-x: auto; font-family: 'Consolas', 'Monaco', monospace; font-size: 13px; line-height: 1.7; margin-top: 8px; white-space: pre; }
+    .uk2-gap { margin-top: 16px; }
+
+block content
+  .wide-block
+    .page-container.uk2
+
+      h1 UI-KIT 2 — Документация компонентов
+      p.subtitle Справочник по блокам проекта: параметры, модификаторы и примеры подключения.
+
+      nav.uk2-toc(aria-label='Оглавление')
+        a(href='#buttons') Кнопки
+        a(href='#tags') Теги
+        a(href='#icons') Иконки
+        a(href='#alerts') Алерты
+        a(href='#timing') Timing
+        a(href='#author') Author
+        a(href='#text-icon') Text-icon
+        a(href='#employee-item') Employee-item
+        a(href='#employee-wide') Employee-wide
+        a(href='#competence') Competence
+        a(href='#logo-item') Logo-item
+        a(href='#discount-tile') Discount-tile
+        a(href='#award-flag') Award-flag
+        a(href='#achievements-wide') Achievements-wide
+        a(href='#case-small') Case-small
+        a(href='#field-checkbox') Field-checkbox
+        a(href='#field-range') Field-range
+        a(href='#field-file') Field-file
+        a(href='#multiselect') Multiselect
+
+      //- ══════════════════════════════════════════
+      //- КНОПКИ
+      //- ══════════════════════════════════════════
+      section#buttons.uk2-section
+        h2 Кнопки
+        p.uk2-desc Базовый элемент интерфейса. Используется тег #[code a], #[code button] или #[code div] с CSS-классами. Миксин не требуется — чистые классы.
+
+        table.uk2-params
+          thead
+            tr
+              th Класс-модификатор
+              th Описание
+          tbody
+            tr
+              td (базовый #[code .button])
+              td Стандартная кнопка без фона
+            tr
+              td: code .button--primary
+              td Основной вариант (красный фон)
+            tr
+              td: code .button--outline
+              td Контурная, прозрачный фон
+            tr
+              td: code .button--white
+              td Белая (для тёмного фона)
+            tr
+              td: code .button--small
+              td Уменьшенный размер
+            tr
+              td: code .button--large
+              td Увеличенный размер
+            tr
+              td: code .button--full
+              td Ширина 100%
+            tr
+              td: code .button--icon
+              td Кнопка-иконка без текста
+
+        .uk2-preview
+          .uk2-row
+            a.button Кнопка
+            a.button.button--primary Основная
+            a.button.button--outline Контурная
+            a.button.button--small Маленькая
+            a.button.button--large Большая
+            button.button.button--primary(disabled) Отключена
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // Базовые варианты
+            a.button Кнопка
+            a.button.button--primary Основная
+            a.button.button--outline Контурная
+
+            // Размеры
+            a.button.button--small Маленькая
+            a.button.button--large Большая
+
+            // Ширина 100%
+            a.button.button--primary.button--full Широкая кнопка
+
+            // С иконкой (потребует +icon из mixins)
+            a.button.button--primary
+              +icon({id: 'account', mods: ['sm']})
+              | Текст кнопки
+
+            // Отключена
+            button.button.button--primary(disabled) Отправить
+
+
+      //- ══════════════════════════════════════════
+      //- ТЕГИ
+      //- ══════════════════════════════════════════
+      section#tags.uk2-section
+        h2 Теги
+        p.uk2-desc Компонент-метка для категорий, фильтров и ключевых слов. Подключается через миксин #[code +tag(props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code props.tag
+              td string
+              td HTML-тег элемента. По умолчанию #[code button]
+            tr
+              td: code props.title
+              td string
+              td Текст внутри тега
+            tr
+              td: code props.mods
+              td string[]
+              td Массив модификаторов: #[code active], #[code primary]
+
+        .uk2-preview
+          .uk2-row
+            +tag({title: 'SEO-продвижение'})
+            +tag({title: 'Разработка'})
+            +tag({title: 'Активный', mods: ['active']})
+            +tag({title: 'Primary', mods: ['primary']})
+            +tag({tag: 'span', title: 'Span-тег'})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/tag/index
+
+            // Базовый
+            +tag({title: 'SEO-продвижение'})
+
+            // Активное состояние
+            +tag({title: 'Активный', mods: ['active']})
+
+            // Primary
+            +tag({title: 'Primary', mods: ['primary']})
+
+            // Как span
+            +tag({tag: 'span', title: 'Ссылка'})
+
+            // Несколько в ряд
+            .flex.flex--wrap
+              +tag({title: 'SEO'})
+              +tag({title: 'Контекст'})
+              +tag({title: 'Дизайн'})
+
+
+      //- ══════════════════════════════════════════
+      //- ИКОНКИ
+      //- ══════════════════════════════════════════
+      section#icons.uk2-section
+        h2 Иконки
+        p.uk2-desc SVG-иконки из спрайта #[code src/icons/sprite.svg]. Подключаются через миксин #[code +icon(props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code props.id
+              td string
+              td ID иконки в SVG-спрайте (без символа #[code #])
+            tr
+              td: code props.mods
+              td string[]
+              td Размер: #[code sm], #[code md], #[code lg]. Цвет: #[code primary], #[code white], #[code gray]
+
+        .uk2-preview
+          .uk2-row(style='align-items:center')
+            +icon({id: 'account', mods: ['sm']})
+            +icon({id: 'account', mods: ['md']})
+            +icon({id: 'account', mods: ['lg']})
+            +icon({id: 'account', mods: ['md', 'primary']})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/icon/index
+
+            // Маленькая
+            +icon({id: 'account', mods: ['sm']})
+
+            // Средняя
+            +icon({id: 'account', mods: ['md']})
+
+            // Большая
+            +icon({id: 'account', mods: ['lg']})
+
+            // С цветом
+            +icon({id: 'account', mods: ['md', 'primary']})
+
+            // С дополнительными атрибутами
+            +icon({id: 'account', mods: ['md']})(aria-hidden='true')
+
+
+      //- ══════════════════════════════════════════
+      //- АЛЕРТЫ
+      //- ══════════════════════════════════════════
+      section#alerts.uk2-section
+        h2 Алерты
+        p.uk2-desc Информационные плашки четырёх типов. Чистые CSS-классы, миксин не нужен.
+
+        table.uk2-params
+          thead
+            tr
+              th Класс
+              th Описание
+          tbody
+            tr
+              td: code .alert.alert--success
+              td Успех (зелёный)
+            tr
+              td: code .alert.alert--info
+              td Информация (синий)
+            tr
+              td: code .alert.alert--error
+              td Ошибка (красный)
+            tr
+              td: code .alert.alert--warning
+              td Предупреждение (жёлтый)
+            tr
+              td: code .alert--flex
+              td Модификатор: иконка + текст в строку
+
+        .uk2-preview
+          .alert.alert--success Успешно сохранено
+          .alert.alert--info Это информационное сообщение
+          .alert.alert--error Произошла ошибка, попробуйте снова
+          .alert.alert--warning Внимание: данные не сохранены
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // Простые варианты
+            .alert.alert--success Успешно сохранено
+            .alert.alert--info Информационное сообщение
+            .alert.alert--error Произошла ошибка
+            .alert.alert--warning Внимание
+
+            // С иконкой (модификатор flex)
+            .alert.alert--success.alert--flex
+              svg(xmlns='http://www.w3.org/2000/svg' ...)
+              | Текст алерта с иконкой слева
+
+
+      //- ══════════════════════════════════════════
+      //- TIMING
+      //- ══════════════════════════════════════════
+      section#timing.uk2-section
+        h2 Timing
+        p.uk2-desc Метка с продолжительностью или временным значением. Подключается через #[code +timing(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data
+              td string
+              td Текст (HTML-строка)
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы: #[code gray], #[code primary]
+
+        .uk2-preview
+          .uk2-row
+            +timing('3 месяца')
+            +timing('15 минут', {mods: ['gray']})
+            +timing('6 недель', {mods: ['primary']})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/timing/index
+
+            // Базовый
+            +timing('3 месяца')
+
+            // Серый
+            +timing('15 минут', {mods: ['gray']})
+
+            // Primary
+            +timing('6 недель', {mods: ['primary']})
+
+            // С HTML
+            +timing('от &lt;b&gt;2 недель&lt;/b&gt;')
+
+
+      //- ══════════════════════════════════════════
+      //- AUTHOR
+      //- ══════════════════════════════════════════
+      section#author.uk2-section
+        h2 Author
+        p.uk2-desc Карточка автора: аватар или инициалы + имя + должность. Используется в кейсах, статьях, отзывах. Миксин: #[code +author(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data.src
+              td string
+              td Путь до фото. Если не указан — первая буква #[code data.title]
+            tr
+              td: code data.title
+              td string
+              td Имя
+            tr
+              td: code data.description
+              td string
+              td Должность или подпись
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока
+
+        .uk2-preview
+          .uk2-row
+            +author({src: 'assets/lunin.jpg', title: 'Анастасия', description: 'Руководитель проекта'})
+            +author({title: 'Дмитрий Севальнев', description: 'Генеральный директор'})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/author/index
+
+            // С фотографией
+            +author({
+              src: 'assets/photo.jpg',
+              title: 'Анастасия',
+              description: 'Руководитель проекта'
+            })
+
+            // Без фото — первая буква имени как аватар
+            +author({
+              title: 'Дмитрий Севальнев',
+              description: 'Генеральный директор'
+            })
+
+            // С модификатором
+            +author({title: 'Имя', description: 'Должность'}, {mods: ['small']})
+
+
+      //- ══════════════════════════════════════════
+      //- TEXT-ICON
+      //- ══════════════════════════════════════════
+      section#text-icon.uk2-section
+        h2 Text-icon
+        p.uk2-desc Горизонтальная компоновка «иконка + текст». Используется в списках преимуществ, описаниях услуг. Миксин: #[code +text-icon(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data.svgId
+              td string
+              td ID иконки в SVG-спрайте
+            tr
+              td: code data.text
+              td string
+              td HTML-текст (принимает теги)
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока
+            tr
+              td: code props.iconMods
+              td string[]
+              td Модификаторы иконки: #[code sm], #[code md], #[code lg], #[code primary]
+            tr
+              td: code props.iconAttrs
+              td object
+              td Дополнительные атрибуты для SVG-элемента
+
+        .uk2-preview
+          .d-grid.d-grid--sm-2
+            +text-icon({svgId: 'account', text: 'Опыт более 15 лет в разработке сайтов'})
+            +text-icon({svgId: 'account', text: 'Команда из 50+ специалистов'}, {iconMods: ['md', 'primary']})
+            +text-icon({svgId: 'account', text: 'Гарантия результата прописана в договоре'}, {iconMods: ['lg']})
+            +text-icon({svgId: 'account', text: 'Прозрачная отчётность каждый месяц'}, {iconMods: ['md']})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/text-icon/index
+
+            // Базовый (иконка md по умолчанию)
+            +text-icon({
+              svgId: 'account',
+              text: 'Текст рядом с иконкой'
+            })
+
+            // Иконка с цветом
+            +text-icon({
+              svgId: 'account',
+              text: 'Опыт более 15 лет'
+            }, {
+              iconMods: ['md', 'primary']
+            })
+
+            // HTML в тексте
+            +text-icon({
+              svgId: 'account',
+              text: '&lt;strong&gt;Гарантия&lt;/strong&gt; результата прописана в договоре'
+            })
+
+            // Сетка из нескольких элементов
+            .d-grid.d-grid--sm-2
+              +text-icon({svgId: 'account', text: 'Преимущество 1'}, {iconMods: ['md', 'primary']})
+              +text-icon({svgId: 'account', text: 'Преимущество 2'}, {iconMods: ['md', 'primary']})
+              +text-icon({svgId: 'account', text: 'Преимущество 3'}, {iconMods: ['md', 'primary']})
+              +text-icon({svgId: 'account', text: 'Преимущество 4'}, {iconMods: ['md', 'primary']})
+
+
+      //- ══════════════════════════════════════════
+      //- EMPLOYEE-ITEM
+      //- ══════════════════════════════════════════
+      section#employee-item.uk2-section
+        h2 Employee-item
+        p.uk2-desc Компактная карточка сотрудника. Используется в листингах команды. Миксин: #[code +employee-item(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data.title
+              td string
+              td Имя сотрудника
+            tr
+              td: code data.post
+              td string
+              td Должность
+            tr
+              td: code data.image
+              td string
+              td Путь до фото. Без него — SVG-заглушка с логотипом
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока
+
+        .uk2-preview
+          .d-grid.d-grid--sm-2.d-grid--lg-3
+            +employee-item({title: 'Дмитрий Севальнев', post: 'Генеральный директор'})
+            +employee-item({title: 'Анастасия Лунина', post: 'Руководитель проекта', image: 'assets/lunin.jpg'})
+            +employee-item({title: 'Алексей Павлов', post: 'Разработчик'})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/employee-item/index
+
+            // Без фото (SVG-заглушка)
+            +employee-item({
+              title: 'Дмитрий Севальнев',
+              post: 'Генеральный директор'
+            })
+
+            // С фото
+            +employee-item({
+              title: 'Анастасия Лунина',
+              post: 'Руководитель проекта',
+              image: 'assets/photo.jpg'
+            })
+
+            // Сетка карточек
+            .d-grid.d-grid--sm-2.d-grid--lg-3
+              +employee-item({title: 'Имя 1', post: 'Должность 1'})
+              +employee-item({title: 'Имя 2', post: 'Должность 2'})
+              +employee-item({title: 'Имя 3', post: 'Должность 3'})
+
+
+      //- ══════════════════════════════════════════
+      //- EMPLOYEE-WIDE
+      //- ══════════════════════════════════════════
+      section#employee-wide.uk2-section
+        h2 Employee-wide
+        p.uk2-desc Расширенная карточка сотрудника: фото + имя + должность + описание. Миксин: #[code +employee-wide(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data.title
+              td string
+              td Имя
+            tr
+              td: code data.post
+              td string
+              td Должность
+            tr
+              td: code data.imageWide
+              td string
+              td Путь до фото. Без него — SVG-заглушка
+            tr
+              td: code data.description
+              td string
+              td HTML-описание (биография, достижения)
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока
+            tr
+              td: code props.mirror
+              td bool
+              td #[code true] — фото справа, текст слева
+
+        .uk2-preview
+          +employee-wide({
+            title: 'Дмитрий Севальнев',
+            post: 'Генеральный директор',
+            description: '<p>Основатель агентства «Пиксель Плюс». Более 15 лет в digital-маркетинге и веб-разработке. Под руководством Дмитрия реализовано более 500 проектов.</p>'
+          })
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/employee-wide/index
+
+            // Фото слева (по умолчанию)
+            +employee-wide({
+              title: 'Дмитрий Севальнев',
+              post: 'Генеральный директор',
+              imageWide: 'assets/photo.jpg',
+              description: '&lt;p&gt;Текст биографии...&lt;/p&gt;'
+            })
+
+            // Фото справа (зеркально)
+            +employee-wide({
+              title: 'Анастасия',
+              post: 'Руководитель проектов',
+              imageWide: 'assets/photo2.jpg',
+              description: '&lt;p&gt;Текст...&lt;/p&gt;'
+            }, {
+              mirror: true
+            })
+
+
+      //- ══════════════════════════════════════════
+      //- COMPETENCE
+      //- ══════════════════════════════════════════
+      section#competence.uk2-section
+        h2 Competence
+        p.uk2-desc Карточка технологии или компетенции: логотип + название. Миксин: #[code +competence(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data.src
+              td string
+              td Путь до логотипа технологии
+            tr
+              td: code data.title
+              td string
+              td Название технологии или компетенции
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока
+
+        .uk2-preview
+          .d-grid.d-grid--sm-3.d-grid--lg-4
+            +competence({src: 'assets/bitrix.png', title: '1С-Битрикс'})
+            +competence({src: 'assets/bitrix.png', title: 'WordPress'})
+            +competence({src: 'assets/bitrix.png', title: 'Bitrix24'})
+            +competence({src: 'assets/bitrix.png', title: 'Laravel'})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/competence/index
+
+            // Одиночный элемент
+            +competence({
+              src: 'images/logo-bitrix.png',
+              title: '1С-Битрикс'
+            })
+
+            // Сетка компетенций
+            .d-grid.d-grid--sm-3.d-grid--lg-4
+              +competence({src: 'images/php.png', title: 'PHP'})
+              +competence({src: 'images/js.png', title: 'JavaScript'})
+              +competence({src: 'images/react.png', title: 'React'})
+              +competence({src: 'images/vue.png', title: 'Vue.js'})
+
+
+      //- ══════════════════════════════════════════
+      //- LOGO-ITEM
+      //- ══════════════════════════════════════════
+      section#logo-item.uk2-section
+        h2 Logo-item
+        p.uk2-desc Логотип партнёра или клиента. С модификатором #[code tile] — добавляет подпись. Миксин: #[code +logo-item(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data.image
+              td string
+              td Путь до логотипа
+            tr
+              td: code data.title
+              td string
+              td Название (только при моде #[code tile])
+            tr
+              td: code data.description
+              td string
+              td Описание (только при моде #[code tile])
+            tr
+              td: code props.mods
+              td string[]
+              td #[code tile] — включает отображение текста
+
+        .uk2-preview
+          .d-grid.d-grid--sm-3.d-grid--lg-4
+            +logo-item({image: 'assets/bitrix.png'})
+            +logo-item({image: 'assets/bitrix.png'})
+            +logo-item({image: 'assets/bitrix.png', title: '1С-Битрикс', description: 'CMS для интернет-магазинов'}, {mods: ['tile']})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/logo-item/index
+
+            // Только логотип
+            +logo-item({image: 'images/logo.png'})
+
+            // Логотип + подпись (mods: tile)
+            +logo-item({
+              image: 'images/logo.png',
+              title: 'Название партнёра',
+              description: 'Краткое описание'
+            }, {
+              mods: ['tile']
+            })
+
+            // Строка логотипов
+            .logo-line
+              +logo-item({image: 'images/logo1.png'})
+              +logo-item({image: 'images/logo2.png'})
+              +logo-item({image: 'images/logo3.png'})
+
+
+      //- ══════════════════════════════════════════
+      //- DISCOUNT-TILE
+      //- ══════════════════════════════════════════
+      section#discount-tile.uk2-section
+        h2 Discount-tile
+        p.uk2-desc Карточка акции или скидки: изображение + заголовок + условие. Миксин: #[code +discount-tile(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data.src
+              td string
+              td Путь до изображения
+            tr
+              td: code data.title
+              td string
+              td Заголовок акции
+            tr
+              td: code data.description
+              td string
+              td Текст с условиями
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока
+
+        .uk2-preview
+          .d-grid.d-grid--sm-2.d-grid--lg-3
+            +discount-tile({
+              src: 'blocks/discount-tile/images/discount-01.jpg',
+              title: 'Второй проект дешевле',
+              description: 'Скидка 10% на следующий проект'
+            })
+            +discount-tile({
+              src: 'blocks/discount-tile/images/discount-02.jpg',
+              title: 'Комплекс выгоднее',
+              description: 'Скидка 10% на тариф «Поддержка + SEO»'
+            })
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/discount-tile/index
+
+            // Одна карточка
+            +discount-tile({
+              src: 'blocks/discount-tile/images/discount-01.jpg',
+              title: 'Второй проект дешевле',
+              description: 'Скидка 10% на следующий проект'
+            })
+
+            // Сетка карточек
+            .d-grid.d-grid--sm-2.d-grid--lg-3
+              +discount-tile({src: '...', title: 'Акция 1', description: '...'})
+              +discount-tile({src: '...', title: 'Акция 2', description: '...'})
+              +discount-tile({src: '...', title: 'Акция 3', description: '...'})
+
+
+      //- ══════════════════════════════════════════
+      //- AWARD-FLAG
+      //- ══════════════════════════════════════════
+      section#award-flag.uk2-section
+        h2 Award-flag
+        p.uk2-desc Флажок-награда для отображения призов и номинаций. Показывает иконку и подпись. Миксин: #[code +award-flag(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data.icon
+              td string
+              td HTML-строка с SVG-иконкой награды
+            tr
+              td: code data.info
+              td string
+              td Текст описания награды
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока
+
+        - var af1 = '<svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.49053 29.2854L1.78726e-06 19.0634L11.0063 1.9244e-06L27 9.23403L16.0048 28.2783L4.49053 29.2854Z" fill="#CAB66A"/><circle cx="8.48742" cy="22.2159" r="3.15245" fill="white"/></svg>'
+        - var af2 = '<svg width="31" height="32" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.6541 11.6541L15.6165 0L19.3459 11.6541H31L22.1429 18.6466L26.1053 31.2331L15.6165 23.5414L5.59399 31.2331L9.09023 19.812H11.6541V15.8496H7.69173V19.3459H4.42857V15.8496H7.69173V11.6541H11.6541Z" fill="#CAB66A"/></svg>'
+
+        .uk2-preview
+          .uk2-row
+            +award-flag({icon: af1, info: 'Номинант конкурса «Рейтинг Рунета» 2023 (Разработка)'})
+            +award-flag({icon: af2, info: 'Победитель «Tagline Awards» 2022 (Лучший сайт-агентства)'})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/award-flag/index
+
+            // SVG-строка задаётся вручную или через переменную
+            - var awardIcon = '&lt;svg ...&gt;...&lt;/svg&gt;'
+
+            +award-flag({
+              icon: awardIcon,
+              info: 'Номинант конкурса «Рейтинг Рунета» 2023'
+            })
+
+            // Несколько наград рядом
+            .case-item__awards
+              +award-flag({icon: icon1, info: 'Награда 1'})
+              +award-flag({icon: icon2, info: 'Награда 2'})
+
+
+      //- ══════════════════════════════════════════
+      //- ACHIEVEMENTS-WIDE
+      //- ══════════════════════════════════════════
+      section#achievements-wide.uk2-section
+        h2 Achievements-wide
+        p.uk2-desc Широкий блок достижений клиента: логотип + текст + иллюстрация. Миксин: #[code +achievements-wide(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data.logo
+              td string
+              td Путь до логотипа клиента
+            tr
+              td: code data.title
+              td string
+              td Заголовок с результатом
+            tr
+              td: code data.description
+              td string
+              td Текст описания
+            tr
+              td: code data.image
+              td string
+              td Путь до иллюстрации-результата (график и т.п.)
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока
+            tr
+              td style #[code --color]
+              td CSS-переменная
+              td Акцентный цвет блока через атрибут #[code style]
+
+        .uk2-preview
+          +achievements-wide({
+            logo: 'assets/bitrix.png',
+            title: '+325% трафика за 8 месяцев',
+            description: 'Комплексное SEO-продвижение интернет-магазина строительных материалов. Рост органического трафика с нуля до топовых позиций.',
+            image: 'blocks/case-full/images/psb-graph.png'
+          })(style='--color: #F2CF7F')
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/achievements-wide/index
+
+            // Базовое использование
+            +achievements-wide({
+              logo: 'images/client-logo.png',
+              title: '+325% трафика за 8 месяцев',
+              description: 'Текст описания результата...',
+              image: 'images/result-graph.png'
+            })(style='--color: #F2CF7F')
+
+            // Акцентный цвет меняется через CSS-переменную
+            +achievements-wide({...})(style='--color: #cc0000')
+
+
+      //- ══════════════════════════════════════════
+      //- CASE-SMALL
+      //- ══════════════════════════════════════════
+      section#case-small.uk2-section
+        h2 Case-small
+        p.uk2-desc Компактная карточка кейса: изображение, заголовок, URL, дата, описание. Миксин: #[code +case-small(data, props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code data.title
+              td string
+              td Название кейса (HTML)
+            tr
+              td: code data.image
+              td string
+              td Путь до изображения. Без него — SVG-заглушка
+            tr
+              td: code data.url
+              td string
+              td URL сайта клиента
+            tr
+              td: code data.time
+              td string
+              td Время/период работы (передаётся в #[code +timing])
+            tr
+              td: code data.description
+              td string
+              td Краткое описание кейса (HTML)
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока
+
+        .uk2-preview
+          .d-grid.d-grid--sm-2
+            +case-small({
+              title: 'Продвижение магазина стройматериалов',
+              url: 'example.ru',
+              time: '8 месяцев',
+              description: 'SEO-оптимизация и контекстная реклама для регионального интернет-магазина.'
+            })
+            +case-small({
+              title: 'Разработка корпоративного сайта',
+              url: 'company.ru',
+              time: '3 месяца',
+              description: 'Полный цикл разработки на 1С-Битрикс с индивидуальным дизайном.'
+            })
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/case-small/index
+
+            // Без изображения (SVG-заглушка)
+            +case-small({
+              title: 'Название кейса',
+              url: 'site.ru',
+              time: '6 месяцев',
+              description: 'Краткое описание работы.'
+            })
+
+            // С изображением
+            +case-small({
+              title: 'Название кейса',
+              image: 'images/case-preview.jpg',
+              url: 'site.ru',
+              time: '3 месяца',
+              description: 'Описание...'
+            })
+
+            // С модификатором
+            +case-small({...}, {mods: ['featured']})
+
+
+      //- ══════════════════════════════════════════
+      //- FIELD-CHECKBOX
+      //- ══════════════════════════════════════════
+      section#field-checkbox.uk2-section
+        h2 Field-checkbox / Radio
+        p.uk2-desc Кастомный чекбокс или радиокнопка. Режим задаётся параметром #[code multiple]. Миксин: #[code +field-checkbox(props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code props.title
+              td string
+              td Текст подписи
+            tr
+              td: code props.multiple
+              td bool
+              td #[code true] = checkbox, #[code false] / не задан = radio
+            tr
+              td: code props.val
+              td string
+              td Значение атрибута #[code value]
+            tr
+              td: code props.helpText
+              td string
+              td Пояснение под полем
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы: #[code primary]
+            tr
+              td: code props.attrs
+              td object
+              td Атрибуты для #[code input]: #[code name], #[code id], #[code disabled], #[code checked]
+
+        .uk2-preview
+          p.-fw-sb Чекбоксы:
+          .uk2-row
+            +field-checkbox({title: 'Базовый', multiple: true})
+            +field-checkbox({title: 'Primary', multiple: true, mods: ['primary']})
+            +field-checkbox({title: 'Отключён', multiple: true, attrs: {disabled: true}})
+          p.-fw-sb.uk2-gap Радиокнопки:
+          .uk2-row
+            +field-checkbox({title: 'Вариант 1', multiple: false, attrs: {name: 'demo'}})
+            +field-checkbox({title: 'Вариант 2', multiple: false, attrs: {name: 'demo'}})
+            +field-checkbox({title: 'Вариант 3', multiple: false, mods: ['primary'], attrs: {name: 'demo'}})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/field-checkbox/index
+
+            // Чекбокс (multiple: true)
+            +field-checkbox({
+              title: 'Принять условия',
+              multiple: true,
+              mods: ['primary'],
+              attrs: { name: 'accept' }
+            })
+
+            // Группа радиокнопок (одинаковый name)
+            +field-checkbox({title: 'Вариант 1', val: '1', attrs: {name: 'option'}})
+            +field-checkbox({title: 'Вариант 2', val: '2', attrs: {name: 'option'}})
+            +field-checkbox({title: 'Вариант 3', val: '3', attrs: {name: 'option'}})
+
+            // С пояснением
+            +field-checkbox({
+              title: 'Подписаться на рассылку',
+              multiple: true,
+              helpText: 'Не более 1 письма в неделю'
+            })
+
+            // Отключённый
+            +field-checkbox({
+              title: 'Недоступен',
+              multiple: true,
+              attrs: { disabled: true }
+            })
+
+
+      //- ══════════════════════════════════════════
+      //- FIELD-RANGE
+      //- ══════════════════════════════════════════
+      section#field-range.uk2-section
+        h2 Field-range
+        p.uk2-desc Слайдер диапазона на базе noUiSlider. Инициализируется JS-классом #[code FieldRange]. Миксин: #[code +field-range(props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр / Атрибут
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока
+            tr
+              td: code data-min
+              td number
+              td Минимальное значение (по умолчанию #[code 0])
+            tr
+              td: code data-max
+              td number
+              td Максимальное значение (по умолчанию #[code 1000000])
+            tr
+              td: code data-from
+              td number
+              td Начальное значение левого ползунка
+            tr
+              td: code data-to
+              td number
+              td Начальное значение правого ползунка
+            tr
+              td: code data-step
+              td number
+              td Шаг слайдера
+
+        .uk2-preview
+          +field-range()(data-min='0' data-max='500000' data-from='50000' data-to='300000' data-step='10000')
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/field-range/index
+            // JS инициализируется автоматически через FieldRange.js
+
+            // Базовый слайдер
+            +field-range()(data-min='0' data-max='100' data-from='20' data-to='80')
+
+            // С шагом и широким диапазоном
+            +field-range()(
+              data-min='0'
+              data-max='1000000'
+              data-from='100000'
+              data-to='500000'
+              data-step='50000'
+            )
+
+            // С модификатором
+            +field-range({mods: ['compact']})(
+              data-min='0'
+              data-max='100'
+              data-from='30'
+              data-to='70'
+            )
+
+
+      //- ══════════════════════════════════════════
+      //- FIELD-FILE
+      //- ══════════════════════════════════════════
+      section#field-file.uk2-section
+        h2 Field-file
+        p.uk2-desc Кастомное поле загрузки файлов. Управляется JS-классом #[code FieldFile]. Миксин: #[code +field-file(props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code props.title
+              td string
+              td Подпись над полем
+            tr
+              td: code props.helpText
+              td string
+              td Пояснение под полем
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы: #[code small]
+            tr
+              td: code props.text.selectText
+              td string
+              td Текст кнопки выбора (по умолч. «Выберите файл(ы)»)
+            tr
+              td: code props.text.nothingText
+              td string
+              td Текст когда ничего не выбрано
+            tr
+              td: code props.text.flesSelectedText
+              td string
+              td Шаблон при множественном выборе. Счётчик: #[code {count}]
+            tr
+              td: code props.attrs
+              td object
+              td Атрибуты для #[code input]: #[code multiple], #[code accept], #[code name]
+
+        .uk2-preview
+          .uk2-row
+            +field-file({title: 'Прикрепите файл'})
+            +field-file({mods: ['small'], text: {selectText: 'Загрузить'}, attrs: {multiple: true}})
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/field-file/index
+            // JS инициализируется автоматически через FieldFile.js
+
+            // Стандартный
+            +field-file({
+              title: 'Прикрепите файл'
+            })
+
+            // Компактный, множественный выбор
+            +field-file({
+              mods: ['small'],
+              text: {
+                selectText: 'Загрузить файл'
+              },
+              attrs: {
+                multiple: true,
+                accept: '.pdf,.doc,.docx'
+              }
+            })
+
+            // С полным набором текстов
+            +field-file({
+              title: 'Техническое задание',
+              helpText: 'PDF, DOC — не более 10 МБ',
+              text: {
+                selectText: 'Выбрать ТЗ',
+                nothingText: 'Файл не выбран',
+                flesSelectedText: 'Файлов выбрано: '
+              },
+              attrs: {
+                name: 'brief',
+                multiple: true
+              }
+            })
+
+
+      //- ══════════════════════════════════════════
+      //- MULTISELECT
+      //- ══════════════════════════════════════════
+      section#multiselect.uk2-section
+        h2 Multiselect
+        p.uk2-desc Выпадающий список с мультивыбором (checkbox) или одиночным выбором (radio). Управляется #[code MultiSelectCheckbox.js]. Миксин: #[code +multiselect(props)].
+
+        table.uk2-params
+          thead
+            tr
+              th Параметр / Атрибут
+              th Тип
+              th Описание
+          tbody
+            tr
+              td: code props.mods
+              td string[]
+              td Модификаторы блока. #[code hide-input1] — скрывает input для фильтров
+            tr
+              td: code props.type
+              td string
+              td Тип элементов: #[code 'checkbox'] (по умолчанию) или #[code 'radio']
+            tr
+              td: code data-ms-placeholder
+              td string (attr)
+              td Текст кнопки когда ничего не выбрано
+            tr
+              td: code data-ms-search-placeholder
+              td string (attr)
+              td Плейсхолдер поля поиска внутри дропдауна
+            tr
+              td: code data-ms-type
+              td string (attr)
+              td Тип через data-атрибут: #[code 'radio'] или #[code 'checkbox']
+            tr
+              td: code data-ms-all-text
+              td string (attr)
+              td Текст пункта «Выбрать всё»
+
+        .uk2-preview
+          .d-grid.d-grid--sm-2
+            div
+              p.-fw-sb Checkbox-режим:
+              +multiselect({})('data-ms-placeholder="Все услуги" data-ms-search-placeholder="Поиск"')
+            div
+              p.-fw-sb Radio-режим:
+              +multiselect({type: 'radio'})('data-ms-placeholder="Все тематики" data-ms-type="radio" data-ms-all-text="Все тематики"')
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            // В mixins.pug подключено: include ../blocks/multiselect/index
+            // JS инициализируется через MultiSelectCheckbox.js
+
+            // Checkbox-режим (по умолчанию)
+            +multiselect({})(
+              data-ms-placeholder='Все услуги'
+              data-ms-search-placeholder='Поиск по услугам'
+            )
+
+            // Radio-режим
+            +multiselect({type: 'radio'})(
+              data-ms-placeholder='Все тематики'
+              data-ms-type='radio'
+              data-ms-all-text='Все тематики'
+            )
+
+            // Скрытый input (для страниц-фильтров)
+            +multiselect({mods: ['hide-input1'], type: 'radio'})(
+              data-ms-placeholder='Тематика'
+              data-ms-type='radio'
+            )

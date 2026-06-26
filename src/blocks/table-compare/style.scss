@@ -134,6 +134,17 @@
 		}
 	}
 
+	&__heading-row {
+		& th,
+		& td {
+			background: var(--color-gray--lighten) !important;
+		}
+
+		& th {
+			font-size: var(--font-size--large);
+		}
+	}
+
 	&__title {
 		font-weight: 500;
 		font-size: var(--font-size--huge);

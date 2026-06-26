@@ -156,6 +156,23 @@
     }
   }
 
+  &--max {
+    background: linear-gradient(90deg, #3DC1FD 0%, #2E53FB 50%, #9D60DD 100%);
+    color: var(--color-white);
+
+    &.-is-active,
+    &:hover,
+    &:focus {
+      color: var(--color-white);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      color: var(--color-white);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    }
+  }
+
   &--not-fill {
     background-color: transparent;
     border-color: var(--color-gray--dark);
