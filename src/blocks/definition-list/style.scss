@@ -1,0 +1,58 @@
+.definition-list {
+
+  $block-name: &; // #{$block-name}__element
+
+  --definition-list-term-width: 370px;
+  --definition-list-font-size: 14px;
+
+  display: grid;
+  margin: 0;
+  padding: 0;
+
+  &__term {
+    color: var(--color-gray--dark);
+    font-size: var(--definition-list-font-size);
+    margin: 0;
+  }
+
+  &__value {
+    color: var(--text-color);
+    font-size: var(--definition-list-font-size);
+    margin: 0;
+  }
+
+  @media (max-width: $screen-md - 1) {
+    gap: var(--offset--xxs);
+
+    &__value + #{$block-name}__term {
+      margin-top: var(--offset--md);
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    align-items: baseline;
+    column-gap: var(--offset--lg);
+    grid-template-columns: minmax(0, var(--definition-list-term-width)) 1fr;
+    row-gap: 7px;
+
+    &__term {
+      // точечный лидер тянется по низу строки до колонки со значением;
+      // строку поджимаем, иначе черта уходит вниз на всю величину интерлиньяжа
+      align-items: flex-end;
+      display: flex;
+      gap: 0;
+      line-height: 1;
+
+      &::after {
+        border-bottom: 1.5px dotted var(--color-gray--light);
+        content: '';
+        flex: 1 1 auto;
+      }
+    }
+
+    // вариант без точечного лидера — просто две колонки
+    &--plain #{$block-name}__term::after {
+      content: none;
+    }
+  }
+}

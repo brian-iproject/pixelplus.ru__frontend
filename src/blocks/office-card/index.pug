@@ -1,0 +1,35 @@
+.office-card(itemscope, itemtype="https://schema.org/LocalBusiness")
+  meta(itemprop="name", content="Пиксель Плюс — Основной офис")
+  meta(itemprop="telephone", content="+74959895311")
+  meta(itemprop="email", content="manager@pixelplus.ru")
+  meta(itemprop="openingHours", content="Mo-Fr 10:00-19:00")
+  link(itemprop="hasMap", href="https://yandex.ru/maps/?text=Москва, улица Пречистенка, 40/2с1")
+  div(itemprop="geo", itemscope, itemtype="https://schema.org/GeoCoordinates")
+    meta(itemprop="latitude", content="55.735678")
+    meta(itemprop="longitude", content="37.591234")
+  .office-card__photo
+    img(src="blocks/office-card/images/office-moscow.png", alt="Офис «Пиксель Плюс» в Москве", loading="lazy", width="100", height="170")
+  .office-card__body
+    .office-card__group
+      .office-card__subtitle
+        | <svg class="office-card__icon svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-location-pin"></use></svg>
+        span Основной офис
+      .office-card__text(itemprop="address", itemscope, itemtype="https://schema.org/PostalAddress")
+        meta(itemprop="addressCountry", content="RU")
+        span(itemprop="postalCode") 119034
+        |,#{' '}
+        span(itemprop="addressLocality") Москва
+        |,#{' '}
+        span(itemprop="streetAddress") улица Пречистенка, 40/2с1, подъезд 3
+        |  (метро Парк Культуры)
+    .office-card__group
+      .office-card__subtitle
+        | <svg class="office-card__icon svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-clock"></use></svg>
+        span Режим работы:
+      .office-card__text
+        | пн&nbsp;-&nbsp;пт: — с 10:00 до 19:00<br>сб&nbsp;-&nbsp;вс: — выходной
+    .office-card__group
+      .office-card__note
+        | <svg class="office-card__note-icon svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg>
+        span О вашем визите уведомляйте заранее, для прохода на территорию необходимо иметь при себе документы.
+    a.office-card__detail(href="/contact/zelenograd/") Подробнее об офисе

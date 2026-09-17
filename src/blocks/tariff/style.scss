@@ -29,11 +29,68 @@
     }
   }
 
+  // Лента «Выбор 70% клиентов»: сидит на верхней границе __body, то есть на
+  // стыке с шапкой, независимо от её высоты. Хвосты по краям — псевдоэлементы,
+  // правый зеркалит левый.
+  &__badge {
+    $badge-height: 30px;
+    $badge-tail: 15px;
+
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    // absolute-элемент ужимается по доступному месту и рвёт текст на строки,
+    // поэтому ширина — по содержимому, но не шире карточки с учётом хвостов.
+    width: max-content;
+    max-width: calc(100% - #{$badge-tail} * 2);
+    height: $badge-height;
+    padding: 0 22px;
+
+    color: var(--color-white);
+    font-weight: 500;
+    font-size: var(--font-size--medium);
+    text-transform: uppercase;
+
+    background-color: var(--color-black);
+    transform: translate(-50%, -50%);
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 0;
+
+      width: $badge-tail;
+      height: $badge-height;
+
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg width='15' height='30' viewBox='0 0 15 30' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0.51178 1.67092C-0.0699117 1.02799 0.386299 0 1.25331 0H15V30H1.25331C0.3863 30 -0.0699135 28.972 0.511779 28.3291L11.9644 15.6709C12.309 15.29 12.309 14.71 11.9644 14.3291L0.51178 1.67092Z' fill='black'/></svg>");
+      background-repeat: no-repeat;
+      background-position: left center;
+
+      content: '';
+    }
+
+    &::before {
+      left: calc(-1 * #{$badge-tail} + 2px);
+    }
+
+    &::after {
+      right: calc(-1 * #{$badge-tail} + 2px);
+
+      transform: scaleX(-1);
+    }
+  }
+
   &__body {
-    padding: var(--offset--lg);
+    position: relative; // якорь для __badge
+
     display: flex;
     flex-direction: column;
     gap: var(--offset--sm);
+    padding: var(--offset--lg);
   }
 
   &__intro {
@@ -44,6 +101,176 @@
     @extend h2;
     line-height: var(--line-height--md);
     margin: 0 !important;
+  }
+
+  &__price-old {
+    display: block;
+
+    color: var(--color-gray--dark);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: var(--line-height--md);
+    text-decoration: line-through;
+
+    // Строка пустая, когда скидки нет. Неразрывный пробел держит высоту,
+    // иначе цена подпрыгивает при переключении способа оплаты. Зачёркивание
+    // при этом снимаем — иначе от пробела остаётся висеть чёрточка.
+    &.-is-empty {
+      text-decoration: none;
+
+      &::before {
+        content: '\00a0';
+      }
+    }
+  }
+
+  &__more {
+    margin-top: var(--offset--xs);
+    margin-bottom: 0;
+
+    text-align: center;
+  }
+
+  // Параметры тарифа: две колонки с разделителем, на мобильном — друг под другом.
+  &__params {
+    display: flex;
+    align-items: stretch;
+    margin-top: var(--offset--md);
+
+    &-item {
+      flex: 1 1 50%;
+      padding: 0 var(--offset--xxs);
+
+      text-align: center;
+
+      & + & {
+        border-left: 1px solid var(--color-gray--light);
+      }
+    }
+
+    &-label {
+      color: var(--color-gray--dark);
+      font-size: var(--font-size--medium);
+      line-height: var(--line-height--md);
+    }
+
+    &-value {
+      margin-top: var(--offset--xxs);
+
+      font-weight: 700;
+      font-size: 16px;
+      line-height: var(--line-height--md);
+    }
+
+    @media (max-width: $screen-md - 1) {
+      flex-direction: column;
+
+      &-item {
+        flex: 1 1 auto;
+        padding: var(--offset--sm) 0;
+
+        & + & {
+          position: relative;
+
+          padding-top: calc(var(--offset--sm) + 1px);
+
+          border-left: none;
+
+          &::before {
+            position: absolute;
+            top: 0;
+            left: 50%;
+
+            width: 60%;
+            height: 1px;
+
+            background: var(--color-gray--light);
+            transform: translateX(-50%);
+
+            content: '';
+          }
+        }
+      }
+    }
+  }
+
+  // Переключатель способа оплаты: две половины внутри общей «пилюли».
+  &__paymode {
+    position: relative;
+
+    display: flex;
+    margin: var(--typo-margin-vertical) 0;
+    padding: 4px;
+
+    background: var(--color-white);
+    border: 1px solid var(--color-gray--lighten);
+    border-radius: 1.8em;
+
+    // Подложка выбранного пункта: едет между половинами. Размеры ставит JS,
+    // значения по умолчанию совпадают с первым пунктом — до инициализации и без JS.
+    &::before {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      z-index: 0;
+
+      width: var(--paymode-width, calc(50% - 4px));
+      height: calc(100% - 8px);
+
+      background: var(--color-primary);
+      border-radius: 1.215em;
+      box-shadow: 0 3px 10px rgba(157, 3, 3, .1),
+                  0 7px 25px rgba(129, 0, 0, .25);
+      transform: translateX(var(--paymode-x, 0));
+
+      content: '';
+    }
+
+    &.-is-ready::before {
+      transition: transform .3s ease, width .3s ease;
+    }
+
+    &-item {
+      position: relative;
+      z-index: 1; // над подложкой
+
+      display: flex;
+      flex: 1 1 50%;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.43em;
+      padding: .625em .862em;
+
+      color: var(--color-gray--dark);
+      font-size: var(--font-size--medium);
+      line-height: 1;
+      white-space: nowrap;
+      text-align: center;
+
+      border: 1px solid transparent;
+      border-radius: 1.215em;
+      cursor: pointer;
+
+      transition: var(--transition-time);
+
+      &:hover {
+        color: var(--color-primary);
+      }
+
+      // Заливку и тень выбранного рисует подложка ::before.
+      &.-is-selected,
+      &.-is-selected:hover {
+        color: var(--color-white);
+      }
+
+      // Пока подложка не спозиционирована (нет JS), заливку держит сам пункт.
+      @at-root #{$block-name}__paymode:not(.-is-ready) & {
+        &.-is-selected {
+          background: var(--color-primary);
+          border-color: var(--color-primary);
+        }
+      }
+    }
   }
 
   &__order {
@@ -70,11 +297,13 @@
     list-style: none;
     position: relative;
 
+    // Слои снизу вверх: полоса → неактивные деления → бегунок → активное деление.
     &::after {
       content: '';
       background: var(--color-gray--lighter);
       border-radius: 15px;
       position: absolute;
+      z-index: 0;
       height: 12px;
       width: 100%;
       left: 0;
@@ -82,13 +311,46 @@
       top: 17px;
     }
 
+    // Бегунок: едет к активному делению. Координату ставит JS в --track-thumb-x,
+    // до этого он скрыт, иначе на загрузке прыгал бы от левого края.
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+
+      width: 25px;
+      height: 25px;
+
+      background: var(--color-primary);
+      border-radius: 50%;
+      box-shadow: 0 3px 10px rgba(157, 3, 3, .1),
+                  0 7px 25px rgba(129, 0, 0, .45);
+      opacity: 0;
+      transform: translate(var(--track-thumb-x, 0), -50%) scale(1.4);
+
+      content: '';
+    }
+
+    &.-is-ready::before {
+      z-index: 2;
+      opacity: 1;
+
+      transition: transform .3s ease;
+    }
+
     &-item {
-      flex: 0 0 30%;
+      flex: 0 0 20%;
       height: 25px;
       cursor: pointer;
       position: relative;
-      z-index: 1;
+      z-index: 1; // над полосой трека
       transition: height 0.25s ease 0s;
+
+      // Над бегунком — только активный, иначе соседние кружки подрезают
+      // его увеличенные края.
+      &.-is-active {
+        z-index: 3;
+      }
 
       &:first-child {
         text-align: left;
@@ -115,17 +377,27 @@
       background: var(--color-gray--lighter);
     }
 
+    // У активного кружок и тень рисует бегунок, поэтому сам номер прозрачный.
+    // Пока бегунок не спозиционирован (нет JS), заливку возвращаем номеру.
     &-item.-is-active &-number {
-      transform: scale(1.4);
+      background: transparent;
       font-weight: bold;
-      box-shadow: 0 3px 10px rgba(157, 3, 3, .1),
-                  0 7px 25px rgba(129, 0, 0, .45);
+      transform: scale(1.4);
     }
 
     &-item.-is-active &-number,
     &-number:hover {
-      background: var(--color-primary);
       color: var(--color-white);
+    }
+
+    &-number:hover {
+      background: var(--color-primary);
+    }
+
+    &:not(.-is-ready) &-item.-is-active &-number {
+      background: var(--color-primary);
+      box-shadow: 0 3px 10px rgba(157, 3, 3, .1),
+                  0 7px 25px rgba(129, 0, 0, .45);
     }
   }
 

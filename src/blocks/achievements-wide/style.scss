@@ -33,7 +33,7 @@
   &__image {
     margin-top: calc((var(--offset--md) + var(--offset--xl)) * -1);
     order: -1;
-    max-width: 163px;
+    width: 158px;
 
     & img {
       object-fit: cover;
@@ -54,7 +54,8 @@
     &__image {
       position: absolute;
       top: calc(var(--offset--md) * -1);
-      bottom: calc(var(--offset--md) * -1);
+      // при увеличенной высоте сильно искажалось / обрезалось
+      //bottom: calc(var(--offset--md) * -1);
       right: var(--offset--xxl);
       margin-top: 0;
 

@@ -1,0 +1,47 @@
+extends ../layout.pug
+
+block meta
+    title Контакты
+    meta(name='description', content='')
+
+block content
+    -
+        const requisitesPromo = [
+            { term: 'ОГРН', value: '1107746955524' },
+            { term: 'ИНН / КПП', value: '7735573603 / 773501001' },
+            { term: 'Полное наименование', value: 'Общество с ограниченной ответственностью «Пиксель Промо»' },
+            { term: 'Сокращенное наименование', value: 'ООО «Пиксель Промо»' },
+            { term: 'ОКВЭД', value: 'SEO, контекстная реклама, маркетплейсы' },
+            { term: 'Юр. адрес', value: '124498, Москва г, Зеленоград г, 4922-й проезд, дом № 4, строение 5' },
+            { term: 'Почтовый адрес', value: '124498, Москва г, Зеленоград г, 4922-й проезд, дом № 4, строение 5' },
+            { term: 'Фактический адрес', value: 'Москва, улица Пречистенка, 40/2с1, подъезд 3 (метро Парк Культуры)' }
+        ];
+        const requisitesPlus = [
+            { term: 'ОГРН', value: '1107746371039' },
+            { term: 'ИНН / КПП', value: '7715809321 / 773501001' },
+            { term: 'Полное наименование', value: 'Общество с ограниченной ответственностью «Пиксель Плюс»' },
+            { term: 'Сокращенное наименование', value: 'ООО «Пиксель Плюс»' },
+            { term: 'ОКВЭД', value: 'Разработка, поддержка и развитие сайтов' },
+            { term: 'Юр. адрес', value: '124498, Москва г, Зеленоград г, 4922-й проезд, дом № 4, строение 5' },
+            { term: 'Почтовый адрес', value: '124498, Москва г, Зеленоград г, 4922-й проезд, дом № 4, строение 5' },
+            { term: 'Фактический адрес', value: 'Москва, Зеленоград, проезд 4922-й, дом 4, строение 5 (Технопарк «ЭЛМА»)' }
+        ];
+
+    include ../../blocks/office-map/index
+
+    .wide-block
+        .page-container
+            .h1.-tt-n Реквизиты
+            .block-incut.block-incut--gray-lighter.block-incut--border-radius.block-incut--large-padding
+                .tabs(data-filter="requisites")
+                    button.tabs__item.-is-active(type="button", data-filter-source="requisites-0") Пиксель Промо
+                    button.tabs__item(type="button", data-filter-source="requisites-1") Пиксель Плюс
+                div.container.container--lg(data-filter-block="requisites")
+                    div(data-filter-target="requisites-0")
+                        +definition-list(requisitesPromo)
+                    .-is-hidden(data-filter-target="requisites-1")
+                        +definition-list(requisitesPlus)
+
+    .wide-block
+        .page-container
+            include ../../blocks/contact-form/index

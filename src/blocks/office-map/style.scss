@@ -1,0 +1,406 @@
+.office-map {
+
+  $block-name: &; // #{$block-name}__element
+
+  background-color: var(--color-gray--darker);
+  color: var(--color-white);
+  position: relative;
+
+  &__canvas {
+    background-color: var(--color-gray--darker);
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    // Тёмная подложка: инвертируем только тайлы, метки и балуны не трогаем.
+    // Фильтр вешаем на сами тайлы: слои-обёртки нулевого размера, на них фильтр не отрисовывается
+    [class*='-ground-pane'] canvas,
+    [class*='-ground-pane'] img {
+      filter: invert(1) hue-rotate(180deg) brightness(.9) contrast(.9) saturate(.8);
+    }
+
+    [class*='-balloon-pane'] {
+      z-index: 3;
+    }
+
+    [class*='-copyrights-pane'],
+    [class*='-controls-pane'] {
+      filter: none;
+    }
+  }
+
+  &__overlay {
+    background-image: linear-gradient(180deg,
+      rgba(32, 32, 32, .96) 0%,
+      rgba(32, 32, 32, .9) 55%,
+      rgba(32, 32, 32, .6) 85%,
+      rgba(32, 32, 32, 0) 100%);
+    padding-bottom: 3em;
+    padding-top: 2.5em;
+    pointer-events: none;
+    position: relative;
+    z-index: 2;
+
+    a,
+    button {
+      pointer-events: auto;
+    }
+
+    .breadcrumb {
+      --breadcrumb-color: var(--color-gray--light);
+      --arrow-filter: brightness(999%);
+    }
+  }
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--offset--lg) var(--offset--xxl);
+    margin-top: var(--offset--lg);
+  }
+
+  &__title {
+    color: var(--color-white);
+    flex: 0 1 auto;
+    margin: 0;
+    max-width: 100%;
+
+    @media (min-width: $screen-md) {
+      min-width: 250px;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    gap: var(--offset--lg) var(--offset--xxl);
+    justify-content: flex-start;
+    padding-top: .35em;
+  }
+
+  &__contact {
+    flex: 0 0 auto;
+
+    &--messengers {
+      margin-left: auto;
+    }
+  }
+
+  &__label {
+    color: var(--color-gray--light);
+    font-size: var(--font-size--small);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  &__phone {
+    color: var(--color-white);
+    display: inline-block;
+    font-size: var(--font-size-h3);
+    font-weight: 500;
+    line-height: var(--line-height--sm);
+    margin-top: var(--offset--xs);
+    white-space: nowrap;
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary--light);
+    }
+  }
+
+  &__mail {
+    align-items: center;
+    color: var(--color-white);
+    display: flex;
+    font-size: var(--font-size);
+    gap: var(--offset--sm);
+    margin-top: var(--offset--sm);
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary--light);
+    }
+  }
+
+  &__mail-icon {
+    fill: currentColor;
+    height: 14px;
+    width: 14px;
+  }
+
+  &__messengers {
+    display: flex;
+    gap: var(--offset--md);
+    list-style: none;
+    margin: var(--offset--sm) 0 0;
+    padding: 0;
+  }
+
+  &__messenger {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    transition: transform var(--transition-time);
+    width: 50px;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.08);
+    }
+
+    .svg-icon {
+      fill: var(--color-white);
+      height: 24px;
+      width: 24px;
+    }
+
+    &--telegram {
+      background-color: rgb(42, 171, 238);
+    }
+
+    &--max {
+      background-color: rgb(110, 60, 232);
+    }
+  }
+
+  &__controls {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--offset--lg);
+    justify-content: space-between;
+    margin-top: var(--offset--xxl);
+  }
+
+  &__tabs {
+    flex: 1 1 auto;
+    max-width: 640px;
+  }
+
+  &__action {
+    flex: 0 0 auto;
+  }
+
+  &__routes {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius--md);
+    box-shadow: var(--shadow--light);
+    display: flex;
+    gap: var(--offset--lg);
+    padding: var(--offset);
+    width: max-content;
+  }
+
+  &__qr {
+    flex: 0 0 60px;
+
+    img {
+      display: block;
+      height: 60px;
+      width: 60px;
+    }
+  }
+
+  &__services {
+    display: flex;
+    gap: var(--offset--md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__service {
+    color: var(--text-color);
+    display: block;
+    font-size: var(--font-size--small);
+    line-height: var(--line-height--sm);
+    text-align: center;
+    text-decoration: none;
+    width: 72px;
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    img {
+      display: block;
+      height: 38px;
+      margin: 0 auto var(--offset--xs);
+      width: 38px;
+    }
+  }
+
+  &__data {
+    display: none;
+  }
+
+  &__card {
+    display: none;
+  }
+
+  @media (max-width: $screen-lg - 1) {
+    // ниже карты идёт обычный контент, поэтому тёмный фон отдаём только шапке,
+    // иначе он просвечивает по краям карточки и под ней
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+
+    &__canvas {
+      height: 420px;
+      position: relative;
+    }
+
+    &__overlay {
+      background-color: var(--color-gray--darker);
+      background-image: none;
+      order: -1;
+      padding-bottom: var(--offset--xl);
+    }
+
+    &__card {
+      display: block;
+      padding: var(--offset--md) var(--grid-gutter-x) 0;
+
+      .office-card {
+        background-color: var(--color-gray--lighter);
+        box-shadow: none;
+        max-width: none;
+        padding: var(--offset--md);
+      }
+    }
+
+    &__routes {
+      border-radius: 0;
+      box-shadow: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: var(--offset--lg) var(--grid-gutter-x);
+      row-gap: var(--offset--md);
+      width: auto;
+    }
+
+    &__qr {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    // на узких экранах пять сервисов в один ряд не встают — переносим
+    &__services {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media (max-width: $screen-sm - 1) {
+      // «4 + 1» смотрится рвано, поэтому на телефонах раскладываем сетку 3 + 2
+      &__services {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+      }
+
+      &__service {
+        width: auto;
+      }
+    }
+
+    &__contact--messengers {
+      margin-left: 0;
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    // нижняя граница не случайная: шапка (≈430) + отступ метки (112) + карточка офиса (≈300) + запас.
+    // Если в карточку добавятся строки, минимум придётся поднять — иначе балун наползёт на шапку
+    height: clamp(900px, 56.4vw, 1083px);
+    overflow: hidden;
+
+    &__routes {
+      bottom: 1.25em;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    &__overlay {
+      padding-bottom: 1.5em;
+    }
+  }
+
+  @media (min-width: $screen-xl) {
+
+    &__routes {
+      left: calc(50% - 570px);
+      transform: none;
+    }
+  }
+}
+
+// Балун Яндекс.Карт с карточкой офиса
+.office-map-balloon {
+
+  &__layout {
+    left: 0;
+    max-width: 90vw;
+    position: absolute;
+    top: 0;
+    width: 460px;
+
+    .office-card {
+      max-width: none;
+      width: 100%;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 0;
+    padding: var(--offset--xs);
+    position: absolute;
+    right: var(--offset--sm);
+    top: var(--offset--sm);
+    z-index: 2;
+
+    &::before,
+    &::after {
+      background-color: var(--color-primary);
+      content: '';
+      display: block;
+      height: 2px;
+      position: absolute;
+      right: 2px;
+      top: 8px;
+      width: 14px;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__tail {
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 14px solid var(--color-white);
+    bottom: -13px;
+    height: 0;
+    left: 40px;
+    position: absolute;
+    width: 0;
+  }
+}

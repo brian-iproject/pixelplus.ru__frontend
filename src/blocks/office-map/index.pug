@@ -1,0 +1,67 @@
+.office-map(data-office-map)
+  .office-map__canvas(data-office-map-canvas, data-pin="blocks/office-map/images/pin.svg")
+  .office-map__overlay
+    .page-container
+      ul.breadcrumb
+        li.breadcrumb__item: a(href="/") Главная
+        li.breadcrumb__item Контакты
+      .office-map__head
+        h1.office-map__title.-tt-n Контакты агентства
+        .office-map__contacts
+          .office-map__contact
+            .office-map__label Бесплатно по РФ:
+            a.office-map__phone(href="tel:88007007965") 8 800 700-79-65
+            a.office-map__mail(href="mailto:manager@pixelplus.ru")
+              | <svg class="office-map__mail-icon svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#envelope"></use></svg>
+              span manager@pixelplus.ru
+          .office-map__contact
+            .office-map__label Отдел продаж:
+            a.office-map__phone(href="tel:+74959895311") +7 495 989-53-11
+          .office-map__contact.office-map__contact--messengers
+            .office-map__label Напишите нам:
+            ul.office-map__messengers
+              li: a.office-map__messenger.office-map__messenger--telegram(href="https://t.me/gennadiipixelplus", target="_blank", rel="noopener nofollow", aria-label="Написать в Telegram")
+                | <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-telegram"></use></svg>
+              li: a.office-map__messenger.office-map__messenger--max(href="https://max.ru/u/f9LHodD0cOIyUeabOquddPpHUQC0kDyiudigA9BLf4RSmpJltobjf6fudqg", target="_blank", rel="noopener nofollow", aria-label="Написать в MAX")
+                | <svg class="svg-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-max"></use></svg>
+      .office-map__controls
+        .tabs.tabs--large.tabs--light.office-map__tabs(data-office-map-tabs)
+          button.tabs__item.-is-active(type="button", data-office="moscow") Москва
+          button.tabs__item(type="button", data-office="zelenograd") Зеленоград
+          button.tabs__item(type="button", data-office="spb") Санкт-Петербург
+        a.button.button--primary.office-map__action(href="#contact-form") Получить консультацию
+
+  .office-map__card(data-office-map-card)
+
+  .office-map__routes(data-office-map-routes)
+    .office-map__qr(data-office-map-qr-wrap)
+      img(src="blocks/office-map/images/qr-code.png", alt="QR-код с адресом офиса", width="60", height="60", data-office-map-qr)
+    ul.office-map__services
+      li: a.office-map__service(href="#", target="_blank", rel="noopener nofollow", data-route="yandex-maps")
+        img(src="blocks/office-map/images/yandex-maps.svg", alt="", width="38", height="38")
+        span Яндекс карты
+      li: a.office-map__service(href="#", target="_blank", rel="noopener nofollow", data-route="yandex-navigator")
+        img(src="blocks/office-map/images/yandex-navigator.svg", alt="", width="38", height="38")
+        span Яндекс Навигатор
+      li: a.office-map__service(href="#", target="_blank", rel="noopener nofollow", data-route="google-maps")
+        img(src="blocks/office-map/images/google-maps.svg", alt="", width="38", height="38")
+        span Google карты
+      li: a.office-map__service(href="#", target="_blank", rel="noopener nofollow", data-route="2gis")
+        img(src="blocks/office-map/images/2gis.svg", alt="", width="38", height="38")
+        span 2GIS
+      li: a.office-map__service(href="#", target="_blank", rel="noopener nofollow", data-route="taxi")
+        img(src="blocks/office-map/images/yandex-go.svg", alt="", width="38", height="38")
+        span Такси до офиса
+
+  .office-map__data(data-office-map-data)
+    .office-map__office(data-office="moscow",
+      data-anchors="moscow",
+      data-coords="55.735678,37.591234",
+      data-zoom="15",
+      data-qr="blocks/office-map/images/qr-code.png",
+      data-route-yandex-maps="https://yandex.ru/maps/?text=Москва, улица Пречистенка, 40/2с1",
+      data-route-yandex-navigator="yandexnavi://build_route_on_map?lat_to=55.735678&lon_to=37.591234",
+      data-route-google-maps="https://www.google.com/maps/dir/?api=1&destination=55.735678,37.591234",
+      data-route-2gis="https://2gis.ru/moscow/geo/55.735678,37.591234",
+      data-route-taxi="https://3.redirect.appmetrica.yandex.com/route?end-lat=55.735678&end-lon=37.591234&ref=pixelplus")
+      include ../office-card/index

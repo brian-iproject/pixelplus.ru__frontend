@@ -1,0 +1,98 @@
+.office-card {
+
+  $block-name: &; // #{$block-name}__element
+
+  background-color: var(--color-white);
+  border-radius: var(--border-radius--md);
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: var(--offset--md);
+  max-width: 460px;
+  padding: var(--offset--md);
+
+  &__photo {
+    flex: 0 0 100px;
+
+    img {
+      border-radius: var(--border-radius--sm);
+      display: block;
+      height: 100%;
+      max-height: 170px;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--offset--md);
+    min-width: 0;
+  }
+
+  &__subtitle {
+    align-items: center;
+    color: var(--text-color);
+    display: flex;
+    font-size: var(--font-size--large);
+    font-weight: 500;
+    gap: var(--offset--sm);
+    line-height: var(--line-height--md);
+  }
+
+  &__icon {
+    color: var(--color-primary);
+    fill: currentColor;
+    flex: 0 0 16px;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__text {
+    color: var(--color-gray--dark);
+    font-size: var(--font-size);
+    line-height: var(--line-height--md);
+    margin-top: var(--offset--sm);
+  }
+
+  // предупреждение о проходе — мельче основного текста, у каждого офиса своё
+  &__note {
+    align-items: start;
+    color: var(--color-gray--dark);
+    display: flex;
+    font-size: var(--font-size--small);
+    gap: var(--offset--sm);
+    line-height: var(--line-height--md);
+  }
+
+  &__note-icon {
+    color: var(--color-gray);
+    fill: currentColor;
+    flex: 0 0 16px;
+    height: 16px;
+    margin-top: .1em;
+    width: 16px;
+  }
+
+  &__detail {
+    align-self: start;
+    font-size: var(--font-size);
+    font-weight: 500;
+    text-decoration: none;
+
+    &::after {
+      content: ' →';
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  @media (max-width: $screen-sm - 1) {
+    &__photo {
+      display: none;
+    }
+  }
+}

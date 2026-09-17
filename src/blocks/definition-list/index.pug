@@ -1,0 +1,21 @@
+mixin definition-list(items, props)
+
+  //- Принимает:
+  //-   items: []           {array}  - список строк вида { term: '', value: '' }
+  //-   props {
+  //-     mods: ''          {array}  - модификаторы блока
+  //-   }
+
+  if typeof (props) === 'undefined'
+    - props = {};
+
+  - let allMods = '';
+  if typeof (props.mods) !== 'undefined' && props.mods
+    each mods, index in props.mods
+      - allMods += index ? ' ': '';
+      - allMods += 'definition-list--' + mods;
+
+  dl.definition-list(class = allMods)&attributes(attributes)
+    each item in items
+      dt.definition-list__term: span !{item.term}
+      dd.definition-list__value !{item.value}

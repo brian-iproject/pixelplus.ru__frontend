@@ -7,7 +7,10 @@
   --color-green:            rgb(0, 150, 40);    // #009628
   --color-green--light:     rgb(21, 165, 60);   // #15a53c
 
-  --color-blue--dark:       rgb(12, 17, 46);   // #0C112E
+  --color-blue--dark:       rgb(12, 17, 46);    // #0C112E
+  --color-blue--lighter:    rgb(235, 240, 249); // #ebf0f9
+
+  --color-orange:           rgb(239, 172, 77);  // #efac4d
 
   --color-white:            rgb(255, 255, 255); // #ffffff
   --color-gray--lighter:    rgb(247, 247, 248); // #f7f7f8
@@ -27,7 +30,7 @@
   --color-success:          rgb(92, 183, 92);
   --color-danger:           rgb(216, 84, 79);
   --color-danger--light:    rgba(216, 84, 79, .65);
-  --color-warning:          rgb(239, 172, 77);
+  --color-warning:          var(--color-orange);
 
   /* Семантические цвета */
   --text-color:             var(--color-gray--darker);

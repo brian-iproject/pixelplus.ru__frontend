@@ -30,6 +30,7 @@ import FieldRange from "./classes/FieldRange.js";
 import noUiSlider from 'nouislider/dist/nouislider.mjs';
 import wNumb from 'wnumb';
 import MultiSelectCheckbox from "./classes/MultiSelectCheckbox.js";
+import OfficeMap from "./classes/OfficeMap.js";
 
 window.pixelplus = {
     Quiz,
@@ -43,7 +44,48 @@ window.pixelplus = {
     FieldFile,
     MultiSelectCheckbox,
     Toggle,
-    VideoLoad
+    VideoLoad,
+    Splide
+};
+
+window.pixelplus.initPhoneInputs = function(root) {
+    root = root || document;
+    const inputsPhone = root.querySelectorAll("[type=tel]:not(.form__input)");
+    inputsPhone.forEach(input => {
+        intlTelInput(input, {
+            i18n: ru,
+            placeholderNumberType: 'MOBILE',
+            initialCountry: "auto",
+            onlyCountries: ['ru', 'by', 'kz', 'am', 'az', 'kg', 'md', 'tj', 'uz', 'ge', 'ua',
+                            'us', 'at', 'be', 'bg', 'gb', 'hu', 'de', 'gr', 'dk', 'ie', 'is',
+                            'es', 'it', 'lv', 'lt', 'nl', 'no', 'pl', 'pt', 'ro', 'rs', 'sk',
+                            'si', 'fi', 'fr', 'hr', 'me', 'cz', 'ch', 'se', 'ee', 'ae'],
+            nationalMode: false,
+            geoIpLookup: callback => {
+                fetch("https://ipapi.co/json")
+                    .then(res => res.json())
+                    .then(data => callback(data.country_code))
+                    .catch(() => callback("ru"));
+            },
+            loadUtilsOnInit: `https://cdn.jsdelivr.net/npm/intl-tel-input@${intlTelInput.version}/build/js/utils.js`
+        });
+    });
+};
+
+window.pixelplus.initChoices = function(root) {
+    root = root || document;
+    if (typeof Choices === 'undefined') return;
+    root.querySelectorAll('.field-select select').forEach(el => {
+        new Choices(el, {
+            allowHTML: true,
+            placeholder: true,
+            placeholderValue: 'Выберите...',
+            searchPlaceholderValue: 'Поиск...',
+            searchEnabled: !!el.dataset.search,
+            itemSelectText: '',
+            sorter: function() {}
+        });
+    });
 };
 
 const appnew = {
@@ -112,6 +154,7 @@ const appnew = {
         Tabs.init('.phones__regions ul', '.phones__regions-inner');
 
         CallToAction.init();
+        OfficeMap.init();
         SimpleDiagramGroup.init();
         Calculator.init();
 
@@ -148,29 +191,7 @@ const appnew = {
         //     Inputmask({"mask": "+9 (999) 999-99-99", "showMaskOnHover": false}).mask('[type=tel]:not(.form__input)');
         // }
 
-        if (typeof intlTelInput !== 'undefined') {
-            const inputsPhone = document.querySelectorAll("[type=tel]:not(.form__input)");
-            inputsPhone.forEach(input => {
-                intlTelInput(input, {
-                    i18n: ru,
-                    placeholderNumberType: 'MOBILE',
-                    initialCountry: "auto",
-                    onlyCountries: ['ru', 'by', 'kz', 'am', 'az', 'kg', 'md', 'tj', 'uz', 'ge', 'ua',
-                                    'us', 'at', 'be', 'bg', 'gb', 'hu', 'de', 'gr', 'dk', 'ie', 'is',
-                                    'es', 'it', 'lv', 'lt', 'nl', 'no', 'pl', 'pt', 'ro', 'rs', 'sk',
-                                    'si', 'fi', 'fr', 'hr', 'me', 'cz', 'ch', 'se', 'ee', 'ae'],
-                    //strictMode: true,
-                    nationalMode: false,
-                    geoIpLookup: callback => {
-                        fetch("https://ipapi.co/json")
-                            .then(res => res.json())
-                            .then(data => callback(data.country_code))
-                            .catch(() => callback("ru"));
-                    },
-                    loadUtilsOnInit: `https://cdn.jsdelivr.net/npm/intl-tel-input@${intlTelInput.version}/build/js/utils.js`
-                });
-            });
-        }
+        window.pixelplus.initPhoneInputs(document);
     }
 };
 
@@ -178,21 +199,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     appnew.init();
 
     // Оформленный select
-    if (typeof Choices !== 'undefined') {
-        const fieldSelect = document.querySelectorAll('.field-select select');
-        for (let i = 0; i < fieldSelect.length; ++i) {
-            const el = fieldSelect[i];
-            new Choices(el, {
-                allowHTML: true,
-                placeholder: true,
-                placeholderValue: 'Выберите...',
-                searchPlaceholderValue: 'Поиск...',
-                searchEnabled: !!el.dataset.search,
-                itemSelectText: '',
-                sorter: function() {}
-            });
-        }
-    }
+    window.pixelplus.initChoices(document);
 
     // Плавный скролл до элемента
     if (typeof MoveTo !== 'undefined') {
