@@ -1,0 +1,24 @@
+//- Итог кейса листом отчёта: цифры слева на сером, текст итога справа, внизу подпись и логотип.
+//- Колонка цифр и подпись необязательны. Рост — утилита -c-green на значении. До 768px — одна колонка.
+.report-card
+  .report-card__figures
+    div
+      span.report-card__value.-c-green ×2,7
+      span.report-card__label органический трафик за 12 месяцев
+    div
+      span.report-card__value.-c-green 8,93 → 3,35 ₽
+      span.report-card__label стоимость клика
+    div
+      span.report-card__value 2 из 3
+      span.report-card__label посетителей приходят из поиска
+  .report-card__body
+    .report-card__text
+      p Проект вышел в топ по коммерческим запросам тематики фронтальных и вилочных погрузчиков. Поиск стал основным каналом привлечения, а стоимость посетителя снизилась почти втрое.
+      p Структура каталога масштабируется: новые модели и параметры фильтра дают посадочные страницы без ручной работы, поэтому дальнейший рост не требует переделки сайта.
+    .report-card__sign
+      .author
+        .author__image А
+        .author__info
+          .author__title Артём
+          .author__description руководитель проекта · июль 2026
+      img.report-card__mark(src='images/logo.svg' alt='' width='140' height='21' loading='lazy' aria-hidden='true')

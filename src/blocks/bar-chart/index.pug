@@ -1,0 +1,34 @@
+//- Столбчатый график: динамика по периодам, первый столбец — база (серый). На сайте разметку, шкалу и высоты
+//- считает шаблон my_bar-chart.php: --bar-value — высота долей верхней линии шкалы, --bar-tick — линия сетки.
+//- Режим «% к первому периоду»: первый = 100%, в подсказке — исходное значение. Интерактив — класс BarChart.
+- const barItems = [['июл 25', '100%', '12 400 визитов', '.3333'], ['авг', '104%', '12 900 визитов', '.3468'], ['сен', '111%', '13 800 визитов', '.3710'], ['окт', '128%', '15 870 визитов', '.4266'], ['ноя', '141%', '17 480 визитов', '.4699'], ['дек', '137%', '16 990 визитов', '.4567'], ['янв 26', '151%', '18 720 визитов', '.5032'], ['фев', '177%', '21 950 визитов', '.5901'], ['мар', '196%', '24 300 визитов', '.6532'], ['апр', '220%', '27 280 визитов', '.7333'], ['май', '237%', '29 390 визитов', '.7901'], ['июн', '251%', '31 120 визитов', '.8366'], ['июл', '267%', '33 110 визитов', '.8901']]
+- const barTicks = [['0', '0'], ['.3333', '100%'], ['.6667', '200%'], ['1', '300%']]
+figure.bar-chart.bar-chart--many-sm(style=`--bar-chart-count: ${barItems.length}`)
+  .bar-chart__scroll
+    .bar-chart__plot(role='group' aria-label='Небрендовый поисковый трафик, % к июлю 2025')
+      .bar-chart__grid(aria-hidden='true')
+        each tick in barTicks
+          .bar-chart__tick(style=`--bar-tick: ${tick[0]}`)
+            span.bar-chart__tick-label= tick[1]
+      .bar-chart__bars
+        each item, index in barItems
+          .bar-chart__col(class=index === 0 ? 'bar-chart__col--base' : '' data-bar-index=index role='img' aria-label=`${item[0]}: ${item[1]}, ${item[2]}` data-bar-label=item[0] data-bar-value=item[1] data-bar-note=item[2] style=`--bar-value: ${item[3]}; --bar-order: ${index}` + (index === 0 ? '; --bar-label: .3468' : index === barItems.length - 1 ? '; --bar-label: .8901' : ''))
+            .bar-chart__track
+              span.bar-chart__bar
+              if index === 0 || index === barItems.length - 1
+                span.bar-chart__value(aria-hidden='true')= item[1]
+            span.bar-chart__label(aria-hidden='true')= item[0]
+  table.bar-chart__table
+    caption Небрендовый поисковый трафик, % к июлю 2025
+    thead
+      tr
+        th(scope='col') Период
+        th(scope='col') % к июл 25
+        th(scope='col') Значение
+    tbody
+      each item in barItems
+        tr
+          th(scope='row')= item[0]
+          td= item[1]
+          td= item[2]
+  figcaption.bar-chart__caption Источник: Яндекс Метрика, июль 2025 — июль 2026

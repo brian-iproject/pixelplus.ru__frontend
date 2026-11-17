@@ -1,0 +1,152 @@
+// Форма ячейки → aspect-ratio. Ключи в кавычках: 3x2 без них Sass читает как число с единицей
+$illustration-full-shapes: (
+  'square': '1',
+  '3x2': '3 / 2',
+  '4x3': '4 / 3',
+  '16x9': '16 / 9',
+);
+
+.illustration-full {
+  $block-name: &; // #{$block-name}__element
+
+  // Все модификаторы, задающие форму (с адаптивными), — для :is()
+  $shaped: '#{$block-name}--boxed';
+  @each $name, $ratio in $illustration-full-shapes {
+    $shaped: '#{$shaped}, #{$block-name}--#{$name}';
+    @each $screen-name, $screen in $screen-map {
+      $shaped: '#{$shaped}, #{$block-name}--#{$name}-#{$screen-name}';
+    }
+  }
+
+  // Форма ячейки × как картинка ложится в неё. По умолчанию — картинка как есть
+  --ill-ratio: auto;
+  --ill-fit: cover;
+  --ill-pos: center;
+  --ill-bg: transparent;
+  --ill-pad: 0;
+
+  padding: 0;
+  margin: 0;
+  position: relative;
+
+  // В сетке расстояния задаёт gap
+  &:not(.grid__item):not(.d-grid > *) {
+    @include offset(xl);
+  }
+
+  & [data-fancybox]{
+    cursor: zoom-in;
+  }
+
+  &__image {
+    border: 1px solid var(--color-gray--lighter);
+    border-radius: var(--border-radius--md);
+    overflow: hidden;
+    // Пропорция по внешнему краю: иначе поля «вписать» вытягивают ячейку и сетка не ровная
+    box-sizing: border-box;
+    aspect-ratio: var(--ill-ratio);
+    background: var(--ill-bg);
+    padding: var(--ill-pad);
+
+    &:not(:has(.yt-video)) {
+      width: fit-content;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: var(--ill-fit);
+      object-position: var(--ill-pos);
+      display: block;
+
+      @include image-rendering();
+    }
+  }
+
+  // Ячейка сетки с заданной формой — на всю ширину, иначе рамки разъедутся. Без формы картинка
+  // остаётся в свой размер: мелкие картинки рядом с текстом в d-grid не растягиваются
+  .d-grid > &:is(#{$shaped}),
+  &.grid__item:is(#{$shaped}) {
+    #{$block-name}__image {
+      width: auto;
+    }
+  }
+
+  &--aside &__image {
+    border-width: 1px;
+  }
+
+  &__label {
+    position: absolute;
+    top: var(--offset--lg);
+    left: var(--offset--lg);
+    z-index: 5;
+  }
+
+  & figcaption {
+    font-size: var(--font-size--small);
+    margin-top: var(--offset--sm);
+  }
+
+  @media (min-width: $screen-md) {
+    border-radius: var(--border-radius);
+  }
+
+  &--nofit {
+    & #{$block-name}__image {
+      width: unset;
+    }
+  }
+
+  &--noborder {
+    & #{$block-name}__image {
+      border: none;
+    }
+  }
+
+  @each $name, $ratio in $illustration-full-shapes {
+    &--#{$name} {
+      --ill-ratio: #{$ratio};
+    }
+  }
+
+  @each $screen-name, $screen in $screen-map {
+    @each $name, $ratio in $illustration-full-shapes {
+      &--#{$name}-#{$screen-name} {
+        @if ($screen-name == 'xs') {
+          @media (max-width: $screen) {
+            --ill-ratio: #{$ratio};
+          }
+        } @else {
+          @media (min-width: $screen) {
+            --ill-ratio: #{$ratio};
+          }
+        }
+      }
+    }
+  }
+
+  // Длинный скриншот страницы в обрезающей рамке: виден верх, а не середина
+  &--top {
+    --ill-pos: top;
+  }
+
+  &--contain {
+    --ill-fit: contain;
+  }
+
+  // Подложка и поля — только при заданной форме: без неё картинка и так целиком, а графики
+  // с --contain (case-detail) получили бы лишнюю рамку
+  &--contain:is(#{$shaped}) {
+    --ill-bg: var(--color-white);
+    --ill-pad: var(--offset--sm);
+  }
+
+  // Синоним «4:3 + вписать целиком» для старой разметки
+  &--boxed {
+    --ill-ratio: 4 / 3;
+    --ill-fit: contain;
+    --ill-bg: var(--color-white);
+    --ill-pad: var(--offset--sm);
+  }
+}

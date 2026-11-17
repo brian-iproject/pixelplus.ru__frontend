@@ -74,6 +74,7 @@
 @import '../blocks/case-wide/style';
 @import '../blocks/illustration/style';
 @import '../blocks/illustration-preview/style';
+@import '../blocks/illustration-full/style';
 @import '../blocks/flex/style';
 @import '../blocks/grid/style'; // Старый вариант сетки на флексах - надо вывести с проекта
 @import '../blocks/d-grid/style'; // Обновленный вариант сетки на гридах
@@ -138,6 +139,17 @@
 @import '../blocks/logo-item/style';
 @import '../blocks/case-item/style';
 @import '../blocks/author/style';
+@import '../blocks/review-quote/style';
+@import '../blocks/timeline/style';
+@import '../blocks/statement/style';
+@import '../blocks/metric-card/style';
+@import '../blocks/compare-line/style';
+@import '../blocks/report-card/style';
+@import '../blocks/donut-chart/style';
+@import '../blocks/bar-chart/style';
+@import '../blocks/award-badge/style';
+@import '../blocks/anchor-menu/style';
+@import '../blocks/accent/style';
 @import '../blocks/discount-tile/style';
 @import '../blocks/pager/style';
 

@@ -16,6 +16,20 @@
     margin-bottom: calc((3.75em + 3.25em) * -1);
   }
 
+  // Затемнение для картинки, которая пришла из инфоблока как есть (баннеры кейсов);
+  // фоны сервисных страниц притушены ещё при подготовке, им модификатор не нужен
+  &--shade &__item::after {
+    background: var(--main-slider-shade, rgba(10, 23, 42, .62));
+    content: "";
+    inset: 0;
+    position: absolute;
+  }
+
+  &--shade &__item-inner {
+    position: relative;
+    z-index: 1;
+  }
+
   &__item {
     --link-color: var(--color-white);
     --link-color--hover: var(--color-white);
@@ -139,6 +153,31 @@
 
   &__description {
     font-size: var(--font-size--large);
+  }
+
+  // Подвал первого экрана под кнопками: рейтинг, шаринг, теги, награды. Ставится соседом __description,
+  // чтобы не наследовать его крупный шрифт; строки внутри разводит gap, своих отступов им не нужно.
+  // Служебная зона приглушена целиком — и мета, и подписи наград; ярче на конкретной странице — через переменную
+  &__footer {
+    border-top: 1px solid var(--main-slider-footer-border, rgba(255, 255, 255, .18));
+    color: var(--main-slider-footer-color, rgba(255, 255, 255, .7));
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size--medium);
+    gap: var(--offset--md);
+    margin-top: var(--offset--xl);
+    padding-top: var(--offset--md);
+
+    // :where обнуляет вес селектора: штатные ссылки блоков внутри подвала (.socials и т. п.) сохраняют свой вид
+    & :where(a:not(.button)) {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-white);
+        text-decoration: underline;
+      }
+    }
   }
 
   &__more {

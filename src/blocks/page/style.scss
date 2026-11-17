@@ -171,6 +171,51 @@ h6, .h6 {
 	margin-top: -1em;
 }
 
+// Подзаголовок отделяет следующий контент так же, как его заголовок (.75em от кегля заголовка).
+// TODO: сделать поведением .subtitle по умолчанию после сверки страниц, где он уже стоит (~2300 мест), и убрать модификатор.
+:is(h1, .h1) + .subtitle--spaced:not(:last-child) {
+	margin-bottom: calc(var(--font-size-h1) * .75);
+}
+
+:is(h2, .h2) + .subtitle--spaced:not(:last-child) {
+	margin-bottom: calc(var(--font-size-h2) * .75);
+}
+
+:is(h3, .h3) + .subtitle--spaced:not(:last-child) {
+	margin-bottom: calc(var(--font-size-h3) * .75);
+}
+
+:is(h4, .h4) + .subtitle--spaced:not(:last-child) {
+	margin-bottom: calc(var(--font-size-h4) * .75);
+}
+
+// Надзаголовок: короткая метка над заголовком — тип блока или раздела («Ключевое решение», «Отзыв клиента»).
+// По умолчанию фирменного цвета, на тёмном фоне — модификатор --light.
+// Заголовок сразу после метки подтягивается к ней, чтобы они читались как одно целое.
+// <div class="pretitle">Ключевое решение</div><h2>Заголовок</h2>
+.pretitle {
+	color: var(--color-primary);
+	font-size: var(--font-size--medium);
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+
+	&--light {
+		color: rgba(255, 255, 255, .6);
+	}
+
+	& + h1,
+	& + h2,
+	& + h3,
+	& + .h1,
+	& + .h2,
+	& + .h3 {
+		margin-top: .5rem;
+		// Якорь на заголовке: при переходе по ссылке метка над ним не должна уходить под липкое меню
+		scroll-margin-top: 2rem;
+	}
+}
+
 a {
 	background-color: transparent;
 	color: var(--link-color);

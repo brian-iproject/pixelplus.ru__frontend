@@ -1,0 +1,156 @@
+// Два значения на линии: «было → стало» по времени или канал против канала — смысл задают только подписи.
+// Левая точка нейтральная серая (это и «было», и другой канал), правая — зелёная, на линии — плашка с разницей.
+// Цвет значений — утилиты: прежнее -c-muted, итоговое -c-green. Вывод __result необязателен, внутри — штатный text-icon.
+// До 768px линия вертикальная и заканчивается у последней точки.
+// <div class="compare-line">
+//   <div class="compare-line__track">
+//     <div class="compare-line__point">
+//       <div class="compare-line__label">Июль 2025</div>
+//       <span class="compare-line__value -c-muted">8,93 ₽</span>
+//       <span class="compare-line__note">за посетителя</span>
+//     </div>
+//     <div class="compare-line__badge">−62,5%</div>
+//     <div class="compare-line__point compare-line__point--accent">
+//       <div class="compare-line__label">Июль 2026</div>
+//       <span class="compare-line__value -c-green">3,35 ₽</span>
+//       <span class="compare-line__note">за посетителя</span>
+//     </div>
+//   </div>
+//   <div class="compare-line__result text-icon">
+//     <svg class="icon icon--md -c-green" aria-hidden="true"><use href="#check-circle"></use></svg>
+//     <div class="text-icon__text">Стоимость посетителя <b>сократилась на 62,5%</b>.</div>
+//   </div>
+// </div>
+.compare-line {
+  $block-name: &; // #{$block-name}__element
+
+  @include offset(lg);
+
+  &__track {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    position: relative;
+
+    // Линия от центра первой точки до центра последней
+    &::before {
+      background: linear-gradient(90deg, var(--color-gray--light), var(--color-green));
+      content: "";
+      height: 3px;
+      left: 12px;
+      position: absolute;
+      right: 12px;
+      top: 11px;
+    }
+  }
+
+  &__point {
+    padding-top: 2.75rem;
+    position: relative;
+
+    &::before {
+      background: var(--color-white);
+      border: 3px solid var(--color-gray--light);
+      border-radius: 50%;
+      content: "";
+      height: 24px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 24px;
+    }
+
+    &--accent {
+      text-align: right;
+
+      &::before {
+        border-color: var(--color-green);
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+
+  &__label {
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--medium);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  &__value {
+    display: block;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-top: .25rem;
+  }
+
+  &__note {
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--medium);
+  }
+
+  // Плашка садится на линию: по центру средней колонки, поверх линии
+  &__badge {
+    align-self: start;
+    background: var(--color-white);
+    border: 2px solid var(--color-green);
+    border-radius: 2em;
+    color: var(--color-green);
+    font-weight: 700;
+    margin-top: -4px;
+    padding: .45em 1.2em;
+    position: relative;
+    white-space: nowrap;
+    z-index: 1;
+  }
+
+  &__result {
+    background: color-mix(in srgb, var(--color-green) 8%, transparent);
+    border-left: 4px solid var(--color-green);
+    border-radius: var(--border-radius--sm);
+    font-size: var(--font-size--large);
+    margin-top: var(--offset--md);
+    padding: 1rem 1.5rem;
+  }
+
+  @media (max-width: $screen-md - 1) {
+    &__track {
+      gap: 1rem;
+      grid-template-columns: 1fr;
+
+      // Строки сетки: первая точка, плашка, вторая точка. Линия занимает первые две (строки неявные,
+      // отрицательные номера не работают) и выходит вниз на зазор сетки и полточки — к центру
+      // последней точки, без подгонки под высоту её текста
+      &::before {
+        background: linear-gradient(180deg, var(--color-gray--light), var(--color-green));
+        bottom: calc(-1rem - 12px);
+        grid-column: 1;
+        grid-row: 1 / 3;
+        height: auto;
+        left: 11px;
+        right: auto;
+        top: 12px;
+        width: 3px;
+      }
+    }
+
+    &__point {
+      padding: 0 0 0 2.5rem;
+
+      &--accent {
+        text-align: left;
+
+        &::before {
+          left: 0;
+          right: auto;
+        }
+      }
+    }
+
+    &__badge {
+      justify-self: start;
+      margin: 0 0 0 2.5rem;
+    }
+  }
+}

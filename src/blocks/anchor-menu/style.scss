@@ -1,0 +1,115 @@
+// Якорное меню: липкая полоса со ссылками на разделы длинной страницы и необязательной кнопкой справа.
+// Подсветка — как в меню сотрудника (team-head): неактивные пункты приглушены, активный тёмный
+// с выезжающей из центра линией шире текста. Наведение только затемняет текст, линию не рисует,
+// чтобы она не путалась с текущим разделом. Активный пункт выставляет класс AnchorMenu (js/classes/AnchorMenu.js).
+// Плавный переход — штатный MoveTo из main.js: ссылке нужны data-target и data-mt-tolerance="76"
+// (высота меню + зазор). scroll-padding-top — для прямых ссылок с якорем: MoveTo его не учитывает.
+// <nav class="anchor-menu" aria-label="Разделы страницы">
+//   <div class="page-container anchor-menu__inner">
+//     <ul class="anchor-menu__list">
+//       <li><a class="anchor-menu__link" href="#id" data-target="#id" data-mt-tolerance="76">Раздел</a></li>
+//     </ul>
+//     <a class="button button--green anchor-menu__action" href="#form">Кнопка</a>
+//   </div>
+// </nav>
+:root {
+  --anchor-menu-height: 60px;
+  --anchor-menu-link-pad: 10px;
+}
+
+html:has(.anchor-menu) {
+  scroll-padding-top: calc(var(--anchor-menu-height) + var(--offset--md));
+}
+
+.anchor-menu {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-gray--lighten);
+
+  &__inner {
+    align-items: center;
+    display: flex;
+    gap: var(--offset--xl);
+    justify-content: space-between;
+  }
+
+  // У ссылок поля по бокам — под линию шире текста; список сдвинут на ширину поля влево,
+  // чтобы текст первого пункта стоял по краю контейнера, а линия не обрезалась прокруткой
+  &__list {
+    display: flex;
+    gap: var(--offset--md);
+    list-style: none;
+    margin: 0 0 0 calc(var(--anchor-menu-link-pad) * -1);
+    overflow-x: auto;
+    padding: 0;
+    position: relative;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__link {
+    align-items: center;
+    color: var(--color-gray--dark);
+    display: flex;
+    font-size: var(--font-size--medium);
+    font-weight: 500;
+    height: var(--anchor-menu-height);
+    padding: 0 var(--anchor-menu-link-pad);
+    position: relative;
+    text-decoration: none;
+    transition: color var(--transition-time);
+    white-space: nowrap;
+
+    &::after {
+      background: var(--color-primary);
+      bottom: 0;
+      content: "";
+      height: 2px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      transform: scaleX(0);
+      transition: transform var(--transition-time);
+    }
+
+    &:hover,
+    &.-is-active {
+      color: var(--color-blue--dark);
+      text-decoration: none;
+    }
+
+    &.-is-active::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__action {
+    flex-shrink: 0;
+    transition: opacity var(--transition-time), visibility var(--transition-time);
+
+    @media (max-width: $screen-sm - 1) {
+      display: none;
+    }
+  }
+
+  // Кнопка появляется, когда меню прилипло: в обычном положении такая же кнопка рядом, на первом экране.
+  // Прячем только после того, как AnchorMenu взялся следить (-is-watched), — без JS кнопка видна всегда.
+  // Место под кнопку остаётся, чтобы пункты не сдвигались в момент прилипания
+  &.-is-watched:not(.-is-stuck) &__action {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__link,
+    &__link::after,
+    &__action {
+      transition: none;
+    }
+  }
+}

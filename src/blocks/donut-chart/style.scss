@@ -1,0 +1,208 @@
+// Круговая диаграмма: SVG-кольцо и таблица-легенда (штатная .table) в две колонки от 768px, до — кольцо сверху.
+// Кольцо рисует сервер (шаблон my_donut.php): окружности r=80 в viewBox 200×200, доля — stroke-dasharray, старт сверху.
+// Цвет доли — --donut-color на сегменте и строке легенды, значение — переменная палитры по порядку строки
+// (--donut-chart-1…9, первая — фирменный красный; девятая серая — для «Другое»).
+// В центре — значение и подпись самой большой доли; JS (DonutChart) по наведению и фокусу показывает в центре
+// активную долю, приглушает остальные и подсвечивает строку, а при прокрутке до блока «прорисовывает» кольцо.
+// Без JS всё видно: кольцо целиком, данные — в таблице и в title сегментов.
+// <div class="donut-chart">
+//   <div class="donut-chart__chart">
+//     <svg class="donut-chart__svg" viewBox="0 0 200 200" role="group" aria-label="Круговая диаграмма">
+//       <circle class="donut-chart__segment" data-donut-index="0" cx="100" cy="100" r="80"
+//               stroke-dasharray="337.79 164.86" stroke-dashoffset="-1" transform="rotate(-90 100 100)"
+//               role="img" aria-label="Поиск: 67,6%" data-donut-value="67,6%" data-donut-label="Поиск"
+//               style="--donut-color: var(--donut-chart-1); --donut-start: 0; --donut-size: .676">
+//         <title>Поиск: 67,6%</title>
+//       </circle>
+//       …
+//     </svg>
+//     <div class="donut-chart__center" aria-hidden="true" data-donut-value="67,6%" data-donut-label="поиск">
+//       <span class="donut-chart__center-value">67,6%</span>
+//       <span class="donut-chart__center-label">поиск</span>
+//     </div>
+//   </div>
+//   <div class="donut-chart__legend">
+//     <table class="table table--bg-lines">
+//       <caption>Источник: Яндекс Метрика</caption>
+//       <thead><tr><th>Канал</th><th class="donut-chart__share">Доля</th></tr></thead>
+//       <tbody>
+//         <tr class="donut-chart__row" data-donut-index="0" style="--donut-color: var(--donut-chart-1)">
+//           <td><span class="donut-chart__swatch" aria-hidden="true"></span>Поиск</td>
+//           <td class="donut-chart__share">67,6%</td>
+//         </tr>
+//         …
+//       </tbody>
+//     </table>
+//   </div>
+// </div>
+.donut-chart {
+  $block-name: &; // #{$block-name}__element
+
+  // Палитра проверена на различимость соседних долей при дальтонизме, с учётом замыкания кольца
+  --donut-chart-1: var(--color-primary);
+  --donut-chart-2: #2a78d6;
+  --donut-chart-3: #eda100;
+  --donut-chart-4: #6250d6;
+  --donut-chart-5: #eb6834;
+  --donut-chart-6: #1baf7a;
+  --donut-chart-7: #184f95;
+  --donut-chart-8: #e87ba4;
+  --donut-chart-9: var(--color-gray--dark);
+  --donut-duration: 1s;
+
+  @include offset(lg);
+
+  align-items: center;
+  display: grid;
+  gap: var(--offset--xxl);
+
+  &__chart {
+    margin: 0 auto;
+    max-width: 280px;
+    position: relative;
+    width: 100%;
+  }
+
+  &__svg {
+    display: block;
+    height: auto;
+    overflow: visible;
+    width: 100%;
+  }
+
+  &__segment {
+    fill: none;
+    stroke: var(--donut-color);
+    stroke-width: 30;
+    transition: opacity var(--transition-time), stroke-width var(--transition-time);
+
+    &:focus {
+      outline: none;
+    }
+
+    #{$block-name}.-has-active &:not(.-is-active) {
+      opacity: .25;
+    }
+
+    &.-is-active {
+      stroke-width: 36;
+    }
+  }
+
+  // Прорисовка при прокрутке до блока: сегменты растут по очереди, по часовой стрелке, как одна линия
+  &.-is-pending #{$block-name}__segment {
+    stroke-dasharray: 0 600;
+  }
+
+  &.-is-drawing #{$block-name}__segment {
+    transition: stroke-dasharray calc(var(--donut-size) * var(--donut-duration)) linear calc(var(--donut-start) * var(--donut-duration)),
+      opacity var(--transition-time), stroke-width var(--transition-time);
+  }
+
+  &__center {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    inset: 22%;
+    justify-content: center;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+  }
+
+  &__center-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  &__center-label {
+    -webkit-box-orient: vertical;
+    color: var(--color-gray--dark);
+    display: -webkit-box;
+    font-size: var(--font-size--medium);
+    -webkit-line-clamp: 2;
+    line-height: 1.25;
+    margin-top: .25rem;
+    overflow: hidden;
+  }
+
+  &__legend {
+    min-width: 0;
+    overflow-x: auto;
+
+    .table {
+      table-layout: auto;
+
+      thead th {
+        width: auto;
+      }
+    }
+  }
+
+  &__share {
+    white-space: nowrap;
+    width: 1%;
+  }
+
+  &__row {
+    cursor: default;
+
+    td {
+      transition: background-color var(--transition-time);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: -2px;
+    }
+
+    #{$block-name}.-has-active &:not(.-is-active) #{$block-name}__swatch {
+      opacity: .3;
+    }
+
+    // Специфичность выше полос .table--bg-lines
+    #{$block-name} &.-is-active td {
+      --color-background: color-mix(in srgb, var(--donut-color) 10%, var(--color-white));
+    }
+  }
+
+  &__swatch {
+    background: var(--donut-color);
+    border-radius: 3px;
+    display: inline-block;
+    height: 12px;
+    margin-right: .6rem;
+    transition: opacity var(--transition-time);
+    vertical-align: -1px;
+    width: 12px;
+  }
+
+  @media (min-width: $screen-md) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: $screen-md - 1) {
+    gap: var(--offset--xl);
+
+    &__chart {
+      max-width: 240px;
+    }
+
+    &__center-value {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__segment,
+    &__swatch,
+    &__row td {
+      transition: none;
+    }
+  }
+}

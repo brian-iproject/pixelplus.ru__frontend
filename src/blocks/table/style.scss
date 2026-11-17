@@ -36,6 +36,11 @@
 			--color-background: var(--color-gray--lighter);
 			--color-background-thead: var(--color-gray--light);
 		}
+
+		// Утилита -fw-b в ячейке: font-weight выше перебивает её (зелёная жирная колонка итога)
+		&.-fw-b {
+			font-weight: 700;
+		}
 	}
 
 	& thead {
@@ -135,6 +140,13 @@
 		}
 	}
 
+	// Подпись под таблицей — как у иллюстраций (illustration-full figcaption)
+	& caption {
+		caption-side: bottom;
+		font-size: var(--font-size--small);
+		margin-top: var(--offset--sm);
+		text-align: left;
+	}
 
 
 	@media (max-width: $screen-md - 1) {

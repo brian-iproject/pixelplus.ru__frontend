@@ -31,6 +31,9 @@ import noUiSlider from 'nouislider/dist/nouislider.mjs';
 import wNumb from 'wnumb';
 import MultiSelectCheckbox from "./classes/MultiSelectCheckbox.js";
 import OfficeMap from "./classes/OfficeMap.js";
+import AnchorMenu from "./classes/AnchorMenu.js";
+import DonutChart from "./classes/DonutChart.js";
+import BarChart from "./classes/BarChart.js";
 
 window.pixelplus = {
     Quiz,
@@ -206,6 +209,27 @@ document.addEventListener("DOMContentLoaded", function (e) {
         const moveTo = new MoveTo();
         document.querySelectorAll('[data-target]').forEach((item) => {
             moveTo.registerTrigger(item);
+        });
+    }
+
+    // Якорное меню: подсветка пункта текущего раздела
+    if (typeof AnchorMenu !== 'undefined') {
+        document.querySelectorAll('.anchor-menu').forEach((el) => {
+            new AnchorMenu(el);
+        });
+    }
+
+    // Круговая диаграмма: связь сегментов и легенды, прорисовка при прокрутке
+    if (typeof DonutChart !== 'undefined') {
+        document.querySelectorAll('.donut-chart').forEach((el) => {
+            new DonutChart(el);
+        });
+    }
+
+    // Столбчатый график: подсказка у столбца, рост столбцов при прокрутке
+    if (typeof BarChart !== 'undefined') {
+        document.querySelectorAll('.bar-chart').forEach((el) => {
+            new BarChart(el);
         });
     }
 

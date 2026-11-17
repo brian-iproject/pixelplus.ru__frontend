@@ -1,0 +1,43 @@
+// Карточка показателя: название, текущее значение крупно, прежнее мелко и необязательное пояснение под чертой —
+// что цифра значит для бизнеса. Рост выделяется штатной утилитой -c-green на значении.
+// Высота — на всю ячейку, чтобы карточки в ряду и в карусели были одной высоты; сетку из карточек задаёт место вставки
+// (например, d-grid + splide, как в кейсе).
+// <div class="metric-card">
+//   <div class="metric-card__label">Стоимость посетителя</div>
+//   <b class="metric-card__value -c-green">3,35 ₽</b>
+//   <div class="metric-card__was">было <s>8,93 ₽</s></div>
+//   <div class="metric-card__note">Что цифра значит для бизнеса</div>
+// </div>
+.metric-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray--lighten);
+  border-radius: var(--border-radius--md);
+  height: 100%;
+  padding: var(--offset--lg);
+
+  &__label {
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--medium);
+    margin-bottom: var(--offset--xs);
+  }
+
+  &__value {
+    display: block;
+    font-size: calc(var(--font-size--huge) * 1.6);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  &__was {
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--medium);
+    margin-top: var(--offset--xxs);
+  }
+
+  &__note {
+    border-top: 1px solid var(--color-gray--lighten);
+    font-size: var(--font-size--medium);
+    margin-top: var(--offset--md);
+    padding-top: var(--offset--md);
+  }
+}

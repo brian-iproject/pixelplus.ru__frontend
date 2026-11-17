@@ -41,6 +41,18 @@ block content
         a(href='#alerts') Алерты
         a(href='#timing') Timing
         a(href='#author') Author
+        a(href='#review-quote') Review-quote
+        a(href='#timeline') Timeline
+        a(href='#statement') Statement
+        a(href='#metric-card') Metric-card
+        a(href='#compare-line') Compare-line
+        a(href='#report-card') Report-card
+        a(href='#donut-chart') Donut-chart
+        a(href='#bar-chart') Bar-chart
+        a(href='#award-badge') Award-badge
+        a(href='#anchor-menu') Anchor-menu
+        a(href='#accent') Accent
+        a(href='#pretitle') Pretitle
         a(href='#text-icon') Text-icon
         a(href='#employee-item') Employee-item
         a(href='#employee-wide') Employee-wide
@@ -389,6 +401,356 @@ block content
 
             // С модификатором
             +author({title: 'Имя', description: 'Должность'}, {mods: ['small']})
+
+      //- ══════════════════════════════════════════
+      //- REVIEW-QUOTE
+      //- ══════════════════════════════════════════
+      section#review-quote.uk2-section
+        h2 Review-quote
+        p.uk2-desc Отзыв клиента: крупная цитата, автор (#[code +author]) и необязательный скан письма, который открывается в fancybox. Колонки 2:1 задаёт сам блок; на экране уже 992px скан уходит под цитату. Используется в детальной кейса.
+
+        .uk2-preview
+          include ../../blocks/review-quote/index
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/review-quote/index
+
+            // Без скана — то же без ссылки .review-quote__scan
+
+
+      //- ══════════════════════════════════════════
+      //- TIMELINE
+      //- ══════════════════════════════════════════
+      section#timeline.uk2-section
+        h2 Timeline
+        p.uk2-desc Этапы работ: период, название, текст и необязательная промежуточная цифра (#[code .timeline__metric]). Вертикальный по умолчанию; #[code .timeline--row] — в ряд от 992px. Итоговый этап — #[code .timeline__item--result]. Цвет линии и заливки точки — переменные #[code --timeline-line] и #[code --timeline-dot-bg] у родителя. Используется в детальной кейса.
+
+        .uk2-preview
+          include ../../blocks/timeline/index
+
+        .uk2-preview
+          .timeline.timeline--row
+            .timeline__item
+              .timeline__date Июль 2025
+              .timeline__title Аудит и семантика
+              span.timeline__metric +12%
+            .timeline__item
+              .timeline__date Октябрь 2025
+              .timeline__title Посадочные фильтров
+              span.timeline__metric +40%
+            .timeline__item.timeline__item--result
+              .timeline__date Июль 2026
+              .timeline__title Итог года
+              span.timeline__metric ×2,7
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/timeline/index
+
+            // В ряд от 992px
+            .timeline.timeline--row
+
+
+      //- ══════════════════════════════════════════
+      //- STATEMENT
+      //- ══════════════════════════════════════════
+      section#statement.uk2-section
+        h2 Statement
+        p.uk2-desc Итог кейса одной фразой: крупный светлый текст с акцентами #[code &lt;b&gt;], фирменная линия слева. Метка — штатный #[code .pretitle], пояснение — #[code .statement__note]; обе необязательны. Внешних отступов нет. Используется в детальной кейса.
+
+        .uk2-preview
+          include ../../blocks/statement/index
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/statement/index
+
+            // Без метки и пояснения — только .statement__text
+
+
+      //- ══════════════════════════════════════════
+      //- METRIC-CARD
+      //- ══════════════════════════════════════════
+      section#metric-card.uk2-section
+        h2 Metric-card
+        p.uk2-desc Карточка показателя: подпись, значение крупно, прежнее значение зачёркнутым (#[code .metric-card__was]) и пояснение под чертой (#[code .metric-card__note]); оба необязательны. Рост — утилита #[code -c-green] на значении. Высота на всю ячейку — карточки в ряду одной высоты; сетку задаёт место вставки (#[code d-grid]). Используется в детальной кейса.
+
+        .uk2-preview
+          div(style='max-width: 320px')
+            include ../../blocks/metric-card/index
+
+        .uk2-preview
+          .d-grid.d-grid--sm-2.d-grid--lg-4.d-grid--gap-lg
+            .metric-card
+              .metric-card__label Органический трафик
+              b.metric-card__value.-c-green ×2,7
+              .metric-card__was было #[s 100%]
+              .metric-card__note Сайт находят по моделям и характеристикам, а не по названию компании
+            .metric-card
+              .metric-card__label Стоимость заявки
+              b.metric-card__value.-c-green 1 200 ₽
+              .metric-card__was было #[s 2 900 ₽]
+            .metric-card
+              .metric-card__label Доля поиска в трафике
+              b.metric-card__value 67,6%
+              .metric-card__note Поиск стал основным каналом, реклама — дополнительным
+            .metric-card
+              .metric-card__label Запросов в топ-10
+              b.metric-card__value 140
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/metric-card/index
+
+            // Сетка — утилиты d-grid у обёртки
+            .d-grid.d-grid--sm-2.d-grid--lg-4.d-grid--gap-lg
+              .metric-card
+                .metric-card__label Доля поиска в трафике
+                b.metric-card__value 67,6%
+
+
+      //- ══════════════════════════════════════════
+      //- COMPARE-LINE
+      //- ══════════════════════════════════════════
+      section#compare-line.uk2-section
+        h2 Compare-line
+        p.uk2-desc Два значения на линии с плашкой разницы: «было → стало» по времени или канал против канала — вид один, смысл задают подписи (#[code .compare-line__label]). Левая точка нейтральная серая, правая — #[code .compare-line__point--accent]. Цвет значений — утилиты #[code -c-muted] и #[code -c-green]. Вывод #[code .compare-line__result] необязателен, внутри — штатный #[code text-icon] с иконкой #[code check-circle]. До 768px линия вертикальная и заканчивается у последней точки. Используется в детальной кейса.
+
+        .uk2-preview(style='background: var(--color-gray--lighter)')
+          .container.container--xl
+            include ../../blocks/compare-line/index
+
+        .uk2-preview(style='background: var(--color-gray--lighter)')
+          //- Канал против канала, без вывода
+          .container.container--xl
+            .compare-line
+              .compare-line__track
+                .compare-line__point
+                  .compare-line__label Контекстная реклама
+                  span.compare-line__value.-c-muted ≈ 23 ₽
+                  span.compare-line__note за посетителя
+                .compare-line__badge в 15 раз дешевле
+                .compare-line__point.compare-line__point--accent
+                  .compare-line__label Поисковое продвижение
+                  span.compare-line__value.-c-green 1,5 ₽
+                  span.compare-line__note за посетителя
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/compare-line/index
+
+            // Канал против канала — те же элементы, другие подписи; без вывода — без .compare-line__result
+            .compare-line
+              .compare-line__track
+                .compare-line__point
+                  .compare-line__label Контекстная реклама
+                  span.compare-line__value.-c-muted ≈ 23 ₽
+                .compare-line__badge в 15 раз дешевле
+                .compare-line__point.compare-line__point--accent
+                  .compare-line__label Поисковое продвижение
+                  span.compare-line__value.-c-green 1,5 ₽
+
+
+      //- ══════════════════════════════════════════
+      //- REPORT-CARD
+      //- ══════════════════════════════════════════
+      section#report-card.uk2-section
+        h2 Report-card
+        p.uk2-desc Итог кейса листом отчёта: слева колонка ключевых цифр на сером (значение крупно, рост — утилита #[code -c-green]), справа текст итога (абзацы и списки редактора в #[code .report-card__text]), внизу подпись — штатный #[code .author] — и приглушённый логотип. Колонка цифр и подпись необязательны: без цифр текст занимает всю ширину, без подписи логотип прижимается вправо — модификаторы не нужны. До 768px — одна колонка. Ширину задаёт место вставки (#[code container--xl]). Используется в детальной кейса.
+
+        .uk2-preview(style='background: var(--color-gray--lighter)')
+          include ../../blocks/report-card/index
+
+        .uk2-preview(style='background: var(--color-gray--lighter)')
+          //- Без цифр
+          .report-card
+            .report-card__body
+              .report-card__text
+                p Сайт перестал зависеть от одного канала: поиск и реклама теперь дополняют друг друга, а стоимость заявки предсказуема.
+              .report-card__sign
+                .author
+                  .author__image М
+                  .author__info
+                    .author__title Мария
+                    .author__description аккаунт-менеджер · май 2026
+                img.report-card__mark(src='images/logo.svg' alt='' width='140' height='21' loading='lazy' aria-hidden='true')
+
+        .uk2-preview(style='background: var(--color-gray--lighter)')
+          //- Без подписи
+          .report-card
+            .report-card__figures
+              div
+                span.report-card__value.-c-green 2% → 18%
+                span.report-card__label видимость бренда в AI-ответах
+              div
+                span.report-card__value.-c-green 0% → 60%
+                span.report-card__label видимость в Perplexity
+            .report-card__body
+              .report-card__text
+                p Комплексное выполнение задач позволило:
+                ul.list
+                  li Сформировать присутствие бренда в AI-ответах практически с нуля.
+                  li Разработать #[b воспроизводимую методологию] AI-продвижения.
+              .report-card__sign
+                img.report-card__mark(src='images/logo.svg' alt='' width='140' height='21' loading='lazy' aria-hidden='true')
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/report-card/index
+
+            // Без цифр — без .report-card__figures, текст на всю ширину
+            .report-card
+              .report-card__body
+                .report-card__text
+                  p Текст итога.
+                .report-card__sign
+                  .author ...
+                  img.report-card__mark(src='images/logo.svg' alt='' width='140' height='21' aria-hidden='true')
+
+            // Без подписи — в .report-card__sign только логотип, он прижимается вправо
+            .report-card__sign
+              img.report-card__mark(src='images/logo.svg' alt='' width='140' height='21' aria-hidden='true')
+
+
+      //- ══════════════════════════════════════════
+      //- DONUT-CHART
+      //- ══════════════════════════════════════════
+      section#donut-chart.uk2-section
+        h2 Donut-chart
+        p.uk2-desc Круговая диаграмма: SVG-кольцо и легенда — штатная #[code .table.table--bg-lines] с квадратиками цвета #[code .donut-chart__swatch]. От 768px — две колонки по центру, до — кольцо сверху (до 240px). Цвет доли — #[code --donut-color] на сегменте и строке, значение — палитра блока #[code --donut-chart-1…9] по порядку (первая — #[code --color-primary], девятая серая — «Другое»). В центре — значение и подпись самой большой доли. Класс #[code DonutChart]: наведение и фокус на сегмент или строку приглушают остальные доли, подсвечивают строку и показывают долю в центре; кольцо ниже экрана прорисовывается при прокрутке (без анимации при #[code prefers-reduced-motion]). Без JS всё видно. На сайте разметку и геометрию кольца считает шаблон блока my_donut. Используется в детальной кейса.
+
+        .uk2-preview
+          .container.container--xl
+            include ../../blocks/donut-chart/index
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/donut-chart/index
+
+            // Сегмент: r=80 в viewBox 200×200, длина окружности 502,65; stroke-dasharray «длина−2 остаток»,
+            // stroke-dashoffset — минус (начало + 1); --donut-start и --donut-size — доли для прорисовки
+            circle.donut-chart__segment(data-donut-index='1' … style='--donut-color: var(--donut-chart-2); --donut-start: .676; --donut-size: .241')
+
+      //- ══════════════════════════════════════════
+      //- BAR-CHART
+      //- ══════════════════════════════════════════
+      section#bar-chart.uk2-section
+        h2 Bar-chart
+        p.uk2-desc Столбчатый график: динамика по периодам. Столбцы — HTML, не SVG, поэтому подписи на телефоне не сжимаются. Шкала слева — 4–5 линий на «круглых» значениях, под столбцами — периоды. Первый столбец — база сравнения, серый (#[code .bar-chart__col--base]), остальные — #[code --bar-chart-color] (по умолчанию #[code --color-green]). Высота столбца — #[code --bar-value], линия сетки — #[code --bar-tick] (доли верхней линии шкалы). Над первым и последним столбцом — значения. #[code .bar-chart--many-sm] (больше 8 периодов) — до 768px подписи через одну, #[code .bar-chart--many] (больше 20) — через одну везде; много периодов на телефоне — прокрутка внутри графика (#[code --bar-chart-count] задаёт минимальную ширину). Таблица значений #[code .bar-chart__table] — только для скринридеров. Класс #[code BarChart]: наведение и фокус на столбец приглушают остальные и показывают подсказку (период, значение, пояснение из #[code data-bar-note]); график ниже экрана вырастает при прокрутке (без анимации при #[code prefers-reduced-motion]). Без JS всё видно. На сайте разметку и шкалу считает шаблон блока my_bar-chart. Используется в детальной кейса.
+
+        .uk2-preview
+          .container.container--xl
+            include ../../blocks/bar-chart/index
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/bar-chart/index
+
+            // Колонка: --bar-value — высота долей верхней линии шкалы, --bar-order — задержка роста;
+            // подсказка — из data-bar-label, data-bar-value и data-bar-note (изменение к базе или исходное значение)
+            .bar-chart__col(data-bar-index='1' data-bar-label='авг' data-bar-value='104%' data-bar-note='12 900 визитов' style='--bar-value: .3468; --bar-order: 1')
+
+      //- ══════════════════════════════════════════
+      //- AWARD-BADGE
+      //- ══════════════════════════════════════════
+      section#award-badge.uk2-section
+        h2 Award-badge
+        p.uk2-desc Значок награды: иконка конкурса в круге и подпись «#[code &lt;b&gt;статус&lt;/b&gt;] конкурс год» в рамке-пилюле. Тон по месту: #[code --gold], #[code --silver], #[code --bronze], без модификатора — нейтральный (номинант, шорт-лист). Без иконки поле слева выравнивается с правым. По умолчанию — для тёмного фона; на светлом родитель задаёт #[code --award-badge-darken: 1], и статус темнеет на глубину тона. Цвет текста наследуется, при необходимости — #[code --award-badge-color]. Используется в первом экране детальной кейса.
+
+        .uk2-preview(style='background: var(--color-blue--dark); color: var(--color-white)')
+          include ../../blocks/award-badge/index
+
+        .uk2-preview(style='--award-badge-darken: 1')
+          include ../../blocks/award-badge/index
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/award-badge/index
+
+            // На светлом фоне — затемнение статуса у родителя
+            .parent(style='--award-badge-darken: 1')
+
+            // Без иконки — без img
+            span.award-badge.award-badge--bronze
+              span \#[b 3 место] «Золотого сайта» 2023
+
+
+      //- ══════════════════════════════════════════
+      //- ANCHOR-MENU
+      //- ══════════════════════════════════════════
+      section#anchor-menu.uk2-section
+        h2 Anchor-menu
+        p.uk2-desc Якорное меню: липкая полоса со ссылками на разделы страницы и необязательной кнопкой справа (до 576px кнопка скрыта). Активный пункт — раздел, верх которого ушёл под меню, его подсвечивает класс #[code AnchorMenu]; на узком экране список прокручивается и активный пункт подводится в середину. Пункт, раздела которого нет на странице, скрывается. Плавный переход — штатный MoveTo: ссылке нужны #[code data-target] и #[code data-mt-tolerance="76"]. Используется в детальной кейса.
+
+        .uk2-preview
+          include ../../blocks/anchor-menu/index
+          each section in [['anchor-task', 'Задача'], ['anchor-solution', 'Решение'], ['anchor-stages', 'Этапы'], ['anchor-result', 'Результат'], ['anchor-review', 'Отзыв']]
+            div(id=section[0] style='padding: 40px 0 120px')
+              h3= section[1]
+              p Демо-раздел для проверки подсветки пункта при прокрутке.
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/anchor-menu/index
+
+            // Инициализация — в main.js, по экземпляру на каждый .anchor-menu
+            new AnchorMenu(el)
+
+
+      //- ══════════════════════════════════════════
+      //- ACCENT
+      //- ══════════════════════════════════════════
+      section#accent.uk2-section
+        h2 Accent
+        p.uk2-desc Врезка: одна мысль, выделенная красной линией слева, — крупнее и темнее основного текста. Внешний отступ только снизу и не у последнего элемента, как у #[code .list], поэтому блок встаёт в любой контейнер без подгонки. Используется в детальной кейса.
+
+        .uk2-preview
+          div(style='max-width: 560px')
+            h2 Каждый фильтр каталога — отдельная посадочная страница
+            include ../../blocks/accent/index
+            p Обычный абзац после врезки.
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            include ../blocks/accent/index
+
+
+      //- ══════════════════════════════════════════
+      //- PRETITLE
+      //- ══════════════════════════════════════════
+      section#pretitle.uk2-section
+        h2 Pretitle
+        p.uk2-desc Надзаголовок: короткая метка над заголовком — тип блока или раздела. По умолчанию фирменного цвета, на тёмном фоне — модификатор #[code --light]. Заголовок сразу после метки (#[code h1–h3], #[code .h1–.h3]) подтягивается к ней. Стили — в #[code blocks/page] рядом с #[code .subtitle]. Используется в детальной кейса.
+
+        .uk2-preview
+          .pretitle Ключевое решение
+          h2 Каждый фильтр каталога — отдельная посадочная страница
+          p.subtitle Подзаголовок под заголовком — #[code .subtitle].
+
+        .uk2-preview(style='background: var(--color-blue--dark); color: var(--color-white)')
+          .pretitle.pretitle--light Отзыв клиента
+          h2 Заголовок на тёмном фоне
+
+        details.uk2-details
+          summary Код подключения
+          pre.uk2-code.
+            .pretitle Ключевое решение
+            h2 Заголовок
+
+            // На тёмном фоне
+            .pretitle.pretitle--light Отзыв клиента
 
 
       //- ══════════════════════════════════════════

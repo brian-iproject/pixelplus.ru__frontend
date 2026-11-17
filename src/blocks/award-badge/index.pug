@@ -1,0 +1,14 @@
+//- Значок награды: иконка конкурса в круге и подпись «статус конкурс год» в рамке-пилюле.
+//- Тон: --gold / --silver / --bronze, без модификатора — нейтральный. По умолчанию для тёмного фона;
+//- на светлом родитель задаёт --award-badge-darken: 1. Несколько значков — в обёртке flex flex--wrap flex--gap-sm.
+.flex.flex--wrap.flex--gap-sm
+  span.award-badge.award-badge--gold(title='Рейтинг Рунета 2024, 1 место')
+    img(src='images/rocket.png' alt='' width='28' height='28')
+    span #[b 1 место] «Рейтинга Рунета» 2024
+  span.award-badge.award-badge--silver(title='Tagline Awards 2024, 2 место')
+    img(src='images/rocket.png' alt='' width='28' height='28')
+    span #[b 2 место] Tagline Awards 2024
+  span.award-badge.award-badge--bronze(title='Золотой сайт 2023, 3 место')
+    span #[b 3 место] «Золотого сайта» 2023
+  span.award-badge(title='Шорт-лист Workspace Digital Awards 2024')
+    span #[b Шорт-лист] Workspace Digital Awards 2024

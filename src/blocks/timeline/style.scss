@@ -1,0 +1,155 @@
+// Таймлайн этапов: период, название этапа, произвольный текст и необязательная промежуточная цифра.
+// По умолчанию — вертикальная линия с точками слева, текст этапа любой длины.
+// --row — горизонтальная «дорога» от 992px (до пяти коротких этапов в ряд), ниже — вертикальная.
+// __item--result — итоговый этап: точка зелёная. Цвет линии и заливки точки — переменные у родителя
+// (--timeline-line, --timeline-dot-bg), например на сером фоне.
+// --gradient — вместе с любым из видов: одна общая линия 3px с градиентом от серого к зелёному, точки 24px
+// с серой обводкой; последняя (всегда) и итоговые (--result) залиты зелёным (вид «дороги» результата). Линия
+// идёт от первой точки через весь блок: вертикально — до низа с отступом --offset--xl, в ряд — до правого края.
+// <div class="timeline">
+//   <div class="timeline__item">
+//     <div class="timeline__date">Июль — сентябрь 2025</div>
+//     <div class="timeline__title">Семантика и структура каталога</div>
+//     <p>Что сделали на этапе.</p>
+//     <span class="timeline__metric">+40% трафика</span>
+//   </div>
+// </div>
+.timeline {
+  $block-name: &; // #{$block-name}__element
+
+  &__item {
+    border-left: 2px solid var(--timeline-line, var(--color-gray--lighten));
+    padding: 0 0 var(--offset--lg) var(--offset--xl);
+    position: relative;
+
+    &:last-child {
+      border-left-color: transparent;
+      padding-bottom: 0;
+    }
+
+    &::before {
+      background: var(--timeline-dot-bg, var(--color-white));
+      border: 3px solid var(--color-primary);
+      border-radius: 50%;
+      box-sizing: border-box;
+      content: "";
+      height: 15px;
+      left: -8.5px;
+      position: absolute;
+      top: .3em;
+      width: 15px;
+    }
+
+    &--result::before {
+      background: var(--color-green);
+      border-color: var(--color-green);
+    }
+
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__date {
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--medium);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-size: var(--font-size--huge);
+    font-weight: 600;
+    margin: var(--offset--xxs) 0;
+  }
+
+  &__metric {
+    background: rgba(0, 150, 40, .1);
+    border-radius: 2em;
+    color: var(--color-green);
+    display: inline-block;
+    font-size: var(--font-size--medium);
+    font-weight: 700;
+    margin-top: var(--offset--sm);
+    padding: .2em .75em;
+  }
+
+  &--gradient {
+    position: relative;
+
+    &::before {
+      background: linear-gradient(180deg, var(--color-gray--light), var(--color-green));
+      bottom: var(--offset--xl);
+      content: "";
+      left: 10.5px;
+      position: absolute;
+      top: 12px;
+      width: 3px;
+    }
+
+    #{$block-name}__item {
+      border-left: none;
+      padding-left: calc(24px + var(--offset--md));
+    }
+
+    #{$block-name}__item::before {
+      border-color: var(--color-gray--light);
+      height: 24px;
+      left: 0;
+      top: 0;
+      width: 24px;
+    }
+
+    #{$block-name}__item--result::before,
+    #{$block-name}__item:last-child::before {
+      background: var(--color-green);
+      border-color: var(--color-green);
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    &--row {
+      display: grid;
+      grid-auto-columns: minmax(0, 1fr);
+      grid-auto-flow: column;
+    }
+
+    &--row #{$block-name}__item,
+    &--row #{$block-name}__item:last-child {
+      border-left: none;
+      border-top: 2px solid var(--timeline-line, var(--color-gray--lighten));
+      padding: var(--offset--xl) var(--offset--lg) 0 0;
+    }
+
+    &--row #{$block-name}__item::before {
+      left: 0;
+      top: -8.5px;
+    }
+
+    &--row #{$block-name}__title {
+      font-size: var(--font-size);
+    }
+
+    &--row#{$block-name}--gradient {
+      &::before {
+        background: linear-gradient(90deg, var(--color-gray--light), var(--color-green));
+        bottom: auto;
+        height: 3px;
+        left: 0;
+        right: 0;
+        top: 10.5px;
+        width: auto;
+      }
+
+      #{$block-name}__item,
+      #{$block-name}__item:last-child {
+        border-top: none;
+        padding: calc(24px + var(--offset--md)) var(--offset--lg) 0 0;
+      }
+
+      #{$block-name}__item::before {
+        top: 0;
+      }
+    }
+  }
+}

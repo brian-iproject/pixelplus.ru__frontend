@@ -47,6 +47,15 @@
   }
 
   @media (min-width: $screen-sm) {
+    // Скан выступает за плашку сверху на --offset--md: при коротком тексте плашка не ниже диплома A4 (158 × 1.42),
+    // иначе скан наезжает на следующую награду
+    &:has(#{$block-name}__image) {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      min-height: calc(158px * 1.42 - var(--offset--md) * 2);
+    }
+
     &__inner {
       width: 50%;
     }
@@ -75,6 +84,12 @@
     &__text {
       padding-left: var(--offset--xl);
       border-left: 2px solid var(--color-white);
+    }
+
+    // Награда без логотипа: разделитель слева не нужен
+    &__text:first-child {
+      padding-left: 0;
+      border-left: 0;
     }
   }
 }

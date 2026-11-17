@@ -1,0 +1,60 @@
+// Значок награды: иконка конкурса в круге и подпись «<b>статус</b> конкурс год» в рамке-пилюле.
+// Тон по месту: --gold для 1 места, --silver для 2-го, --bronze для 3-го, без модификатора — нейтральный (номинант, шорт-лист).
+// По умолчанию — для тёмного фона: рамка и статус яркого цвета тона.
+// На светлом фоне яркий статус не читается — родитель включает затемнение переменной --award-badge-darken: 1;
+// статус темнеет на глубину, заданную тоном, рамка остаётся яркой.
+// Текст наследуется от родителя; при необходимости его цвет задаётся переменной --award-badge-color.
+// Без иконки (у награды нет картинки) поле слева выравнивается с правым.
+// Несколько значков — в штатной обёртке flex flex--wrap flex--gap-sm, отступ строки сверху — container.
+// <div class="flex flex--wrap flex--gap-sm">
+//   <span class="award-badge award-badge--gold" title="Полное название награды">
+//     <img src="..." alt="" width="28" height="28"><span><b>1 место</b> «Рейтинга Рунета» 2024</span>
+//   </span>
+// </div>
+.award-badge {
+  --award-badge-tone: var(--color-gray--light);
+  --award-badge-depth: 40%;
+  align-items: center;
+  border: 1px solid var(--award-badge-tone);
+  border-radius: 2em;
+  color: var(--award-badge-color, inherit);
+  display: inline-flex;
+  font-size: var(--font-size--medium);
+  gap: .5rem;
+  line-height: 1.2;
+  padding: .25rem .9rem .25rem .25rem;
+
+  &:not(:has(img)) {
+    padding-left: .9rem;
+  }
+
+  & img {
+    background: var(--color-white);
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 28px;
+    object-fit: contain;
+    padding: 2px;
+    width: 28px;
+  }
+
+  // Глубину затемнения задаёт тон, а включает её фон: --award-badge-darken приходит от светлого родителя
+  & b {
+    color: color-mix(in srgb, var(--award-badge-tone), #000 calc(var(--award-badge-depth) * var(--award-badge-darken, 0)));
+  }
+
+  &--gold {
+    --award-badge-tone: #e2b64c;
+    --award-badge-depth: 15%;
+  }
+
+  &--silver {
+    --award-badge-tone: #8e99a6;
+    --award-badge-depth: 25%;
+  }
+
+  &--bronze {
+    --award-badge-tone: #c98a55;
+    --award-badge-depth: 18%;
+  }
+}

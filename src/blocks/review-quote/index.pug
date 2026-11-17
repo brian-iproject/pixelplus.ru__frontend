@@ -1,0 +1,10 @@
+//- Отзыв клиента: цитата, автор (+author) и скан письма — необязателен, открывается в fancybox.
+//- Без скана блок тот же, просто без ссылки .review-quote__scan.
+.review-quote
+  .review-quote__body
+    .pretitle Отзыв клиента
+    p.review-quote__text За год работы каталог стал основным источником обращений. Отдельно отмечу прозрачность: каждый месяц понимали, за что платим и что получили.
+    +author({title: 'Иван Петров', description: 'Директор по маркетингу'})
+  a.review-quote__scan(href="blocks/reviews/images/review.jpg" data-fancybox="review" data-caption="Благодарственное письмо")
+    img(src="blocks/reviews/images/review.jpg" alt="Скан письма")
+    span.review-quote__scan-label Читать письмо целиком

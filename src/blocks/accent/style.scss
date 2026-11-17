@@ -1,0 +1,15 @@
+// Врезка: одна мысль, выделенная красной линией слева.
+// Внешний отступ — только снизу и не у последнего элемента, как у .list,
+// поэтому блок встаёт в любой контейнер без подгонки.
+// <p class="accent">Текст врезки</p>
+.accent {
+  border-left: 3px solid var(--color-primary);
+  color: var(--color-gray--darken);
+  font-size: var(--font-size--large);
+  margin: 0;
+  padding: .25rem 0 .25rem 1.25rem;
+
+  &:not(:last-child) {
+    margin-bottom: var(--typo-margin-vertical);
+  }
+}

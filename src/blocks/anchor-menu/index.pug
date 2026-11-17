@@ -1,0 +1,12 @@
+//- Якорное меню: липкая полоса со ссылками на разделы страницы и необязательной кнопкой справа.
+//- Активный пункт подсвечивает AnchorMenu (js/classes/AnchorMenu.js), пункт без раздела на странице скрывается.
+//- Плавный переход — штатный MoveTo: ссылке нужны data-target и data-mt-tolerance="76".
+nav.anchor-menu(aria-label='Разделы страницы')
+  .page-container.anchor-menu__inner
+    ul.anchor-menu__list
+      li: a.anchor-menu__link(href='#anchor-task' data-target='#anchor-task' data-mt-tolerance='76') Задача
+      li: a.anchor-menu__link(href='#anchor-solution' data-target='#anchor-solution' data-mt-tolerance='76') Решение
+      li: a.anchor-menu__link(href='#anchor-stages' data-target='#anchor-stages' data-mt-tolerance='76') Этапы
+      li: a.anchor-menu__link(href='#anchor-result' data-target='#anchor-result' data-mt-tolerance='76') Результат
+      li: a.anchor-menu__link(href='#anchor-review' data-target='#anchor-review' data-mt-tolerance='76') Отзыв
+    a.button.button--green.anchor-menu__action(href='#anchor-review' data-target='#anchor-review' data-mt-tolerance='76') Хочу так же

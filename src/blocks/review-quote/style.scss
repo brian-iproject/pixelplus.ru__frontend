@@ -1,0 +1,87 @@
+// Отзыв: крупная цитата клиента, автор (штатный .author) и необязательный скан письма, который открывается целиком в fancybox.
+// Две колонки 2:1 задаёт сам блок; без скана цитата остаётся в своей колонке, чтобы строки не растягивались на всю ширину.
+// Скан чуть повёрнут, чтобы читался как бумажное письмо, при наведении выпрямляется.
+// <div class="review-quote">
+//   <div class="review-quote__body">
+//     <div class="pretitle">Отзыв клиента</div>
+//     <p class="review-quote__text">Текст отзыва</p>
+//     <div class="author">...</div>
+//   </div>
+//   <a class="review-quote__scan" href="scan.jpg" data-fancybox="review" data-caption="Подпись к письму">
+//     <img src="scan.jpg" alt="Скан письма"><span class="review-quote__scan-label">Читать письмо целиком</span>
+//   </a>
+// </div>
+.review-quote {
+  $block-name: &; // #{$block-name}__element
+
+  align-items: center;
+  display: grid;
+  gap: var(--offset--lg);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+
+  &__text {
+    font-size: calc(var(--font-size--huge) * 1.25);
+    line-height: 1.45;
+    margin: 0;
+
+    &::before {
+      color: var(--color-primary);
+      content: "“";
+      display: block;
+      font-size: 3.2em;
+      font-weight: 700;
+      height: .6em;
+      line-height: 1;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: var(--offset--lg);
+    }
+  }
+
+  &__scan {
+    background: var(--color-white);
+    border-radius: var(--border-radius--md);
+    box-shadow: var(--shadow);
+    display: block;
+    padding: var(--offset--sm);
+    text-decoration: none;
+    transform: rotate(2deg);
+    transition: transform var(--transition-time);
+
+    &:hover {
+      transform: none;
+    }
+
+    & img {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  &__scan-label {
+    color: var(--color-primary);
+    display: block;
+    font-size: var(--font-size--medium);
+    font-weight: 600;
+    margin-top: var(--offset--sm);
+    text-align: center;
+  }
+
+  @media (max-width: $screen-lg - 1) {
+    grid-template-columns: minmax(0, 1fr);
+
+    &__scan {
+      margin: 0 auto;
+      max-width: 260px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__scan {
+      transform: none;
+      transition: none;
+    }
+  }
+}

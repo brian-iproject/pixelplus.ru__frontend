@@ -1,0 +1,83 @@
+// Итог кейса листом отчёта: белая карточка, слева колонка ключевых цифр на сером, справа текст итога,
+// внизу подпись автора (штатный .author) и приглушённый логотип. До 768px — одна колонка, цифры сверху.
+// Колонка цифр необязательна: раскладка на flex, без неё текст сам занимает всю ширину — модификатор не нужен.
+// Без подписи логотип прижимается вправо сам (margin-left: auto), пустая заглушка слева не нужна.
+// Рост выделяется штатной утилитой -c-green на значении. Текст итога — div: внутри абзацы и списки редактора.
+// <div class="report-card">
+//   <div class="report-card__figures">
+//     <div>
+//       <span class="report-card__value -c-green">×2,7</span>
+//       <span class="report-card__label">органический трафик за 12 месяцев</span>
+//     </div>
+//   </div>
+//   <div class="report-card__body">
+//     <div class="report-card__text"><p>Текст итога.</p></div>
+//     <div class="report-card__sign">
+//       <div class="author">...</div>
+//       <img class="report-card__mark" src="images/logo.svg" alt="" width="140" height="21" aria-hidden="true">
+//     </div>
+//   </div>
+// </div>
+.report-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray--lighten);
+  border-radius: var(--border-radius--md);
+  display: flex;
+  overflow: hidden;
+
+  &__figures {
+    align-content: start;
+    background: var(--color-gray--lighter);
+    display: grid;
+    flex: 0 0 280px;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  &__value {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  &__label {
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--medium);
+  }
+
+  &__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    padding: 2rem 2.25rem;
+  }
+
+  &__sign {
+    align-items: center;
+    border-top: 1px solid var(--color-gray--lighten);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+
+  &__mark {
+    flex-shrink: 0;
+    height: auto;
+    margin-left: auto;
+    opacity: .45;
+    width: 140px;
+  }
+
+  @media (max-width: $screen-md - 1) {
+    flex-direction: column;
+
+    &__figures {
+      flex-basis: auto;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+//- Круговая диаграмма: кольцо и таблица-легенда. На сайте разметку и геометрию кольца считает шаблон my_donut.php:
+//- r=80, длина окружности 502,65, доля — stroke-dasharray «длина−2 остаток», stroke-dashoffset — минус начало+1.
+//- Цвет — --donut-color: var(--donut-chart-N) по порядку строки; интерактив — класс DonutChart.
+- const donutItems = [['Переходы из поисковых систем', '67,6%', '337.79 164.86', '-1', '0', '.676'], ['Прямые заходы', '24,1%', '119.14 383.52', '-340.79', '.676', '.241'], ['Переходы по ссылкам на сайтах', '6,8%', '32.18 470.47', '-461.93', '.917', '.068'], ['Переходы из соцсетей', '1,5%', '5.54 497.12', '-496.12', '.985', '.015']]
+.donut-chart
+  .donut-chart__chart
+    svg.donut-chart__svg(viewBox='0 0 200 200' role='group' aria-label='Распределение трафика по каналам')
+      each item, index in donutItems
+        circle.donut-chart__segment(data-donut-index=index cx='100' cy='100' r='80' stroke-dasharray=item[2] stroke-dashoffset=item[3] transform='rotate(-90 100 100)' role='img' aria-label=`${item[0]}: ${item[1]}` data-donut-value=item[1] data-donut-label=item[0] style=`--donut-color: var(--donut-chart-${index + 1}); --donut-start: ${item[4]}; --donut-size: ${item[5]}`)
+          title #{item[0]}: #{item[1]}
+    .donut-chart__center(aria-hidden='true' data-donut-value='67,6%' data-donut-label='поиск')
+      span.donut-chart__center-value 67,6%
+      span.donut-chart__center-label поиск
+  .donut-chart__legend
+    table.table.table--bg-lines
+      caption Источник: Яндекс Метрика, июль 2026
+      thead
+        tr
+          th Канал
+          th.donut-chart__share Доля
+      tbody
+        each item, index in donutItems
+          tr.donut-chart__row(data-donut-index=index style=`--donut-color: var(--donut-chart-${index + 1})`)
+            td
+              span.donut-chart__swatch(aria-hidden='true')
+              | #{item[0]}
+            td.donut-chart__share= item[1]

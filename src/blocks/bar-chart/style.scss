@@ -1,0 +1,295 @@
+// Столбчатый график: динамика по периодам (месяцы, кварталы). Столбцы — HTML, не SVG: подписи на телефоне
+// не сжимаются вместе с графиком. Разметку, высоты и шкалу считает сервер (шаблон my_bar-chart.php):
+// --bar-value — высота столбца долей верхней линии шкалы (0…1), --bar-tick — положение линии сетки,
+// --bar-label — высота подписи значения у крайних столбцов, --bar-chart-count — число периодов
+// (от него минимальная ширина графика).
+// Первый столбец — база сравнения, серый (модификатор __col--base), остальные — --bar-chart-color.
+// Значения подписаны над первым и последним столбцом; остальные — в подсказке (класс BarChart) и в скрытой
+// таблице для скринридеров. Узко — подписи периодов через одну, много периодов — прокрутка внутри графика.
+// Без JS всё видно: столбцы и шкала готовы с сервера.
+// <figure class="bar-chart" style="--bar-chart-count: 3">
+//   <div class="bar-chart__scroll">
+//     <div class="bar-chart__plot" role="group" aria-label="Небрендовый трафик, % к июл 25">
+//       <div class="bar-chart__grid" aria-hidden="true">
+//         <div class="bar-chart__tick" style="--bar-tick: 0"><span class="bar-chart__tick-label">0</span></div>
+//         <div class="bar-chart__tick" style="--bar-tick: .5"><span class="bar-chart__tick-label">100%</span></div>
+//         …
+//       </div>
+//       <div class="bar-chart__bars">
+//         <div class="bar-chart__col bar-chart__col--base" data-bar-index="0" role="img" aria-label="июл 25: 100%"
+//              data-bar-label="июл 25" data-bar-value="100%" data-bar-note="12 400 визитов"
+//              style="--bar-value: .333; --bar-order: 0; --bar-label: .347">
+//           <div class="bar-chart__track">
+//             <span class="bar-chart__bar"></span>
+//             <span class="bar-chart__value" aria-hidden="true">100%</span>
+//           </div>
+//           <span class="bar-chart__label" aria-hidden="true">июл 25</span>
+//         </div>
+//         …
+//       </div>
+//     </div>
+//   </div>
+//   <table class="bar-chart__table">…</table>
+//   <figcaption class="bar-chart__caption">Источник: Яндекс Метрика</figcaption>
+// </figure>
+.bar-chart {
+  $block-name: &; // #{$block-name}__element
+
+  --bar-chart-color: var(--color-green);
+  --bar-chart-base-color: var(--color-gray--light);
+  --bar-chart-height: 300px;
+  // поле слева под подписи шкалы
+  --bar-chart-axis: 56px;
+  // над шкалой: место под подпись значения самого высокого столбца
+  --bar-chart-top: 28px;
+  --bar-chart-col-min: 28px;
+  --bar-chart-duration: .8s;
+
+  @include offset(lg);
+
+  margin-left: 0;
+  margin-right: 0;
+  position: relative;
+
+  &__scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  &__plot {
+    min-width: calc(var(--bar-chart-count, 12) * var(--bar-chart-col-min) + var(--bar-chart-axis));
+    padding: var(--bar-chart-top) 0 0 var(--bar-chart-axis);
+    position: relative;
+  }
+
+  &__grid {
+    height: var(--bar-chart-height);
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: var(--bar-chart-top);
+  }
+
+  &__tick {
+    border-top: 1px solid var(--color-gray--lighten);
+    bottom: calc(var(--bar-tick) * 100%);
+    left: var(--bar-chart-axis);
+    position: absolute;
+    right: 0;
+
+    &:first-child {
+      border-top-color: var(--color-gray--light);
+    }
+  }
+
+  &__tick-label {
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--small);
+    line-height: 1;
+    padding-right: .5rem;
+    position: absolute;
+    right: 100%;
+    top: 0;
+    transform: translateY(-50%);
+    white-space: nowrap;
+  }
+
+  &__bars {
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    position: relative;
+  }
+
+  &__col {
+    cursor: default;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: var(--bar-chart-height) auto;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible #{$block-name}__bar {
+      outline: 2px solid var(--color-gray--darken);
+      outline-offset: 2px;
+    }
+  }
+
+  &__track {
+    align-items: flex-end;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__bar {
+    background: var(--bar-chart-color);
+    border-radius: 3px 3px 0 0;
+    height: calc(var(--bar-value) * 100%);
+    max-width: 72px;
+    min-height: 2px;
+    transform-origin: bottom;
+    transition: opacity var(--transition-time), background-color var(--transition-time),
+      transform var(--bar-chart-duration) cubic-bezier(.25, .8, .35, 1) calc(var(--bar-order, 0) * 50ms);
+    width: 64%;
+
+    #{$block-name}__col--base & {
+      background: var(--bar-chart-base-color);
+    }
+
+    #{$block-name}.-has-active #{$block-name}__col:not(.-is-active) & {
+      opacity: .3;
+    }
+
+    #{$block-name}__col.-is-active & {
+      background: var(--color-green--light);
+    }
+
+    #{$block-name}__col--base.-is-active & {
+      background: var(--color-gray);
+    }
+  }
+
+  // Подпись значения над столбцом: у первого — от левого края колонки, у последнего — от правого.
+  // Широкая подпись заходит на соседний столбец, поэтому её высота --bar-label — по более высокому из двух
+  &__value {
+    bottom: calc(var(--bar-label, var(--bar-value)) * 100% + 6px);
+    color: var(--color-gray--darken);
+    font-size: var(--font-size--medium);
+    font-weight: 700;
+    left: 18%;
+    line-height: 1;
+    position: absolute;
+    transition: opacity var(--transition-time);
+    white-space: nowrap;
+
+    #{$block-name}__col:last-child & {
+      left: auto;
+      right: 18%;
+    }
+
+    #{$block-name}.-has-active & {
+      opacity: 0;
+    }
+  }
+
+  // Flex, а не text-align: подпись шире узкой колонки выходит за неё поровну в обе стороны
+  &__label {
+    color: var(--color-gray--dark);
+    display: flex;
+    font-size: var(--font-size--small);
+    justify-content: center;
+    line-height: 1.2;
+    padding-top: .5rem;
+    white-space: nowrap;
+
+    #{$block-name}__col.-is-active & {
+      color: var(--color-gray--darken);
+      font-weight: 700;
+    }
+  }
+
+  // Много периодов — подписи через одну; последняя видна всегда, поэтому прячется предпоследняя
+  &--many #{$block-name}__col:nth-child(even):not(:last-child) #{$block-name}__label,
+  &--many #{$block-name}__col:nth-last-child(2) #{$block-name}__label {
+    visibility: hidden;
+  }
+
+  // Прорисовка при прокрутке до графика: столбцы вырастают по очереди слева направо
+  &.-is-pending #{$block-name}__bar {
+    transform: scaleY(0);
+  }
+
+  &.-is-pending #{$block-name}__value {
+    opacity: 0;
+  }
+
+  &__tooltip {
+    background: var(--color-white);
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .14);
+    font-size: var(--font-size--medium);
+    left: 0;
+    line-height: 1.3;
+    max-width: 220px;
+    padding: .5rem .75rem;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__tooltip-label {
+    color: var(--color-gray--dark);
+    display: block;
+  }
+
+  &__tooltip-value {
+    display: block;
+    font-size: var(--font-size--large);
+    font-weight: 700;
+  }
+
+  &__tooltip-note {
+    color: var(--color-gray--dark);
+    display: block;
+
+    &.-is-up {
+      color: var(--color-green);
+    }
+  }
+
+  &__caption {
+    color: var(--color-gray--dark);
+    font-size: var(--font-size--medium);
+    margin-top: var(--offset--md);
+  }
+
+  // Таблица значений только для скринридеров
+  &__table {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  @media (max-width: $screen-md - 1) {
+    --bar-chart-height: 220px;
+    --bar-chart-axis: 48px;
+    --bar-chart-col-min: 24px;
+
+    &__value {
+      font-size: var(--font-size--small);
+    }
+
+    // Колонки узкие: подпись последнего периода — только влево, иначе её обрежет прокрутка графика
+    &__col:last-child &__label {
+      justify-content: flex-end;
+    }
+
+    &--many-sm #{$block-name}__col:nth-child(even):not(:last-child) #{$block-name}__label,
+    &--many-sm #{$block-name}__col:nth-last-child(2) #{$block-name}__label {
+      visibility: hidden;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__bar,
+    &__value {
+      transition: none;
+    }
+  }
+}

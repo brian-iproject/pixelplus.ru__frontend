@@ -1,0 +1,14 @@
+//- Два значения на линии: «было → стало» по времени или канал против канала — смысл задают подписи.
+//- Прежнее значение — утилита -c-muted, итоговое — -c-green. Вывод __result необязателен.
+.compare-line
+  .compare-line__track
+    .compare-line__point
+      .compare-line__label Июль 2025
+      span.compare-line__value.-c-muted 8,93 ₽
+      span.compare-line__note за посетителя
+    .compare-line__badge −62,5%
+    .compare-line__point.compare-line__point--accent
+      .compare-line__label Июль 2026
+      span.compare-line__value.-c-green 3,35 ₽
+      span.compare-line__note за посетителя
+  +text-icon({svgId: 'check-circle', text: 'Стоимость привлечения посетителя за период работ <b>сократилась на 62,5%</b>.'}, {iconAttrs: {class: '-c-green', 'aria-hidden': 'true'}})(class='compare-line__result')
